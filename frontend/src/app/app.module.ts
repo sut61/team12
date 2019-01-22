@@ -1,16 +1,23 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
-import { AppComponent } from './app.component';
-
-import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
-import 'hammerjs';
-
 import { FormsModule } from '@angular/forms';
+import { CommonModule} from '@angular/common';
 import { ReactiveFormsModule } from '@angular/forms';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpClientModule } from '@angular/common/http';
 import { RouterModule, Routes} from '@angular/router';
-import { CommonModule} from '@angular/common';
+
+import { FlatpickrModule } from 'angularx-flatpickr';
+import { CalendarModule, DateAdapter } from 'angular-calendar';
+import { adapterFactory } from 'angular-calendar/date-adapters/date-fns';
+import { NgbModalModule } from '@ng-bootstrap/ng-bootstrap';
+
+
+import { AppComponent } from './app.component';
+
+
+
 
 import {
   MatAutocompleteModule,
@@ -50,14 +57,56 @@ import {
   MatTreeModule,
 } from '@angular/material';
 
-const routes: Routes = [
-  // {path: '', redirectTo:'/login', pathMatch: 'full' },
+import { LoginComponent } from './login/login.component';
+import { HomeComponent } from './home/home.component';
+import { EmployeeRegisterComponent } from './employee-register/employee-register.component';
+import { EmployeeInfoComponent } from './employee-info/employee-info.component';
+import { EmployeeManageComponent } from './employee-manage/employee-manage.component';
+import { MainNavComponent } from './main-nav/main-nav.component';
+import { LayoutModule } from '@angular/cdk/layout';
 
-  
-];
+
+const routes: Routes = [
+  {
+    path: '', 
+    redirectTo: '/login', 
+    pathMatch:'full'
+  },
+  {
+    path: 'home',
+    component: HomeComponent
+  },
+  {
+    path: 'login',
+    component: LoginComponent
+  },
+  {
+    path: 'empinfo',
+    component: EmployeeInfoComponent
+  },
+  {
+    path: 'empreg',
+    component: EmployeeRegisterComponent
+  },
+  {
+    path: 'empmanage',
+    component: EmployeeManageComponent
+  },
+  {
+    path: 'nav',
+    component: MainNavComponent
+  }
+]
+
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    LoginComponent,
+    HomeComponent,
+    EmployeeRegisterComponent,
+    EmployeeInfoComponent,
+    EmployeeManageComponent,
+    MainNavComponent
   ],
   imports: [
     BrowserModule,
@@ -66,6 +115,7 @@ const routes: Routes = [
     FormsModule,
     ReactiveFormsModule,
     CommonModule,
+    RouterModule.forRoot(routes),
     MatAutocompleteModule,
     MatBadgeModule,
     MatBottomSheetModule,
@@ -101,7 +151,13 @@ const routes: Routes = [
     MatToolbarModule,
     MatTooltipModule,
     MatTreeModule,
-RouterModule.forRoot(routes),
+    LayoutModule,
+    NgbModalModule,
+    FlatpickrModule.forRoot(),
+    CalendarModule.forRoot({
+      provide: DateAdapter,
+      useFactory: adapterFactory
+    })
   ],
   providers: [],
   bootstrap: [AppComponent]
