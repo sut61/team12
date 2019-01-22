@@ -16,6 +16,8 @@ public class Admin {
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "admin_seq")
     @Column(name = "ADMIN_ID")
     private Long adminId;
+    private String name;
     private String username;
     private String password;
+
 }
