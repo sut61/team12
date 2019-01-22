@@ -1,6 +1,6 @@
 package sut.se.team12.controller;
 
-import org.hibernate.annotations.SourceType;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import sut.se.team12.entity.Admin;

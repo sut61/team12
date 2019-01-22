@@ -1,7 +1,9 @@
 package sut.se.team12.entity;
 
 import lombok.*;
+
 import java.util.Date;
+
 import javax.persistence.*;
 
 @Data
@@ -24,8 +26,8 @@ public class Member {
     private String email;
     private String phoneNumber;
     private String address;
-    private String subDistric;
-    private String distric;
+    private String subDistrict;
+    private String district;
 
 
     @ManyToOne(fetch = FetchType.EAGER, targetEntity = Title.class)
