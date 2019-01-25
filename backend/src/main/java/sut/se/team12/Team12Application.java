@@ -155,6 +155,63 @@ public class Team12Application {
 			employee2.setPosition(position2);
 			employeeRepository.save(employee2);
 
+						//------------------Field----------------------------
+
+						Field Field1 = new Field();
+						Field1.setFieldName("สนามฟุตบอล1");
+						fieldRepository.save(Field1);
+			
+						Field Field2 = new Field();
+						Field2.setFieldName("สนามฟุตบอล2");
+						fieldRepository.save(Field2);
+			
+						Field Field3 = new Field();
+						Field3.setFieldName("สนามฟุตบอล3");
+						fieldRepository.save(Field3);
+			
+						Field Field4 = new Field();
+						Field4.setFieldName("สนามฟุตบอล4");
+						fieldRepository.save(Field4);
+			
+						Field Field5 = new Field();
+						Field5.setFieldName("สนามฟุตบอล5");
+						fieldRepository.save(Field5);
+			
+			//---------------------FieldDuration-----------------
+			
+						FieldDuration FieldDuration1 = new FieldDuration();
+						FieldDuration1.setFieldDuration("08:00-10:00 น.");
+						fieldDurationRepository.save(FieldDuration1);
+			
+						FieldDuration FieldDuration2 = new FieldDuration();
+						FieldDuration2.setFieldDuration("10:00-12:00 น.");
+						fieldDurationRepository.save(FieldDuration2);
+			
+						FieldDuration FieldDuration3 = new FieldDuration();
+						FieldDuration3.setFieldDuration("13:00-15:00 น.");
+						fieldDurationRepository.save(FieldDuration3);
+			
+						FieldDuration FieldDuration4 = new FieldDuration();
+						FieldDuration4.setFieldDuration("15:00-17:00 น.");
+						fieldDurationRepository.save(FieldDuration4);
+			
+						FieldDuration FieldDuration5 = new FieldDuration();
+						FieldDuration5.setFieldDuration("17:00-19:00 น.");
+						fieldDurationRepository.save(FieldDuration5);
+			
+						FieldDuration FieldDuration6 = new FieldDuration();
+						FieldDuration6.setFieldDuration("19:00-21:00 น.");
+						fieldDurationRepository.save(FieldDuration6);
+			
+						
+			
+			
+			
+			
+			
+			
+			//----------------------------------------------------------------
+
 			Privilege privilege1 = new Privilege();
 			privilege1.setPrivilegeName("Normal");
 			privilege1.setPrice(799.00);
@@ -544,6 +601,48 @@ public class Team12Application {
 			lease1.setMember(member1);
 			lease1.setAccessory(accessory1);
 			lease1.setDuration(duration1);
+
+			FieldOrder fieldOrder1 = new FieldOrder();
+fieldOrder1.setAdmin(admin6);
+fieldOrder1.setField(Field2);
+fieldOrder1.setMember(member1);
+fieldOrder1.setFieldDuration(FieldDuration2);
+fieldOrder1.setDate(date1);
+fieldOrderRepository.save(fieldOrder1);
+//------------------------------------------------
+
+			//------------------------Room----------------------
+
+			Room Room01 = new Room();
+			Room01.setRoomNumber("R001");
+			roomRepository.save(Room01);
+			Room Room02 = new Room();
+			Room02.setRoomNumber("R002");
+			roomRepository.save(Room02);
+			Room Room03 = new Room();
+			Room03.setRoomNumber("R003");
+			roomRepository.save(Room03);
+			Room Room04 = new Room();
+			Room04.setRoomNumber("R004");
+			roomRepository.save(Room04);
+			Room Room05 = new Room();
+			Room05.setRoomNumber("R005");
+			roomRepository.save(Room05);
+
+			//----------------------RoomDuration-------------------
+
+			RoomDuration roomDuration01 = new RoomDuration();
+			roomDuration01.setRoomDuration("09.00 AM - 10.30 AM");
+			roomDurationRepository.save(roomDuration01);
+			RoomDuration roomDuration02 = new RoomDuration();
+			roomDuration02.setRoomDuration("11.00 AM - 12.30 AM");
+			roomDurationRepository.save(roomDuration02);
+			RoomDuration roomDuration03 = new RoomDuration();
+			roomDuration03.setRoomDuration("01.00 PM - 02.30 PM");
+			roomDurationRepository.save(roomDuration03);
+			RoomDuration roomDuration04 = new RoomDuration();
+			roomDuration04.setRoomDuration("03.00 PM - 04.30 PM");
+			roomDurationRepository.save(roomDuration04);
 			
 			adminRepository.findAll().forEach(System.out::println);
 			degreeRepository.findAll().forEach(System.out::println);
