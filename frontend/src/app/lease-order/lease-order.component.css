@@ -4,11 +4,12 @@
   }
   .example-card {
     /* max-width: 300px; */
-    width:500px;
+    width:600px;
     margin-left: auto;
     margin-right: auto;
     background-color:warn;
   }
+  
   a {
     margin: 2px;
   }
@@ -26,6 +27,7 @@
     width:100px;
     /* background-color: aqua; */
   }
+  
   .example-radio-group {
     /* display: inline-flex; */
     flex-direction: column;
@@ -44,26 +46,4 @@
   
   .example-spacer {
     flex: 1 1 auto;
-  }
-
-  table {
-    font-family: arial, sans-serif;
-    border-collapse: collapse;
-    width: 100%;
-    margin: 2px;
-    padding:8px;
-  }
-  
-  td, th {
-    border: 1px solid #dddddd;
-    text-align: center;
-    /* padding: 8px; */
-  }
-  
-  tr:nth-child(even) {
-    /* background-color: #dddddd; */
-  }
-  ng-container{
-    text-align: center;
-    
   }

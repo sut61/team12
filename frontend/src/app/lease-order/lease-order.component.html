@@ -1,0 +1,239 @@
+<!-- <div>
+  <mat-toolbar class="topbar telative mat-toolbar mat-primary mat-toolbar-single-row" color="primary" style="flex-direction: row; box-sizing: border-box; display: flex">
+    <div>ระบบจัดการสนามกีฬา</div>
+  </mat-toolbar>
+</div>
+<br> -->
+
+<mat-sidenav-container class="sidenav-container container">
+  <mat-sidenav #drawer class="sidenav" fixedInViewport="true"
+      [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'"
+      [mode]="(isHandset$ | async) ? 'over' : 'side'"
+      [opened]="!(isHandset$ | async)">
+    <mat-toolbar>ระบบจัดการสนามกีฬา</mat-toolbar>
+      <mat-nav-list>
+        <mat-list-item>
+          <diV>
+            User Profile
+          </diV>
+        </mat-list-item>
+        <mat-accordion multi="true" displayMode="flat">
+      <mat-expansion-panel>
+        <mat-expansion-panel-header expandedHeight="48px" collapsedHeight="48px">
+          <mat-panel-title><i class="material-icons">grade</i>ตั๋ว</mat-panel-title>
+        </mat-expansion-panel-header>
+        <mat-nav-list>
+          <a mat-list-item ><i class="material-icons">chevron_right</i>ขายตั๋ว</a>
+        </mat-nav-list>
+      </mat-expansion-panel>
+      
+    </mat-accordion>
+    <mat-accordion >
+      <mat-expansion-panel>
+        <mat-expansion-panel-header>
+          <mat-panel-title><i class="material-icons">account_circle</i> สมาชิก</mat-panel-title>
+        </mat-expansion-panel-header>
+        <mat-nav-list>
+          <a mat-list-item ><i class="material-icons">chevron_right</i>สมัครสมาชิก</a>
+          <a mat-list-item ><i class="material-icons">chevron_right</i>ข้อมูลสมาชิก</a>
+        </mat-nav-list>
+      </mat-expansion-panel>
+    </mat-accordion>
+    <mat-accordion>
+      <mat-expansion-panel>
+        <mat-expansion-panel-header>
+          <mat-panel-title><i class="material-icons">assignment_ind</i>พนักงาน</mat-panel-title>
+        </mat-expansion-panel-header>
+        <mat-nav-list>
+          <a mat-list-item routerLink="/empreg" ><i class="material-icons">chevron_right</i>สมัครพนักงาน</a>
+          <a mat-list-item routerLink="/empinfo"><i class="material-icons">chevron_right</i>ข้อมูลพนักงาน</a>
+          <a mat-list-item routerLink="/empmanage"><i class="material-icons">chevron_right</i>จัดตารางงานพนักงาน</a>
+        </mat-nav-list>
+      </mat-expansion-panel>
+    </mat-accordion>
+    <mat-accordion>
+      <mat-expansion-panel >
+        <mat-expansion-panel-header>
+          <mat-panel-title><i class="material-icons">book</i>คอร์สเรียน</mat-panel-title>
+        </mat-expansion-panel-header>
+        <mat-nav-list>
+          <a mat-list-item ><i class="material-icons">chevron_right</i>สร้างคอร์สเรียน</a>
+          <a mat-list-item ><i class="material-icons">chevron_right</i>ข้อมูลคอร์สเรียน</a>
+          <a mat-list-item ><i class="material-icons">chevron_right</i>จองคอร์สเรียน</a>
+        </mat-nav-list>
+      </mat-expansion-panel>
+    </mat-accordion>
+    <mat-accordion>
+      <mat-expansion-panel>
+        <mat-expansion-panel-header>
+          <mat-panel-title><i class="material-icons">weekend</i>ห้องพักนักกีฬา</mat-panel-title>
+        </mat-expansion-panel-header>
+        <mat-nav-list>
+          <a mat-list-item ><i class="material-icons">chevron_right</i>จองห้องพัก</a>
+          <a mat-list-item ><i class="material-icons">chevron_right</i>ยกเลิกการจองห้องพัก</a>
+        </mat-nav-list>
+      </mat-expansion-panel>
+    </mat-accordion>
+    <mat-accordion>
+      <mat-expansion-panel>
+        <mat-expansion-panel-header>
+          <mat-panel-title><i class="material-icons">fitness_center</i>อุปกรณ์</mat-panel-title>
+        </mat-expansion-panel-header>
+        <mat-nav-list>
+          <a mat-list-item routerLink="/lease" ><i class="material-icons">chevron_right</i>เช่าอุปกรณ์</a>
+          <a mat-list-item routerLink="/leaseshow"><i class="material-icons">chevron_right</i>ข้อมูลการเช่าอุปกรณ์</a>
+        </mat-nav-list>
+      </mat-expansion-panel>
+    </mat-accordion>
+    <mat-accordion>
+      <mat-expansion-panel>
+        <mat-expansion-panel-header>
+          <mat-panel-title><i class="material-icons">map</i>สนาม</mat-panel-title>
+        </mat-expansion-panel-header>
+        <mat-nav-list>
+          <a mat-list-item ><i class="material-icons">chevron_right</i>จองสนาม</a>
+          <a mat-list-item ><i class="material-icons">chevron_right</i>ข้อมูลการจองสนาม</a>
+        </mat-nav-list>
+      </mat-expansion-panel>
+    </mat-accordion>
+    <mat-accordion>
+      <mat-expansion-panel>
+        <mat-expansion-panel-header>
+          <mat-panel-title><i class="material-icons">local_offer</i>ล็อกเกอร์</mat-panel-title>
+        </mat-expansion-panel-header>
+        <mat-nav-list>
+          <a mat-list-item ><i class="material-icons">chevron_right</i>จองล็อกเกอร์</a>
+          <a mat-list-item ><i class="material-icons">chevron_right</i>ข้อมูลการจองล็อกเกอร์</a>
+        </mat-nav-list>
+      </mat-expansion-panel>
+    </mat-accordion>
+      </mat-nav-list>
+
+  </mat-sidenav>
+  <mat-sidenav-content>
+    <mat-toolbar color="primary">
+      <mat-toolbar-row>
+        <button type="button" aria-label="Toggle sidenav" mat-icon-button (click)="drawer.toggle()">
+          <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
+        </button>
+        <span>ระบบจัดการสนามกีฬา</span>
+        <span class="example-spacer"></span>
+        <a mat-stroked-button routerLink="/login" style="font-family:Arial, Helvetica, sans-serif">Logout</a>
+      </mat-toolbar-row>
+    </mat-toolbar>
+
+    <mat-card class="example-card" >
+        <h1>เช่าอุปกรณ์</h1>
+          <mat-card-content style="text-align:left">
+              <label>ผู้ขอเช่าอุปกรณ์: </label>
+              <br>
+                <mat-form-field appearance="outline">
+                  <mat-select placeholder="ชื่อ-นามสกุล" [(ngModel)]="select.memberSelect" name="member">
+                    <mat-option *ngFor="let member of members" [value]="member.memberId">{{member.name}}</mat-option>
+                  </mat-select>
+                </mat-form-field>
+          </mat-card-content>
+          
+          <mat-card-content style="text-align:left">
+              <label>อุปกรณ์: </label>
+              <br>
+                <mat-form-field appearance="outline">
+                  <mat-select placeholder="อุปกรณ์" [(ngModel)]="select.accessorySelect" name="accessory">
+                    <mat-option *ngFor="let accessory of accessorys" [value]="accessory.accessoryId">{{accessory.accessoryName}}</mat-option>
+                  </mat-select>
+                </mat-form-field>
+          </mat-card-content>
+          
+          <mat-card-content style="text-align:left">
+              <label>ระยะเวลาในการเช่า </label>
+              <br>
+                <mat-form-field appearance="outline">
+                  <mat-select placeholder="ระยะเวลา" [(ngModel)]="select.durationSelect" name="duration">
+                    <mat-option *ngFor="let duration of durations" [value]="duration.durationId">{{duration.durationName}}</mat-option>
+                  </mat-select>
+                </mat-form-field>
+          </mat-card-content>
+
+           <mat-card-actions style="text-align:right">
+              <a mat-raised-button (click)="save()" color="primary" type="submit">บันทึก</a>
+              <a mat-raised-button  routerLink="/nav" color="primary" type="submit">ยกเลิก</a>
+          </mat-card-actions>
+        </mat-card>
+  </mat-sidenav-content>
+</mat-sidenav-container>
+
+
+
+
+<!-- <p>admin id: {{data.id}}</p>
+<p>admin name: {{data.name}}</p>
+<p>admin username: {{data.username}}</p>
+<p>admin password: {{data.password}}</p> -->
+
+<!-- <form class="example-form">
+ <mat-form-field appearance="outline">
+  <mat-select placeholder="พนักงานดูแลระบบ" [(ngModel)]="select.adminSelect" name="admin">
+    <mat-option *ngFor="let admin of admins" [value]="admin.adminId">{{admin.username}}</mat-option>
+  </mat-select>
+</mat-form-field>
+<br>
+<mat-form-field appearance="outline">
+  <input matInput #input maxlength="13" placeholder="เลขประจำตัวประชาชน" [(ngModel)]="id" name="id">
+</mat-form-field>
+<br>
+<mat-form-field appearance="outline">
+  <mat-select placeholder="ตำนำหน้า" [(ngModel)]="select.titleSelect" name="title">
+    <mat-option *ngFor="let title of titles" [value]="title.titleId">{{title.titleType}}</mat-option>
+  </mat-select>
+</mat-form-field>
+&nbsp;&nbsp;&nbsp;
+<mat-form-field appearance="outline">
+  <input matInput placeholder="ชื่อ" [(ngModel)]="firstName" name="firstname">
+</mat-form-field>
+&nbsp;&nbsp;&nbsp;
+<mat-form-field appearance="outline">
+  <input matInput placeholder="นามสกุล" [(ngModel)]="lastName" name="lastname">
+</mat-form-field>
+<br>
+<mat-form-field appearance="outline">
+  <input matInput [matDatepicker]="picker" placeholder="วันเกิด" [(ngModel)]="birthDate" name="date">
+  <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+  <mat-datepicker #picker></mat-datepicker>
+</mat-form-field>
+<br>
+<mat-form-field appearance="outline">
+  <input matInput placeholder="หมายเลขโทรศัพท์" [(ngModel)]="phone" name="phone">
+</mat-form-field>
+&nbsp;&nbsp;&nbsp;
+<mat-form-field appearance="outline">
+  <input matInput placeholder="email" [(ngModel)]="email" name="email">
+</mat-form-field>
+<br>
+<mat-form-field appearance="outline">
+  <textarea matInput placeholder="ที่อยู่" [(ngModel)]="address" name="address"></textarea>
+</mat-form-field>
+<br>
+<mat-form-field appearance="outline">
+  <mat-select placeholder="วุฒิการศึกษา"[(ngModel)]="select.degreeSelect" name="degree">
+    <mat-option *ngFor="let degree of degrees" [value]="degree.degreeId">{{degree.degreeType}}</mat-option>
+  </mat-select>
+</mat-form-field>
+<br>
+<mat-form-field appearance="outline">
+  <mat-select placeholder="ตำแหน่ง" [(ngModel)]="select.positionSelect" name="position">
+    <mat-option *ngFor="let position of positions" [value]="position.positionId">{{position.positionType}}</mat-option>
+  </mat-select>
+</mat-form-field>
+<br>
+<a mat-raised-button (click)="save()" color="primary" type="submit">save</a>
+</form> -->
+
+
+
+
+
+
+
+
+
+

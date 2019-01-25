@@ -1,5 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import { NgModule, Component } from '@angular/core';
 
 import { FormsModule } from '@angular/forms';
 import { CommonModule} from '@angular/common';
@@ -64,10 +64,6 @@ import { EmployeeInfoComponent } from './employee-info/employee-info.component';
 import { EmployeeManageComponent } from './employee-manage/employee-manage.component';
 import { MainNavComponent } from './main-nav/main-nav.component';
 import { LayoutModule } from '@angular/cdk/layout';
-import { MemberRegisterComponent } from './member-register/member-register.component';
-import { MemberShowComponent } from './member-show/member-show.component';
-import { FieldViewComponent } from './field-view/field-view.component';
-import { FieldOrderComponent } from './field-order/field-order.component';
 import { LeaseOrderComponent } from './lease-order/lease-order.component';
 import { LeaseShowComponent } from './lease-show/lease-show.component';
 
@@ -103,27 +99,14 @@ const routes: Routes = [
     component: MainNavComponent
   },
   {
-  path: 'member-register', component: MemberRegisterComponent
+    path: 'lease',
+    component: LeaseOrderComponent
   },
   {
-    path: 'member-show', component: MemberShowComponent
-    },
-    {
-      path: 'field-order',
-      component: FieldOrderComponent
-    },
-    {
-      path: 'field-view',
-      component: FieldViewComponent
-    },
-    {
-      path: 'lease',
-      component: LeaseOrderComponent
-    },
-    {
-      path: 'leaseshow',
-      component: LeaseShowComponent
-    }
+    path: 'leaseshow',
+    component: LeaseShowComponent
+  }
+  
 ]
 
 @NgModule({
@@ -135,10 +118,6 @@ const routes: Routes = [
     EmployeeInfoComponent,
     EmployeeManageComponent,
     MainNavComponent,
-    MemberRegisterComponent,
-    MemberShowComponent,
-    FieldViewComponent,
-    FieldOrderComponent
     LeaseOrderComponent,
     LeaseShowComponent
   ],
