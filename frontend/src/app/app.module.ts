@@ -68,6 +68,8 @@ import { MemberRegisterComponent } from './member-register/member-register.compo
 import { MemberShowComponent } from './member-show/member-show.component';
 import { FieldViewComponent } from './field-view/field-view.component';
 import { FieldOrderComponent } from './field-order/field-order.component';
+import { LeaseOrderComponent } from './lease-order/lease-order.component';
+import { LeaseShowComponent } from './lease-show/lease-show.component';
 
 
 const routes: Routes = [
@@ -113,6 +115,14 @@ const routes: Routes = [
     {
       path: 'field-view',
       component: FieldViewComponent
+    },
+    {
+      path: 'lease',
+      component: LeaseOrderComponent
+    },
+    {
+      path: 'leaseshow',
+      component: LeaseShowComponent
     }
 ]
 
@@ -129,6 +139,8 @@ const routes: Routes = [
     MemberShowComponent,
     FieldViewComponent,
     FieldOrderComponent
+    LeaseOrderComponent,
+    LeaseShowComponent
   ],
   imports: [
     BrowserModule,
