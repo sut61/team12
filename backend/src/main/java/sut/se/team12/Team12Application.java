@@ -26,7 +26,10 @@ public class Team12Application {
 			TitleRepository titleRepository,
 			ProvinceRepository provinceRepository,
 			PrivilegeRepository privilegeRepository,
-			MemberRepository memberRepository
+			MemberRepository memberRepository,
+			FieldRepository fieldRepository,
+			FieldDurationRepository fieldDurationRepository,
+			FieldOrderRepository fieldOrderRepository
 						   ){
 		return args -> {
 			// ----------------------admin--------------------
@@ -151,6 +154,64 @@ public class Team12Application {
 			employee2.setDegree(degree3);
 			employee2.setPosition(position2);
 			employeeRepository.save(employee2);
+
+
+			//------------------Field----------------------------
+
+			Field Field1 = new Field();
+			Field1.setFieldName("สนามฟุตบอล1");
+			fieldRepository.save(Field1);
+
+			Field Field2 = new Field();
+			Field2.setFieldName("สนามฟุตบอล2");
+			fieldRepository.save(Field2);
+
+			Field Field3 = new Field();
+			Field3.setFieldName("สนามฟุตบอล3");
+			fieldRepository.save(Field3);
+
+			Field Field4 = new Field();
+			Field4.setFieldName("สนามฟุตบอล4");
+			fieldRepository.save(Field4);
+
+			Field Field5 = new Field();
+			Field5.setFieldName("สนามฟุตบอล5");
+			fieldRepository.save(Field5);
+
+//---------------------FieldDuration-----------------
+
+			FieldDuration FieldDuration1 = new FieldDuration();
+			FieldDuration1.setFieldDuration("08:00-10:00 น.");
+			fieldDurationRepository.save(FieldDuration1);
+
+			FieldDuration FieldDuration2 = new FieldDuration();
+			FieldDuration2.setFieldDuration("10:00-12:00 น.");
+			fieldDurationRepository.save(FieldDuration2);
+
+			FieldDuration FieldDuration3 = new FieldDuration();
+			FieldDuration3.setFieldDuration("13:00-15:00 น.");
+			fieldDurationRepository.save(FieldDuration3);
+
+			FieldDuration FieldDuration4 = new FieldDuration();
+			FieldDuration4.setFieldDuration("15:00-17:00 น.");
+			fieldDurationRepository.save(FieldDuration4);
+
+			FieldDuration FieldDuration5 = new FieldDuration();
+			FieldDuration5.setFieldDuration("17:00-19:00 น.");
+			fieldDurationRepository.save(FieldDuration5);
+
+			FieldDuration FieldDuration6 = new FieldDuration();
+			FieldDuration6.setFieldDuration("19:00-21:00 น.");
+			fieldDurationRepository.save(FieldDuration6);
+
+			
+
+
+
+
+
+
+//----------------------------------------------------------------
 
 			Privilege privilege1 = new Privilege();
 			privilege1.setPrivilegeName("Normal");
@@ -486,8 +547,17 @@ public class Team12Application {
 			member1.setProvince(province21);
 			member1.setAdmin(admin1);
 			memberRepository.save(member1);
+			
+			//----------------------------------------------------------------
 
-
+FieldOrder fieldOrder1 = new FieldOrder();
+fieldOrder1.setAdmin(admin6);
+fieldOrder1.setField(Field2);
+fieldOrder1.setMember(member1);
+fieldOrder1.setFieldDuration(FieldDuration2);
+fieldOrder1.setDate(date1);
+fieldOrderRepository.save(fieldOrder1);
+//------------------------------------------------
 			adminRepository.findAll().forEach(System.out::println);
 			degreeRepository.findAll().forEach(System.out::println);
 			employeeRepository.findAll().forEach(System.out::println);

@@ -9,5 +9,5 @@ import sut.se.team12.entity.Member;
 @RepositoryRestResource
 //@CrossOrigin(origins = "http://localhost:4200")
 public interface MemberRepository extends JpaRepository<Member,Long>{
-    // PostalOrder findFirstByPostalOrderByIdDesc(Long postalOrderId);
+    Member findByMemberId(Long memberId);
 }
