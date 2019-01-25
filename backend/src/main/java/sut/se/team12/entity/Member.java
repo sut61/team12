@@ -19,8 +19,7 @@ public class Member {
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "member_seq")
     @Column(name = "MEMBER_ID")
     private Long memberId;
-    private String firstName;
-    private String lastName;
+    private String name;
     private int age;
     @Temporal(TemporalType.DATE)
     private Date birthday;
@@ -46,4 +45,9 @@ public class Member {
     @ManyToOne(fetch = FetchType.EAGER, targetEntity = Admin.class)
     @JoinColumn(name = "ADMIN_ID", insertable = true)
     private Admin admin;
+
+    @ManyToOne(fetch = FetchType.EAGER, targetEntity = Lease.class)
+    @JoinColumn(name = "LEASE_ID", insertable = true)
+    private Lease lease;
+
 }
