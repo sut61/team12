@@ -66,6 +66,8 @@ import { MainNavComponent } from './main-nav/main-nav.component';
 import { LayoutModule } from '@angular/cdk/layout';
 import { MemberRegisterComponent } from './member-register/member-register.component';
 import { MemberShowComponent } from './member-show/member-show.component';
+import { FieldViewComponent } from './field-view/field-view.component';
+import { FieldOrderComponent } from './field-order/field-order.component';
 
 
 const routes: Routes = [
@@ -104,6 +106,14 @@ const routes: Routes = [
   {
     path: 'member-show', component: MemberShowComponent
     },
+    {
+      path: 'field-order',
+      component: FieldOrderComponent
+    },
+    {
+      path: 'field-view',
+      component: FieldViewComponent
+    }
 ]
 
 @NgModule({
@@ -116,7 +126,9 @@ const routes: Routes = [
     EmployeeManageComponent,
     MainNavComponent,
     MemberRegisterComponent,
-    MemberShowComponent
+    MemberShowComponent,
+    FieldViewComponent,
+    FieldOrderComponent
   ],
   imports: [
     BrowserModule,
