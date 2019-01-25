@@ -64,6 +64,8 @@ import { EmployeeInfoComponent } from './employee-info/employee-info.component';
 import { EmployeeManageComponent } from './employee-manage/employee-manage.component';
 import { MainNavComponent } from './main-nav/main-nav.component';
 import { LayoutModule } from '@angular/cdk/layout';
+import { MemberRegisterComponent } from './member-register/member-register.component';
+import { MemberShowComponent } from './member-show/member-show.component';
 
 
 const routes: Routes = [
@@ -95,7 +97,13 @@ const routes: Routes = [
   {
     path: 'nav',
     component: MainNavComponent
-  }
+  },
+  {
+  path: 'member-register', component: MemberRegisterComponent
+  },
+  {
+    path: 'member-show', component: MemberShowComponent
+    },
 ]
 
 @NgModule({
@@ -106,7 +114,9 @@ const routes: Routes = [
     EmployeeRegisterComponent,
     EmployeeInfoComponent,
     EmployeeManageComponent,
-    MainNavComponent
+    MainNavComponent,
+    MemberRegisterComponent,
+    MemberShowComponent
   ],
   imports: [
     BrowserModule,

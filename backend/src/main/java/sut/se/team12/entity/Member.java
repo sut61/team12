@@ -19,7 +19,8 @@ public class Member {
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "member_seq")
     @Column(name = "MEMBER_ID")
     private Long memberId;
-    private String name;
+    private String firstName;
+    private String lastName;
     private int age;
     @Temporal(TemporalType.DATE)
     private Date birthday;
