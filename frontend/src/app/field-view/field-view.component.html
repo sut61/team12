@@ -27,8 +27,8 @@
           <mat-panel-title><i class="material-icons">account_circle</i> สมาชิก</mat-panel-title>
         </mat-expansion-panel-header>
         <mat-nav-list>
-          <a mat-list-item routerLink="/member-register"><i class="material-icons">chevron_right</i>สมัครสมาชิก</a>
-          <a mat-list-item routerLink="/member-show"><i class="material-icons">chevron_right</i>ข้อมูลสมาชิก</a>
+          <a mat-list-item ><i class="material-icons">chevron_right</i>สมัครสมาชิก</a>
+          <a mat-list-item ><i class="material-icons">chevron_right</i>ข้อมูลสมาชิก</a>
         </mat-nav-list>
       </mat-expansion-panel>
     </mat-accordion>
@@ -115,5 +115,58 @@
         </mat-toolbar-row>
       </mat-toolbar>
     
+
+      <mat-card style="align-content: center">
+        <h1>จองสนาม</h1>
+
+        <table mat-table [dataSource]="orders" class="mat-elevation-z8" style="align:center">
+
+          <ng-container matColumnDef="no">
+            <th mat-header-cell *matHeaderCellDef> No. </th>
+            <td mat-cell *matCellDef="let element ; let i = index">{{i+1}}</td>
+          </ng-container>
+        
+          <ng-container matColumnDef="admin">
+            <th mat-header-cell *matHeaderCellDef> AdminName </th>
+            <td mat-cell *matCellDef="let element"> {{element.admin.name}} </td>
+          </ng-container>
+        
+          
+          <ng-container matColumnDef="member" >
+            <th mat-header-cell *matHeaderCellDef> MemberName </th>
+            <td mat-cell *matCellDef="let element"> <pre>{{element.member.name}}</pre> </td>
+          </ng-container>
+        
+          <ng-container matColumnDef="field">
+            <th mat-header-cell *matHeaderCellDef> Field </th>
+            <td mat-cell *matCellDef="let element"> {{element.field.fieldName}} </td>
+          </ng-container>
+        
+          <ng-container matColumnDef="duration">
+            <th mat-header-cell *matHeaderCellDef> Duration </th>
+            <td mat-cell *matCellDef="let element"> {{element.fieldDuration.fieldDuration}} </td>
+          </ng-container>
+        
+          <ng-container matColumnDef="date">
+            <th mat-header-cell *matHeaderCellDef> Date </th>
+            <td mat-cell *matCellDef="let element"> {{element.date}} </td>
+          </ng-container>
+        
+          
+          <ng-container matColumnDef="edit">
+            <th mat-header-cell *matHeaderCellDef style = "width:5%"> Edit.</th>
+            <td mat-cell *matCellDef="let element"> <button mat-raised-button  (click)="manageTeam(element)">Edit</button> </td>
+          </ng-container>
+        
+          <ng-container matColumnDef="delete">
+            <th mat-header-cell *matHeaderCellDef style = "width:5px"> Delete.</th>
+            <td mat-cell *matCellDef="let element"> <button mat-raised-button color="warn" (click)="viewConvenienceOrder(element)">Delete</button> </td>
+          </ng-container>
+        
+          <tr mat-header-row *matHeaderRowDef="dataColumns"></tr>
+          <tr mat-row *matRowDef="let row; columns: dataColumns;"></tr>
+        </table>
+        
+      </mat-card>
   </mat-sidenav-content>
 </mat-sidenav-container>
