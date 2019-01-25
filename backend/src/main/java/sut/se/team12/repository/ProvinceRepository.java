@@ -11,5 +11,4 @@ import sut.se.team12.entity.Province;
 public interface ProvinceRepository extends JpaRepository<Province,Long>{
     // PostalOrder findFirstByPostalOrderByIdDesc(Long postalOrderId);
     Province findByProvinceName(String provinceName);
-    Province findByProvinceId(Long provinceId);
 }
