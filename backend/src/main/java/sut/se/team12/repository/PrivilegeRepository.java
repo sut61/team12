@@ -11,4 +11,5 @@ import sut.se.team12.entity.Privilege;
 public interface PrivilegeRepository extends JpaRepository<Privilege,Long>{
     // PostalOrder findFirstByPostalOrderByIdDesc(Long postalOrderId);
     Privilege findByPrivilegeName(String privilegeName);
+    Privilege findByPrivilegeId(Long priviledgeId);
 }

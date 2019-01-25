@@ -54,10 +54,10 @@ export class LoginComponent implements OnInit {
           this.check = data;
           console.log('PUT Request is successful', data);
           if (this.check === true) {
-            this.httpClient.post('http://localhost:8080/admin/login/' + this.admin.username, this.admin)
-            .subscribe(data => {
-              console.log(data)
-            })
+            // this.httpClient.post('http://localhost:8080/admin/login/' + this.admin.username, this.admin)
+            // .subscribe(data => {
+            //   console.log(data)
+            // })
             //  alert('login sucessful');
             this.router.navigate(['nav'])
 

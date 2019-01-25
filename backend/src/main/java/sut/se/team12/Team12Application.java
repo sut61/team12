@@ -31,8 +31,8 @@ public class Team12Application {
 		return args -> {
 			// ----------------------admin--------------------
 			Admin admin1 = new Admin();
-			admin1.setName("Pimpan");
-			admin1.setUsername("pimpan");
+			admin1.setName("Pimpun");
+			admin1.setUsername("pimpun");
 			admin1.setPassword("1234");
 			adminRepository.save(admin1);
 
@@ -472,14 +472,15 @@ public class Team12Application {
 
 
 			Member member1 = new Member();
-			member1.setName("neuy");
+			member1.setFirstName("ปัญจวรรณ");
+			member1.setLastName("ศุภรตรีทิเพศ");
 			member1.setAge(21);
 			member1.setBirthday(new Date());
 			member1.setEmail("Nnneuy@gmail.com");
 			member1.setPhoneNumber("0971982024");
-			member1.setAddress("174,176");
-			member1.setSubDistrict("Buayai");
-			member1.setDistrict("Buayai");
+			member1.setAddress("174,176 ถ.รถไฟ1");
+			member1.setSubDistrict("บัวใหญ่");
+			member1.setDistrict("บัวใหญ่");
 			member1.setTitle(title3);
 			member1.setPrivilege(privilege1);
 			member1.setProvince(province21);
@@ -498,8 +499,4 @@ public class Team12Application {
 
 		};
 	}
-
-
-
 }
-

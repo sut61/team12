@@ -3,7 +3,9 @@ package sut.se.team12.controller;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import sut.se.team12.entity.Admin;
+import sut.se.team12.entity.Login;
 import sut.se.team12.repository.AdminRepository;
+import sut.se.team12.repository.LoginRepository;
 
 import java.util.Collection;
 import java.util.stream.Collectors;
@@ -12,6 +14,7 @@ import java.util.stream.Collectors;
 @RestController
 public class AdminController {
     @Autowired private AdminRepository adminRepository;
+    @Autowired private LoginRepository loginRepository;
     public AdminController(AdminRepository adminRepository){
         this.adminRepository = adminRepository;
     }
@@ -25,6 +28,9 @@ public class AdminController {
         String p = admin.getPassword();
         System.out.println(username);
         System.out.println(p + " = " + password);
+        if(p.matches(password) == true){
+            login(username);
+         }
         return p.matches(password);
     }
 
@@ -33,9 +39,15 @@ public class AdminController {
         Admin   adminData    = adminRepository.findByUsername(username);
         return adminData;
     }
-    @PostMapping("/admin/{username}")
-    public Admin admin3(@PathVariable String username){
+    // @PostMapping("/admin/{username}")
+    // public Admin admin3(@PathVariable String username){
+    //     Admin admin = adminRepository.findByUsername(username);
+    //     return admin;
+    // }
+    public Login login(String username){
         Admin admin = adminRepository.findByUsername(username);
-        return admin;
+        Login login = new Login();
+        login.setAdmin(admin);
+        return loginRepository.save(login);
     }
 }
