@@ -1,53 +1,53 @@
 .example-header-image {
-    /* background-image: url('src/image/route3.png'); */
-    background-size: cover;
-  }
-  .example-card {
-    /* max-width: 300px; */
-    width:600px;
-    margin-left: auto;
-    margin-right: auto;
-    background-color:warn;
-  }
-  
-  a {
-    margin: 2px;
-  }
-  mat-form-field {
-    width: 100%;
-    /* background-color: brown; */
-  }
-  .input-firstname {
-    width: 48%;
-  }
-  .input-lastname {
-    width: 48%
-  }
-  label{
-    width:100px;
-    /* background-color: aqua; */
-  }
-  
-  .example-radio-group {
-    /* display: inline-flex; */
-    flex-direction: column;
-  }
-  
-  .example-radio-button {
-    margin-right: 50px;
-  }
-  
-  .example-selected-value {
-    margin: 15px 0;
-  }
-  .example-icon {
-    padding: 0 14px;
-  }
-  
-  .example-spacer {
-    flex: 1 1 auto;
-  }
+  /* background-image: url('src/image/route3.png'); */
+  background-size: cover;
+}
+.example-card {
+  /* max-width: 300px; */
+  width:600px;
+  margin-left: auto;
+  margin-right: auto;
+  background-color:warn;
+}
 
-  table {
+a {
+  margin: 2px;
+}
+mat-form-field {
   width: 100%;
+  /* background-color: brown; */
+}
+.input-firstname {
+  width: 48%;
+}
+.input-lastname {
+  width: 48%
+}
+label{
+  width:100px;
+  /* background-color: aqua; */
+}
+
+.example-radio-group {
+  /* display: inline-flex; */
+  flex-direction: column;
+}
+
+.example-radio-button {
+  margin-right: 50px;
+}
+
+.example-selected-value {
+  margin: 15px 0;
+}
+.example-icon {
+  padding: 0 14px;
+}
+
+.example-spacer {
+  flex: 1 1 auto;
+}
+
+table {
+width: 100%;
 }

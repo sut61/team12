@@ -9,24 +9,6 @@ import { map } from 'rxjs/operators';
 import { ACTIVE_INDEX } from '@angular/core/src/render3/interfaces/container';
 import { HttpClient } from '@angular/common/http';
 
-export interface Member {
-  memberId;
-  Priviledge:{}
-  Title:{}
-  firstName;
-  lastName;
-  age;
-  birthDate;
-  phoneNumber;
-  email;
-  address;
-  subDistric;
-  distric;
-  Province:{}
-  Admin:{
-  }
-}
-
 @Component({
   selector: 'app-member-show',
   templateUrl: './member-show.component.html',
@@ -50,8 +32,6 @@ export class MemberShowComponent implements OnInit {
 
   members: Array<any>
   
-  member = {} as Member;
-
   dataColumns: string[] = ['memberId', 'firstName', 'lastName'];
 
 
@@ -60,9 +40,7 @@ export class MemberShowComponent implements OnInit {
   ngOnInit() {
     this.memberService.getMembers().subscribe(data => {
       this.members = data;
-      this.member = data[1];
       console.log(this.members);
-      console.log(this.member)
     });
 
   }

@@ -66,6 +66,12 @@ import { MainNavComponent } from './main-nav/main-nav.component';
 import { LayoutModule } from '@angular/cdk/layout';
 import { LeaseOrderComponent } from './lease-order/lease-order.component';
 import { LeaseShowComponent } from './lease-show/lease-show.component';
+import { MemberShowComponent } from './member-show/member-show.component';
+import { RoomCreateComponent } from './room-create/room-create.component';
+import { RoomViewComponent } from './room-view/room-view.component';
+import { FieldOrderComponent } from './field-order/field-order.component';
+import { FieldViewComponent } from './field-view/field-view.component';
+import { MemberRegisterComponent } from './member-register/member-register.component';
 
 
 const routes: Routes = [
@@ -105,8 +111,31 @@ const routes: Routes = [
   {
     path: 'leaseshow',
     component: LeaseShowComponent
-  }
-  
+  },
+  {
+    path: 'member-register',
+    component: MemberRegisterComponent
+  },
+  {
+    path: 'member-show',
+    component: MemberShowComponent
+  },
+  {
+  path: 'roomcreate',
+  component: RoomCreateComponent
+  },
+  {
+  path: 'roomview',
+  component: RoomViewComponent
+  },
+  {
+    path: 'field-order',
+    component: FieldOrderComponent
+  },
+  {
+    path: 'field-view',
+    component: FieldViewComponent
+  },
 ]
 
 @NgModule({
@@ -119,7 +148,13 @@ const routes: Routes = [
     EmployeeManageComponent,
     MainNavComponent,
     LeaseOrderComponent,
-    LeaseShowComponent
+    LeaseShowComponent,
+    MemberRegisterComponent,
+    MemberShowComponent,
+    RoomCreateComponent,
+    RoomViewComponent,
+    FieldOrderComponent,
+    FieldViewComponent
   ],
   imports: [
     BrowserModule,

@@ -11,5 +11,4 @@ import sut.se.team12.entity.Member;
 public interface MemberRepository extends JpaRepository<Member,Long>{
     // PostalOrder findFirstByPostalOrderByIdDesc(Long postalOrderId);
     Member findByMemberId(Long memberId);
-    Member findByName(String name);
 }

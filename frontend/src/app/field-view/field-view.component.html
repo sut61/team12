@@ -27,8 +27,8 @@
           <mat-panel-title><i class="material-icons">account_circle</i> สมาชิก</mat-panel-title>
         </mat-expansion-panel-header>
         <mat-nav-list>
-          <a mat-list-item ><i class="material-icons">chevron_right</i>สมัครสมาชิก</a>
-          <a mat-list-item ><i class="material-icons">chevron_right</i>ข้อมูลสมาชิก</a>
+          <a mat-list-item routerLink="/member-register"><i class="material-icons">chevron_right</i>สมัครสมาชิก</a>
+          <a mat-list-item routerLink="/member-show"><i class="material-icons">chevron_right</i>ข้อมูลสมาชิก</a>
         </mat-nav-list>
       </mat-expansion-panel>
     </mat-accordion>
@@ -62,8 +62,8 @@
           <mat-panel-title><i class="material-icons">weekend</i>ห้องพักนักกีฬา</mat-panel-title>
         </mat-expansion-panel-header>
         <mat-nav-list>
-          <a mat-list-item ><i class="material-icons">chevron_right</i>จองห้องพัก</a>
-          <a mat-list-item ><i class="material-icons">chevron_right</i>ยกเลิกการจองห้องพัก</a>
+          <a mat-list-item routerLink="/roomcreate"><i class="material-icons">chevron_right</i>จองห้องพัก</a>
+          <a mat-list-item routerLink="/roomview"><i class="material-icons">chevron_right</i>ยกเลิกการจองห้องพัก</a>
         </mat-nav-list>
       </mat-expansion-panel>
     </mat-accordion>
@@ -134,7 +134,7 @@
           
           <ng-container matColumnDef="member" >
             <th mat-header-cell *matHeaderCellDef> MemberName </th>
-            <td mat-cell *matCellDef="let element"> <pre>{{element.member.name}}</pre> </td>
+            <td mat-cell *matCellDef="let element"> <pre>{{element.member.firstName}} {{element.member.lastName}}</pre> </td>
           </ng-container>
         
           <ng-container matColumnDef="field">

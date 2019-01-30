@@ -19,8 +19,8 @@ export class RoomService {
   getRoomDuration(): Observable<any>{
     return this.http.get(this.API + '/roomDuration')
   }
-  getPRoomOrder(): Observable<any>{
-    return this.http.get(this.API + '/roomOrder')
+  getRoomOrder(): Observable<any>{
+    return this.http.get(this.API + '/roomOrders')
   }
   getMember(): Observable<any>{
     return this.http.get(this.API + '/members')

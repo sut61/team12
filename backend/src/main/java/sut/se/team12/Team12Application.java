@@ -29,7 +29,12 @@ public class Team12Application {
 			MemberRepository memberRepository,
 			LeaseRepository leaseRepository,
 			LeaseAccessoryRepository leaseAccessoryRepository,
-			LeaseDurationRepository leaseDurationRepository
+			LeaseDurationRepository leaseDurationRepository,
+			FieldDurationRepository fieldDurationRepository,
+			FieldRepository fieldRepository,
+			FieldOrderRepository fieldOrderRepository,
+			RoomRepository roomRepository,
+			RoomDurationRepository roomDurationRepository
 						   ){
 		return args -> {
 			// ----------------------admin--------------------
@@ -532,14 +537,15 @@ public class Team12Application {
 
 
 			Member member1 = new Member();
-			member1.setName("neuy");
+			member1.setFirstName("ปัญจวรรณ");
+			member1.setLastName("ศุภรตรีทิเพศ");
 			member1.setAge(21);
 			member1.setBirthday(new Date());
 			member1.setEmail("Nnneuy@gmail.com");
 			member1.setPhoneNumber("0971982024");
 			member1.setAddress("174,176");
-			member1.setSubDistrict("Buayai");
-			member1.setDistrict("Buayai");
+			member1.setSubDistrict("บัวใหญ่");
+			member1.setDistrict("บัวใหญ่");
 			member1.setTitle(title3);
 			member1.setPrivilege(privilege1);
 			member1.setProvince(province21);
@@ -656,8 +662,5 @@ fieldOrderRepository.save(fieldOrder1);
 
 		};
 	}
-
-
-
 }
 

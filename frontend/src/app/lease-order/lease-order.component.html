@@ -34,8 +34,8 @@
           <mat-panel-title><i class="material-icons">account_circle</i> สมาชิก</mat-panel-title>
         </mat-expansion-panel-header>
         <mat-nav-list>
-          <a mat-list-item ><i class="material-icons">chevron_right</i>สมัครสมาชิก</a>
-          <a mat-list-item ><i class="material-icons">chevron_right</i>ข้อมูลสมาชิก</a>
+          <a mat-list-item routerLink="/member-register"><i class="material-icons">chevron_right</i>สมัครสมาชิก</a>
+          <a mat-list-item routerLink="/member-show"><i class="material-icons">chevron_right</i>ข้อมูลสมาชิก</a>
         </mat-nav-list>
       </mat-expansion-panel>
     </mat-accordion>
@@ -69,8 +69,8 @@
           <mat-panel-title><i class="material-icons">weekend</i>ห้องพักนักกีฬา</mat-panel-title>
         </mat-expansion-panel-header>
         <mat-nav-list>
-          <a mat-list-item ><i class="material-icons">chevron_right</i>จองห้องพัก</a>
-          <a mat-list-item ><i class="material-icons">chevron_right</i>ยกเลิกการจองห้องพัก</a>
+          <a mat-list-item routerLink="/roomcreate"><i class="material-icons">chevron_right</i>จองห้องพัก</a>
+          <a mat-list-item routerLink="/roomview"><i class="material-icons">chevron_right</i>ยกเลิกการจองห้องพัก</a>
         </mat-nav-list>
       </mat-expansion-panel>
     </mat-accordion>
@@ -91,8 +91,8 @@
           <mat-panel-title><i class="material-icons">map</i>สนาม</mat-panel-title>
         </mat-expansion-panel-header>
         <mat-nav-list>
-          <a mat-list-item ><i class="material-icons">chevron_right</i>จองสนาม</a>
-          <a mat-list-item ><i class="material-icons">chevron_right</i>ข้อมูลการจองสนาม</a>
+          <a mat-list-item routerLink="/field-order"><i class="material-icons">chevron_right</i>จองสนาม</a>
+          <a mat-list-item routerLink="/field-view"><i class="material-icons">chevron_right</i>ข้อมูลการจองสนาม</a>
         </mat-nav-list>
       </mat-expansion-panel>
     </mat-accordion>
@@ -129,7 +129,7 @@
               <br>
                 <mat-form-field appearance="outline">
                   <mat-select placeholder="ชื่อ-นามสกุล" [(ngModel)]="select.memberSelect" name="member">
-                    <mat-option *ngFor="let member of members" [value]="member.memberId">{{member.name}}</mat-option>
+                    <mat-option *ngFor="let member of members" [value]="member.memberId">{{member.firstName}}</mat-option>
                   </mat-select>
                 </mat-form-field>
           </mat-card-content>

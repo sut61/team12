@@ -25,11 +25,18 @@ public class RoomOrderController {
         this.roomOrderRepository = roomOrderRepository;
     }
 
-    @GetMapping("/roomOrder")
-    public Collection<RoomOrder> fieldOrder() {
+    // @GetMapping("/roomOrder")
+    // public Collection<RoomOrder> RoomOrder() {
+    //     return roomOrderRepository.findAll().stream().collect(Collectors.toList());
+    // }
+    @GetMapping("/roomOrders")
+    public Collection<RoomOrder> RoomOrder() {
         return roomOrderRepository.findAll().stream().collect(Collectors.toList());
     }
-
+    // @GetMapping("/roomOrders")
+    // public Collection<RoomOrder> roomOrder() {
+    //     return memberRepository.findAll().stream().collect(Collectors.toList());
+    // }
 
     @PostMapping("/roomOrder/{admin}/{member}/{room}/{duration}/{date}")
     public RoomOrder roomOrder(
