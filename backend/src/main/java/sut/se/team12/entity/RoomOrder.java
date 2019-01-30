@@ -17,7 +17,7 @@ public class RoomOrder {
     @Column(name = "ROOMORDER_ID")
     
     
-    private Long orderId;
+    private Long roomOrderId;
     // private Date roomOrderDate;
     // private String roomNumber;
     // private String name;

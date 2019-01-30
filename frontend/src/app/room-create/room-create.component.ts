@@ -81,7 +81,7 @@ export class RoomCreateComponent implements OnInit {
       .subscribe(
           data => {
               console.log('PUT Request is successful', data);
-              this.router.navigate(['roomcreate'])
+              this.router.navigate(['roomview'])
           },
           error => {
               console.log('Error', error);
