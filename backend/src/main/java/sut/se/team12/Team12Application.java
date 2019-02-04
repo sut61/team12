@@ -1,6 +1,7 @@
 package sut.se.team12;
 
 import java.text.SimpleDateFormat;
+import java.time.LocalTime;
 import java.util.Date;
 
 import org.springframework.boot.ApplicationRunner;
@@ -37,7 +38,9 @@ public class Team12Application {
 			RoomDurationRepository roomDurationRepository,
 			TrainingRepository trainingRepository,
 			TrainingTypeRepository trainingTypeRepository,
-			TrainingProgramRepository trainingProgramRepository
+			TrainingProgramRepository trainingProgramRepository,
+			TicketRepository ticketRepository,
+			TicketTypeRepository ticketTypeRepository
 						   ){
 		return args -> {
 
@@ -245,326 +248,328 @@ public class Team12Application {
 			privilege2.setPrice(1599.00);
 			privilegeRepository.save(privilege2);
 
+			//------------------------Member-----------------------------
+
 			Province province1 = new Province();
-			province1.setProvinceName("กรุงเทพมหานคร");
+			province1.setProvinceName("Amnat Charoen");
 			provinceRepository.save(province1);
 
 			Province province2 = new Province();
-			province2.setProvinceName("กระบี่");
+			province2.setProvinceName("Ang Thong");
 			provinceRepository.save(province2);
 
 			Province province3 = new Province();
-			province3.setProvinceName("กาญจนบุรี");
+			province3.setProvinceName("Bangkok");
 			provinceRepository.save(province3);
 
 			Province province4 = new Province();
-			province4.setProvinceName("กาฬสินธุ์");
+			province4.setProvinceName("Bueng Kan");
 			provinceRepository.save(province4);
 
 			Province province5 = new Province();
-			province5.setProvinceName("กำแพงเพชร");
+			province5.setProvinceName("Buriram");
 			provinceRepository.save(province5);
 
 			Province province6 = new Province();
-			province6.setProvinceName("ขอนแก่น");
+			province6.setProvinceName("Chachoengsao");
 			provinceRepository.save(province6);
 
 			Province province7 = new Province();
-			province7.setProvinceName("จันทบุรี");
+			province7.setProvinceName("Chainat");
 			provinceRepository.save(province7);
 
 			Province province8 = new Province();
-			province8.setProvinceName("ฉะเชิงเทรา");
+			province8.setProvinceName("Chaiyaphum");
 			provinceRepository.save(province8);
 
 			Province province9 = new Province();
-			province9.setProvinceName("ชลบุรี");
+			province9.setProvinceName("Chanthaburi");
 			provinceRepository.save(province9);
 
 			Province province10 = new Province();
-			province10.setProvinceName("ชัยนาท");
+			province10.setProvinceName("Chiang Mai");
 			provinceRepository.save(province10);
 
 			Province province11 = new Province();
-			province11.setProvinceName("ชัยภูมิ");
+			province11.setProvinceName("Chiang Rai");
 			provinceRepository.save(province11);
 
 			Province province12 = new Province();
-			province12.setProvinceName("ชุมพร");
+			province12.setProvinceName("Chonburi");
 			provinceRepository.save(province12);
 
 			Province province13 = new Province();
-			province13.setProvinceName("เชียงราย");
+			province13.setProvinceName("Chumphon");
 			provinceRepository.save(province13);
 
 			Province province14 = new Province();
-			province14.setProvinceName("เชียงใหม่");
+			province14.setProvinceName("Kalasin");
 			provinceRepository.save(province14);
 
 			Province province15 = new Province();
-			province15.setProvinceName("ตรัง");
+			province15.setProvinceName("Kamphaeng Phet");
 			provinceRepository.save(province15);
 
 			Province province16 = new Province();
-			province16.setProvinceName("ตราด");
+			province16.setProvinceName("Kanchanaburi");
 			provinceRepository.save(province16);
 
 			Province province17 = new Province();
-			province17.setProvinceName("ตาก");
+			province17.setProvinceName("Khon Kaen");
 			provinceRepository.save(province17);
 
 			Province province18 = new Province();
-			province18.setProvinceName("นครนายก");
+			province18.setProvinceName("Krabi");
 			provinceRepository.save(province18);
 
 			Province province19 = new Province();
-			province19.setProvinceName("นครปฐม");
+			province19.setProvinceName("Lampang");
 			provinceRepository.save(province19);
 
 			Province province20 = new Province();
-			province20.setProvinceName("นครพนม");
+			province20.setProvinceName("Lamphun");
 			provinceRepository.save(province20);
 
 			Province province21 = new Province();
-			province21.setProvinceName("นครราชสีมา");
+			province21.setProvinceName("Loei");
 			provinceRepository.save(province21);
 
 			Province province22 = new Province();
-			province22.setProvinceName("นครศรีธรรมราช");
+			province22.setProvinceName("Lopburi");
 			provinceRepository.save(province22);
 
 			Province province23 = new Province();
-			province23.setProvinceName("นครสวรรค์");
+			province23.setProvinceName("Mae Hong Son");
 			provinceRepository.save(province23);
 
 			Province province24 = new Province();
-			province24.setProvinceName("นนทบุรี");
+			province24.setProvinceName("Maha Sarakham");
 			provinceRepository.save(province24);
 
 			Province province25 = new Province();
-			province25.setProvinceName("นราธิวาส");
+			province25.setProvinceName("Mukdahan");
 			provinceRepository.save(province25);
 
 			Province province26 = new Province();
-			province26.setProvinceName("น่าน");
+			province26.setProvinceName("Nakhon Nayok");
 			provinceRepository.save(province26);
 
 			Province province27 = new Province();
-			province27.setProvinceName("บึงกาฬ");
+			province27.setProvinceName("Nakhon Pathom");
 			provinceRepository.save(province27);
 
 			Province province28 = new Province();
-			province28.setProvinceName("บุรีรัมย์");
+			province28.setProvinceName("Nakhon Phanom");
 			provinceRepository.save(province28);
 
 			Province province29 = new Province();
-			province29.setProvinceName("ปทุมธานี");
+			province29.setProvinceName("Nakhon Ratchasima");
 			provinceRepository.save(province29);
 
 			Province province30 = new Province();
-			province30.setProvinceName("ประจวบคีรีขันธ์");
+			province30.setProvinceName("Nakhon Sawan");
 			provinceRepository.save(province30);
 
 			Province province31 = new Province();
-			province31.setProvinceName("ปราจีนบุรี");
+			province31.setProvinceName("Nakhon Si Thammarat");
 			provinceRepository.save(province31);
 
 			Province province32 = new Province();
-			province32.setProvinceName("ปัตตานี");
+			province32.setProvinceName("Nan");
 			provinceRepository.save(province32);
 
 			Province province33 = new Province();
-			province33.setProvinceName("พระนครศรีอยุธยา");
+			province33.setProvinceName("Narathiwat");
 			provinceRepository.save(province33);
 
 			Province province34 = new Province();
-			province34.setProvinceName("พังงา");
+			province34.setProvinceName("Nong Bua Lamphu");
 			provinceRepository.save(province34);
 
 			Province province35 = new Province();
-			province35.setProvinceName("พัทลุง");
+			province35.setProvinceName("Nong Khai");
 			provinceRepository.save(province35);
 
 			Province province36 = new Province();
-			province36.setProvinceName("พิจิตร");
+			province36.setProvinceName("Nonthaburi");
 			provinceRepository.save(province36);
 
 			Province province37 = new Province();
-			province37.setProvinceName("พิษณุโลก");
+			province37.setProvinceName("Pathum Thani");
 			provinceRepository.save(province37);
 
 			Province province38 = new Province();
-			province38.setProvinceName("เพชรบุรี");
+			province38.setProvinceName("Pattani");
 			provinceRepository.save(province38);
 
 			Province province39 = new Province();
-			province39.setProvinceName("เพชรบูรณ์");
+			province39.setProvinceName("Phang Nga");
 			provinceRepository.save(province39);
 
 			Province province40 = new Province();
-			province40.setProvinceName("แพร่");
+			province40.setProvinceName("Phatthalung");
 			provinceRepository.save(province40);
 
 			Province province41 = new Province();
-			province41.setProvinceName("พะเยา");
+			province41.setProvinceName("Phayao");
 			provinceRepository.save(province41);
 
 			Province province42 = new Province();
-			province42.setProvinceName("ภูเก็ต");
+			province42.setProvinceName("Phetchabun");
 			provinceRepository.save(province42);
 
 			Province province43 = new Province();
-			province43.setProvinceName("มหาสารคาม");
+			province43.setProvinceName("Phetchaburi");
 			provinceRepository.save(province43);
 
 			Province province44 = new Province();
-			province44.setProvinceName("มุกดาหาร");
+			province44.setProvinceName("Phichit");
 			provinceRepository.save(province44);
 
 			Province province45 = new Province();
-			province45.setProvinceName("แม่ฮ่องสอน");
+			province45.setProvinceName("Phitsanulok");
 			provinceRepository.save(province45);
 
 			Province province46 = new Province();
-			province46.setProvinceName("ยะลา");
+			province46.setProvinceName("Phra Nakhon Si Ayutthaya");
 			provinceRepository.save(province46);
 
 			Province province47 = new Province();
-			province47.setProvinceName("ยโสธร");
+			province47.setProvinceName("Phrae");
 			provinceRepository.save(province47);
 
 			Province province48 = new Province();
-			province48.setProvinceName("ร้อยเอ็ด");
+			province48.setProvinceName("Phuket");
 			provinceRepository.save(province48);
 
 			Province province49 = new Province();
-			province49.setProvinceName("ระนอง");
+			province49.setProvinceName("Prachinburi");
 			provinceRepository.save(province49);
 
 			Province province50 = new Province();
-			province50.setProvinceName("ระยอง");
+			province50.setProvinceName("Prachuap Khiri Khan");
 			provinceRepository.save(province50);
 
 			Province province51 = new Province();
-			province51.setProvinceName("ราชบุรี");
+			province51.setProvinceName("Ranong");
 			provinceRepository.save(province15);
 
 			Province province52 = new Province();
-			province52.setProvinceName("ลพบุรี");
+			province52.setProvinceName("Ratchaburi");
 			provinceRepository.save(province52);
 
 			Province province53 = new Province();
-			province53.setProvinceName("ลำปาง");
+			province53.setProvinceName("Rayong");
 			provinceRepository.save(province53);
 
 			Province province54 = new Province();
-			province54.setProvinceName("ลำพูน");
+			province54.setProvinceName("Roi Et");
 			provinceRepository.save(province54);
 
 			Province province55 = new Province();
-			province55.setProvinceName("เลย");
+			province55.setProvinceName("Sa Kaeo");
 			provinceRepository.save(province55);
 
 			Province province56 = new Province();
-			province56.setProvinceName("ศรีสะเกษ");
+			province56.setProvinceName("Sakon Nakhon");
 			provinceRepository.save(province56);
 
 			Province province57 = new Province();
-			province57.setProvinceName("สกลนคร");
+			province57.setProvinceName("Samut Prakan");
 			provinceRepository.save(province57);
 
 			Province province58 = new Province();
-			province58.setProvinceName("สงขลา");
+			province58.setProvinceName("Samut Sakhon");
 			provinceRepository.save(province58);
 
 			Province province59 = new Province();
-			province59.setProvinceName("สตูล");
+			province59.setProvinceName("Samut Songkhram");
 			provinceRepository.save(province59);
 
 			Province province60 = new Province();
-			province60.setProvinceName("สมุทรปราการ");
+			province60.setProvinceName("Saraburi");
 			provinceRepository.save(province60);
 
 			Province province61 = new Province();
-			province61.setProvinceName("สมุทรสงคราม");
+			province61.setProvinceName("Satun");
 			provinceRepository.save(province61);
 
 			Province province62 = new Province();
-			province62.setProvinceName("สมุทรสาคร");
+			province62.setProvinceName("Sing Buri");
 			provinceRepository.save(province62);
 
 			Province province63 = new Province();
-			province63.setProvinceName("สระแก้ว");
+			province63.setProvinceName("Sisaket");
 			provinceRepository.save(province63);
 
 			Province province64 = new Province();
-			province64.setProvinceName("สระบุรี");
+			province64.setProvinceName("Songkhla");
 			provinceRepository.save(province64);
 
 			Province province65 = new Province();
-			province65.setProvinceName("สิงห์บุรี");
+			province65.setProvinceName("Sukhothai");
 			provinceRepository.save(province65);
 
 			Province province66 = new Province();
-			province66.setProvinceName("สุโขทัย");
+			province66.setProvinceName("Suphan Buri");
 			provinceRepository.save(province66);
 
 			Province province67 = new Province();
-			province67.setProvinceName("สุพรรณบุรี");
+			province67.setProvinceName("Surat Thani");
 			provinceRepository.save(province67);
 
 			Province province68 = new Province();
-			province68.setProvinceName("สุราษฎร์ธานี");
+			province68.setProvinceName("Surin");
 			provinceRepository.save(province68);
 
 			Province province69 = new Province();
-			province69.setProvinceName("สุรินทร์");
+			province69.setProvinceName("Tak");
 			provinceRepository.save(province69);
 
 			Province province70 = new Province();
-			province70.setProvinceName("หนองคาย");
+			province70.setProvinceName("Trang");
 			provinceRepository.save(province70);
 
 			Province province71 = new Province();
-			province71.setProvinceName("หนองบัวลำภู");
+			province71.setProvinceName("Trat");
 			provinceRepository.save(province71);
 
 			Province province72 = new Province();
-			province72.setProvinceName("อ่างทอง");
+			province72.setProvinceName("Ubon Ratchathani");
 			provinceRepository.save(province72);
 
 			Province province73 = new Province();
-			province73.setProvinceName("อุดรธานี");
+			province73.setProvinceName("Udon Thani");
 			provinceRepository.save(province73);
 
 			Province province74 = new Province();
-			province74.setProvinceName("อุทัยธานี");
+			province74.setProvinceName("Uthai Thani");
 			provinceRepository.save(province4);
 
 			Province province75 = new Province();
-			province75.setProvinceName("อุตรดิตถ์");
+			province75.setProvinceName("Uttaradit");
 			provinceRepository.save(province75);
 
 			Province province76 = new Province();
-			province76.setProvinceName("อุบลราชธานี");
+			province76.setProvinceName("Yala");
 			provinceRepository.save(province76);
 
 			Province province77 = new Province();
-			province77.setProvinceName("อำนาจเจริญ");
+			province77.setProvinceName("Yasothon");
 			provinceRepository.save(province77);
 
-			// -------------------------------- member ---------------------------------
+//------------------------Member-----------------------------
 
 			Member member1 = new Member();
-			member1.setFirstName("ปัญจวรรณ");
-			member1.setLastName("ศุภรตรีทิเพศ");
+			member1.setFirstName("Panjawan");
+			member1.setLastName("Suphintritipes");
 			member1.setAge(21);
 			member1.setBirthday(new Date());
 			member1.setEmail("Nnneuy@gmail.com");
 			member1.setPhoneNumber("0971982024");
 			member1.setAddress("174,176");
-			member1.setSubDistrict("บัวใหญ่");
-			member1.setDistrict("บัวใหญ่");
+			member1.setSubDistrict("Buayai");
+			member1.setDistrict("Buayai");
 			member1.setTitle(title3);
 			member1.setPrivilege(privilege1);
 			member1.setProvince(province21);
@@ -742,6 +747,37 @@ public class Team12Application {
 			training1.setCost(4800L);
 			trainingRepository.save(training1);
 
+				//---------------------Ticket Type---------------------
+				TicketType ticketType1 = new TicketType();
+				ticketType1.setTicketType("Kids");
+				ticketType1.setPrice(30.00);
+				ticketTypeRepository.save(ticketType1);
+				TicketType ticketType2 = new TicketType();
+				ticketType2.setTicketType("Adult");
+				ticketType2.setPrice(50.00);
+				ticketTypeRepository.save(ticketType2);
+	
+				//--------------------Ticket--------------------------
+				Ticket ticket1 = new Ticket();
+				ticket1.setTicketType(ticketType2);
+				ticket1.setName("Gum");
+				ticket1.setPhoneNumber("0987654321");
+				ticket1.setField(Field3);
+				ticket1.setDate(new Date());
+				ticket1.setTime(LocalTime.now());
+				ticket1.setAdmin(admin5);
+				ticketRepository.save(ticket1);
+	
+				Ticket ticket2 = new Ticket();
+				ticket2.setTicketType(ticketType1);
+				ticket2.setName("Bear");
+				ticket2.setPhoneNumber("0984234123");
+				ticket2.setField(Field5);
+				ticket2.setDate(new Date());
+				ticket2.setTime(LocalTime.now());
+				ticket2.setAdmin(admin3);
+				ticketRepository.save(ticket2);
+
 			// --------------------------------- Print --------------------------------------------
 			
 			adminRepository.findAll().forEach(System.out::println);
@@ -749,11 +785,13 @@ public class Team12Application {
 			employeeRepository.findAll().forEach(System.out::println);
 			positionRepository.findAll().forEach(System.out::println);
 			titleRepository.findAll().forEach(System.out::println);
-			// provinceRepository.findAll().forEach(System.out::println);
+			provinceRepository.findAll().forEach(System.out::println);
 			privilegeRepository.findAll().forEach(System.out::println);
 			memberRepository.findAll().forEach(System.out::println);
 			leaseRepository.findAll().forEach(System.out::println);
-
+			fieldRepository.findAll().forEach(System.out::println);
+			ticketTypeRepository.findAll().forEach(System.out::println);
+			ticketRepository.findAll().forEach(System.out::println);
 		};
 	}
 }
