@@ -34,10 +34,15 @@ public class Team12Application {
 			FieldRepository fieldRepository,
 			FieldOrderRepository fieldOrderRepository,
 			RoomRepository roomRepository,
-			RoomDurationRepository roomDurationRepository
+			RoomDurationRepository roomDurationRepository,
+			TrainingRepository trainingRepository,
+			TrainingTypeRepository trainingTypeRepository,
+			TrainingProgramRepository trainingProgramRepository
 						   ){
 		return args -> {
-			// ----------------------admin--------------------
+
+			// ---------------------- Admin --------------------
+
 			Admin admin1 = new Admin();
 			admin1.setName("Pimpan");
 			admin1.setUsername("pimpan");
@@ -74,148 +79,161 @@ public class Team12Application {
 			admin6.setPassword("1234");
 			adminRepository.save(admin6);
 
-			// ----------------------title--------------------
+			// ---------------------- Title --------------------
 
 			Title title1 = new Title();
-			title1.setTitleType("นาย");
+			title1.setTitleType("Mr.");
 			titleRepository.save(title1);
 
 			Title title2 = new Title();
-			title2.setTitleType("นาง");
+			title2.setTitleType("Mrs.");
 			titleRepository.save(title2);
 
 			Title title3 = new Title();
-			title3.setTitleType("นางสาว");
+			title3.setTitleType("Miss.");
 			titleRepository.save(title3);
 
-			// ----------------------degree--------------------
+			// ---------------------- Degree --------------------
 
 			Degree degree1 = new Degree();
-			degree1.setDegreeType("ป.6");
+			degree1.setDegreeType("Elementary School");
 			degreeRepository.save(degree1);
 
 			Degree degree2 = new Degree();
-			degree2.setDegreeType("ม.3");
+			degree2.setDegreeType("Middle School");
 			degreeRepository.save(degree2);
 
 			Degree degree3 = new Degree();
-			degree3.setDegreeType("ม.6");
+			degree3.setDegreeType("High School");
 			degreeRepository.save(degree3);
 
 			Degree degree4 = new Degree();
-			degree4.setDegreeType("ปวช.");
+			degree4.setDegreeType("Vocational Certificate");
 			degreeRepository.save(degree4);
 
 			Degree degree5 = new Degree();
-			degree5.setDegreeType("ปวส.");
+			degree5.setDegreeType("Diploma");
 			degreeRepository.save(degree5);
 
 			Degree degree6 = new Degree();
-			degree6.setDegreeType("ป.ตรี");
+			degree6.setDegreeType("Bachelor");
 			degreeRepository.save(degree6);
 
-			// ----------------------position--------------------
+			// ---------------------- Position --------------------
 
 			Position position1 = new Position();
-			position1.setPositionType("พนักงานทำความสะอาด");
+			position1.setPositionType("Clean staff");
 			positionRepository.save(position1);
 
 			Position position2 = new Position();
-			position2.setPositionType("พนักงานรักษาความปลอดภัย");
+			position2.setPositionType("Security guard");
 			positionRepository.save(position2);
 
 			Position position3 = new Position();
-			position3.setPositionType("เทรนเนอร์");
+			position3.setPositionType("Trainer");
 			positionRepository.save(position3);
 
-			// ----------------------employee--------------------
-			SimpleDateFormat dateformat = new SimpleDateFormat("dd/MM/yyyy");
-			Date date1 = dateformat.parse("01/10/1996");
+			Position position4 = new Position();
+			position4.setPositionType("Accountant");
+			positionRepository.save(position4);
+
+			// ---------------------- Employee --------------------
+
+			SimpleDateFormat dateformat = new SimpleDateFormat("yyyy-MM-dd");
+			Date date1 = dateformat.parse("1996-10-01");
 			Employee employee1 = new Employee();
 			employee1.setAdmin(admin1);
-			employee1.setId("1103900000996");
+			employee1.setId("1111111111111");
 			employee1.setTitle(title3);
-			employee1.setFirstName("สมศรี");
-			employee1.setLastName("ใจดี");
+			employee1.setFirstName("Somsri");
+			employee1.setLastName("Jaidee");
 			employee1.setBirthDate(date1);
 			employee1.setPhone("0801234567");
 			employee1.setEmail("somsri@gmail.com");
-			employee1.setAddress("sut");
+			employee1.setAddress("SUT");
 			employee1.setDegree(degree3);
 			employee1.setPosition(position1);
 			employeeRepository.save(employee1);
 
-			Date date2 = dateformat.parse("25/12/1996");
+			Date date2 = dateformat.parse("1996-12-02");
 			Employee employee2 = new Employee();
 			employee2.setAdmin(admin5);
-			employee2.setId("1103900000996");
+			employee2.setId("2222222222222");
 			employee2.setTitle(title1);
-			employee2.setFirstName("สมชาติ");
-			employee2.setLastName("ชาติชาตรี");
+			employee2.setFirstName("Somchai");
+			employee2.setLastName("Jaikla");
 			employee2.setBirthDate(date2);
 			employee2.setPhone("0898765432");
 			employee2.setEmail("somchai@gmail.com");
-			employee2.setAddress("sut");
+			employee2.setAddress("SUT");
 			employee2.setDegree(degree3);
 			employee2.setPosition(position2);
 			employeeRepository.save(employee2);
 
-						//------------------Field----------------------------
+			Date date3 = dateformat.parse("1996-07-01");
+			Employee employee3 = new Employee();
+			employee3.setAdmin(admin5);
+			employee3.setId("3333333333333");
+			employee3.setTitle(title1);
+			employee3.setFirstName("Sompong");
+			employee3.setLastName("Jaiyen");
+			employee3.setBirthDate(date3);
+			employee3.setPhone("0898765432");
+			employee3.setEmail("somchai@gmail.com");
+			employee3.setAddress("SUT");
+			employee3.setDegree(degree3);
+			employee3.setPosition(position3);
+			employeeRepository.save(employee3);
+			
+			//--------------------- Field ----------------------------
 
-						Field Field1 = new Field();
-						Field1.setFieldName("สนามฟุตบอล1");
-						fieldRepository.save(Field1);
+			Field Field1 = new Field();
+			Field1.setFieldName("สนามฟุตบอล1");
+			fieldRepository.save(Field1);
 			
-						Field Field2 = new Field();
-						Field2.setFieldName("สนามฟุตบอล2");
-						fieldRepository.save(Field2);
+			Field Field2 = new Field();
+			Field2.setFieldName("สนามฟุตบอล2");
+			fieldRepository.save(Field2);
 			
-						Field Field3 = new Field();
-						Field3.setFieldName("สนามฟุตบอล3");
-						fieldRepository.save(Field3);
+			Field Field3 = new Field();
+			Field3.setFieldName("สนามฟุตบอล3");
+			fieldRepository.save(Field3);
 			
-						Field Field4 = new Field();
-						Field4.setFieldName("สนามฟุตบอล4");
-						fieldRepository.save(Field4);
+			Field Field4 = new Field();
+			Field4.setFieldName("สนามฟุตบอล4");
+			fieldRepository.save(Field4);
 			
-						Field Field5 = new Field();
-						Field5.setFieldName("สนามฟุตบอล5");
-						fieldRepository.save(Field5);
+			Field Field5 = new Field();
+			Field5.setFieldName("สนามฟุตบอล5");
+			fieldRepository.save(Field5);
 			
-			//---------------------FieldDuration-----------------
+			//--------------------- FieldDuration -----------------
 			
-						FieldDuration FieldDuration1 = new FieldDuration();
-						FieldDuration1.setFieldDuration("08:00-10:00 น.");
-						fieldDurationRepository.save(FieldDuration1);
+			FieldDuration FieldDuration1 = new FieldDuration();
+			FieldDuration1.setFieldDuration("08:00-10:00 น.");
+			fieldDurationRepository.save(FieldDuration1);
 			
-						FieldDuration FieldDuration2 = new FieldDuration();
-						FieldDuration2.setFieldDuration("10:00-12:00 น.");
-						fieldDurationRepository.save(FieldDuration2);
+			FieldDuration FieldDuration2 = new FieldDuration();
+			FieldDuration2.setFieldDuration("10:00-12:00 น.");
+			fieldDurationRepository.save(FieldDuration2);
 			
-						FieldDuration FieldDuration3 = new FieldDuration();
-						FieldDuration3.setFieldDuration("13:00-15:00 น.");
-						fieldDurationRepository.save(FieldDuration3);
+			FieldDuration FieldDuration3 = new FieldDuration();
+			FieldDuration3.setFieldDuration("13:00-15:00 น.");
+			fieldDurationRepository.save(FieldDuration3);
 			
-						FieldDuration FieldDuration4 = new FieldDuration();
-						FieldDuration4.setFieldDuration("15:00-17:00 น.");
-						fieldDurationRepository.save(FieldDuration4);
+			FieldDuration FieldDuration4 = new FieldDuration();
+			FieldDuration4.setFieldDuration("15:00-17:00 น.");
+			fieldDurationRepository.save(FieldDuration4);
 			
-						FieldDuration FieldDuration5 = new FieldDuration();
-						FieldDuration5.setFieldDuration("17:00-19:00 น.");
-						fieldDurationRepository.save(FieldDuration5);
+			FieldDuration FieldDuration5 = new FieldDuration();
+			FieldDuration5.setFieldDuration("17:00-19:00 น.");
+			fieldDurationRepository.save(FieldDuration5);
 			
-						FieldDuration FieldDuration6 = new FieldDuration();
-						FieldDuration6.setFieldDuration("19:00-21:00 น.");
-						fieldDurationRepository.save(FieldDuration6);
-			
-						
-			
-			
-			
-			
-			
-			
-			//----------------------------------------------------------------
+			FieldDuration FieldDuration6 = new FieldDuration();
+			FieldDuration6.setFieldDuration("19:00-21:00 น.");
+			fieldDurationRepository.save(FieldDuration6);
+
+			//------------------------------ Privilege ----------------------------------
 
 			Privilege privilege1 = new Privilege();
 			privilege1.setPrivilegeName("Normal");
@@ -535,6 +553,7 @@ public class Team12Application {
 			province77.setProvinceName("อำนาจเจริญ");
 			provinceRepository.save(province77);
 
+			// -------------------------------- member ---------------------------------
 
 			Member member1 = new Member();
 			member1.setFirstName("ปัญจวรรณ");
@@ -552,110 +571,185 @@ public class Team12Application {
 			member1.setAdmin(admin1);
 			memberRepository.save(member1);
 
+			// ------------------------- LeaseAccessory ------------------------------------------
+
 			LeaseAccessory accessory1 = new LeaseAccessory();
 			accessory1.setAccessoryName("ลูกฟุตบอล");
 			leaseAccessoryRepository.save(accessory1);
+
 			LeaseAccessory accessory2 = new LeaseAccessory();
 			accessory2.setAccessoryName("ลูกบาสสเก็ตบอล");
 			leaseAccessoryRepository.save(accessory2);
+
 			LeaseAccessory accessory3 = new LeaseAccessory();
 			accessory3.setAccessoryName("ลูกวอลเลย์บอล");
 			leaseAccessoryRepository.save(accessory3);
+
 			LeaseAccessory accessory4 = new LeaseAccessory();
 			accessory4.setAccessoryName("ลูกปิงปอง");
 			leaseAccessoryRepository.save(accessory4);
+
 			LeaseAccessory accessory5 = new LeaseAccessory();
 			accessory5.setAccessoryName("ลูกเทนนิส");
 			leaseAccessoryRepository.save(accessory5);
+
 			LeaseAccessory accessory6 = new LeaseAccessory();
 			accessory6.setAccessoryName("ลูกขนไก่");
 			leaseAccessoryRepository.save(accessory6);
+
 			LeaseAccessory accessory7 = new LeaseAccessory();
 			accessory7.setAccessoryName("ไม้แบตมินตัน");
 			leaseAccessoryRepository.save(accessory7);
+
 			LeaseAccessory accessory8 = new LeaseAccessory();
 			accessory8.setAccessoryName("ไม้เทนนิส");
 			leaseAccessoryRepository.save(accessory8);
+
 			LeaseAccessory accessory9 = new LeaseAccessory();
 			accessory9.setAccessoryName("ไม้ปิงปอง");
 			leaseAccessoryRepository.save(accessory9);
+
 			LeaseAccessory accessory10 = new LeaseAccessory();
 			accessory10.setAccessoryName("เครื่องยิงลูกปิงปองอัตโนมัติ");
 			leaseAccessoryRepository.save(accessory10);
+
 			LeaseAccessory accessory11 = new LeaseAccessory();
 			accessory11.setAccessoryName("เครื่องยิงลูกเทนนิสอัตโนมัติ");
 			leaseAccessoryRepository.save(accessory11);
 
+			// ---------------------------- LeaseDuration ----------------------------------
+
 			LeaseDuration duration1 = new LeaseDuration();
 			duration1.setDurationName("1 ชั่วโมง");
 			leaseDurationRepository.save(duration1);
+
 			LeaseDuration duration2 = new LeaseDuration();
 			duration2.setDurationName("2 ชั่วโมง");
 			leaseDurationRepository.save(duration2);
+
 			LeaseDuration duration3 = new LeaseDuration();
 			duration3.setDurationName("3 ชั่วโมง");
 			leaseDurationRepository.save(duration3);
+
 			LeaseDuration duration4 = new LeaseDuration();
 			duration4.setDurationName("4 ชั่วโมง");
 			leaseDurationRepository.save(duration4);
+
 			LeaseDuration duration5 = new LeaseDuration();
 			duration5.setDurationName("5 ชั่วโมง");
 			leaseDurationRepository.save(duration5);
-			
+
+			// -------------------- Lease ------------------------------------
 			
 			Lease lease1 = new Lease();
 			lease1.setMember(member1);
 			lease1.setAccessory(accessory1);
 			lease1.setDuration(duration1);
+			leaseRepository.save(lease1);
+
+			// ----------------- FieldOrder ----------------------------------
 
 			FieldOrder fieldOrder1 = new FieldOrder();
-fieldOrder1.setAdmin(admin6);
-fieldOrder1.setField(Field2);
-fieldOrder1.setMember(member1);
-fieldOrder1.setFieldDuration(FieldDuration2);
-fieldOrder1.setDate(date1);
-fieldOrderRepository.save(fieldOrder1);
-//------------------------------------------------
+			fieldOrder1.setAdmin(admin6);
+			fieldOrder1.setField(Field2);
+			fieldOrder1.setMember(member1);
+			fieldOrder1.setFieldDuration(FieldDuration2);
+			fieldOrder1.setDate(date1);
+			fieldOrderRepository.save(fieldOrder1);
 
-			//------------------------Room----------------------
+			//------------------------ Room ----------------------
 
 			Room Room01 = new Room();
 			Room01.setRoomNumber("R001");
 			roomRepository.save(Room01);
+
 			Room Room02 = new Room();
 			Room02.setRoomNumber("R002");
 			roomRepository.save(Room02);
+
 			Room Room03 = new Room();
 			Room03.setRoomNumber("R003");
 			roomRepository.save(Room03);
+
 			Room Room04 = new Room();
 			Room04.setRoomNumber("R004");
 			roomRepository.save(Room04);
+
 			Room Room05 = new Room();
 			Room05.setRoomNumber("R005");
 			roomRepository.save(Room05);
 
-			//----------------------RoomDuration-------------------
+			//---------------------- RoomDuration -------------------
 
 			RoomDuration roomDuration01 = new RoomDuration();
 			roomDuration01.setRoomDuration("09.00 AM - 10.30 AM");
 			roomDurationRepository.save(roomDuration01);
+
 			RoomDuration roomDuration02 = new RoomDuration();
 			roomDuration02.setRoomDuration("11.00 AM - 12.30 AM");
 			roomDurationRepository.save(roomDuration02);
+
 			RoomDuration roomDuration03 = new RoomDuration();
 			roomDuration03.setRoomDuration("01.00 PM - 02.30 PM");
 			roomDurationRepository.save(roomDuration03);
+
 			RoomDuration roomDuration04 = new RoomDuration();
 			roomDuration04.setRoomDuration("03.00 PM - 04.30 PM");
 			roomDurationRepository.save(roomDuration04);
+			
+			// --------------------------------- TrainingType --------------------------------------------
+
+			TrainingType trainingType1 = new TrainingType();
+			trainingType1.setTypeName("In-House Training");
+			trainingTypeRepository.save(trainingType1);
+
+			TrainingType trainingType2 = new TrainingType();
+			trainingType2.setTypeName("Public Training");
+			trainingTypeRepository.save(trainingType2);
+
+			// ---------------------------------- TrainingProgram --------------------------------------------
+
+			TrainingProgram trainingProgram1 = new TrainingProgram();
+			trainingProgram1.setProgramName("Technical Skills");
+			trainingProgramRepository.save(trainingProgram1);
+
+			TrainingProgram trainingProgram2 = new TrainingProgram();
+			trainingProgram2.setProgramName("Policies and Procedures");
+			trainingProgramRepository.save(trainingProgram2);
+
+			TrainingProgram trainingProgram3 = new TrainingProgram();
+			trainingProgram3.setProgramName("Personal Skills");
+			trainingProgramRepository.save(trainingProgram3);
+
+			TrainingProgram trainingProgram4 = new TrainingProgram();
+			trainingProgram4.setProgramName("People Skills");
+			trainingProgramRepository.save(trainingProgram4);
+
+			// ---------------------------------- Training -------------------------------------------
+
+			Date date4 = dateformat.parse("1996-07-01");
+			Training training1 = new Training();
+			training1.setAdmin(admin1);
+			training1.setTitle("title");
+			training1.setDescription("description");
+			training1.setDateFrom(date4);
+			training1.setDateTo(date4);
+			training1.setTrainingType(trainingType1);
+			training1.setTrainingProgram(trainingProgram1);
+			training1.setInstructor("instructor");
+			training1.setLocation("location");
+			training1.setEnrollment(50);
+			training1.setCost(4800L);
+			trainingRepository.save(training1);
+
+			// --------------------------------- Print --------------------------------------------
 			
 			adminRepository.findAll().forEach(System.out::println);
 			degreeRepository.findAll().forEach(System.out::println);
 			employeeRepository.findAll().forEach(System.out::println);
 			positionRepository.findAll().forEach(System.out::println);
 			titleRepository.findAll().forEach(System.out::println);
-			provinceRepository.findAll().forEach(System.out::println);
+			// provinceRepository.findAll().forEach(System.out::println);
 			privilegeRepository.findAll().forEach(System.out::println);
 			memberRepository.findAll().forEach(System.out::println);
 			leaseRepository.findAll().forEach(System.out::println);
