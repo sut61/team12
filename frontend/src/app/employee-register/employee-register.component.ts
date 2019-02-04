@@ -6,6 +6,7 @@ import { ActivatedRoute } from "@angular/router";
 import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
+import { AdminService } from '../service/admin.service';
 
 
 @Component({
@@ -19,7 +20,10 @@ export class EmployeeRegisterComponent implements OnInit {
   titles: Array<any>
   degrees: Array<any>
   positions: Array<any>
-  // adminLogin: Array<any>
+
+  data:any={}
+  adminId:any={}
+  adminName:any={}
   adminLogin:{
     loginId:1,
     admin:{
@@ -41,19 +45,18 @@ export class EmployeeRegisterComponent implements OnInit {
   firstName: string
   lastName: string
   birthDate: Date
-  // birthDate:String = new Date().toISOString();
   phone: string
   email: string
   address: string
 
-  data:any={}
+  a:any
 
   isHandset$: Observable<boolean> = this.breakpointObserver.observe(Breakpoints.Handset)
     .pipe(
       map(result => result.matches)
     );
 
-  constructor(private breakpointObserver: BreakpointObserver,private route:ActivatedRoute,private employeeService: EmployeeService , private httpClient: HttpClient, private router:Router) { }
+  constructor(private breakpointObserver: BreakpointObserver,private route:ActivatedRoute,private employeeService: EmployeeService , private httpClient: HttpClient, private router:Router, private adminService: AdminService) { }
 
   ngOnInit() {
     // this.route.params.subscribe(prams=>{
@@ -76,11 +79,11 @@ export class EmployeeRegisterComponent implements OnInit {
       this.positions = data;
       console.log(this.positions);
     });
-    this.employeeService.getAdminLogin().subscribe(data => {
+    this.adminService.getAdminLogin().subscribe(data => {
       this.adminLogin = data;
-      console.log(this.adminLogin);
-    })
-    console.log(this.birthDate);
+      this.adminId = data.admin.adminId;
+      this.adminName = data.admin.name;
+    });
   }
 
   save() {

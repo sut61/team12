@@ -1,23 +1,14 @@
-<!-- <div>
-  <mat-toolbar class="topbar telative mat-toolbar mat-primary mat-toolbar-single-row" color="primary" style="flex-direction: row; box-sizing: border-box; display: flex">
-    <div>ระบบจัดการสนามกีฬา</div>
-  </mat-toolbar>
-</div>
-<br> -->
-
 <mat-sidenav-container class="sidenav-container container">
   <mat-sidenav #drawer class="sidenav" fixedInViewport="true"
-      [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'"
-      [mode]="(isHandset$ | async) ? 'over' : 'side'"
-      [opened]="!(isHandset$ | async)">
-    <mat-toolbar>ระบบจัดการสนามกีฬา</mat-toolbar>
-      <mat-nav-list>
-        <mat-list-item>
-          <diV>
-            User Profile
-          </diV>
-        </mat-list-item>
-        <mat-accordion multi="true" displayMode="flat">
+  [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'"
+  [mode]="(isHandset$ | async) ? 'over' : 'side'"
+  [opened]="!(isHandset$ | async)">
+  <mat-toolbar>ระบบจัดการสนามกีฬา</mat-toolbar>
+  <mat-nav-list>
+    <mat-list-item>
+      <diV><i class="material-icons">how_to_reg</i>&nbsp;&nbsp;ID:&nbsp;{{adminId}}&nbsp;NAME:&nbsp;{{adminName}}</diV>
+    </mat-list-item>
+    <mat-accordion multi="true" displayMode="flat">
       <mat-expansion-panel>
         <mat-expansion-panel-header expandedHeight="48px" collapsedHeight="48px">
           <mat-panel-title><i class="material-icons">grade</i>ตั๋ว</mat-panel-title>
@@ -25,8 +16,7 @@
         <mat-nav-list>
           <a mat-list-item ><i class="material-icons">chevron_right</i>ขายตั๋ว</a>
         </mat-nav-list>
-      </mat-expansion-panel>
-      
+      </mat-expansion-panel>  
     </mat-accordion>
     <mat-accordion >
       <mat-expansion-panel>
@@ -45,9 +35,20 @@
           <mat-panel-title><i class="material-icons">assignment_ind</i>พนักงาน</mat-panel-title>
         </mat-expansion-panel-header>
         <mat-nav-list>
-          <a mat-list-item routerLink="/empreg" ><i class="material-icons">chevron_right</i>สมัครพนักงาน</a>
+          <a mat-list-item routerLink="/empreg"><i class="material-icons">chevron_right</i>สมัครพนักงาน</a>
           <a mat-list-item routerLink="/empinfo"><i class="material-icons">chevron_right</i>ข้อมูลพนักงาน</a>
-          <a mat-list-item routerLink="/empmanage"><i class="material-icons">chevron_right</i>จัดตารางงานพนักงาน</a>
+          <a mat-list-item routerLink="/training-create"><i class="material-icons">chevron_right</i>สร้างหลักสูตรการอบรม</a>
+          <a mat-list-item routerLink="/training-view"><i class="material-icons">chevron_right</i>ข้อมูลหลักสูตรการอบรม</a>
+          <!-- <mat-expansion-panel>
+            <mat-expansion-panel-header>
+              <mat-panel-title><i class="material-icons">event</i>จัดตารางงานพนักงาน</mat-panel-title>
+            </mat-expansion-panel-header>
+            <mat-nav-list>
+              <a mat-list-item routerLink="/emp-manage-clean"><i class="material-icons">chevron_right</i>พนักงานทำความสะอาด</a>
+              <a mat-list-item routerLink="/emp-manage-guard"><i class="material-icons">chevron_right</i>พนักงานรักษาความปลอดภัย</a>
+              <a mat-list-item routerLink="/emp-manage-train"><i class="material-icons">chevron_right</i>เทรนเนอร์</a>
+            </mat-nav-list>
+          </mat-expansion-panel> -->
         </mat-nav-list>
       </mat-expansion-panel>
     </mat-accordion>
@@ -107,20 +108,19 @@
         </mat-nav-list>
       </mat-expansion-panel>
     </mat-accordion>
-      </mat-nav-list>
-
-  </mat-sidenav>
-  <mat-sidenav-content>
-    <mat-toolbar color="primary">
-      <mat-toolbar-row>
-        <button type="button" aria-label="Toggle sidenav" mat-icon-button (click)="drawer.toggle()">
-          <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
-        </button>
-        <span>ระบบจัดการสนามกีฬา</span>
-        <span class="example-spacer"></span>
-        <a mat-stroked-button routerLink="/login" style="font-family:Arial, Helvetica, sans-serif">Logout</a>
-      </mat-toolbar-row>
-    </mat-toolbar>
+  </mat-nav-list>
+</mat-sidenav>
+<mat-sidenav-content>
+  <mat-toolbar color="primary">
+    <mat-toolbar-row>
+      <button type="button" aria-label="Toggle sidenav" mat-icon-button (click)="drawer.toggle()">
+        <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
+      </button>
+      <span><button mat-button style="font-size:26px" routerLink="/nav">ระบบจัดการสนามกีฬา</button></span>
+      <span class="example-spacer"></span>
+      <a mat-stroked-button routerLink="/login" style="font-family:Arial, Helvetica, sans-serif">Logout</a>
+    </mat-toolbar-row>
+  </mat-toolbar>
 
     <mat-card class="example-card" >
         <h1>เช่าอุปกรณ์</h1>

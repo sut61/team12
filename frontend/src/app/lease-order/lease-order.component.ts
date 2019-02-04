@@ -6,6 +6,7 @@ import { ActivatedRoute } from "@angular/router";
 import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
+import { AdminService } from '../service/admin.service';
 
 @Component({
   selector: 'app-lease-order',
@@ -20,6 +21,8 @@ export class LeaseOrderComponent implements OnInit {
   durations: Array<any>
   
 
+  adminId:any={}
+  adminName:any={}
   adminLogin:{
     loginId:1,
     admin:{
@@ -42,7 +45,7 @@ export class LeaseOrderComponent implements OnInit {
       map(result => result.matches)
     );
 
-  constructor(private breakpointObserver: BreakpointObserver,private route:ActivatedRoute,private leaseService: LeaseService , private httpClient: HttpClient, private router:Router) { }
+  constructor(private breakpointObserver: BreakpointObserver,private route:ActivatedRoute,private leaseService: LeaseService , private httpClient: HttpClient, private router:Router, private adminService: AdminService) { }
 
   ngOnInit() {
     // this.leaseService.getAdmins().subscribe(data => {
@@ -64,7 +67,12 @@ export class LeaseOrderComponent implements OnInit {
     this.leaseService.getAdminLogin().subscribe(data => {
       this.adminLogin = data;
       console.log(this.adminLogin);
-    })
+    });
+    this.adminService.getAdminLogin().subscribe(data => {
+      this.adminLogin = data;
+      this.adminId = data.admin.adminId;
+      this.adminName = data.admin.name;
+    });
 
   }
 

@@ -32,7 +32,15 @@ export class EmployeeService {
   getEmployee(): Observable<any>{
     return this.http.get(this.API + '/employee');
   }
-
+  getTraining(): Observable<any>{
+    return this.http.get(this.API + '/training')
+  }
+  getTrainingType(): Observable<any>{
+    return this.http.get(this.API + '/training/type');
+  }
+  getTrainingProgram(): Observable<any>{
+    return this.http.get(this.API + '/training/program');
+  }
   editEmployee(id){
     return this.http.put(this.API + '/employee/edit' + id,id);
   }

@@ -6,6 +6,7 @@ import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { RoomService } from '../service/room.service';
+import { AdminService } from '../service/admin.service';
 
 @Component({
   selector: 'app-room-create',
@@ -19,6 +20,8 @@ export class RoomCreateComponent implements OnInit {
   roomDurations: Array<any>
   admins:Array<any>
 
+  adminId:any={}
+  adminName:any={}
   adminLogin:{
     loginId:1,
     admin:{
@@ -48,7 +51,7 @@ export class RoomCreateComponent implements OnInit {
     .pipe(
       map(result => result.matches)
     );
-  constructor(private breakpointObserver: BreakpointObserver,private route:ActivatedRoute,private roomService: RoomService , private httpClient: HttpClient, private router:Router) { }
+  constructor(private breakpointObserver: BreakpointObserver,private route:ActivatedRoute,private roomService: RoomService , private httpClient: HttpClient, private router:Router, private adminService: AdminService) { }
 
   ngOnInit() {
     // this.roomService.getAdmins().subscribe(data => {
@@ -71,7 +74,11 @@ export class RoomCreateComponent implements OnInit {
       this.adminLogin = data;
       console.log(this.adminLogin);
     });
-    console.log(this.roomDate);
+    this.adminService.getAdminLogin().subscribe(data => {
+      this.adminLogin = data;
+      this.adminId = data.admin.adminId;
+      this.adminName = data.admin.name;
+    });
   }
   save() {
     if (this.adminLogin.admin.adminId === '' || this.select.memberSelect === '' || this.select.roomSelect === '' || this.select.roomDurationSelect === '' ) {

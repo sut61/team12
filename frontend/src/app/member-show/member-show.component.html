@@ -1,107 +1,114 @@
 <mat-sidenav-container class="sidenav-container container">
-  <mat-sidenav #drawer class="sidenav" fixedInViewport="true"
-      [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'"
-      [mode]="(isHandset$ | async) ? 'over' : 'side'"
-      [opened]="!(isHandset$ | async)">
+    <mat-sidenav #drawer class="sidenav" fixedInViewport="true"
+    [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'"
+    [mode]="(isHandset$ | async) ? 'over' : 'side'"
+    [opened]="!(isHandset$ | async)">
     <mat-toolbar>ระบบจัดการสนามกีฬา</mat-toolbar>
-      <mat-nav-list>
-        <mat-list-item>
-          <diV>
-            User Profile
-          </diV>
-        </mat-list-item>
-        <mat-accordion multi="true" displayMode="flat">
-      <mat-expansion-panel>
-        <mat-expansion-panel-header expandedHeight="48px" collapsedHeight="48px">
-          <mat-panel-title><i class="material-icons">grade</i>ตั๋ว</mat-panel-title>
-        </mat-expansion-panel-header>
-        <mat-nav-list>
-          <a mat-list-item ><i class="material-icons">chevron_right</i>ขายตั๋ว</a>
-        </mat-nav-list>
-      </mat-expansion-panel>
-      
-    </mat-accordion>
-    <mat-accordion >
-      <mat-expansion-panel>
-        <mat-expansion-panel-header>
-          <mat-panel-title><i class="material-icons">account_circle</i> สมาชิก</mat-panel-title>
-        </mat-expansion-panel-header>
-        <mat-nav-list>
-          <a mat-list-item routerLink="/member-register"><i class="material-icons">chevron_right</i>สมัครสมาชิก</a>
-          <a mat-list-item routerLink="/member-show"><i class="material-icons">chevron_right</i>ข้อมูลสมาชิก</a>
-        </mat-nav-list>
-      </mat-expansion-panel>
-    </mat-accordion>
-    <mat-accordion>
-      <mat-expansion-panel>
-        <mat-expansion-panel-header>
-          <mat-panel-title><i class="material-icons">assignment_ind</i>พนักงาน</mat-panel-title>
-        </mat-expansion-panel-header>
-        <mat-nav-list>
-          <a mat-list-item routerLink="/empreg" ><i class="material-icons">chevron_right</i>สมัครพนักงาน</a>
-          <a mat-list-item routerLink="/empinfo"><i class="material-icons">chevron_right</i>ข้อมูลพนักงาน</a>
-          <a mat-list-item routerLink="/empmanage"><i class="material-icons">chevron_right</i>จัดตารางงานพนักงาน</a>
-        </mat-nav-list>
-      </mat-expansion-panel>
-    </mat-accordion>
-    <mat-accordion>
-      <mat-expansion-panel >
-        <mat-expansion-panel-header>
-          <mat-panel-title><i class="material-icons">book</i>คอร์สเรียน</mat-panel-title>
-        </mat-expansion-panel-header>
-        <mat-nav-list>
-          <a mat-list-item ><i class="material-icons">chevron_right</i>สร้างคอร์สเรียน</a>
-          <a mat-list-item ><i class="material-icons">chevron_right</i>ข้อมูลคอร์สเรียน</a>
-          <a mat-list-item ><i class="material-icons">chevron_right</i>จองคอร์สเรียน</a>
-        </mat-nav-list>
-      </mat-expansion-panel>
-    </mat-accordion>
-    <mat-accordion>
-      <mat-expansion-panel>
-        <mat-expansion-panel-header>
-          <mat-panel-title><i class="material-icons">weekend</i>ห้องพักนักกีฬา</mat-panel-title>
-        </mat-expansion-panel-header>
-        <mat-nav-list>
-          <a mat-list-item routerLink="/roomcreate"><i class="material-icons">chevron_right</i>จองห้องพัก</a>
-          <a mat-list-item routerLink="/roomview"><i class="material-icons">chevron_right</i>ยกเลิกการจองห้องพัก</a>
-        </mat-nav-list>
-      </mat-expansion-panel>
-    </mat-accordion>
-    <mat-accordion>
-      <mat-expansion-panel>
-        <mat-expansion-panel-header>
-          <mat-panel-title><i class="material-icons">fitness_center</i>อุปกรณ์</mat-panel-title>
-        </mat-expansion-panel-header>
-        <mat-nav-list>
-          <a mat-list-item routerLink="/lease" ><i class="material-icons">chevron_right</i>เช่าอุปกรณ์</a>
-          <a mat-list-item routerLink="/leaseshow"><i class="material-icons">chevron_right</i>ข้อมูลการเช่าอุปกรณ์</a>
-        </mat-nav-list>
-      </mat-expansion-panel>
-    </mat-accordion>
-    <mat-accordion>
-      <mat-expansion-panel>
-        <mat-expansion-panel-header>
-          <mat-panel-title><i class="material-icons">map</i>สนาม</mat-panel-title>
-        </mat-expansion-panel-header>
-        <mat-nav-list>
-          <a mat-list-item routerLink="/field-order"><i class="material-icons">chevron_right</i>จองสนาม</a>
-          <a mat-list-item routerLink="/field-view"><i class="material-icons">chevron_right</i>ข้อมูลการจองสนาม</a>
-        </mat-nav-list>
-      </mat-expansion-panel>
-    </mat-accordion>
-    <mat-accordion>
-      <mat-expansion-panel>
-        <mat-expansion-panel-header>
-          <mat-panel-title><i class="material-icons">local_offer</i>ล็อกเกอร์</mat-panel-title>
-        </mat-expansion-panel-header>
-        <mat-nav-list>
-          <a mat-list-item ><i class="material-icons">chevron_right</i>จองล็อกเกอร์</a>
-          <a mat-list-item ><i class="material-icons">chevron_right</i>ข้อมูลการจองล็อกเกอร์</a>
-        </mat-nav-list>
-      </mat-expansion-panel>
-    </mat-accordion>
-      </mat-nav-list>
-
+    <mat-nav-list>
+      <mat-list-item>
+        <diV><i class="material-icons">how_to_reg</i>&nbsp;&nbsp;ID:&nbsp;{{adminId}}&nbsp;NAME:&nbsp;{{adminName}}</diV>
+      </mat-list-item>
+      <mat-accordion multi="true" displayMode="flat">
+        <mat-expansion-panel>
+          <mat-expansion-panel-header expandedHeight="48px" collapsedHeight="48px">
+            <mat-panel-title><i class="material-icons">grade</i>ตั๋ว</mat-panel-title>
+          </mat-expansion-panel-header>
+          <mat-nav-list>
+            <a mat-list-item ><i class="material-icons">chevron_right</i>ขายตั๋ว</a>
+          </mat-nav-list>
+        </mat-expansion-panel>  
+      </mat-accordion>
+      <mat-accordion >
+        <mat-expansion-panel>
+          <mat-expansion-panel-header>
+            <mat-panel-title><i class="material-icons">account_circle</i> สมาชิก</mat-panel-title>
+          </mat-expansion-panel-header>
+          <mat-nav-list>
+            <a mat-list-item routerLink="/member-register"><i class="material-icons">chevron_right</i>สมัครสมาชิก</a>
+            <a mat-list-item routerLink="/member-show"><i class="material-icons">chevron_right</i>ข้อมูลสมาชิก</a>
+          </mat-nav-list>
+        </mat-expansion-panel>
+      </mat-accordion>
+      <mat-accordion>
+        <mat-expansion-panel>
+          <mat-expansion-panel-header>
+            <mat-panel-title><i class="material-icons">assignment_ind</i>พนักงาน</mat-panel-title>
+          </mat-expansion-panel-header>
+          <mat-nav-list>
+            <a mat-list-item routerLink="/empreg"><i class="material-icons">chevron_right</i>สมัครพนักงาน</a>
+            <a mat-list-item routerLink="/empinfo"><i class="material-icons">chevron_right</i>ข้อมูลพนักงาน</a>
+            <a mat-list-item routerLink="/training-create"><i class="material-icons">chevron_right</i>สร้างหลักสูตรการอบรม</a>
+            <a mat-list-item routerLink="/training-view"><i class="material-icons">chevron_right</i>ข้อมูลหลักสูตรการอบรม</a>
+            <!-- <mat-expansion-panel>
+              <mat-expansion-panel-header>
+                <mat-panel-title><i class="material-icons">event</i>จัดตารางงานพนักงาน</mat-panel-title>
+              </mat-expansion-panel-header>
+              <mat-nav-list>
+                <a mat-list-item routerLink="/emp-manage-clean"><i class="material-icons">chevron_right</i>พนักงานทำความสะอาด</a>
+                <a mat-list-item routerLink="/emp-manage-guard"><i class="material-icons">chevron_right</i>พนักงานรักษาความปลอดภัย</a>
+                <a mat-list-item routerLink="/emp-manage-train"><i class="material-icons">chevron_right</i>เทรนเนอร์</a>
+              </mat-nav-list>
+            </mat-expansion-panel> -->
+          </mat-nav-list>
+        </mat-expansion-panel>
+      </mat-accordion>
+      <mat-accordion>
+        <mat-expansion-panel >
+          <mat-expansion-panel-header>
+            <mat-panel-title><i class="material-icons">book</i>คอร์สเรียน</mat-panel-title>
+          </mat-expansion-panel-header>
+          <mat-nav-list>
+            <a mat-list-item ><i class="material-icons">chevron_right</i>สร้างคอร์สเรียน</a>
+            <a mat-list-item ><i class="material-icons">chevron_right</i>ข้อมูลคอร์สเรียน</a>
+            <a mat-list-item ><i class="material-icons">chevron_right</i>จองคอร์สเรียน</a>
+          </mat-nav-list>
+        </mat-expansion-panel>
+      </mat-accordion>
+      <mat-accordion>
+        <mat-expansion-panel>
+          <mat-expansion-panel-header>
+            <mat-panel-title><i class="material-icons">weekend</i>ห้องพักนักกีฬา</mat-panel-title>
+          </mat-expansion-panel-header>
+          <mat-nav-list>
+            <a mat-list-item routerLink="/roomcreate"><i class="material-icons">chevron_right</i>จองห้องพัก</a>
+            <a mat-list-item routerLink="/roomview"><i class="material-icons">chevron_right</i>ยกเลิกการจองห้องพัก</a>
+          </mat-nav-list>
+        </mat-expansion-panel>
+      </mat-accordion>
+      <mat-accordion>
+        <mat-expansion-panel>
+          <mat-expansion-panel-header>
+            <mat-panel-title><i class="material-icons">fitness_center</i>อุปกรณ์</mat-panel-title>
+          </mat-expansion-panel-header>
+          <mat-nav-list>
+            <a mat-list-item routerLink="/lease" ><i class="material-icons">chevron_right</i>เช่าอุปกรณ์</a>
+            <a mat-list-item routerLink="/leaseshow"><i class="material-icons">chevron_right</i>ข้อมูลการเช่าอุปกรณ์</a>
+          </mat-nav-list>
+        </mat-expansion-panel>
+      </mat-accordion>
+      <mat-accordion>
+        <mat-expansion-panel>
+          <mat-expansion-panel-header>
+            <mat-panel-title><i class="material-icons">map</i>สนาม</mat-panel-title>
+          </mat-expansion-panel-header>
+          <mat-nav-list>
+            <a mat-list-item routerLink="/field-order"><i class="material-icons">chevron_right</i>จองสนาม</a>
+            <a mat-list-item routerLink="/field-view"><i class="material-icons">chevron_right</i>ข้อมูลการจองสนาม</a>
+          </mat-nav-list>
+        </mat-expansion-panel>
+      </mat-accordion>
+      <mat-accordion>
+        <mat-expansion-panel>
+          <mat-expansion-panel-header>
+            <mat-panel-title><i class="material-icons">local_offer</i>ล็อกเกอร์</mat-panel-title>
+          </mat-expansion-panel-header>
+          <mat-nav-list>
+            <a mat-list-item ><i class="material-icons">chevron_right</i>จองล็อกเกอร์</a>
+            <a mat-list-item ><i class="material-icons">chevron_right</i>ข้อมูลการจองล็อกเกอร์</a>
+          </mat-nav-list>
+        </mat-expansion-panel>
+      </mat-accordion>
+    </mat-nav-list>
   </mat-sidenav>
   <mat-sidenav-content>
     <mat-toolbar color="primary">
@@ -109,134 +116,135 @@
         <button type="button" aria-label="Toggle sidenav" mat-icon-button (click)="drawer.toggle()">
           <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
         </button>
-        <span>ระบบจัดการสนามกีฬา</span>
+        <span><button mat-button style="font-size:26px" routerLink="/nav">ระบบจัดการสนามกีฬา</button></span>
         <span class="example-spacer"></span>
         <a mat-stroked-button routerLink="/login" style="font-family:Arial, Helvetica, sans-serif">Logout</a>
       </mat-toolbar-row>
     </mat-toolbar>
-
-    <mat-card class="example-card" >
-        <h1>ข้อมูลสมาชิก</h1>
-        <table mat-table
-       [dataSource]="members" multiTemplateDataRows
-       class="mat-elevation-z8">
-  <ng-container matColumnDef="{{column}}" *ngFor="let column of dataColumns">
-    <th mat-header-cell *matHeaderCellDef style="width: 5%; text-align: center;"> {{column}} </th>
-    <td mat-cell *matCellDef="let element"> {{element[column]}}</td>
-  </ng-container>
-
-  <ng-container matColumnDef="expandedDetail">
-    <td mat-cell *matCellDef="let element" [attr.colspan]="dataColumns.length">
-      <div class="example-element-detail"
-           [@detailExpand]="element == expandedElement ? 'expanded' : 'collapsed'">
-        <div class="example-element-diagram">
-          <div class="example-element-name"> เลขสมาชิก: {{element.memberId}} </div>
-          <div class="example-element-name"> บัตรสิทธิพิเศษ: {{element.privilege.privilegeName}} </div>
-          <div class="example-element-name"> ชื่อ: {{element.title.titleType}} {{element.firstName}} {{element.lastName}} </div>
-          <div class="example-element-name"> อายุ: {{element.age}} </div>
-          <div class="example-element-name"> วันเกิด: {{element.birthday}} </div>
-          <div class="example-element-name"> หมายเลขโทรศัพท์: {{element.phoneNumber}} </div>
-          <div class="example-element-name"> อีเมล: {{element.email}} </div>
-          <div class="example-element-name"> ที่อยู่ : {{element.address}} ตำบล {{element.subDistrict}} อำเภอ {{element.district}} จังหวัด {{element.province.provinceName}}</div>
-          <div class="example-element-name"> พนักงาน: {{element.admin.name}}</div>
-          <div style="display: inline;">
-            <i class="far fa-edit" style="height: 15px; width: 15px; color: blue;"></i>
-        </div>&nbsp;&nbsp;
-          <div (click)="onClickDelete(element)" style="display: inline;">
-            <i class="far fa-trash-alt" style="height: 15px; width: 15px; color: red;"></i>
+  
+      <mat-card class="example-card" >
+          <h1>ข้อมูลสมาชิก</h1>
+          <table mat-table
+         [dataSource]="members" multiTemplateDataRows
+         class="mat-elevation-z8">
+    <ng-container matColumnDef="{{column}}" *ngFor="let column of dataColumns">
+      <th mat-header-cell *matHeaderCellDef style="width: 5%; text-align: center;"> {{column}} </th>
+      <td mat-cell *matCellDef="let element"> {{element[column]}}</td>
+    </ng-container>
+  
+    <ng-container matColumnDef="expandedDetail">
+      <td mat-cell *matCellDef="let element" [attr.colspan]="dataColumns.length">
+        <div class="example-element-detail"
+             [@detailExpand]="element == expandedElement ? 'expanded' : 'collapsed'">
+          <div class="example-element-diagram">
+            <div class="example-element-name"> เลขสมาชิก: {{element.memberId}} </div>
+            <div class="example-element-name"> บัตรสิทธิพิเศษ: {{element.privilege.privilegeName}} </div>
+            <div class="example-element-name"> ชื่อ: {{element.title.titleType}} {{element.firstName}} {{element.lastName}} </div>
+            <div class="example-element-name"> อายุ: {{element.age}} </div>
+            <div class="example-element-name"> วันเกิด: {{element.birthday}} </div>
+            <div class="example-element-name"> หมายเลขโทรศัพท์: {{element.phoneNumber}} </div>
+            <div class="example-element-name"> อีเมล: {{element.email}} </div>
+            <div class="example-element-name"> ที่อยู่ : {{element.address}} ตำบล {{element.subDistrict}} อำเภอ {{element.district}} จังหวัด {{element.province.provinceName}}</div>
+            <div class="example-element-name"> พนักงาน: {{element.admin.name}}</div>
+            <div style="display: inline;">
+              <i class="far fa-edit" style="height: 15px; width: 15px; color: blue;"></i>
+          </div>&nbsp;&nbsp;
+            <div (click)="onClickDelete(element)" style="display: inline;">
+              <i class="far fa-trash-alt" style="height: 15px; width: 15px; color: red;"></i>
+            </div>
           </div>
         </div>
-      </div>
-    </td>
-  </ng-container>
-  <tr mat-header-row *matHeaderRowDef="dataColumns"></tr>
-  <tr mat-row *matRowDef="let element; columns: dataColumns;"
-      class="example-element-row"
-      [class.example-expanded-row]="expandedElement === element"
-      (click)="expandedElement = expandedElement === element ? null : element">
-  </tr>
-  <tr mat-row *matRowDef="let row; columns: ['expandedDetail']" class="example-detail-row"></tr>
-</table>
-        </mat-card>
-  </mat-sidenav-content>
-</mat-sidenav-container>
-
-        <!-- <table mat-table [dataSource]="members" multiTemplateDataRows class="mat-elevation-z8" >
-
-          <ng-container matColumnDef="no">
-            <th mat-header-cell *matHeaderCellDef style="width: 5%; text-align: center;"> No. </th>
-            <td mat-cell *matCellDef="let element ; let i = index">{{i+1}}</td>
-          </ng-container>
-
-          <ng-container matColumnDef="name" style="width: 10%;" >
-            <th mat-header-cell *matHeaderCellDef style = "width:10%; text-align: center;"> Name. </th>
-            <td mat-cell *matCellDef="let element" style="text-align:left"> <pre>{{element.title.titleType}}&nbsp;{{element.firstName}}&nbsp;&nbsp;{{element.lastName}}</pre> </td>
-          </ng-container>
-
-        <ng-container matColumnDef="privilege" style="width: 7%; text-align: center;">
-            <th mat-header-cell *matHeaderCellDef style = "width:10%"> privilege. </th>
-            <td mat-cell *matCellDef="let element"> {{element.privilege.privilegeName}} </td>
-          </ng-container> -->
-          <!-- <ng-container matColumnDef="age">
-            <th mat-header-cell *matHeaderCellDef style = "width:10px"> Age. </th>
-            <td mat-cell *matCellDef="let element"> {{element.age}} </td>
-          </ng-container> -->
-
-          <!-- <ng-container matColumnDef="birth">
-            <th mat-header-cell *matHeaderCellDef style = "width:10px"> Birth Date. </th>
-            <td mat-cell *matCellDef="let element"> {{element.birthDate}} </td>
-          </ng-container> -->
-        
-          <!-- <ng-container matColumnDef="phoneNumber">
-            <th mat-header-cell *matHeaderCellDef> Phone Number. </th>
-            <td mat-cell *matCellDef="let element"> {{element.phoneNumber}} </td>
-          </ng-container> -->
-        
-          <!-- <ng-container matColumnDef="email">
-            <th mat-header-cell *matHeaderCellDef> Email. </th>
-            <td mat-cell *matCellDef="let element"> {{element.email}} </td>
-          </ng-container> -->
-        
-          <!-- <ng-container matColumnDef="address">
-            <th mat-header-cell *matHeaderCellDef> Address. </th>
-            <td mat-cell *matCellDef="let element"> {{element.address}} </td>
-          </ng-container>
-          <ng-container matColumnDef="">
-            <th mat-header-cell *matHeaderCellDef> Sub Distric. </th>
-            <td mat-cell *matCellDef="let element"> {{element.subDistric}} </td>
-          </ng-container>
-         -->
-          <!-- <ng-container matColumnDef="position">
-            <th mat-header-cell *matHeaderCellDef> Distric. </th>
-            <td mat-cell *matCellDef="let element"> {{element.distric}} </td>
-          </ng-container>
-          <ng-container matColumnDef="">
-            <th mat-header-cell *matHeaderCellDef> Province. </th>
-            <td mat-cell *matCellDef="let element"> {{element.province.provinceName}} </td>
-          </ng-container>
-        
-          <ng-container matColumnDef="position">
-            <th mat-header-cell *matHeaderCellDef> Staff. </th>
-            <td mat-cell *matCellDef="let element"> {{element.admin.name}} </td>
-          </ng-container>
-         -->
-        
-           <!-- <ng-container matColumnDef="note">
-            <th mat-header-cell *matHeaderCellDef style = "width:10%"> Note.</th>
-            <td mat-cell *matCellDef="let element"> 
-                <div style="display: inline;">
-                    <i class="far fa-edit" style="height: 15px; width: 15px; color: blue;"></i>
-                </div>&nbsp;&nbsp;
+      </td>
+    </ng-container>
+    <tr mat-header-row *matHeaderRowDef="dataColumns"></tr>
+    <tr mat-row *matRowDef="let element; columns: dataColumns;"
+        class="example-element-row"
+        [class.example-expanded-row]="expandedElement === element"
+        (click)="expandedElement = expandedElement === element ? null : element">
+    </tr>
+    <tr mat-row *matRowDef="let row; columns: ['expandedDetail']" class="example-detail-row"></tr>
+  </table>
+          </mat-card>
+    </mat-sidenav-content>
+  </mat-sidenav-container>
+  
+          <!-- <table mat-table [dataSource]="members" multiTemplateDataRows class="mat-elevation-z8" >
+  
+            <ng-container matColumnDef="no">
+              <th mat-header-cell *matHeaderCellDef style="width: 5%; text-align: center;"> No. </th>
+              <td mat-cell *matCellDef="let element ; let i = index">{{i+1}}</td>
+            </ng-container>
+  
+            <ng-container matColumnDef="name" style="width: 10%;" >
+              <th mat-header-cell *matHeaderCellDef style = "width:10%; text-align: center;"> Name. </th>
+              <td mat-cell *matCellDef="let element" style="text-align:left"> <pre>{{element.title.titleType}}&nbsp;{{element.firstName}}&nbsp;&nbsp;{{element.lastName}}</pre> </td>
+            </ng-container>
+  
+          <ng-container matColumnDef="privilege" style="width: 7%; text-align: center;">
+              <th mat-header-cell *matHeaderCellDef style = "width:10%"> privilege. </th>
+              <td mat-cell *matCellDef="let element"> {{element.privilege.privilegeName}} </td>
+            </ng-container> -->
+            <!-- <ng-container matColumnDef="age">
+              <th mat-header-cell *matHeaderCellDef style = "width:10px"> Age. </th>
+              <td mat-cell *matCellDef="let element"> {{element.age}} </td>
+            </ng-container> -->
+  
+            <!-- <ng-container matColumnDef="birth">
+              <th mat-header-cell *matHeaderCellDef style = "width:10px"> Birth Date. </th>
+              <td mat-cell *matCellDef="let element"> {{element.birthDate}} </td>
+            </ng-container> -->
+          
+            <!-- <ng-container matColumnDef="phoneNumber">
+              <th mat-header-cell *matHeaderCellDef> Phone Number. </th>
+              <td mat-cell *matCellDef="let element"> {{element.phoneNumber}} </td>
+            </ng-container> -->
+          
+            <!-- <ng-container matColumnDef="email">
+              <th mat-header-cell *matHeaderCellDef> Email. </th>
+              <td mat-cell *matCellDef="let element"> {{element.email}} </td>
+            </ng-container> -->
+          
+            <!-- <ng-container matColumnDef="address">
+              <th mat-header-cell *matHeaderCellDef> Address. </th>
+              <td mat-cell *matCellDef="let element"> {{element.address}} </td>
+            </ng-container>
+            <ng-container matColumnDef="">
+              <th mat-header-cell *matHeaderCellDef> Sub Distric. </th>
+              <td mat-cell *matCellDef="let element"> {{element.subDistric}} </td>
+            </ng-container>
+           -->
+            <!-- <ng-container matColumnDef="position">
+              <th mat-header-cell *matHeaderCellDef> Distric. </th>
+              <td mat-cell *matCellDef="let element"> {{element.distric}} </td>
+            </ng-container>
+            <ng-container matColumnDef="">
+              <th mat-header-cell *matHeaderCellDef> Province. </th>
+              <td mat-cell *matCellDef="let element"> {{element.province.provinceName}} </td>
+            </ng-container>
+          
+            <ng-container matColumnDef="position">
+              <th mat-header-cell *matHeaderCellDef> Staff. </th>
+              <td mat-cell *matCellDef="let element"> {{element.admin.name}} </td>
+            </ng-container>
+           -->
+          
+             <!-- <ng-container matColumnDef="note">
+              <th mat-header-cell *matHeaderCellDef style = "width:10%"> Note.</th>
+              <td mat-cell *matCellDef="let element"> 
                   <div style="display: inline;">
-                    <i class="far fa-trash-alt" style="height: 15px; width: 15px; color: red;"></i>
-                  </div>
-                </td>
-          </ng-container> -->
-
-          <!-- <tr mat-header-row *matHeaderRowDef="dataColumns"></tr>
-          <tr mat-row *matRowDef="let row; columns: dataColumns;"
-          class="example-element-row"
-      [class.example-expanded-row]="expandedElement === element"
-      (click)="expandedElement = expandedElement === element ? null : element"></tr>
-      <tr mat-row *matRowDef="let row; columns: ['expandedDetail']" class="example-detail-row"></tr>
-        </table> -->
+                      <i class="far fa-edit" style="height: 15px; width: 15px; color: blue;"></i>
+                  </div>&nbsp;&nbsp;
+                    <div style="display: inline;">
+                      <i class="far fa-trash-alt" style="height: 15px; width: 15px; color: red;"></i>
+                    </div>
+                  </td>
+            </ng-container> -->
+  
+            <!-- <tr mat-header-row *matHeaderRowDef="dataColumns"></tr>
+            <tr mat-row *matRowDef="let row; columns: dataColumns;"
+            class="example-element-row"
+        [class.example-expanded-row]="expandedElement === element"
+        (click)="expandedElement = expandedElement === element ? null : element"></tr>
+        <tr mat-row *matRowDef="let row; columns: ['expandedDetail']" class="example-detail-row"></tr>
+          </table> -->
+  

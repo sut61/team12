@@ -7,6 +7,7 @@ import { ActivatedRoute } from "@angular/router";
 import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
+import { AdminService } from '../service/admin.service';
 
 @Component({
   selector: 'app-member-register',
@@ -34,6 +35,8 @@ export class MemberRegisterComponent implements OnInit {
   data:any={};
 
 
+  adminId:any={}
+  adminName:any={}
   adminLogin:{
     loginId:1,
     admin:{
@@ -51,7 +54,7 @@ export class MemberRegisterComponent implements OnInit {
       map(result => result.matches)
     );
 
-  constructor(private breakpointObserver: BreakpointObserver,private route:ActivatedRoute,private employeeService: EmployeeService ,private memberService: MemberService, private httpClient: HttpClient, private router:Router) { }
+  constructor(private breakpointObserver: BreakpointObserver,private route:ActivatedRoute,private employeeService: EmployeeService ,private memberService: MemberService, private httpClient: HttpClient, private router:Router, private adminService: AdminService) { }
 
   ngOnInit() {
     // this.route.params.subscribe(prams=>{
@@ -80,6 +83,11 @@ export class MemberRegisterComponent implements OnInit {
     this.memberService.getAdminLogin().subscribe(data => {
       this.adminLogin = data;
       console.log(this.adminLogin);
+    });
+    this.adminService.getAdminLogin().subscribe(data => {
+      this.adminLogin = data;
+      this.adminId = data.admin.adminId;
+      this.adminName = data.admin.name;
     });
   }
 

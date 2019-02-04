@@ -72,70 +72,29 @@ import { RoomViewComponent } from './room-view/room-view.component';
 import { FieldOrderComponent } from './field-order/field-order.component';
 import { FieldViewComponent } from './field-view/field-view.component';
 import { MemberRegisterComponent } from './member-register/member-register.component';
+import { TrainingCreateComponent } from './training-create/training-create.component';
+import { TrainingViewComponent } from './training-view/training-view.component';
+
 
 
 const routes: Routes = [
-  {
-    path: '', 
-    redirectTo: '/login', 
-    pathMatch:'full'
-  },
-  {
-    path: 'home',
-    component: HomeComponent
-  },
-  {
-    path: 'login',
-    component: LoginComponent
-  },
-  {
-    path: 'empinfo',
-    component: EmployeeInfoComponent
-  },
-  {
-    path: 'empreg',
-    component: EmployeeRegisterComponent
-  },
-  {
-    path: 'empmanage',
-    component: EmployeeManageComponent
-  },
-  {
-    path: 'nav',
-    component: MainNavComponent
-  },
-  {
-    path: 'lease',
-    component: LeaseOrderComponent
-  },
-  {
-    path: 'leaseshow',
-    component: LeaseShowComponent
-  },
-  {
-    path: 'member-register',
-    component: MemberRegisterComponent
-  },
-  {
-    path: 'member-show',
-    component: MemberShowComponent
-  },
-  {
-  path: 'roomcreate',
-  component: RoomCreateComponent
-  },
-  {
-  path: 'roomview',
-  component: RoomViewComponent
-  },
-  {
-    path: 'field-order',
-    component: FieldOrderComponent
-  },
-  {
-    path: 'field-view',
-    component: FieldViewComponent
-  },
+  {path: '', redirectTo: '/login', pathMatch:'full'},
+  {path: 'home',component: HomeComponent},
+  {path: 'login',component: LoginComponent},
+  {path: 'empinfo',component: EmployeeInfoComponent},
+  {path: 'empreg',component: EmployeeRegisterComponent},
+  {path: 'empmanage',component: EmployeeManageComponent},
+  {path: 'nav',component: MainNavComponent},
+  {path: 'lease',component: LeaseOrderComponent},
+  {path: 'leaseshow',component: LeaseShowComponent},
+  {path: 'member-register',component: MemberRegisterComponent},
+  {path: 'member-show',component: MemberShowComponent},
+  {path: 'roomcreate',component: RoomCreateComponent},
+  {path: 'roomview',component: RoomViewComponent},
+  {path: 'field-order',component: FieldOrderComponent},
+  {path: 'field-view',component: FieldViewComponent},
+  {path: 'training-create',component: TrainingCreateComponent},
+  {path: 'training-view',component: TrainingViewComponent},
 ]
 
 @NgModule({
@@ -154,7 +113,9 @@ const routes: Routes = [
     RoomCreateComponent,
     RoomViewComponent,
     FieldOrderComponent,
-    FieldViewComponent
+    FieldViewComponent,
+    TrainingCreateComponent,
+    TrainingViewComponent
   ],
   imports: [
     BrowserModule,

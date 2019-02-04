@@ -121,7 +121,7 @@
           <br>
           <label>เลือกสมาชิกที่ต้องการจอง: </label>
           <br>
-          <mat-form-field>
+          <mat-form-field appearance="outline">
             <mat-select placeholder="Member Name" [(ngModel)]="select.memberSelect" name = "member">
               <mat-option *ngFor="let member of members" [value]="member.memberId">
                 {{member.firstName}}
@@ -131,7 +131,7 @@
           <br>
           <label>เลือกสนามที่ต้องการจอง: </label>
           <br>
-          <mat-form-field>
+          <mat-form-field appearance="outline">
             <mat-select placeholder="Field Name" [(ngModel)]="select.fieldSelect" name = "field">
               <mat-option *ngFor="let field of fields" [value]="field.fieldId">
                 {{field.fieldName}}
@@ -141,7 +141,7 @@
           <br>
           <label>เลือกช่วงเวลาที่ต้องการจอง: </label>
           <br>
-          <mat-form-field>
+          <mat-form-field appearance="outline">
             <mat-select placeholder="Field Duration" [(ngModel)]="select.durationSelect" name = "duration">
               <mat-option *ngFor="let duration of durations" [value]="duration.fieldDurationId">
                 {{duration.fieldDuration}}
@@ -150,7 +150,7 @@
           </mat-form-field>
           <label>เลือกวันที่ต้องการ: </label>
           <br>
-          <mat-form-field class="example-full-width">
+          <mat-form-field class="example-full-width" appearance="outline">
             <input matInput [matDatepicker]="picker" placeholder="Choose a date" [(ngModel)]="date" name = "date">
             <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
             <mat-datepicker touchUi #picker></mat-datepicker>

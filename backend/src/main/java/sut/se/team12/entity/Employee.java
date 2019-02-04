@@ -20,6 +20,7 @@ public class Employee {
     private String id;
     private String firstName;
     private String lastName;
+    @Temporal(TemporalType.DATE)
     private Date birthDate;
     private String phone;
     private String email;
