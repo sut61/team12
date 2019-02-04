@@ -9,6 +9,6 @@
     </mat-form-field>
   </mat-card-content>
   <mat-card-actions style="text-align:right">
-    <a mat-raised-button (click)="login()" color="primary" type="submit" >Login</a>
+    <a mat-raised-button (click)="login()" (keyup.enter)="login()" color="primary" type="submit" >Login</a>
   </mat-card-actions>
 </mat-card>
