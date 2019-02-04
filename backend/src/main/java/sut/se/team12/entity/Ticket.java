@@ -26,9 +26,9 @@ public class Ticket {
     private String name;
     private String phoneNumber;
 
-    // @ManyToOne(fetch = FetchType.EAGER, targetEntity = TicketType.class)
-    // @JoinColumn(name = "TicketType_ID", insertable = true)
-    // private TicketType ticketType;
+    @ManyToOne(fetch = FetchType.EAGER, targetEntity = TicketType.class)
+    @JoinColumn(name = "TicketType_ID", insertable = true)
+    private TicketType ticketType;
 
     @ManyToOne(fetch = FetchType.EAGER, targetEntity = Field.class)
     @JoinColumn(name = "Field_ID", insertable = true)
