@@ -44,8 +44,8 @@ public class Team12Application {
 			// ---------------------- Admin --------------------
 
 			Admin admin1 = new Admin();
-			admin1.setName("Pimpan");
-			admin1.setUsername("pimpan");
+			admin1.setName("Pimpun");
+			admin1.setUsername("pimpun");
 			admin1.setPassword("1234");
 			adminRepository.save(admin1);
 
@@ -181,7 +181,7 @@ public class Team12Application {
 			employee3.setPhone("0898765432");
 			employee3.setEmail("somchai@gmail.com");
 			employee3.setAddress("SUT");
-			employee3.setDegree(degree3);
+			employee3.setDegree(degree6);
 			employee3.setPosition(position3);
 			employeeRepository.save(employee3);
 			

@@ -9,11 +9,11 @@ import { Router } from "@angular/router";
 import { AdminService } from '../service/admin.service';
 
 @Component({
-  selector: 'app-home',
-  templateUrl: './home.component.html',
-  styleUrls: ['./home.component.css']
+  selector: 'app-training-view',
+  templateUrl: './training-view.component.html',
+  styleUrls: ['./training-view.component.css']
 })
-export class HomeComponent implements OnInit {
+export class TrainingViewComponent implements OnInit {
 
   adminId:any={}
   adminName:any={}
@@ -26,6 +26,10 @@ export class HomeComponent implements OnInit {
       passowrd:''
     }
   }
+
+  trainings: Array<any>
+
+  dataColumns: string[] = ['no', 'title', 'description', 'dateFrom','dateTo','type','program','instructor','location','enrollment','cost'];
 
   isHandset$: Observable<boolean> = this.breakpointObserver.observe(Breakpoints.Handset)
     .pipe(
@@ -41,7 +45,10 @@ export class HomeComponent implements OnInit {
       this.adminLogin = data;
       this.adminId = data.admin.adminId;
       this.adminName = data.admin.name;
-    });
+    })
+    this.employeeService.getTraining().subscribe(data => {
+      this.trainings = data;
+    })
   }
 
 }

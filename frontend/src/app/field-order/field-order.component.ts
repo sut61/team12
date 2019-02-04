@@ -7,6 +7,7 @@ import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { FieldService } from '../service/field.service';
+import { AdminService } from '../service/admin.service';
 
 @Component({
   selector: 'app-field-order',
@@ -20,6 +21,8 @@ export class FieldOrderComponent implements OnInit {
   durations: Array<any>
 
 
+  adminId:any={}
+  adminName:any={}
   adminLogin:{
     loginId:1,
     admin:{
@@ -46,7 +49,7 @@ export class FieldOrderComponent implements OnInit {
     map(result => result.matches)
   );
 
-  constructor(private breakpointObserver: BreakpointObserver,private route:ActivatedRoute,private fieldService: FieldService , private httpClient: HttpClient, private router:Router) { }
+  constructor(private breakpointObserver: BreakpointObserver,private route:ActivatedRoute,private fieldService: FieldService , private httpClient: HttpClient, private router:Router, private adminService: AdminService) { }
 
   ngOnInit() {
 
@@ -65,7 +68,13 @@ export class FieldOrderComponent implements OnInit {
     this.fieldService.getAdminLogin().subscribe(data => {
       this.adminLogin = data;
       console.log(this.adminLogin);
-    })
+    });
+    this.adminService.getAdminLogin().subscribe(data => {
+      this.adminLogin = data;
+      this.adminId = data.admin.adminId;
+      this.adminName = data.admin.name;
+    });
+    
   }
 
 

@@ -6,6 +6,8 @@ import { ActivatedRoute } from "@angular/router";
 import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
+import { AdminService } from '../service/admin.service';
+
 export interface Lease{
   leaseId;
   admin:{
@@ -37,10 +39,12 @@ export class LeaseShowComponent implements OnInit {
   leases: Array<any>
   id
   lease = {} as Lease;
+  adminId:any={}
+  adminName:any={}
 
   dataColumns: string[] = ['no', 'name', 'accessory', 'duration','edit','delete'];
 
-  constructor(private breakpointObserver: BreakpointObserver, private leaseService: LeaseService , private httpClient: HttpClient) { }
+  constructor(private breakpointObserver: BreakpointObserver, private leaseService: LeaseService , private httpClient: HttpClient, private adminService: AdminService) { }
 
   ngOnInit() {
     this.leaseService.getLease().subscribe(data => {
@@ -48,6 +52,10 @@ export class LeaseShowComponent implements OnInit {
       this.lease = data[1];
       console.log(this.leases);
       console.log(this.lease)
+    });
+    this.adminService.getAdminLogin().subscribe(data => {
+      this.adminId = data.admin.adminId;
+      this.adminName = data.admin.name;
     });
 
   }

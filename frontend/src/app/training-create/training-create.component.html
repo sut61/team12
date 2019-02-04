@@ -122,67 +122,120 @@
     </mat-toolbar-row>
   </mat-toolbar>
 
+  <!-- --------------------------------------------------------------------------------------------------------------- -->
+  
+  <mat-card class="example-card" >
+    <h1>หลักสูตรการอบรม</h1>
+    <mat-card-content style="text-align:left">
+      <label>หัวข้อหลักสูตร (Title): </label>
+      <br>
+      <mat-form-field appearance="outline">
+        <mat-icon matPrefix>assignment</mat-icon>
+        <input matInput placeholder="หัวข้อหลักสูตร" [(ngModel)]="title" name="title">
+      </mat-form-field>
+      <br>
+      <label>รายละเอียด (Description): </label>
+      <br>
+      <mat-form-field appearance="outline">
+        <!-- <mat-icon matPrefix>assignment</mat-icon> -->
+        <textarea matInput placeholder="รายละเอียด" rows="4" [(ngModel)]="description" name="description"></textarea>
+      </mat-form-field>
+      <!-- <label>ชื่อ - นามสกุล: </label>
+      <br>
+      <mat-form-field appearance="outline" class="input-firstname">
+        <input matInput placeholder="ชื่อ"  name="firstname">
+      </mat-form-field>
+      &nbsp;&nbsp;&nbsp;
+      <mat-form-field appearance="outline" class="input-lastname">
+        <input matInput placeholder="นามสกุล"  name="lastname">
+      </mat-form-field>
+      <br> -->
+      <label>วันเริ่มต้น (Date From): </label>
+      <br>
+      <mat-form-field appearance="outline">
+        <!-- <mat-icon matPrefix>date_range</mat-icon> -->
+        <input matInput [matDatepicker]="picker" placeholder="วันเริ่มต้น" [(ngModel)]="dateFrom" name="dateFrom">
+        <mat-datepicker-toggle matPrefix [for]="picker"></mat-datepicker-toggle>
+        <mat-datepicker #picker></mat-datepicker>
+      </mat-form-field>
+      <label>วันสุดท้าย (Date To): </label>
+      <br>
+      <mat-form-field appearance="outline">
+        <!-- <mat-icon matPrefix>date_range</mat-icon> -->
+        <input matInput [matDatepicker]="picker2" placeholder="วันสุดท้าย" [(ngModel)]="dateTo" name="dateTo">
+        <mat-datepicker-toggle matPrefix [for]="picker2"></mat-datepicker-toggle>
+        <mat-datepicker #picker2></mat-datepicker>
+      </mat-form-field>
+      <br>
+      <label>ประเภทการฝึกอบรม (Type): </label>
+      <br>
+      <div style="margin:3%">
+      <mat-radio-group class="example-radio-group" [(ngModel)]="select.typeSelect" >
+        <mat-radio-button class="example-radio-button" *ngFor="let type of types" [value]="type.typeId" >
+          {{type.typeName}}
+        </mat-radio-button>
+      </mat-radio-group>
+    </div>
+      <!-- <mat-form-field appearance="outline">
+        <mat-icon matPrefix>where_to_vote</mat-icon>
+        <mat-select placeholder="ประเภทสถานที่">
+          <mat-option value="option">Option</mat-option>
+        </mat-select>
+        <mat-hint align="end">Here's the dropdown arrow ^</mat-hint>
+      </mat-form-field> -->
+      <!-- <br> -->
+      <label>ประเภทหลักสูตร (Program): </label>
+      <br>
+      <div style="margin:2%;">
+      <mat-radio-group class="example-radio-group" [(ngModel)]="select.programSelect">
+        <mat-radio-button class="example-radio-button" *ngFor="let program of programs" [value]="program.programId" style="margin-right:40%;margin-bottom: 2%;">
+          {{program.programName}}
+        </mat-radio-button>
+      </mat-radio-group>
+    </div>
+      <!-- <mat-form-field appearance="outline">
+        <mat-icon matPrefix>chrome_reader_mode</mat-icon>
+        <mat-select placeholder="ประเภทหลักสูตร">
+          <mat-option value="option">Option</mat-option>
+        </mat-select>
+        <mat-hint align="end">Here's the dropdown arrow ^</mat-hint>
+      </mat-form-field> -->
+      <br>
+      <label>วิทยากร (Instructor): </label>
+      <br>
+      <mat-form-field appearance="outline">
+        <mat-icon matPrefix>person</mat-icon>
+        <input matInput placeholder="วิทยากร" [(ngModel)]="instructor" name="instructor">
+      </mat-form-field>
+      <br>
+      <label>สถานที่ (Location): </label>
+      <br>
+      <mat-form-field appearance="outline">
+        <mat-icon matPrefix>place</mat-icon>
+        <input matInput placeholder="สถานที่" [(ngModel)]="location" name="location">
+      </mat-form-field >
+      <br>
+      <label>จำนวนที่รับ (Enrollment): </label>
+      <br>
+      <mat-form-field appearance="outline">
+        <mat-icon matPrefix>people</mat-icon>
+        <input matInput placeholder="จำนวนที่รับ" [(ngModel)]="enrollment" name="enrollment" type="number">
+      </mat-form-field>
+      <br>
+      <label>ค่าใช้จ่าย (Cost): </label>
+      <br>
+      <mat-form-field appearance="outline">
+        <mat-icon matPrefix>attach_money</mat-icon>
+        <input matInput placeholder="ค่าใช้จ่าย" [(ngModel)]="cost" name="cost" type="number">
+      </mat-form-field>
+      <br>
 
-  <mat-card>
-    <h1>ข้อมูลพนักงาน</h1>
-    <table mat-table [dataSource]="employees" class="mat-elevation-z8" style="text-align:center">
-      <ng-container matColumnDef="no">
-        <th mat-header-cell *matHeaderCellDef> No. </th>
-        <td mat-cell *matCellDef="let element ; let i = index">{{i+1}}</td>
-      </ng-container>
-      <ng-container matColumnDef="id">
-        <th mat-header-cell *matHeaderCellDef style="text-align: center"> Personal ID. </th>
-        <td mat-cell *matCellDef="let element"> {{element.id}} </td>
-      </ng-container>
-      <ng-container matColumnDef="name" >
-        <th mat-header-cell *matHeaderCellDef style="text-align: center"> Name. </th>
-        <td mat-cell *matCellDef="let element"> {{element.title.titleType}} {{element.firstName}}&nbsp;&nbsp;{{element.lastName}}</td>
-      </ng-container>
-      <ng-container matColumnDef="birth">
-        <th mat-header-cell *matHeaderCellDef style="text-align: center"> Birth Date. </th>
-        <td mat-cell *matCellDef="let element"> {{element.birthDate}} </td>
-      </ng-container>
-      <ng-container matColumnDef="degree">
-        <th mat-header-cell *matHeaderCellDef style="text-align: center"> Degree. </th>
-        <td mat-cell *matCellDef="let element"> {{element.degree.degreeType}} </td>
-      </ng-container>
-      <ng-container matColumnDef="position">
-        <th mat-header-cell *matHeaderCellDef style="text-align: center;width:10px"> Position. </th>
-        <td mat-cell *matCellDef="let element"> {{element.position.positionType}} </td>
-      </ng-container>
-      <ng-container matColumnDef="phone">
-        <th mat-header-cell *matHeaderCellDef style="text-align: center"> Phone. </th>
-        <td mat-cell *matCellDef="let element"> {{element.phone}} </td>
-      </ng-container>
-      <ng-container matColumnDef="email">
-        <th mat-header-cell *matHeaderCellDef style="text-align: center"> Email. </th>
-        <td mat-cell *matCellDef="let element"> {{element.email}} </td>
-      </ng-container>
-      <ng-container matColumnDef="address">
-        <th mat-header-cell *matHeaderCellDef style="text-align: center"> Address. </th>
-        <td mat-cell *matCellDef="let element"> {{element.address}} </td>
-      </ng-container>
-      <ng-container matColumnDef="edit">
-        <th mat-header-cell *matHeaderCellDef style="text-align: center"> Edit.</th>
-        <td mat-cell *matCellDef="let element"> 
-          <!-- <button mat-raised-button  (click)="manageTeam(element)" style="width:10px">Edit</button> -->
-          <button mat-icon-button (click)="manageTeam(element)">
-            <mat-icon aria-label="Example icon-button with a heart icon">edit</mat-icon>
-          </button> 
-        </td>
-      </ng-container>
-      <ng-container matColumnDef="delete">
-        <th mat-header-cell *matHeaderCellDef style="text-align: center"> Delete.</th>
-        <td mat-cell *matCellDef="let element"> 
-          <!-- <button mat-raised-button color="warn" (click)="viewConvenienceOrder(element)">Delete</button>  -->
-          <button mat-icon-button (click)="viewConvenienceOrder(element)">
-            <mat-icon aria-label="Example icon-button with a heart icon">delete</mat-icon>
-          </button>
-        </td>
-      </ng-container>
-      <tr mat-header-row *matHeaderRowDef="dataColumns"></tr>
-      <tr mat-row *matRowDef="let row; columns: dataColumns;"></tr>
-    </table>
+    </mat-card-content>
+    <mat-card-actions style="text-align:right">
+      <a mat-raised-button (click)="save()" color="primary" type="submit">บันทึก</a>
+      <a mat-raised-button  routerLink="/nav" color="primary" type="submit">ยกเลิก</a>
+    </mat-card-actions>
   </mat-card>
-</mat-sidenav-content>
+    
+  </mat-sidenav-content>
 </mat-sidenav-container>

@@ -8,6 +8,7 @@ import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { ACTIVE_INDEX } from '@angular/core/src/render3/interfaces/container';
 import { HttpClient } from '@angular/common/http';
+import { AdminService } from '../service/admin.service';
 
 @Component({
   selector: 'app-member-show',
@@ -31,16 +32,22 @@ export class MemberShowComponent implements OnInit {
   );
 
   members: Array<any>
+  adminId:any={}
+  adminName:any={}
   
   dataColumns: string[] = ['memberId', 'firstName', 'lastName'];
 
 
-  constructor(private breakpointObserver: BreakpointObserver, private memberService: MemberService , private httpClient: HttpClient) { }
+  constructor(private breakpointObserver: BreakpointObserver, private memberService: MemberService , private httpClient: HttpClient, private adminService: AdminService) { }
 
   ngOnInit() {
     this.memberService.getMembers().subscribe(data => {
       this.members = data;
       console.log(this.members);
+    });
+    this.adminService.getAdminLogin().subscribe(data => {
+      this.adminId = data.admin.adminId;
+      this.adminName = data.admin.name;
     });
 
   }

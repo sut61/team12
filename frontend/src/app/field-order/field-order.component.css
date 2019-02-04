@@ -1,10 +1,46 @@
+.sidenav-container {
+  height: 100%;
+}
+
+.sidenav {
+  width: 300px;
+}
+
+.sidenav .mat-toolbar {
+  background: inherit;
+}
+
+.mat-toolbar.mat-primary {
+  position: sticky;
+  top: 0;
+  z-index: 1;
+}
+
+mat-accordion{
+  margin-top: 0.1mm;
+}
+
+.container {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+}
+
+mat-panel-title {
+  flex-basis: 0;
+}
+mat-panel-description {
+  flex-basis: 100%;
+}
 .example-header-image {
-  /* background-image: url('src/image/route3.png'); */
   background-size: cover;
 }
 .example-card {
-  /* max-width: 300px; */
-  width:700px;
+  max-width: 600px;
+  margin-top:20px;
+  margin-bottom: 20px;
   margin-left: auto;
   margin-right: auto;
   background-color:warn;
@@ -15,7 +51,6 @@ a {
 }
 mat-form-field {
   width: 100%;
-  /* background-color: brown; */
 }
 .input-firstname {
   width: 48%;
@@ -25,7 +60,6 @@ mat-form-field {
 }
 label{
   width:100px;
-  /* background-color: aqua; */
 }
 
 .example-radio-group {

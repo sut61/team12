@@ -7,6 +7,7 @@ import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { ACTIVE_INDEX } from '@angular/core/src/render3/interfaces/container';
+import { AdminService } from '../service/admin.service';
 
 export interface Employee {
   employeeId;
@@ -17,18 +18,10 @@ export interface Employee {
   phone;
   email;
   address;
-  admin:{
-
-  }
-  Title:{
-
-  }
-  degree:{
-
-  }
-  position:{
-
-  }
+  admin:{}
+  Title:{}
+  degree:{}
+  position:{}
 }
 
 @Component({
@@ -37,20 +30,34 @@ export interface Employee {
   styleUrls: ['./employee-info.component.css']
 })
 export class EmployeeInfoComponent implements OnInit {
+  data:any={}
+  adminId:any={}
+  adminName:any={}
+  adminLogin:{
+    loginId:1,
+    admin:{
+      adminId:'',
+      name:'',
+      username:'',
+      passowrd:''
+    }
+  }
+  
 
   isHandset$: Observable<boolean> = this.breakpointObserver.observe(Breakpoints.Handset)
   .pipe(
     map(result => result.matches)
   );
 
+
+
   employees: Array<any>
   id
   employee = {} as Employee;
 
-  // dataColumns: string[] = ['no', 'id', 'title', 'fname','lname', 'birth','degree','position','phone','email','address','edit','delete'];
   dataColumns: string[] = ['no', 'id', 'name', 'birth','degree','position','phone','email','address','edit','delete'];
 
-  constructor(private breakpointObserver: BreakpointObserver, private employeeService: EmployeeService , private httpClient: HttpClient) { }
+  constructor(private breakpointObserver: BreakpointObserver, private employeeService: EmployeeService , private httpClient: HttpClient, private adminService: AdminService) { }
 
   ngOnInit() {
     this.employeeService.getEmployee().subscribe(data => {
@@ -59,8 +66,13 @@ export class EmployeeInfoComponent implements OnInit {
       console.log(this.employees);
       console.log(this.employee)
     });
-
+    this.adminService.getAdminLogin().subscribe(data => {
+      this.adminLogin = data;
+      this.adminId = data.admin.adminId;
+      this.adminName = data.admin.name;
+    })
   }
+
 
   editEmployee(){
     // this.employeeService.editEmployee();
@@ -68,5 +80,4 @@ export class EmployeeInfoComponent implements OnInit {
   deleteEmployee(){
     this.employeeService.deleteEmployee(this.id);
   }
-
 }
