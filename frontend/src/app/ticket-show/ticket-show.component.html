@@ -1,0 +1,170 @@
+<mat-sidenav-container class="sidenav-container container">
+  <mat-sidenav #drawer class="sidenav" fixedInViewport="true"
+  [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'"
+  [mode]="(isHandset$ | async) ? 'over' : 'side'"
+  [opened]="!(isHandset$ | async)">
+  <mat-toolbar>ระบบจัดการสนามกีฬา</mat-toolbar>
+  <mat-nav-list>
+    <mat-list-item>
+      <diV><i class="material-icons">how_to_reg</i>&nbsp;&nbsp;ID:&nbsp;{{adminId}}&nbsp;NAME:&nbsp;{{adminName}}</diV>
+    </mat-list-item>
+    <mat-accordion multi="true" displayMode="flat">
+      <mat-expansion-panel>
+        <mat-expansion-panel-header expandedHeight="48px" collapsedHeight="48px">
+          <mat-panel-title><i class="material-icons">grade</i>ตั๋ว</mat-panel-title>
+        </mat-expansion-panel-header>
+        <mat-nav-list>
+          <a mat-list-item routerLink="/ticket"><i class="material-icons">chevron_right</i>ขายตั๋ว</a>
+        </mat-nav-list>
+      </mat-expansion-panel>  
+    </mat-accordion>
+    <mat-accordion >
+      <mat-expansion-panel>
+        <mat-expansion-panel-header>
+          <mat-panel-title><i class="material-icons">account_circle</i> สมาชิก</mat-panel-title>
+        </mat-expansion-panel-header>
+        <mat-nav-list>
+          <a mat-list-item routerLink="/member-register"><i class="material-icons">chevron_right</i>สมัครสมาชิก</a>
+          <a mat-list-item routerLink="/member-show"><i class="material-icons">chevron_right</i>ข้อมูลสมาชิก</a>
+        </mat-nav-list>
+      </mat-expansion-panel>
+    </mat-accordion>
+    <mat-accordion>
+      <mat-expansion-panel>
+        <mat-expansion-panel-header>
+          <mat-panel-title><i class="material-icons">assignment_ind</i>พนักงาน</mat-panel-title>
+        </mat-expansion-panel-header>
+        <mat-nav-list>
+          <a mat-list-item routerLink="/empreg"><i class="material-icons">chevron_right</i>สมัครพนักงาน</a>
+          <a mat-list-item routerLink="/empinfo"><i class="material-icons">chevron_right</i>ข้อมูลพนักงาน</a>
+          <a mat-list-item routerLink="/training-create"><i class="material-icons">chevron_right</i>สร้างหลักสูตรการอบรม</a>
+          <a mat-list-item routerLink="/training-view"><i class="material-icons">chevron_right</i>ข้อมูลหลักสูตรการอบรม</a>
+          <!-- <mat-expansion-panel>
+            <mat-expansion-panel-header>
+              <mat-panel-title><i class="material-icons">event</i>จัดตารางงานพนักงาน</mat-panel-title>
+            </mat-expansion-panel-header>
+            <mat-nav-list>
+              <a mat-list-item routerLink="/emp-manage-clean"><i class="material-icons">chevron_right</i>พนักงานทำความสะอาด</a>
+              <a mat-list-item routerLink="/emp-manage-guard"><i class="material-icons">chevron_right</i>พนักงานรักษาความปลอดภัย</a>
+              <a mat-list-item routerLink="/emp-manage-train"><i class="material-icons">chevron_right</i>เทรนเนอร์</a>
+            </mat-nav-list>
+          </mat-expansion-panel> -->
+        </mat-nav-list>
+      </mat-expansion-panel>
+    </mat-accordion>
+    <mat-accordion>
+      <mat-expansion-panel >
+        <mat-expansion-panel-header>
+          <mat-panel-title><i class="material-icons">book</i>คอร์สเรียน</mat-panel-title>
+        </mat-expansion-panel-header>
+        <mat-nav-list>
+          <a mat-list-item ><i class="material-icons">chevron_right</i>สร้างคอร์สเรียน</a>
+          <a mat-list-item ><i class="material-icons">chevron_right</i>ข้อมูลคอร์สเรียน</a>
+          <a mat-list-item ><i class="material-icons">chevron_right</i>จองคอร์สเรียน</a>
+        </mat-nav-list>
+      </mat-expansion-panel>
+    </mat-accordion>
+    <mat-accordion>
+      <mat-expansion-panel>
+        <mat-expansion-panel-header>
+          <mat-panel-title><i class="material-icons">weekend</i>ห้องพักนักกีฬา</mat-panel-title>
+        </mat-expansion-panel-header>
+        <mat-nav-list>
+          <a mat-list-item routerLink="/roomcreate"><i class="material-icons">chevron_right</i>จองห้องพัก</a>
+          <a mat-list-item routerLink="/roomview"><i class="material-icons">chevron_right</i>ยกเลิกการจองห้องพัก</a>
+        </mat-nav-list>
+      </mat-expansion-panel>
+    </mat-accordion>
+    <mat-accordion>
+      <mat-expansion-panel>
+        <mat-expansion-panel-header>
+          <mat-panel-title><i class="material-icons">fitness_center</i>อุปกรณ์</mat-panel-title>
+        </mat-expansion-panel-header>
+        <mat-nav-list>
+          <a mat-list-item routerLink="/lease" ><i class="material-icons">chevron_right</i>เช่าอุปกรณ์</a>
+          <a mat-list-item routerLink="/leaseshow"><i class="material-icons">chevron_right</i>ข้อมูลการเช่าอุปกรณ์</a>
+        </mat-nav-list>
+      </mat-expansion-panel>
+    </mat-accordion>
+    <mat-accordion>
+      <mat-expansion-panel>
+        <mat-expansion-panel-header>
+          <mat-panel-title><i class="material-icons">map</i>สนาม</mat-panel-title>
+        </mat-expansion-panel-header>
+        <mat-nav-list>
+          <a mat-list-item routerLink="/field-order"><i class="material-icons">chevron_right</i>จองสนาม</a>
+          <a mat-list-item routerLink="/field-view"><i class="material-icons">chevron_right</i>ข้อมูลการจองสนาม</a>
+        </mat-nav-list>
+      </mat-expansion-panel>
+    </mat-accordion>
+    <mat-accordion>
+      <mat-expansion-panel>
+        <mat-expansion-panel-header>
+          <mat-panel-title><i class="material-icons">local_offer</i>ล็อกเกอร์</mat-panel-title>
+        </mat-expansion-panel-header>
+        <mat-nav-list>
+          <a mat-list-item ><i class="material-icons">chevron_right</i>จองล็อกเกอร์</a>
+          <a mat-list-item ><i class="material-icons">chevron_right</i>ข้อมูลการจองล็อกเกอร์</a>
+        </mat-nav-list>
+      </mat-expansion-panel>
+    </mat-accordion>
+  </mat-nav-list>
+</mat-sidenav>
+<mat-sidenav-content>
+  <mat-toolbar color="primary">
+    <mat-toolbar-row>
+      <button type="button" aria-label="Toggle sidenav" mat-icon-button (click)="drawer.toggle()">
+        <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
+      </button>
+      <span><button mat-button style="font-size:26px" routerLink="/nav">ระบบจัดการสนามกีฬา</button></span>
+      <span class="example-spacer"></span>
+      <a mat-stroked-button routerLink="/login" style="font-family:Arial, Helvetica, sans-serif">Logout</a>
+    </mat-toolbar-row>
+  </mat-toolbar>
+  <mat-card class="example-card" >
+    <h1>รายละเอียด</h1>
+    <mat-card class="example-card2" >
+<table>
+    <tr>
+        <td>Date & Time</td>
+        <td>{{last.date}} &nbsp; {{last.time}}</td>
+      </tr>
+  <br/>
+  <tr>
+    <td>ID</td>
+    <td>{{last.ticketId}}</td>
+  </tr>
+  <tr>
+      <td>Type</td>
+      <td>{{last.ticketType.ticketType}}</td>
+  </tr>
+  <tr>
+      <td>Name</td>
+      <td>{{last.name}}</td>
+  </tr>
+  <tr>
+      <td>Phone Number</td>
+      <td>{{last.phoneNumber}}</td>
+  </tr>
+  <tr>
+      <td>Field</td>
+      <td>{{last.field.fieldName}}</td>
+  </tr>
+  <tr>
+      <td>Admin</td>
+      <td>{{last.admin.name}}</td>
+  </tr>
+  </table>
+    <!-- ID: {{last.ticketId}} <br>
+    Type: {{last.ticketType.ticketType}}<br>
+    Name: {{last.name}}<br>
+    Field: {{last.field.fieldName}}<br>
+    Date: {{last.date}}<br>
+    Time: {{last.time}}<br>
+    Phone Number: {{last.phoneNumber}}<br>
+    Admin: {{last.admin.name}} -->
+  </mat-card>
+  </mat-card>
+    
+  </mat-sidenav-content>
+</mat-sidenav-container>

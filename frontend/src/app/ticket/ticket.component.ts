@@ -80,7 +80,7 @@ export class TicketComponent implements OnInit {
       .subscribe(
           data => {
               console.log('PUT Request is successful', data);
-              this.router.navigate(['ticket-view'])
+              this.router.navigate(['ticket-show'])
           },
           error => {
               console.log('Error', error);
