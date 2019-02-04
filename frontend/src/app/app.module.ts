@@ -74,6 +74,7 @@ import { FieldViewComponent } from './field-view/field-view.component';
 import { MemberRegisterComponent } from './member-register/member-register.component';
 import { TrainingCreateComponent } from './training-create/training-create.component';
 import { TrainingViewComponent } from './training-view/training-view.component';
+import { TicketComponent } from './ticket/ticket.component';
 
 
 
@@ -95,6 +96,7 @@ const routes: Routes = [
   {path: 'field-view',component: FieldViewComponent},
   {path: 'training-create',component: TrainingCreateComponent},
   {path: 'training-view',component: TrainingViewComponent},
+  {path: 'ticket',component: TicketComponent},
 ]
 
 @NgModule({
@@ -115,7 +117,8 @@ const routes: Routes = [
     FieldOrderComponent,
     FieldViewComponent,
     TrainingCreateComponent,
-    TrainingViewComponent
+    TrainingViewComponent,
+    TicketComponent
   ],
   imports: [
     BrowserModule,

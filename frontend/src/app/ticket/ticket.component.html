@@ -1,15 +1,13 @@
 <mat-sidenav-container class="sidenav-container container">
   <mat-sidenav #drawer class="sidenav" fixedInViewport="true"
-      [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'"
-      [mode]="(isHandset$ | async) ? 'over' : 'side'"
-      [opened]="!(isHandset$ | async)">
-    <mat-toolbar>ระบบจัดการสนามกีฬา</mat-toolbar>
-      <mat-nav-list>
-        <mat-list-item>
-          <diV>
-            User Profile
-          </diV>
-        </mat-list-item>
+  [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'"
+  [mode]="(isHandset$ | async) ? 'over' : 'side'"
+  [opened]="!(isHandset$ | async)">
+  <mat-toolbar>ระบบจัดการสนามกีฬา</mat-toolbar>
+  <mat-nav-list>
+    <mat-list-item>
+      <diV><i class="material-icons">how_to_reg</i>&nbsp;&nbsp;ID:&nbsp;{{adminId}}&nbsp;NAME:&nbsp;{{adminName}}</diV>
+    </mat-list-item>
         <mat-accordion multi="true" displayMode="flat">
       <mat-expansion-panel>
         <mat-expansion-panel-header expandedHeight="48px" collapsedHeight="48px">
@@ -40,7 +38,8 @@
         <mat-nav-list>
           <a mat-list-item routerLink="/empreg"><i class="material-icons">chevron_right</i>สมัครพนักงาน</a>
           <a mat-list-item routerLink="/empinfo"><i class="material-icons">chevron_right</i>ข้อมูลพนักงาน</a>
-          <a mat-list-item routerLink="/empmanage"><i class="material-icons">chevron_right</i>จัดตารางงานพนักงาน</a>
+          <a mat-list-item routerLink="/training-create"><i class="material-icons">chevron_right</i>สร้างหลักสูตรการอบรม</a>
+          <a mat-list-item routerLink="/training-view"><i class="material-icons">chevron_right</i>ข้อมูลหลักสูตรการอบรม</a>
         </mat-nav-list>
       </mat-expansion-panel>
     </mat-accordion>
@@ -104,64 +103,58 @@
 
   </mat-sidenav>
   <mat-sidenav-content>
-      <mat-toolbar color="primary">
-        <mat-toolbar-row>
-          <button type="button" aria-label="Toggle sidenav" mat-icon-button (click)="drawer.toggle()">
-            <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
-          </button>
-          <span>ระบบจัดการสนามกีฬา</span>
-          <span class="example-spacer"></span>
-          <a mat-stroked-button routerLink="/login" style="font-family:Arial, Helvetica, sans-serif">Logout</a>
-        </mat-toolbar-row>
-      </mat-toolbar>
-    
-<mat-card class="example-card" >
-        <h1>จองสนาม</h1>
-        <mat-card-content style="text-align:left">
-          <br>
-          <label>เลือกสมาชิกที่ต้องการจอง: </label>
-          <br>
-          <mat-form-field appearance="outline">
-            <mat-select placeholder="Member Name" [(ngModel)]="select.memberSelect" name = "member">
-              <mat-option *ngFor="let member of members" [value]="member.memberId">
-                {{member.firstName}}
-              </mat-option>
-            </mat-select>
-          </mat-form-field>
-          <br>
-          <label>เลือกสนามที่ต้องการจอง: </label>
-          <br>
-          <mat-form-field appearance="outline">
-            <mat-select placeholder="Field Name" [(ngModel)]="select.fieldSelect" name = "field">
-              <mat-option *ngFor="let field of fields" [value]="field.fieldId">
-                {{field.fieldName}}
-              </mat-option>
-            </mat-select>
-          </mat-form-field>
-          <br>
-          <label>เลือกช่วงเวลาที่ต้องการจอง: </label>
-          <br>
-          <mat-form-field appearance="outline">
-            <mat-select placeholder="Field Duration" [(ngModel)]="select.durationSelect" name = "duration">
-              <mat-option *ngFor="let duration of durations" [value]="duration.fieldDurationId">
-                {{duration.fieldDuration}}
-              </mat-option>
-            </mat-select>
-          </mat-form-field>
-          <label>เลือกวันที่ต้องการ: </label>
-          <br>
-          <mat-form-field class="example-full-width" appearance="outline">
-            <input matInput [matDatepicker]="picker" placeholder="Choose a date" [(ngModel)]="date" name = "date">
-            <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-            <mat-datepicker touchUi #picker></mat-datepicker>
-          </mat-form-field>
-        </mat-card-content>
-        <div class="example-button-row" >
-          <mat-card-actions style="text-align:right">
-            <a mat-raised-button (click)="save()" color="primary" type="submit">บันทึก</a>
-            <a mat-raised-button  routerLink="/nav" color="primary" type="submit">ยกเลิก</a>
-        </mat-card-actions>
-        </div>
-      </mat-card>
+    <mat-toolbar color="primary">
+      <mat-toolbar-row>
+        <button type="button" aria-label="Toggle sidenav" mat-icon-button (click)="drawer.toggle()">
+          <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
+        </button>
+        <span>ระบบจัดการสนามกีฬา</span>
+        <span class="example-spacer"></span>
+        <a mat-stroked-button routerLink="/login" style="font-family:Arial, Helvetica, sans-serif">Logout</a>
+      </mat-toolbar-row>
+    </mat-toolbar>
+    <mat-card class="example-card" >
+        <h1>ตั๋วเข้าใช้บริการ</h1>
+          <mat-card-content style="text-align:left">
+              <label>ประเภท: </label>
+              <br>
+                <div style="margin:2%">
+                  <mat-radio-group class="example-radio-group" [(ngModel)]="Tickets.ticketTypeSelect" name="ticketType">
+                    <mat-radio-button class="example-radio-button" *ngFor="let ticketType of ticketTypes" [value]="ticketType.ticketTypeId">
+                      {{ticketType.ticketType}} &emsp;&emsp;  ราคา : {{ticketType.price}}   บาท
+                    </mat-radio-button>
+                  </mat-radio-group>
+                </div>
+                <br>
+                <label>ชื่อ: </label>
+                <br>
+                <mat-form-field appearance="outline">
+                  <input matInput placeholder="ชื่อ" [(ngModel)]="name" name="name">
+                </mat-form-field>
+                <br>
+                <label>เบอร์โทรศัพท์: </label>
+                <br>
+                <mat-form-field appearance="outline">
+                  <input matInput [(ngModel)]="phoneNumber" name="phoneNumber">
+                </mat-form-field>
+                <label>สนาม: </label>
+                <br>
+                
+                <div style="margin:2%">
+                    <mat-form-field>
+                        <mat-select placeholder="สนาม" [(ngModel)]="Tickets.fieldSelect" name="fields">
+                          <mat-option *ngFor="let field of fields" [value]="field.fieldId">
+                            {{field.fieldName}}
+                          </mat-option>
+                        </mat-select>
+                      </mat-form-field>
+              </div>
+          </mat-card-content>
+           <mat-card-actions style="text-align:right">
+              <a mat-raised-button (click)="submit()" color="primary" type="submit">ตกลง</a>
+              <a mat-raised-button  routerLink="/nav" color="primary" type="submit">ยกเลิก</a>
+          </mat-card-actions>
+        </mat-card>
+
   </mat-sidenav-content>
 </mat-sidenav-container>
