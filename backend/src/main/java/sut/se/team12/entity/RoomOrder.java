@@ -18,26 +18,27 @@ public class RoomOrder {
     
     
     private Long roomOrderId;
-    // private Date roomOrderDate;
-    // private String roomNumber;
-    // private String name;
     @Temporal(TemporalType.DATE)
     private Date date;
     
     
-    @ManyToOne(fetch = FetchType.EAGER, targetEntity = Title.class)
+    @ManyToOne(fetch = FetchType.EAGER, targetEntity = Room.class)
     @JoinColumn(name = "ROOM_ID", insertable = true)
     private Room room;
 
-    @ManyToOne(fetch = FetchType.EAGER, targetEntity = Province.class)
+    @ManyToOne(fetch = FetchType.EAGER, targetEntity = Member.class)
     @JoinColumn(name = "MEMBER_ID", insertable = true)
     private Member member;
 
-    @ManyToOne(fetch = FetchType.EAGER, targetEntity = Privilege.class)
+    @ManyToOne(fetch = FetchType.EAGER, targetEntity = RoomDuration.class)
     @JoinColumn(name = "RoomDuration_ID", insertable = true)
     private RoomDuration roomDuration;
 
     @ManyToOne(fetch = FetchType.EAGER, targetEntity = Admin.class)
     @JoinColumn(name = "ADMIN_ID", insertable = true)
     private Admin admin;
+
+    @ManyToOne(fetch = FetchType.EAGER, targetEntity = RoomStatus.class)
+    @JoinColumn(name = "ROOMSTATUS_ID", insertable = true)
+    private RoomStatus roomStatus;
 }
