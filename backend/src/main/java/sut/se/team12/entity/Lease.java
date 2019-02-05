@@ -20,6 +20,7 @@ public class Lease {
     @GeneratedValue(strategy=GenerationType.SEQUENCE, generator="lease_seq")
     @Column(name="LEASE_ID")
     private Long leaseId;
+    private String note;
     
 
     @ManyToOne(fetch = FetchType.EAGER, targetEntity = Admin.class)

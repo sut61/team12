@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient} from '@angular/common/http';
-import { LeaseService } from '../service/lease.service';
+import { NotificationService } from '../service/notification.service';
 import { Router } from "@angular/router";
 import { ActivatedRoute } from "@angular/router";
 import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
@@ -9,43 +9,34 @@ import { map } from 'rxjs/operators';
 import { AdminService } from '../service/admin.service';
 
 @Component({
-  selector: 'app-lease-show',
-  templateUrl: './lease-show.component.html',
-  styleUrls: ['./lease-show.component.css']
+  selector: 'app-notification-show',
+  templateUrl: './notification-show.component.html',
+  styleUrls: ['./notification-show.component.css']
 })
-export class LeaseShowComponent implements OnInit {
+export class NotificationShowComponent implements OnInit {
 
   isHandset$: Observable<boolean> = this.breakpointObserver.observe(Breakpoints.Handset)
   .pipe(
     map(result => result.matches)
   );
 
-  leases: Array<any>
-  id
+  notifications: Array<any>
   adminId:any={}
   adminName:any={}
 
-  dataColumns: string[] = ['no', 'name', 'accessory', 'duration','note','edit','delete'];
+  dataColumns: string[] = ['no', 'name', 'fields','note'];
 
-  constructor(private breakpointObserver: BreakpointObserver, private leaseService: LeaseService , private httpClient: HttpClient, private adminService: AdminService) { }
+  constructor(private breakpointObserver: BreakpointObserver, private notificationService: NotificationService , private httpClient: HttpClient, private adminService: AdminService) { }
 
   ngOnInit() {
-    this.leaseService.getLease().subscribe(data => {
-      this.leases = data;
-      console.log(this.leases);
+    this.notificationService.getNotification().subscribe(data => {
+      this.notifications = data;
+      console.log(this.notifications);
     });
     this.adminService.getAdminLogin().subscribe(data => {
       this.adminId = data.admin.adminId;
       this.adminName = data.admin.name;
     });
-
-  }
-
-  editLease(){
-    // this.employeeService.editEmployee();
-  }
-  deleteLease(){
-    this.leaseService.deleteLease(this.id);
   }
 
 }

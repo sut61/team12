@@ -76,6 +76,8 @@ import { TrainingCreateComponent } from './training-create/training-create.compo
 import { TrainingViewComponent } from './training-view/training-view.component';
 import { TicketComponent } from './ticket/ticket.component';
 import { TicketShowComponent } from './ticket-show/ticket-show.component';
+import { NotificationComponent } from './notification/notification.component';
+import { NotificationShowComponent } from './notification-show/notification-show.component';
 
 
 
@@ -99,6 +101,8 @@ const routes: Routes = [
   {path: 'training-view',component: TrainingViewComponent},
   {path: 'ticket',component: TicketComponent},
   {path: 'ticket-show',component: TicketShowComponent},
+  {path: 'notification',component: NotificationComponent},
+  {path: 'notification-show',component: NotificationShowComponent},
 ]
 
 @NgModule({
@@ -121,7 +125,9 @@ const routes: Routes = [
     TrainingCreateComponent,
     TrainingViewComponent,
     TicketComponent,
-    TicketShowComponent
+    TicketShowComponent,
+    NotificationComponent,
+    NotificationShowComponent
   ],
   imports: [
     BrowserModule,

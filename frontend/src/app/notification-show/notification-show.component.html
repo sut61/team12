@@ -85,7 +85,6 @@
           <a mat-list-item routerLink="/leaseshow"><i class="material-icons">chevron_right</i>ข้อมูลการเช่าอุปกรณ์</a>
           <a mat-list-item routerLink="/notification" ><i class="material-icons">chevron_right</i>เแจ้งซ่อมอุปกรณ์</a>
           <a mat-list-item routerLink="/notification-show" ><i class="material-icons">chevron_right</i>ข้อมูลการแจ้งซ่อมอุปกรณ์</a>
-
         </mat-nav-list>
       </mat-expansion-panel>
     </mat-accordion>
@@ -125,46 +124,30 @@
     </mat-toolbar-row>
   </mat-toolbar>
 
-    <mat-card class="example-card" >
-        <h1>เช่าอุปกรณ์</h1>
-          <mat-card-content style="text-align:left">
-              <label>ผู้ขอเช่าอุปกรณ์: </label>
-                <mat-form-field appearance="outline">
-                  <mat-select placeholder="ชื่อ-นามสกุล" [(ngModel)]="select.memberSelect" name="member">
-                    <mat-option *ngFor="let member of members" [value]="member.memberId">{{member.firstName}}</mat-option>
-                  </mat-select>
-                </mat-form-field>
-          </mat-card-content>
-          
-          <mat-card-content style="text-align:left">
-              <label>อุปกรณ์: </label>
-                <mat-form-field appearance="outline">
-                  <mat-select placeholder="อุปกรณ์" [(ngModel)]="select.accessorySelect" name="accessory">
-                    <mat-option *ngFor="let accessory of accessorys" [value]="accessory.accessoryId">{{accessory.accessoryName}}</mat-option>
-                  </mat-select>
-                </mat-form-field>
-          </mat-card-content>
-          
-          <mat-card-content style="text-align:left">
-              <label>ระยะเวลาในการเช่า </label>
-                <mat-form-field appearance="outline">
-                  <mat-select placeholder="ระยะเวลา" [(ngModel)]="select.durationSelect" name="duration">
-                    <mat-option *ngFor="let duration of durations" [value]="duration.durationId">{{duration.durationName}}</mat-option>
-                  </mat-select>
-                </mat-form-field>
-          </mat-card-content>
 
-          <label>หมายเหตุ </label>
-          <mat-form-field appearance="outline">
-            <textarea matInput placeholder="note" [(ngModel)]="note" name="note"></textarea>
-          </mat-form-field>
+  <mat-card>
+    <h1>ข้อมูลการแจ้งซ่อมอุปกรณ์</h1>
+    <table mat-table [dataSource]="notifications" class="mat-elevation-z8" style="text-align:center">
+      <ng-container matColumnDef="no">
+        <th mat-header-cell *matHeaderCellDef> No. </th>
+        <td mat-cell *matCellDef="let element ; let i = index">{{i+1}}</td>
+      </ng-container>
+      <ng-container matColumnDef="name" >
+        <th mat-header-cell *matHeaderCellDef > Name </th>
+        <td mat-cell *matCellDef="let element" style="text-align:left"> <pre>{{element.employee.firstName}}</pre> </td>
+      </ng-container>
+      <ng-container matColumnDef="fields">
+        <th mat-header-cell *matHeaderCellDef> Field </th>
+        <td mat-cell *matCellDef="let element"> {{element.field.fieldName}} </td>
+      </ng-container>
+      <ng-container matColumnDef="note">
+        <th mat-header-cell *matHeaderCellDef style="text-align: center"> note. </th>
+        <td mat-cell *matCellDef="let element"> {{element.note}} </td>
+      </ng-container>
 
-           <mat-card-actions style="text-align:right">
-              <a mat-raised-button (click)="save()" color="primary" type="submit">บันทึก</a>
-              <a mat-raised-button  routerLink="/nav" color="primary" type="submit">ยกเลิก</a>
-          </mat-card-actions>
-        </mat-card>
-  </mat-sidenav-content>
+      <tr mat-header-row *matHeaderRowDef="dataColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: dataColumns;"></tr>
+    </table>
+</mat-card>
+</mat-sidenav-content>
 </mat-sidenav-container>
-
-
