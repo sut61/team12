@@ -1,0 +1,95 @@
+.sidenav-container {
+  height: 100%;
+}
+
+.sidenav {
+  width: 300px;
+  /* background-color: plum; */
+}
+
+.sidenav .mat-toolbar {
+  background: inherit;
+}
+
+.mat-toolbar.mat-primary {
+  position: sticky;
+  top: 0;
+  z-index: 1;
+}
+
+mat-accordion{
+  margin-top: 0.1mm;
+}
+
+.container {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+}
+
+mat-panel-title {
+  flex-basis: 0;
+}
+mat-panel-description {
+  flex-basis: 100%;
+}
+
+table {
+  width: 100%;
+}
+
+.example-header-image {
+  /* background-image: url('src/image/route3.png'); */
+  background-size: cover;
+}
+.example-card {
+  max-width: 600px;
+  /* width:600px; */
+  margin-left: auto;
+  margin-right: auto;
+  background-color:warn;
+}
+
+a {
+  margin: 2px;
+}
+mat-form-field {
+  width: 100%;
+  /* background-color: brown; */
+}
+.input-firstname {
+  width: 48%;
+}
+.input-lastname {
+  width: 48%
+}
+label{
+  width:100px;
+  /* background-color: aqua; */
+}
+
+.example-radio-group {
+  /* display: inline-flex; */
+  flex-direction: column;
+}
+
+.example-radio-button {
+  margin-right: 50px;
+}
+
+.example-selected-value {
+  margin: 15px 0;
+}
+.example-icon {
+  padding: 0 14px;
+}
+
+.example-spacer {
+  flex: 1 1 auto;
+}
+
+table {
+width: 100%;
+}

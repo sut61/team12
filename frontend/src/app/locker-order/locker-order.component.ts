@@ -1,26 +1,26 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient} from '@angular/common/http';
-import { EmployeeService } from '../service/employee.service';
 import { Router } from "@angular/router";
 import { ActivatedRoute } from "@angular/router";
 import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
-import { FieldService } from '../service/field.service';
+import { LockerService } from '../service/locker.service';
 import { AdminService } from '../service/admin.service';
 
+
 @Component({
-  selector: 'app-field-order',
-  templateUrl: './field-order.component.html',
-  styleUrls: ['./field-order.component.css']
+  selector: 'app-locker-order',
+  templateUrl: './locker-order.component.html',
+  styleUrls: ['./locker-order.component.css']
 })
-export class FieldOrderComponent implements OnInit {
+export class LockerOrderComponent implements OnInit {
+
 
   members: Array<any>
-  fields: Array<any>
-  durations: Array<any>
+  Lockers: Array<any>
+  LockerDurations: Array<any>
   note: string;
-
 
   adminId:any={}
   adminName:any={}
@@ -35,10 +35,11 @@ export class FieldOrderComponent implements OnInit {
   }
 
 
-    select: any = {
+
+  select: any = {
     memberSelect:'',
-    fieldSelect:'',
-    durationSelect:''
+    LockerSelect:'',
+    LockerDurationSelect:''
   }
 
   date: Date
@@ -50,23 +51,22 @@ export class FieldOrderComponent implements OnInit {
     map(result => result.matches)
   );
 
-  constructor(private breakpointObserver: BreakpointObserver,private route:ActivatedRoute,private fieldService: FieldService , private httpClient: HttpClient, private router:Router, private adminService: AdminService) { }
+  constructor(private breakpointObserver: BreakpointObserver,private route:ActivatedRoute,private lockerService: LockerService , private httpClient: HttpClient, private router:Router, private adminService: AdminService) { }
 
   ngOnInit() {
-
-    this.fieldService.getMembers().subscribe(data => {
+    this.lockerService.getMembers().subscribe(data => {
       this.members = data;
       console.log(this.members);
     });
-    this.fieldService.getFields().subscribe(data => {
-      this.fields = data;
-      console.log(this.fields);
+    this.lockerService.getLockers().subscribe(data => {
+      this.Lockers = data;
+      console.log(this.Lockers);
     });
-    this.fieldService.getFieldDuration().subscribe(data => {
-      this.durations = data;
-      console.log(this.durations);
+    this.lockerService.getLockerDuration().subscribe(data => {
+      this.LockerDurations = data;
+      console.log(this.LockerDurations);
     });
-    this.fieldService.getAdminLogin().subscribe(data => {
+    this.lockerService.getAdminLogin().subscribe(data => {
       this.adminLogin = data;
       console.log(this.adminLogin);
     });
@@ -75,19 +75,19 @@ export class FieldOrderComponent implements OnInit {
       this.adminId = data.admin.adminId;
       this.adminName = data.admin.name;
     });
-    
   }
 
 
+
   save() {
-    if (this.adminLogin.admin.adminId === '' || this.select.memberSelect === '' || this.select.fieldSelect === '' || this.select.durationSelect === '' || this.note === '' ) {
+    if (this.adminLogin.admin.adminId === '' || this.select.memberSelect === '' || this.select.LockerSelect === '' || this.select.LockerDurationSelect === '' || this.note === '' ) {
       alert('กรุณากรอกข้อมูลให้ครบถ้วน');
     } else {
-      this.httpClient.post('http://localhost:8080/fieldOrder/' + this.adminLogin.admin.adminId + '/' + this.select.memberSelect + '/' + this.select.fieldSelect + '/' + this.select.durationSelect + '/' + this.note + '/' + this.date,this.select)
+      this.httpClient.post('http://localhost:8080/lockerOrder/' + this.adminLogin.admin.adminId + '/' + this.select.memberSelect + '/' + this.select.LockerSelect + '/' + this.select.LockerDurationSelect + '/' + this.note + '/' + this.date,this.select)
       .subscribe(
           data => {
               console.log('PUT Request is successful', data);
-              this.router.navigate(['field-view'])
+              this.router.navigate(['locker-view'])
           },
           error => {
               console.log('Error', error);
@@ -95,4 +95,12 @@ export class FieldOrderComponent implements OnInit {
       );
     }
  }
+
+
+
+
+
+  
+
+
 }
