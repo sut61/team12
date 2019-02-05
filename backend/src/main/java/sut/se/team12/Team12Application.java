@@ -43,7 +43,8 @@ public class Team12Application {
 			TicketTypeRepository ticketTypeRepository,
 			LockerRepository lockerRepository,
 			LockerDurationRepository lockerDurationRepository,
-			LockerOrderRepository lockerOrderRepository
+			LockerOrderRepository lockerOrderRepository,
+			NotificationRepository notificationRepository
 						   ){
 		return args -> {
 
@@ -877,6 +878,15 @@ public class Team12Application {
 				ticket2.setAdmin(admin3);
 				ticketRepository.save(ticket2);
 
+				//--------------------------Notification----------------------------//
+
+				Notification notification1 = new Notification();
+				notification1.setAdmin(admin1);
+				notification1.setEmployee(employee2);
+				notification1.setField(Field1);
+				notification1.setNote("ตาข่ายโกลประตูขาด");
+				notificationRepository.save(notification1);
+
 			// --------------------------------- Print --------------------------------------------
 			
 			adminRepository.findAll().forEach(System.out::println);
@@ -891,6 +901,7 @@ public class Team12Application {
 			fieldRepository.findAll().forEach(System.out::println);
 			ticketTypeRepository.findAll().forEach(System.out::println);
 			ticketRepository.findAll().forEach(System.out::println);
+			notificationRepository.findAll().forEach(System.out::println);
 		};
 	}
 }
