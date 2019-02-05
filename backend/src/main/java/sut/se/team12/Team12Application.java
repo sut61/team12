@@ -40,7 +40,10 @@ public class Team12Application {
 			TrainingTypeRepository trainingTypeRepository,
 			TrainingProgramRepository trainingProgramRepository,
 			TicketRepository ticketRepository,
-			TicketTypeRepository ticketTypeRepository
+			TicketTypeRepository ticketTypeRepository,
+			LockerRepository lockerRepository,
+			LockerDurationRepository lockerDurationRepository,
+			LockerOrderRepository lockerOrderRepository
 						   ){
 		return args -> {
 
@@ -236,7 +239,95 @@ public class Team12Application {
 			FieldDuration6.setFieldDuration("19:00-21:00 น.");
 			fieldDurationRepository.save(FieldDuration6);
 
-			//------------------------------ Privilege ----------------------------------
+
+//----------------------------Locker---------------------------------
+
+			
+			Locker Locker1 = new Locker();
+			Locker1.setLockerName("LOCKER 001");
+			lockerRepository.save(Locker1);
+
+			Locker Locker2 = new Locker();
+			Locker2.setLockerName("LOCKER 002");
+			lockerRepository.save(Locker2);
+
+			Locker Locker3 = new Locker();
+			Locker3.setLockerName("LOCKER 003");
+			lockerRepository.save(Locker3);
+
+			Locker Locker4 = new Locker();
+			Locker4.setLockerName("LOCKER 004");
+			lockerRepository.save(Locker4);
+
+			Locker Locker5 = new Locker();
+			Locker5.setLockerName("LOCKER 005");
+			lockerRepository.save(Locker5);
+
+			Locker Locker6 = new Locker();
+			Locker6.setLockerName("LOCKER 006");
+			lockerRepository.save(Locker6);
+
+			Locker Locker7 = new Locker();
+			Locker7.setLockerName("LOCKER 007");
+			lockerRepository.save(Locker7);
+
+			Locker Locker8 = new Locker();
+			Locker8.setLockerName("LOCKER 008");
+			lockerRepository.save(Locker8);
+
+			Locker Locker9 = new Locker();
+			Locker9.setLockerName("LOCKER 009");
+			lockerRepository.save(Locker9);
+
+
+			Locker Locker10 = new Locker();
+			Locker10.setLockerName("LOCKER 010");
+			lockerRepository.save(Locker10);
+
+			Locker Locker11 = new Locker();
+			Locker11.setLockerName("LOCKER 011");
+			lockerRepository.save(Locker11);
+
+
+			Locker Locker12 = new Locker();
+			Locker12.setLockerName("LOCKER 012");
+			lockerRepository.save(Locker12);
+			
+
+//-------------------LockerDuration--------------------------
+
+			LockerDuration LockerDuration1 = new LockerDuration();
+			LockerDuration1.setLockerDuration("08:00-10:00 น.");
+			lockerDurationRepository.save(LockerDuration1);
+
+			LockerDuration LockerDuration2 = new LockerDuration();
+			LockerDuration2.setLockerDuration("10:00-12:00 น.");
+			lockerDurationRepository.save(LockerDuration2);
+
+
+			LockerDuration LockerDuration3 = new LockerDuration();
+			LockerDuration3.setLockerDuration("13:00-15:00 น.");
+			lockerDurationRepository.save(LockerDuration3);
+
+
+			LockerDuration LockerDuration4 = new LockerDuration();
+			LockerDuration4.setLockerDuration("15:00-17:00 น.");
+			lockerDurationRepository.save(LockerDuration4);
+
+
+			LockerDuration LockerDuration5 = new LockerDuration();
+			LockerDuration5.setLockerDuration("17:00-19:00 น.");
+			lockerDurationRepository.save(LockerDuration5);
+
+
+			LockerDuration LockerDuration6 = new LockerDuration();
+			LockerDuration6.setLockerDuration("19:00-21:00 น.");
+			lockerDurationRepository.save(LockerDuration6);
+
+
+
+
+//------------------------------ Privilege ----------------------------------
 
 			Privilege privilege1 = new Privilege();
 			privilege1.setPrivilegeName("Normal");
@@ -661,7 +752,15 @@ public class Team12Application {
 			fieldOrder1.setFieldDuration(FieldDuration2);
 			fieldOrder1.setDate(date1);
 			fieldOrderRepository.save(fieldOrder1);
+//--------------------------LockerOrder------------------------------------
 
+			LockerOrder lockerOrder1 = new LockerOrder();
+			lockerOrder1.setAdmin(admin6);
+			lockerOrder1.setLocker(Locker4);
+			lockerOrder1.setMember(member1);
+			lockerOrder1.setLockerDuration(LockerDuration2);
+			lockerOrder1.setDate(date1);
+			lockerOrderRepository.save(lockerOrder1);
 			//------------------------ Room ----------------------
 
 			Room Room01 = new Room();
