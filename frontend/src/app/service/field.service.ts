@@ -8,8 +8,8 @@ import { Observable } from 'rxjs/Observable';
 })
 export class FieldService {
 
-
-  public API = '//localhost:8080'
+ 
+ public API = '//localhost:8080'
 
   constructor(private http: HttpClient) { }
 

@@ -194,49 +194,49 @@ public class Team12Application {
 			//--------------------- Field ----------------------------
 
 			Field Field1 = new Field();
-			Field1.setFieldName("สนามฟุตบอล1");
+			Field1.setFieldName("soccer field1");
 			fieldRepository.save(Field1);
 			
 			Field Field2 = new Field();
-			Field2.setFieldName("สนามฟุตบอล2");
+			Field2.setFieldName("soccer field2");
 			fieldRepository.save(Field2);
 			
 			Field Field3 = new Field();
-			Field3.setFieldName("สนามฟุตบอล3");
+			Field3.setFieldName("soccer field3");
 			fieldRepository.save(Field3);
 			
 			Field Field4 = new Field();
-			Field4.setFieldName("สนามฟุตบอล4");
+			Field4.setFieldName("soccer field4");
 			fieldRepository.save(Field4);
 			
 			Field Field5 = new Field();
-			Field5.setFieldName("สนามฟุตบอล5");
+			Field5.setFieldName("soccer field5");
 			fieldRepository.save(Field5);
 			
 			//--------------------- FieldDuration -----------------
 			
 			FieldDuration FieldDuration1 = new FieldDuration();
-			FieldDuration1.setFieldDuration("08:00-10:00 น.");
+			FieldDuration1.setFieldDuration("08:00-10:00");
 			fieldDurationRepository.save(FieldDuration1);
 			
 			FieldDuration FieldDuration2 = new FieldDuration();
-			FieldDuration2.setFieldDuration("10:00-12:00 น.");
+			FieldDuration2.setFieldDuration("10:00-12:00");
 			fieldDurationRepository.save(FieldDuration2);
 			
 			FieldDuration FieldDuration3 = new FieldDuration();
-			FieldDuration3.setFieldDuration("13:00-15:00 น.");
+			FieldDuration3.setFieldDuration("13:00-15:00");
 			fieldDurationRepository.save(FieldDuration3);
 			
 			FieldDuration FieldDuration4 = new FieldDuration();
-			FieldDuration4.setFieldDuration("15:00-17:00 น.");
+			FieldDuration4.setFieldDuration("15:00-17:00");
 			fieldDurationRepository.save(FieldDuration4);
 			
 			FieldDuration FieldDuration5 = new FieldDuration();
-			FieldDuration5.setFieldDuration("17:00-19:00 น.");
+			FieldDuration5.setFieldDuration("17:00-19:00");
 			fieldDurationRepository.save(FieldDuration5);
 			
 			FieldDuration FieldDuration6 = new FieldDuration();
-			FieldDuration6.setFieldDuration("19:00-21:00 น.");
+			FieldDuration6.setFieldDuration("19:00-21:00");
 			fieldDurationRepository.save(FieldDuration6);
 
 
@@ -297,31 +297,31 @@ public class Team12Application {
 //-------------------LockerDuration--------------------------
 
 			LockerDuration LockerDuration1 = new LockerDuration();
-			LockerDuration1.setLockerDuration("08:00-10:00 น.");
+			LockerDuration1.setLockerDuration("08:00-10:00");
 			lockerDurationRepository.save(LockerDuration1);
 
 			LockerDuration LockerDuration2 = new LockerDuration();
-			LockerDuration2.setLockerDuration("10:00-12:00 น.");
+			LockerDuration2.setLockerDuration("10:00-12:00");
 			lockerDurationRepository.save(LockerDuration2);
 
 
 			LockerDuration LockerDuration3 = new LockerDuration();
-			LockerDuration3.setLockerDuration("13:00-15:00 น.");
+			LockerDuration3.setLockerDuration("13:00-15:00");
 			lockerDurationRepository.save(LockerDuration3);
 
 
 			LockerDuration LockerDuration4 = new LockerDuration();
-			LockerDuration4.setLockerDuration("15:00-17:00 น.");
+			LockerDuration4.setLockerDuration("15:00-17:00");
 			lockerDurationRepository.save(LockerDuration4);
 
 
 			LockerDuration LockerDuration5 = new LockerDuration();
-			LockerDuration5.setLockerDuration("17:00-19:00 น.");
+			LockerDuration5.setLockerDuration("17:00-19:00");
 			lockerDurationRepository.save(LockerDuration5);
 
 
 			LockerDuration LockerDuration6 = new LockerDuration();
-			LockerDuration6.setLockerDuration("19:00-21:00 น.");
+			LockerDuration6.setLockerDuration("19:00-21:00");
 			lockerDurationRepository.save(LockerDuration6);
 
 
@@ -743,7 +743,7 @@ public class Team12Application {
 			lease1.setDuration(duration1);
 			leaseRepository.save(lease1);
 
-			// ----------------- FieldOrder ----------------------------------
+// ----------------- FieldOrder ----------------------------------
 
 			FieldOrder fieldOrder1 = new FieldOrder();
 			fieldOrder1.setAdmin(admin6);
@@ -751,6 +751,7 @@ public class Team12Application {
 			fieldOrder1.setMember(member1);
 			fieldOrder1.setFieldDuration(FieldDuration2);
 			fieldOrder1.setDate(date1);
+			fieldOrder1.setNote("WelcomeThailand");
 			fieldOrderRepository.save(fieldOrder1);
 //--------------------------LockerOrder------------------------------------
 
@@ -760,8 +761,9 @@ public class Team12Application {
 			lockerOrder1.setMember(member1);
 			lockerOrder1.setLockerDuration(LockerDuration2);
 			lockerOrder1.setDate(date1);
+			lockerOrder1.setNote("HelloWorld");
 			lockerOrderRepository.save(lockerOrder1);
-			//------------------------ Room ----------------------
+//------------------------ Room ----------------------
 
 			Room Room01 = new Room();
 			Room01.setRoomNumber("R001");

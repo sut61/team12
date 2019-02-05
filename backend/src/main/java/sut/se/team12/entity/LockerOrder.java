@@ -18,6 +18,7 @@ public class LockerOrder {
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "lockerOrder_seq")
     @Column(name = "LOCKERORDER_ID")
     private Long lockerOrderId;
+    private String note;
     @Temporal(TemporalType.DATE)private Date Date;
 
 

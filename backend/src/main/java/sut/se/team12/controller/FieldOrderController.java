@@ -30,12 +30,13 @@ public class FieldOrderController {
     }
 
 
-    @PostMapping("/fieldOrder/{admin}/{member}/{field}/{duration}/{date}")
+    @PostMapping("/fieldOrder/{admin}/{member}/{field}/{duration}/{note}/{date}")
     public FieldOrder fieldOrder(
         @PathVariable Long admin, 
         @PathVariable Long member,
         @PathVariable Long field,
         @PathVariable Long duration,
+        @PathVariable String note,
         @PathVariable Date date) throws ParseException {
 
             FieldOrder newFieldOrder = new FieldOrder();
@@ -49,6 +50,7 @@ public class FieldOrderController {
             newFieldOrder.setMember(_member);
             newFieldOrder.setField(_field);
             newFieldOrder.setFieldDuration(_fieldDuration);
+            newFieldOrder.setNote(note);
             newFieldOrder.setDate(date);
         return fieldOrderRepository.save(newFieldOrder);
     }

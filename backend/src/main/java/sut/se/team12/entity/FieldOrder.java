@@ -18,6 +18,7 @@ public class FieldOrder {
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "fieldOrder_seq")
     @Column(name = "FIELDORDER_ID")
     private Long fieldOrderId;
+    private String note;
     @Temporal(TemporalType.DATE)private Date Date;
 
 

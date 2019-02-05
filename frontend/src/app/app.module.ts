@@ -76,6 +76,8 @@ import { TrainingCreateComponent } from './training-create/training-create.compo
 import { TrainingViewComponent } from './training-view/training-view.component';
 import { TicketComponent } from './ticket/ticket.component';
 import { TicketShowComponent } from './ticket-show/ticket-show.component';
+import { LockerOrderComponent } from './locker-order/locker-order.component';
+import { LockerViewComponent } from './locker-view/locker-view.component';
 
 
 
@@ -99,6 +101,8 @@ const routes: Routes = [
   {path: 'training-view',component: TrainingViewComponent},
   {path: 'ticket',component: TicketComponent},
   {path: 'ticket-show',component: TicketShowComponent},
+  {path: 'locker-order',component: LockerOrderComponent},
+  {path: 'locker-view',component: LockerViewComponent},
 ]
 
 @NgModule({
@@ -121,7 +125,9 @@ const routes: Routes = [
     TrainingCreateComponent,
     TrainingViewComponent,
     TicketComponent,
-    TicketShowComponent
+    TicketShowComponent,
+    LockerOrderComponent,
+    LockerViewComponent
   ],
   imports: [
     BrowserModule,

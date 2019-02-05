@@ -30,12 +30,13 @@ public class LockerOrderController {
     }
 
 
-    @PostMapping("/lockerOrder/{admin}/{member}/{locker}/{lockerDuration}/{date}")
+    @PostMapping("/lockerOrder/{admin}/{member}/{locker}/{lockerDuration}/{note}/{date}")
     public LockerOrder lockerOrder(
         @PathVariable Long admin, 
         @PathVariable Long member,
         @PathVariable Long locker,
         @PathVariable Long lockerDuration,
+        @PathVariable String note,
         @PathVariable Date date) throws ParseException {
 
             LockerOrder newLockerOrder = new LockerOrder();
@@ -49,6 +50,7 @@ public class LockerOrderController {
             newLockerOrder.setMember(_member);
             newLockerOrder.setLocker(_Locker);
             newLockerOrder.setLockerDuration(_lockerDuration);
+            newLockerOrder.setNote(note);
             newLockerOrder.setDate(date);
         return lockerOrderRepository.save(newLockerOrder);
     }
