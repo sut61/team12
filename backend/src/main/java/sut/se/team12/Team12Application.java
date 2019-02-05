@@ -36,6 +36,9 @@ public class Team12Application {
 			FieldOrderRepository fieldOrderRepository,
 			RoomRepository roomRepository,
 			RoomDurationRepository roomDurationRepository,
+			RoomCancelOrderRepository roomCancelOrderRepository,
+			RoomStatusRepository roomStatusRepository,
+			RoomOrderRepository roomOrderRepository,
 			TrainingRepository trainingRepository,
 			TrainingTypeRepository trainingTypeRepository,
 			TrainingProgramRepository trainingProgramRepository,
@@ -803,6 +806,41 @@ public class Team12Application {
 			roomDuration04.setRoomDuration("03.00 PM - 04.30 PM");
 			roomDurationRepository.save(roomDuration04);
 			
+			//----------------------------------Status----------------------------------------------------
+
+			RoomStatus roomStatus01 = new RoomStatus();
+			roomStatus01.setRoomStatus("จองแล้ว");
+			roomStatusRepository.save(roomStatus01);
+
+			RoomStatus roomStatus02 = new RoomStatus();
+			roomStatus02.setRoomStatus("ยกเลิกแล้ว");
+			roomStatusRepository.save(roomStatus02);
+
+			//---------------------------------RoomOrder-------------------------------------------------
+			
+			RoomOrder roomOrder01 = new RoomOrder();
+			Date date5 = dateformat.parse("2019-10-01");
+			roomOrder01.setAdmin(admin1);
+			roomOrder01.setRoom(Room05);
+			roomOrder01.setRoomDuration(roomDuration03);
+			roomOrder01.setDate(date5);
+			roomOrder01.setMember(member1);
+			roomOrder01.setRoomStatus(roomStatus01);
+			roomOrderRepository.save(roomOrder01);
+
+			//-----------------------------------RoomCancel-----------------------------------------------
+
+			RoomCancelOrder roomCancel = new RoomCancelOrder();
+
+			roomCancel.setRoomOrder(roomOrder01);
+			roomCancel.setNote("note");
+			roomCancel.setAdmin(admin1);
+			roomCancel.setRoomStatus(roomStatus02);
+			roomCancel.setDate(new Date());
+			roomCancelOrderRepository.save(roomCancel);
+
+
+
 			// --------------------------------- TrainingType --------------------------------------------
 
 			TrainingType trainingType1 = new TrainingType();
