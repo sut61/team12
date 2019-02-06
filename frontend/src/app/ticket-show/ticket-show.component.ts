@@ -5,7 +5,22 @@ import { Router, ActivatedRoute } from '@angular/router';
 import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
 import { HttpClient } from '@angular/common/http';
 import { TicketService } from '../service/ticket.service';
-import { map } from 'rxjs/operators';
+import { map, timeInterval } from 'rxjs/operators';
+
+// export interface Ticket{
+//   ticketId,
+//   date,
+//   name,
+//   phoneNumber,
+//   time,
+//   ticketType:{
+//     ticketTypeId,
+//     ticketType:'',
+//     price
+//   },
+//   field:{},
+//   admin:{},
+// }
 
 @Component({
   selector: 'app-ticket-show',
@@ -25,6 +40,7 @@ export class TicketShowComponent implements OnInit {
     }
   }
   last: Observable<any>;
+  // last= {} as Ticket
 
   isHandset$: Observable<boolean> = this.breakpointObserver.observe(Breakpoints.Handset)
   .pipe(
@@ -36,6 +52,7 @@ export class TicketShowComponent implements OnInit {
     this.ticketService.getLastTicket().subscribe(data => {
       this.last = data;
       console.log(this.last);
+      // console.log(this.last.time);
     })
     this.adminService.getAdminLogin().subscribe(data => {
       this.adminLogin = data;
