@@ -180,6 +180,7 @@ const routes: Routes = [
       useFactory: adapterFactory
     })
   ],
+  
   providers: [],
   bootstrap: [AppComponent]
 })
