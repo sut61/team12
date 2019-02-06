@@ -198,23 +198,23 @@ public class Team12Application {
 			//--------------------- Field ----------------------------
 
 			Field Field1 = new Field();
-			Field1.setFieldName("soccer field1");
+			Field1.setFieldName("soccer field");
 			fieldRepository.save(Field1);
 			
 			Field Field2 = new Field();
-			Field2.setFieldName("soccer field2");
+			Field2.setFieldName("volleyball field");
 			fieldRepository.save(Field2);
 			
 			Field Field3 = new Field();
-			Field3.setFieldName("soccer field3");
+			Field3.setFieldName("tennis field");
 			fieldRepository.save(Field3);
 			
 			Field Field4 = new Field();
-			Field4.setFieldName("soccer field4");
+			Field4.setFieldName("tabletennis field");
 			fieldRepository.save(Field4);
 			
 			Field Field5 = new Field();
-			Field5.setFieldName("soccer field5");
+			Field5.setFieldName("badminton field");
 			fieldRepository.save(Field5);
 			
 			//--------------------- FieldDuration -----------------
@@ -670,6 +670,24 @@ public class Team12Application {
 			member1.setProvince(province21);
 			member1.setAdmin(admin1);
 			memberRepository.save(member1);
+
+
+			Member member2 = new Member();
+			member2.setFirstName("Bubble");
+			member2.setLastName("Milktea");
+			member2.setAge(18);
+			member2.setBirthday(new Date());
+			member2.setEmail("cha@mail.com");
+			member2.setPhoneNumber("0976565024");
+			member2.setAddress("111");
+			member2.setSubDistrict("Taiwen");
+			member2.setDistrict("Taiwen");
+			member2.setTitle(title1);
+			member2.setPrivilege(privilege2);
+			member2.setProvince(province47);
+			member2.setAdmin(admin5);
+			memberRepository.save(member2);
+
 
 			// ------------------------- LeaseAccessory ------------------------------------------
 
