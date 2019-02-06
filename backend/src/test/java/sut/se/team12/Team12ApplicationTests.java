@@ -8,7 +8,9 @@ import org.springframework.test.context.junit4.SpringRunner;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.fail;
 
+import java.text.SimpleDateFormat;
 import java.util.Collections;
+import java.util.Date;
 import java.util.OptionalInt;
 import java.util.Set;
 
@@ -43,6 +45,13 @@ public class Team12ApplicationTests {
 	@Autowired private LeaseRepository leaseRepository;
 	@Autowired private LeaseDurationRepository leaseDurationRepository;
 	@Autowired private LeaseAccessoryRepository leaseAccessoryRepository;
+
+	@Autowired TitleRepository titleRepository;
+	@Autowired DegreeRepository degreeRepositiry;
+	@Autowired PositionRepository positionRepository;
+	@Autowired TrainingRepository trainingRepository;
+	@Autowired TrainingTypeRepository trainingTypeRepository;
+	@Autowired TrainingProgramRepository trainingProgramRepository;
 
     @Autowired private TestEntityManager entityManager;
 
@@ -972,6 +981,1887 @@ public void testNoteSizeOver() {
 	}
 
 	//--------------------------------------------------------------------------------------------------------------------------------------//
+
+	@Test public void testEmployee() throws Exception{
+		Employee e = new Employee();
+
+		Admin admin = adminRepository.findByAdminId(1L);
+		Title title = titleRepository.findByTitleId(1L);
+		Degree degree = degreeRepositiry.findByDegreeId(1L);
+		Position position = positionRepository.findByPositionId(1L);
+
+		SimpleDateFormat dateformat = new SimpleDateFormat("dd-MM-yyyy");
+		String input = "10-10-2012";
+		Date date = new Date();
+		date = dateformat.parse(input);
+
+		e.setAdmin(admin);
+		e.setId("1234567890123");
+		e.setTitle(title);
+		e.setFirstName("Supanniga");
+		e.setLastName("Ogasawara");
+		e.setBirthDate(date);
+		e.setPhone("0812345678");
+		e.setEmail("supanniga@gmail.com");
+		e.setAddress("11 SUT");
+		e.setDegree(degree);
+		e.setPosition(position);
+
+		try {
+            entityManager.persist(e);
+			entityManager.flush();
+			System.out.println("\n");
+			System.out.println("------------------------------------------- Employee pass ---------------------------------------");
+			System.out.println("\n");
+
+            // fail("Should not pass to this line");
+        } catch(javax.validation.ConstraintViolationException er) {
+            Set<ConstraintViolation<?>> violations = er.getConstraintViolations();
+            assertEquals(violations.isEmpty(), false);
+            assertEquals(violations.size(), 1);
+        }
+		
+	}
+
+	@Test public void testPersonalIdNotBeNull() throws Exception{
+		Employee e = new Employee();
+
+		Admin admin = adminRepository.findByAdminId(1L);
+		Title title = titleRepository.findByTitleId(1L);
+		Degree degree = degreeRepositiry.findByDegreeId(1L);
+		Position position = positionRepository.findByPositionId(1L);
+
+		SimpleDateFormat dateformat = new SimpleDateFormat("dd-MM-yyyy");
+		String input = "10-10-2012";
+		Date date = new Date();
+		date = dateformat.parse(input);
+
+		e.setAdmin(admin);
+		e.setId(null);
+		e.setTitle(title);
+		e.setFirstName("Supanniga");
+		e.setLastName("Ogasawara");
+		e.setBirthDate(date);
+		e.setPhone("0812345678");
+		e.setEmail("supanniga@gmail.com");
+		e.setAddress("11 SUT");
+		e.setDegree(degree);
+		e.setPosition(position);
+
+		try {
+            entityManager.persist(e);
+            entityManager.flush();
+
+            fail("Personal ID should not be null");
+        } catch(javax.validation.ConstraintViolationException er) {
+            Set<ConstraintViolation<?>> violations = er.getConstraintViolations();
+            assertEquals(violations.isEmpty(), false);
+			assertEquals(violations.size(), 1);
+			System.out.println("\n");
+			System.out.println("------------------------------------------- Employee _ personal id _ found null ---------------------------------------");
+			System.out.println();
+			System.out.println(er.getMessage());
+			System.out.println("\n");
+        }
+	}
+
+	@Test public void testPersonalIdSizeUnder() throws Exception{
+		Employee e = new Employee();
+
+		Admin admin = adminRepository.findByAdminId(1L);
+		Title title = titleRepository.findByTitleId(1L);
+		Degree degree = degreeRepositiry.findByDegreeId(1L);
+		Position position = positionRepository.findByPositionId(1L);
+
+		SimpleDateFormat dateformat = new SimpleDateFormat("dd-MM-yyyy");
+		String input = "10-10-2012";
+		Date date = new Date();
+		date = dateformat.parse(input);
+
+		e.setAdmin(admin);
+		e.setId("123456789012");
+		e.setTitle(title);
+		e.setFirstName("Supanniga");
+		e.setLastName("Ogasawara");
+		e.setBirthDate(date);
+		e.setPhone("0812345678");
+		e.setEmail("supanniga@gmail.com");
+		e.setAddress("11 SUT");
+		e.setDegree(degree);
+		e.setPosition(position);
+
+		try {
+            entityManager.persist(e);
+            entityManager.flush();
+
+            fail("Size of personal ID  not correct");
+        } catch(javax.validation.ConstraintViolationException er) {
+            Set<ConstraintViolation<?>> violations = er.getConstraintViolations();
+            assertEquals(violations.isEmpty(), false);
+			assertEquals(violations.size(), 1);
+			System.out.println("\n");
+			System.out.println("------------------------------------------- Employee _ personal id _ found size under min ---------------------------------------");
+			System.out.println();
+			System.out.println(er.getMessage());
+			// System.out.println("\n");
+        }
+	}
+
+	@Test public void testPersonalIdSizeOver() throws Exception{
+		Employee e = new Employee();
+
+		Admin admin = adminRepository.findByAdminId(1L);
+		Title title = titleRepository.findByTitleId(1L);
+		Degree degree = degreeRepositiry.findByDegreeId(1L);
+		Position position = positionRepository.findByPositionId(1L);
+
+		SimpleDateFormat dateformat = new SimpleDateFormat("dd-MM-yyyy");
+		String input = "10-10-2012";
+		Date date = new Date();
+		date = dateformat.parse(input);
+
+		e.setAdmin(admin);
+		e.setId("12345678901234");
+		e.setTitle(title);
+		e.setFirstName("Supanniga");
+		e.setLastName("Ogasawara");
+		e.setBirthDate(date);
+		e.setPhone("0812345678");
+		e.setEmail("supanniga@gmail.com");
+		e.setAddress("11 SUT");
+		e.setDegree(degree);
+		e.setPosition(position);
+
+		try {
+            entityManager.persist(e);
+            entityManager.flush();
+
+            fail("Size of personal ID  not correct");
+        } catch(javax.validation.ConstraintViolationException er) {
+            Set<ConstraintViolation<?>> violations = er.getConstraintViolations();
+            assertEquals(violations.isEmpty(), false);
+			assertEquals(violations.size(), 1);
+			System.out.println("\n");
+			System.out.println("------------------------------------------- Employee _ personal id _ found size over max ---------------------------------------");
+			System.out.println();
+			System.out.println(er.getMessage());
+			System.out.println("\n");
+        }
+	}
+
+	@Test public void testPersonalIdNotEqualPattern() throws Exception{
+		Employee e = new Employee();
+
+		Admin admin = adminRepository.findByAdminId(1L);
+		Title title = titleRepository.findByTitleId(1L);
+		Degree degree = degreeRepositiry.findByDegreeId(1L);
+		Position position = positionRepository.findByPositionId(1L);
+
+		SimpleDateFormat dateformat = new SimpleDateFormat("dd-MM-yyyy");
+		String input = "10-10-2012";
+		Date date = new Date();
+		date = dateformat.parse(input);
+
+		e.setAdmin(admin);
+		e.setId("123456abcdfg1");
+		e.setTitle(title);
+		e.setFirstName("Supanniga");
+		e.setLastName("Ogasawara");
+		e.setBirthDate(date);
+		e.setPhone("0812345678");
+		e.setEmail("supanniga@gmail.com");
+		e.setAddress("11 SUT");
+		e.setDegree(degree);
+		e.setPosition(position);
+
+		try {
+            entityManager.persist(e);
+            entityManager.flush();
+
+            fail("Pattern of personal ID not correct");
+        } catch(javax.validation.ConstraintViolationException er) {
+            Set<ConstraintViolation<?>> violations = er.getConstraintViolations();
+            assertEquals(violations.isEmpty(), false);
+			assertEquals(violations.size(), 1);
+			System.out.println("\n");
+			System.out.println("------------------------------------------- Employee _ personal id _ found not pattern ---------------------------------------");
+			System.out.println();
+			System.out.println(er.getMessage());
+			System.out.println("\n");
+        }
+	}
+
+	
+	@Test
+	//(expected=javax.persistence.PersistenceException.class)
+    public void testIdMustBeUnique(){
+        
+
+		Admin admin = adminRepository.findByAdminId(1L);
+		Title title = titleRepository.findByTitleId(1L);
+		Degree degree = degreeRepositiry.findByDegreeId(1L);
+		Position position = positionRepository.findByPositionId(1L);
+
+		// SimpleDateFormat dateformat = new SimpleDateFormat("dd-MM-yyyy");
+		// String input = "10-10-2012";
+		// Date date = new Date();
+		// date = dateformat.parse(input);
+
+		Employee e1 = new Employee();
+		e1.setAdmin(admin);
+		e1.setId("1234567890123");
+		e1.setTitle(title);
+		e1.setFirstName("Supanniga");
+		e1.setLastName("Ogasawara");
+		e1.setBirthDate(new Date());
+		e1.setPhone("0812345678");
+		e1.setEmail("supanniga@gmail.com");
+		e1.setAddress("11 SUT");
+		e1.setDegree(degree);
+		e1.setPosition(position);
+        entityManager.persist(e1);
+        entityManager.flush();
+
+        Employee e2 = new Employee();
+        e2.setAdmin(admin);
+		e2.setId("1234567890123");
+		e2.setTitle(title);
+		e2.setFirstName("Supanniga");
+		e2.setLastName("Ogasawara");
+		e2.setBirthDate(new Date());
+		e2.setPhone("0812345678");
+		e2.setEmail("supanniga@gmail.com");
+		e2.setAddress("11 SUT");
+		e2.setDegree(degree);
+		e2.setPosition(position);
+		
+		try{
+			entityManager.persist(e2);
+            entityManager.flush();
+
+            fail("Employee _ personal id _ found not unique");
+		}catch(javax.persistence.PersistenceException er){
+			// Set<ConstraintViolation<?>> violations = er.getConstraintViolations();
+            // assertEquals(violations.isEmpty(), false);
+			// assertEquals(violations.size(), 1);
+			// javax.validation.ConstraintViolationException er
+			// javax.persistence.PersistenceException er
+			System.out.println("\n");
+			System.out.println("------------------------------------------- Employee _ personal id _ found not unique ---------------------------------------");
+			System.out.println();
+			System.out.println(er.getMessage());
+			System.out.println("\n");
+		}
+    }
+
+
+	@Test public void testEmployeeFirstNameNotBeNull() throws Exception{
+		Employee e = new Employee();
+
+		Admin admin = adminRepository.findByAdminId(1L);
+		Title title = titleRepository.findByTitleId(1L);
+		Degree degree = degreeRepositiry.findByDegreeId(1L);
+		Position position = positionRepository.findByPositionId(1L);
+
+		SimpleDateFormat dateformat = new SimpleDateFormat("dd-MM-yyyy");
+		String input = "10-10-2012";
+		Date date = new Date();
+		date = dateformat.parse(input);
+
+		e.setAdmin(admin);
+		e.setId("1234567890123");
+		e.setTitle(title);
+		e.setFirstName(null);
+		e.setLastName("Ogasawara");
+		e.setBirthDate(date);
+		e.setPhone("0812345678");
+		e.setEmail("supanniga@gmail.com");
+		e.setAddress("11 SUT");
+		e.setDegree(degree);
+		e.setPosition(position);
+
+		try {
+            entityManager.persist(e);
+            entityManager.flush();
+
+            fail("Employee first name should not be null");
+        } catch(javax.validation.ConstraintViolationException er) {
+            Set<ConstraintViolation<?>> violations = er.getConstraintViolations();
+            assertEquals(violations.isEmpty(), false);
+			assertEquals(violations.size(), 1);
+			System.out.println("\n");
+			System.out.println("------------------------------------------- Employee _ first name _ found null ---------------------------------------");
+			System.out.println();
+			System.out.println(er.getMessage());
+			System.out.println("\n");
+        }
+	}
+
+	@Test public void testEmployeeFirstNameSizeUnder() throws Exception{
+		Employee e = new Employee();
+
+		Admin admin = adminRepository.findByAdminId(1L);
+		Title title = titleRepository.findByTitleId(1L);
+		Degree degree = degreeRepositiry.findByDegreeId(1L);
+		Position position = positionRepository.findByPositionId(1L);
+
+		SimpleDateFormat dateformat = new SimpleDateFormat("dd-MM-yyyy");
+		String input = "10-10-2012";
+		Date date = new Date();
+		date = dateformat.parse(input);
+
+		e.setAdmin(admin);
+		e.setId("1234567890123");
+		e.setTitle(title);
+		e.setFirstName("S");
+		e.setLastName("Ogasawara");
+		e.setBirthDate(date);
+		e.setPhone("0812345678");
+		e.setEmail("supanniga@gmail.com");
+		e.setAddress("11 SUT");
+		e.setDegree(degree);
+		e.setPosition(position);
+
+		try {
+            entityManager.persist(e);
+            entityManager.flush();
+
+            fail("Should not pass to this line");
+        } catch(javax.validation.ConstraintViolationException er) {
+            Set<ConstraintViolation<?>> violations = er.getConstraintViolations();
+            assertEquals(violations.isEmpty(), false);
+			assertEquals(violations.size(), 2);
+			System.out.println("\n");
+			System.out.println("------------------------------------------- Employee _ first name _ found size under min ---------------------------------------");
+			System.out.println();
+			System.out.println(er.getMessage());
+			System.out.println("\n");
+        }
+	}
+
+	@Test public void testEmployeeFirstNameSizeOver() throws Exception {
+		Employee e = new Employee();
+
+		Admin admin = adminRepository.findByAdminId(1L);
+		Title title = titleRepository.findByTitleId(1L);
+		Degree degree = degreeRepositiry.findByDegreeId(1L);
+		Position position = positionRepository.findByPositionId(1L);
+
+		SimpleDateFormat dateformat = new SimpleDateFormat("dd-MM-yyyy");
+		String input = "10-10-2012";
+		Date date = new Date();
+		date = dateformat.parse(input);
+
+		e.setAdmin(admin);
+		e.setId("1234567890123");
+		e.setTitle(title);
+		e.setFirstName("Abcdeabcdeabcdeabcdea");
+		e.setLastName("Ogasawara");
+		e.setBirthDate(date);
+		e.setPhone("0812345678");
+		e.setEmail("supanniga@gmail.com");
+		e.setAddress("11 SUT");
+		e.setDegree(degree);
+		e.setPosition(position);
+
+		try {
+            entityManager.persist(e);
+            entityManager.flush();
+
+            fail("Should not pass to this line");
+        } catch(javax.validation.ConstraintViolationException er) {
+            Set<ConstraintViolation<?>> violations = er.getConstraintViolations();
+            assertEquals(violations.isEmpty(), false);
+			assertEquals(violations.size(), 1);
+			System.out.println();
+			System.out.println();
+			System.out.println("------------------------------------------- Employee _ first name _ found size over max ---------------------------------------");
+			System.out.println();
+			System.out.println(er.getMessage());
+			System.out.println();
+			System.out.println();
+        }
+	}
+
+	@Test public void testEmployeeFirstNameNotEqualPattern() throws Exception{
+		Employee e = new Employee();
+
+		Admin admin = adminRepository.findByAdminId(1L);
+		Title title = titleRepository.findByTitleId(1L);
+		Degree degree = degreeRepositiry.findByDegreeId(1L);
+		Position position = positionRepository.findByPositionId(1L);
+
+		SimpleDateFormat dateformat = new SimpleDateFormat("dd-MM-yyyy");
+		String input = "10-10-2012";
+		Date date = new Date();
+		date = dateformat.parse(input);
+
+		e.setAdmin(admin);
+		e.setId("1234567890123");
+		e.setTitle(title);
+		e.setFirstName("supanniga");
+		e.setLastName("Ogasawara");
+		e.setBirthDate(date);
+		e.setPhone("0812345678");
+		e.setEmail("supanniga@gmail.com");
+		e.setAddress("11 SUT");
+		e.setDegree(degree);
+		e.setPosition(position);
+
+		try {
+            entityManager.persist(e);
+            entityManager.flush();
+
+            fail("Pattern of Employee first name not correct");
+        } catch(javax.validation.ConstraintViolationException er) {
+            Set<ConstraintViolation<?>> violations = er.getConstraintViolations();
+            assertEquals(violations.isEmpty(), false);
+			assertEquals(violations.size(), 1);
+			System.out.println("\n");
+			System.out.println("------------------------------------------- Employee _ first name _ found not pattern ---------------------------------------");
+			System.out.println();
+			System.out.println(er.getMessage());
+			System.out.println("\n");
+        }
+	}
+
+	@Test public void testEmployeeLastNameNotBeNull() throws Exception{
+		Employee e = new Employee();
+
+		Admin admin = adminRepository.findByAdminId(1L);
+		Title title = titleRepository.findByTitleId(1L);
+		Degree degree = degreeRepositiry.findByDegreeId(1L);
+		Position position = positionRepository.findByPositionId(1L);
+
+		SimpleDateFormat dateformat = new SimpleDateFormat("dd-MM-yyyy");
+		String input = "10-10-2012";
+		Date date = new Date();
+		date = dateformat.parse(input);
+
+		e.setAdmin(admin);
+		e.setId("1234567890123");
+		e.setTitle(title);
+		e.setFirstName("Supanniga");
+		e.setLastName(null);
+		e.setBirthDate(date);
+		e.setPhone("0812345678");
+		e.setEmail("supanniga@gmail.com");
+		e.setAddress("11 SUT");
+		e.setDegree(degree);
+		e.setPosition(position);
+
+		try {
+            entityManager.persist(e);
+            entityManager.flush();
+
+            fail("Employee last name should not be null");
+        } catch(javax.validation.ConstraintViolationException er) {
+            Set<ConstraintViolation<?>> violations = er.getConstraintViolations();
+            assertEquals(violations.isEmpty(), false);
+			assertEquals(violations.size(), 1);
+			System.out.println("\n");
+			System.out.println("------------------------------------------- Employee _ last name _ found null ---------------------------------------");
+			System.out.println();
+			System.out.println(er.getMessage());
+			System.out.println("\n");
+        }
+	}
+
+	@Test public void testEmployeeLastNameSizeUnder() throws Exception{
+		Employee e = new Employee();
+
+		Admin admin = adminRepository.findByAdminId(1L);
+		Title title = titleRepository.findByTitleId(1L);
+		Degree degree = degreeRepositiry.findByDegreeId(1L);
+		Position position = positionRepository.findByPositionId(1L);
+
+		SimpleDateFormat dateformat = new SimpleDateFormat("dd-MM-yyyy");
+		String input = "10-10-2012";
+		Date date = new Date();
+		date = dateformat.parse(input);
+
+		e.setAdmin(admin);
+		e.setId("1234567890123");
+		e.setTitle(title);
+		e.setFirstName("Supanniga");
+		e.setLastName("O");
+		e.setBirthDate(date);
+		e.setPhone("0812345678");
+		e.setEmail("supanniga@gmail.com");
+		e.setAddress("11 SUT");
+		e.setDegree(degree);
+		e.setPosition(position);
+
+		try {
+            entityManager.persist(e);
+            entityManager.flush();
+
+            fail("Should not pass to this line");
+        } catch(javax.validation.ConstraintViolationException er) {
+            Set<ConstraintViolation<?>> violations = er.getConstraintViolations();
+            assertEquals(violations.isEmpty(), false);
+			assertEquals(violations.size(), 2);
+			System.out.println("\n");
+			System.out.println("------------------------------------------- Employee _ last name _ found size under min ---------------------------------------");
+			System.out.println();
+			System.out.println(er.getMessage());
+			System.out.println("\n");
+        }
+	}
+
+	@Test public void testEmployeeLastNameSizeOver() throws Exception{
+		Employee e = new Employee();
+
+		Admin admin = adminRepository.findByAdminId(1L);
+		Title title = titleRepository.findByTitleId(1L);
+		Degree degree = degreeRepositiry.findByDegreeId(1L);
+		Position position = positionRepository.findByPositionId(1L);
+
+		SimpleDateFormat dateformat = new SimpleDateFormat("dd-MM-yyyy");
+		String input = "10-10-2012";
+		Date date = new Date();
+		date = dateformat.parse(input);
+
+		e.setAdmin(admin);
+		e.setId("1234567890123");
+		e.setTitle(title);
+		e.setFirstName("Supanniga");
+		e.setLastName("Abcdeabcdeabcdeabcdea");
+		e.setBirthDate(date);
+		e.setPhone("0812345678");
+		e.setEmail("supanniga@gmail.com");
+		e.setAddress("11 SUT");
+		e.setDegree(degree);
+		e.setPosition(position);
+
+		try {
+            entityManager.persist(e);
+            entityManager.flush();
+
+            fail("Should not pass to this line");
+        } catch(javax.validation.ConstraintViolationException er) {
+            Set<ConstraintViolation<?>> violations = er.getConstraintViolations();
+            assertEquals(violations.isEmpty(), false);
+			assertEquals(violations.size(), 1);
+			System.out.println("\n");
+			System.out.println("------------------------------------------- Employee _ last name _ found size over max ---------------------------------------");
+			System.out.println();
+			System.out.println(er.getMessage());
+			System.out.println("\n");
+        }
+	}
+
+	@Test public void testEmployeeLastNameNotEqualPattern() throws Exception{
+		Employee e = new Employee();
+
+		Admin admin = adminRepository.findByAdminId(1L);
+		Title title = titleRepository.findByTitleId(1L);
+		Degree degree = degreeRepositiry.findByDegreeId(1L);
+		Position position = positionRepository.findByPositionId(1L);
+
+		SimpleDateFormat dateformat = new SimpleDateFormat("dd-MM-yyyy");
+		String input = "10-10-2012";
+		Date date = new Date();
+		date = dateformat.parse(input);
+
+		e.setAdmin(admin);
+		e.setId("1234567890123");
+		e.setTitle(title);
+		e.setFirstName("Supanniga");
+		e.setLastName("ogasawara");
+		e.setBirthDate(date);
+		e.setPhone("0812345678");
+		e.setEmail("supanniga@gmail.com");
+		e.setAddress("11 SUT");
+		e.setDegree(degree);
+		e.setPosition(position);
+
+		try {
+            entityManager.persist(e);
+            entityManager.flush();
+
+            fail("Pattern of employee last name not correct");
+        } catch(javax.validation.ConstraintViolationException er) {
+            Set<ConstraintViolation<?>> violations = er.getConstraintViolations();
+            assertEquals(violations.isEmpty(), false);
+			assertEquals(violations.size(), 1);
+			System.out.println("\n");
+			System.out.println("------------------------------------------- Employee _ last name _ found not pattern ---------------------------------------");
+			System.out.println();
+			System.out.println(er.getMessage());
+			System.out.println("\n");
+        }
+	}
+
+	@Test public void testEmployeeBirthDateNotBeNull() throws Exception{
+		Employee e = new Employee();
+
+		Admin admin = adminRepository.findByAdminId(1L);
+		Title title = titleRepository.findByTitleId(1L);
+		Degree degree = degreeRepositiry.findByDegreeId(1L);
+		Position position = positionRepository.findByPositionId(1L);
+
+		SimpleDateFormat dateformat = new SimpleDateFormat("dd-MM-yyyy");
+		String input = "10-10-2012";
+		Date date = new Date();
+		date = dateformat.parse(input);
+
+		e.setAdmin(admin);
+		e.setId("1234567890123");
+		e.setTitle(title);
+		e.setFirstName("Supanniga");
+		e.setLastName("Ogasawara");
+		e.setBirthDate(null);
+		e.setPhone("0812345678");
+		e.setEmail("supanniga@gmail.com");
+		e.setAddress("11 SUT");
+		e.setDegree(degree);
+		e.setPosition(position);
+
+		try {
+            entityManager.persist(e);
+            entityManager.flush();
+
+            fail("Employee birth date should not be null");
+        } catch(javax.validation.ConstraintViolationException er) {
+            Set<ConstraintViolation<?>> violations = er.getConstraintViolations();
+            assertEquals(violations.isEmpty(), false);
+			assertEquals(violations.size(), 1);
+			System.out.println("\n");
+			System.out.println("------------------------------------------- Employee _ birth date _ found null ---------------------------------------");
+			System.out.println();
+			System.out.println(er.getMessage());
+			System.out.println("\n");
+        }
+	}
+
+	@Test public void testEmployeePhoneNotBeNull() throws Exception{
+		Employee e = new Employee();
+
+		Admin admin = adminRepository.findByAdminId(1L);
+		Title title = titleRepository.findByTitleId(1L);
+		Degree degree = degreeRepositiry.findByDegreeId(1L);
+		Position position = positionRepository.findByPositionId(1L);
+
+		SimpleDateFormat dateformat = new SimpleDateFormat("dd-MM-yyyy");
+		String input = "10-10-2012";
+		Date date = new Date();
+		date = dateformat.parse(input);
+
+		e.setAdmin(admin);
+		e.setId("1234567890123");
+		e.setTitle(title);
+		e.setFirstName("Supanniga");
+		e.setLastName("Ogasawara");
+		e.setBirthDate(date);
+		e.setPhone(null);
+		e.setEmail("supanniga@gmail.com");
+		e.setAddress("11 SUT");
+		e.setDegree(degree);
+		e.setPosition(position);
+
+		try {
+            entityManager.persist(e);
+            entityManager.flush();
+
+            fail("Employee phone should not be null");
+        } catch(javax.validation.ConstraintViolationException er) {
+            Set<ConstraintViolation<?>> violations = er.getConstraintViolations();
+            assertEquals(violations.isEmpty(), false);
+			assertEquals(violations.size(), 1);
+			System.out.println("\n");
+			System.out.println("------------------------------------------- Employee _ phone _ found null ---------------------------------------");
+			System.out.println();
+			System.out.println(er.getMessage());
+			System.out.println("\n");
+        }
+	}
+
+	@Test public void testEmployeePhoneSizeUnder() throws Exception{
+		Employee e = new Employee();
+
+		Admin admin = adminRepository.findByAdminId(1L);
+		Title title = titleRepository.findByTitleId(1L);
+		Degree degree = degreeRepositiry.findByDegreeId(1L);
+		Position position = positionRepository.findByPositionId(1L);
+
+		SimpleDateFormat dateformat = new SimpleDateFormat("dd-MM-yyyy");
+		String input = "10-10-2012";
+		Date date = new Date();
+		date = dateformat.parse(input);
+
+		e.setAdmin(admin);
+		e.setId("1234567890123");
+		e.setTitle(title);
+		e.setFirstName("Supanniga");
+		e.setLastName("Ogasawara");
+		e.setBirthDate(date);
+		e.setPhone("081234567");
+		e.setEmail("supanniga@gmail.com");
+		e.setAddress("11 SUT");
+		e.setDegree(degree);
+		e.setPosition(position);
+
+		try {
+            entityManager.persist(e);
+            entityManager.flush();
+
+            fail("Size of employee phone not correct");
+        } catch(javax.validation.ConstraintViolationException er) {
+            Set<ConstraintViolation<?>> violations = er.getConstraintViolations();
+            assertEquals(violations.isEmpty(), false);
+			assertEquals(violations.size(), 1);
+			System.out.println("\n");
+			System.out.println("------------------------------------------- Employee _ phone _ found size under min ---------------------------------------");
+			System.out.println();
+			System.out.println(er.getMessage());
+			System.out.println("\n");
+        }
+	}
+
+	@Test public void testEmployeePhoneSizeOver() throws Exception{
+		Employee e = new Employee();
+
+		Admin admin = adminRepository.findByAdminId(1L);
+		Title title = titleRepository.findByTitleId(1L);
+		Degree degree = degreeRepositiry.findByDegreeId(1L);
+		Position position = positionRepository.findByPositionId(1L);
+
+		SimpleDateFormat dateformat = new SimpleDateFormat("dd-MM-yyyy");
+		String input = "10-10-2012";
+		Date date = new Date();
+		date = dateformat.parse(input);
+
+		e.setAdmin(admin);
+		e.setId("1234567890123");
+		e.setTitle(title);
+		e.setFirstName("Supanniga");
+		e.setLastName("Ogasawara");
+		e.setBirthDate(date);
+		e.setPhone("08123456789");
+		e.setEmail("supanniga@gmail.com");
+		e.setAddress("11 SUT");
+		e.setDegree(degree);
+		e.setPosition(position);
+
+		try {
+            entityManager.persist(e);
+            entityManager.flush();
+
+            fail("Size of employee phone not correct");
+        } catch(javax.validation.ConstraintViolationException er) {
+            Set<ConstraintViolation<?>> violations = er.getConstraintViolations();
+            assertEquals(violations.isEmpty(), false);
+			assertEquals(violations.size(), 1);
+			System.out.println("\n");
+			System.out.println("------------------------------------------- Employee _ phone _ found size over max ---------------------------------------");
+			System.out.println();
+			System.out.println(er.getMessage());
+			System.out.println("\n");
+        }
+	}
+
+	@Test public void testEmployeePhoneNotEqualPattern() throws Exception{
+		Employee e = new Employee();
+
+		Admin admin = adminRepository.findByAdminId(1L);
+		Title title = titleRepository.findByTitleId(1L);
+		Degree degree = degreeRepositiry.findByDegreeId(1L);
+		Position position = positionRepository.findByPositionId(1L);
+
+		SimpleDateFormat dateformat = new SimpleDateFormat("dd-MM-yyyy");
+		String input = "10-10-2012";
+		Date date = new Date();
+		date = dateformat.parse(input);
+
+		e.setAdmin(admin);
+		e.setId("1234567890123");
+		e.setTitle(title);
+		e.setFirstName("Supanniga");
+		e.setLastName("Ogasawara");
+		e.setBirthDate(date);
+		e.setPhone("0812ab5678");
+		e.setEmail("supanniga@gmail.com");
+		e.setAddress("11 SUT");
+		e.setDegree(degree);
+		e.setPosition(position);
+
+		try {
+            entityManager.persist(e);
+            entityManager.flush();
+
+            fail("Pattern of employee phone not correct");
+        } catch(javax.validation.ConstraintViolationException er) {
+            Set<ConstraintViolation<?>> violations = er.getConstraintViolations();
+            assertEquals(violations.isEmpty(), false);
+			assertEquals(violations.size(), 1);
+			System.out.println("\n");
+			System.out.println("------------------------------------------- Employee _ phone _ found not pattern ---------------------------------------");
+			System.out.println();
+			System.out.println(er.getMessage());
+			System.out.println("\n");
+        }
+	}
+
+	@Test public void testEmployeeEmailNotBeNull() throws Exception{
+		Employee e = new Employee();
+
+		Admin admin = adminRepository.findByAdminId(1L);
+		Title title = titleRepository.findByTitleId(1L);
+		Degree degree = degreeRepositiry.findByDegreeId(1L);
+		Position position = positionRepository.findByPositionId(1L);
+
+		SimpleDateFormat dateformat = new SimpleDateFormat("dd-MM-yyyy");
+		String input = "10-10-2012";
+		Date date = new Date();
+		date = dateformat.parse(input);
+
+		e.setAdmin(admin);
+		e.setId("1234567890123");
+		e.setTitle(title);
+		e.setFirstName("Supanniga");
+		e.setLastName("Ogasawara");
+		e.setBirthDate(date);
+		e.setPhone("0812345678");
+		e.setEmail(null);
+		e.setAddress("11 SUT");
+		e.setDegree(degree);
+		e.setPosition(position);
+
+		try {
+            entityManager.persist(e);
+            entityManager.flush();
+
+            fail("Employee email should not be null");
+        } catch(javax.validation.ConstraintViolationException er) {
+            Set<ConstraintViolation<?>> violations = er.getConstraintViolations();
+            assertEquals(violations.isEmpty(), false);
+			assertEquals(violations.size(), 1);
+			System.out.println("\n");
+			System.out.println("------------------------------------------- Employee _ email _ found null ---------------------------------------");
+			System.out.println();
+			System.out.println(er.getMessage());
+			System.out.println("\n");
+        }
+	}
+
+	@Test public void testEmployeeEmailSizeUnder() throws Exception{
+		Employee e = new Employee();
+
+		Admin admin = adminRepository.findByAdminId(1L);
+		Title title = titleRepository.findByTitleId(1L);
+		Degree degree = degreeRepositiry.findByDegreeId(1L);
+		Position position = positionRepository.findByPositionId(1L);
+
+		SimpleDateFormat dateformat = new SimpleDateFormat("dd-MM-yyyy");
+		String input = "10-10-2012";
+		Date date = new Date();
+		date = dateformat.parse(input);
+
+		e.setAdmin(admin);
+		e.setId("1234567890123");
+		e.setTitle(title);
+		e.setFirstName("Supanniga");
+		e.setLastName("Ogasawara");
+		e.setBirthDate(date);
+		e.setPhone("0812345678");
+		e.setEmail("s@g.c"); //djwkjwlegjwo
+		e.setAddress("11 SUT");
+		e.setDegree(degree);
+		e.setPosition(position);
+
+		try {
+            entityManager.persist(e);
+            entityManager.flush();
+
+            fail("Should not pass to this line");
+        } catch(javax.validation.ConstraintViolationException er) {
+            Set<ConstraintViolation<?>> violations = er.getConstraintViolations();
+            assertEquals(violations.isEmpty(), false);
+			assertEquals(violations.size(), 2);
+			System.out.println("\n");
+			System.out.println("------------------------------------------- Employee _ email _ found size under min ---------------------------------------");
+			System.out.println();
+			System.out.println(er.getMessage());
+			System.out.println("\n");
+        }
+	}
+
+	@Test public void testEmployeeEmailNotEqualPattern() throws Exception{
+		Employee e = new Employee();
+
+		Admin admin = adminRepository.findByAdminId(1L);
+		Title title = titleRepository.findByTitleId(1L);
+		Degree degree = degreeRepositiry.findByDegreeId(1L);
+		Position position = positionRepository.findByPositionId(1L);
+
+		SimpleDateFormat dateformat = new SimpleDateFormat("dd-MM-yyyy");
+		String input = "10-10-2012";
+		Date date = new Date();
+		date = dateformat.parse(input);
+
+		e.setAdmin(admin);
+		e.setId("1234567890123");
+		e.setTitle(title);
+		e.setFirstName("Supanniga");
+		e.setLastName("Ogasawara");
+		e.setBirthDate(date);
+		e.setPhone("0812345678");
+		e.setEmail("supanniga@gmail");
+		e.setAddress("11 SUT");
+		e.setDegree(degree);
+		e.setPosition(position);
+
+		try {
+            entityManager.persist(e);
+            entityManager.flush();
+
+            fail("Pattern of employee email not correct");
+        } catch(javax.validation.ConstraintViolationException er) {
+            Set<ConstraintViolation<?>> violations = er.getConstraintViolations();
+            assertEquals(violations.isEmpty(), false);
+			assertEquals(violations.size(), 1);
+			System.out.println("\n");
+			System.out.println("------------------------------------------- Employee _ email _ found not pattern ---------------------------------------");
+			System.out.println();
+			System.out.println(er.getMessage());
+			System.out.println("\n");
+        }
+	}
+
+	@Test public void testEmployeeAddressNotBeNull() throws Exception{
+		Employee e = new Employee();
+
+		Admin admin = adminRepository.findByAdminId(1L);
+		Title title = titleRepository.findByTitleId(1L);
+		Degree degree = degreeRepositiry.findByDegreeId(1L);
+		Position position = positionRepository.findByPositionId(1L);
+
+		SimpleDateFormat dateformat = new SimpleDateFormat("dd-MM-yyyy");
+		String input = "10-10-2012";
+		Date date = new Date();
+		date = dateformat.parse(input);
+
+		e.setAdmin(admin);
+		e.setId("1234567890123");
+		e.setTitle(title);
+		e.setFirstName("Supanniga");
+		e.setLastName("Ogasawara");
+		e.setBirthDate(date);
+		e.setPhone("0812345678");
+		e.setEmail("supanniga@gmail.com");
+		e.setAddress(null);
+		e.setDegree(degree);
+		e.setPosition(position);
+
+		try {
+            entityManager.persist(e);
+            entityManager.flush();
+
+            fail("Employee address should not be null");
+        } catch(javax.validation.ConstraintViolationException er) {
+            Set<ConstraintViolation<?>> violations = er.getConstraintViolations();
+            assertEquals(violations.isEmpty(), false);
+			assertEquals(violations.size(), 1);
+			System.out.println("\n");
+			System.out.println("------------------------------------------- Employee _ address _ found null ---------------------------------------");
+			System.out.println();
+			System.out.println(er.getMessage());
+			System.out.println("\n");
+        }
+		
+	}
+
+	@Test public void testEmployeeAdminNotBeNull() throws Exception{
+		Employee e = new Employee();
+
+		Admin admin = adminRepository.findByAdminId(1L);
+		Title title = titleRepository.findByTitleId(1L);
+		Degree degree = degreeRepositiry.findByDegreeId(1L);
+		Position position = positionRepository.findByPositionId(1L);
+
+		SimpleDateFormat dateformat = new SimpleDateFormat("dd-MM-yyyy");
+		String input = "10-10-2012";
+		Date date = new Date();
+		date = dateformat.parse(input);
+
+		e.setAdmin(null);
+		e.setId("1234567890123");
+		e.setTitle(title);
+		e.setFirstName("Supanniga");
+		e.setLastName("Ogasawara");
+		e.setBirthDate(date);
+		e.setPhone("0812345678");
+		e.setEmail("supanniga@gmail.com");
+		e.setAddress("11 SUT");
+		e.setDegree(degree);
+		e.setPosition(position);
+
+		try {
+            entityManager.persist(e);
+            entityManager.flush();
+
+            fail("Should not pass to this line");
+        } catch(javax.validation.ConstraintViolationException er) {
+            Set<ConstraintViolation<?>> violations = er.getConstraintViolations();
+            assertEquals(violations.isEmpty(), false);
+			assertEquals(violations.size(), 1);
+			System.out.println("\n");
+			System.out.println("------------------------------------------- Employee _ admin _ found null ---------------------------------------");
+			System.out.println();
+			System.out.println(er.getMessage());
+			System.out.println("\n");
+        }
+	}
+
+	@Test public void testEmployeeTitleNotBeNull() throws Exception{
+		Employee e = new Employee();
+
+		Admin admin = adminRepository.findByAdminId(1L);
+		Title title = titleRepository.findByTitleId(1L);
+		Degree degree = degreeRepositiry.findByDegreeId(1L);
+		Position position = positionRepository.findByPositionId(1L);
+
+		SimpleDateFormat dateformat = new SimpleDateFormat("dd-MM-yyyy");
+		String input = "10-10-2012";
+		Date date = new Date();
+		date = dateformat.parse(input);
+
+		e.setAdmin(admin);
+		e.setId("1234567890123");
+		e.setTitle(null);
+		e.setFirstName("Supanniga");
+		e.setLastName("Ogasawara");
+		e.setBirthDate(date);
+		e.setPhone("0812345678");
+		e.setEmail("supanniga@gmail.com");
+		e.setAddress("11 SUT");
+		e.setDegree(degree);
+		e.setPosition(position);
+
+		try {
+            entityManager.persist(e);
+            entityManager.flush();
+
+            // fail("Should not pass to this line");
+        } catch(javax.validation.ConstraintViolationException er) {
+            Set<ConstraintViolation<?>> violations = er.getConstraintViolations();
+            assertEquals(violations.isEmpty(), false);
+			assertEquals(violations.size(), 1);
+			System.out.println("\n");
+			System.out.println("------------------------------------------- Employee _ title _ found null ---------------------------------------");
+			System.out.println();
+			System.out.println(er.getMessage());
+			System.out.println("\n");
+        }
+	}
+
+	@Test public void testEmployeeDegreeNotBeNull() throws Exception {
+		Employee e = new Employee();
+
+		Admin admin = adminRepository.findByAdminId(1L);
+		Title title = titleRepository.findByTitleId(1L);
+		Degree degree = degreeRepositiry.findByDegreeId(1L);
+		Position position = positionRepository.findByPositionId(1L);
+
+		SimpleDateFormat dateformat = new SimpleDateFormat("dd-MM-yyyy");
+		String input = "10-10-2012";
+		Date date = new Date();
+		date = dateformat.parse(input);
+
+		e.setAdmin(admin);
+		e.setId("1234567890123");
+		e.setTitle(title);
+		e.setFirstName("Supanniga");
+		e.setLastName("Ogasawara");
+		e.setBirthDate(date);
+		e.setPhone("0812345678");
+		e.setEmail("supanniga@gmail.com");
+		e.setAddress("11 SUT");
+		e.setDegree(null);
+		e.setPosition(position);
+
+		try {
+            entityManager.persist(e);
+            entityManager.flush();
+
+            fail("Should not pass to this line");
+        } catch(javax.validation.ConstraintViolationException er) {
+            Set<ConstraintViolation<?>> violations = er.getConstraintViolations();
+            assertEquals(violations.isEmpty(), false);
+			assertEquals(violations.size(), 1);
+			System.out.println("\n");
+			System.out.println("------------------------------------------- Employee _ degree _ found null ---------------------------------------");
+			System.out.println();
+			System.out.println(er.getMessage());
+			System.out.println("\n");
+        }
+	}
+
+	@Test public void testEmployeePositionNotBeNull() throws Exception{
+		Employee e = new Employee();
+
+		Admin admin = adminRepository.findByAdminId(1L);
+		Title title = titleRepository.findByTitleId(1L);
+		Degree degree = degreeRepositiry.findByDegreeId(1L);
+		Position position = positionRepository.findByPositionId(1L);
+
+		SimpleDateFormat dateformat = new SimpleDateFormat("dd-MM-yyyy");
+		String input = "10-10-2012";
+		Date date = new Date();
+		date = dateformat.parse(input);
+
+		e.setAdmin(admin);
+		e.setId("1234567890123");
+		e.setTitle(title);
+		e.setFirstName("Supanniga");
+		e.setLastName("Ogasawara");
+		e.setBirthDate(date);
+		e.setPhone("0812345678");
+		e.setEmail("supanniga@gmail.com");
+		e.setAddress("11 SUT");
+		e.setDegree(degree);
+		e.setPosition(null);
+
+		try {
+            entityManager.persist(e);
+            entityManager.flush();
+
+            fail("Should not pass to this line");
+        } catch(javax.validation.ConstraintViolationException er) {
+            Set<ConstraintViolation<?>> violations = er.getConstraintViolations();
+            assertEquals(violations.isEmpty(), false);
+			assertEquals(violations.size(), 1);
+			System.out.println("\n");
+			System.out.println("------------------------------------------- Employee _ position _ found null ---------------------------------------");
+			System.out.println();
+			System.out.println(er.getMessage());
+			System.out.println("\n");
+        }
+	}
+
+	// ------------------------------------------------ Training -----------------------------------------------------
+
+	@Test public void testTraining() throws Exception{
+		
+		Training t = new Training();
+
+		Admin admin = adminRepository.findByAdminId(1L);
+		TrainingType  trainingType = trainingTypeRepository.findByTypeId(1L);
+		TrainingProgram trainingProgram = trainingProgramRepository.findByProgramId(1L);
+
+		SimpleDateFormat dateformat = new SimpleDateFormat("dd-MM-yyyy");
+		String input = "10-10-2012";
+		Date dateFrom = new Date();
+		Date dateTo = new Date();
+		dateFrom = dateformat.parse(input);
+		dateTo = dateformat.parse(input);
+
+		t.setAdmin(admin);
+		t.setTitle("Motivating Techniques");
+		t.setDescription("description");
+		t.setDateFrom(dateFrom);
+		t.setDateTo(dateTo);
+		t.setTrainingType(trainingType);
+		t.setTrainingProgram(trainingProgram);
+		t.setInstructor("Mr.John Smith");
+		t.setLocation("location");
+		t.setEnrollment(250);
+		t.setCost(4500L);
+
+		try {
+            entityManager.persist(t);
+			entityManager.flush();
+			System.out.println("\n");
+			System.out.println("------------------------------------------- Training pass ---------------------------------------");
+			System.out.println("\n");
+
+            // fail("Should not pass to this line");
+        } catch(javax.validation.ConstraintViolationException er) {
+            Set<ConstraintViolation<?>> violations = er.getConstraintViolations();
+            assertEquals(violations.isEmpty(), false);
+			assertEquals(violations.size(), 1);
+			
+        }
+
+	}
+
+	@Test public void testTrainingTitleNotBeNull () throws Exception{
+		Training t = new Training();
+
+		Admin admin = adminRepository.findByAdminId(1L);
+		TrainingType  trainingType = trainingTypeRepository.findByTypeId(1L);
+		TrainingProgram trainingProgram = trainingProgramRepository.findByProgramId(1L);
+
+		SimpleDateFormat dateformat = new SimpleDateFormat("dd-MM-yyyy");
+		String input = "10-10-2012";
+		Date dateFrom = new Date();
+		Date dateTo = new Date();
+		dateFrom = dateformat.parse(input);
+		dateTo = dateformat.parse(input);
+
+		t.setAdmin(admin);
+		t.setTitle(null);
+		t.setDescription("description");
+		t.setDateFrom(dateFrom);
+		t.setDateTo(dateTo);
+		t.setTrainingType(trainingType);
+		t.setTrainingProgram(trainingProgram);
+		t.setInstructor("Mr.John Smith");
+		t.setLocation("location");
+		t.setEnrollment(250);
+		t.setCost(4500L);
+
+		try {
+            entityManager.persist(t);
+            entityManager.flush();
+
+            fail("Should not pass to this line");
+        } catch(javax.validation.ConstraintViolationException er) {
+            Set<ConstraintViolation<?>> violations = er.getConstraintViolations();
+            assertEquals(violations.isEmpty(), false);
+			assertEquals(violations.size(), 1);
+			System.out.println("\n");
+			System.out.println("------------------------------------------- Training _ title _ found null ---------------------------------------");
+			System.out.println();
+			System.out.println(er.getMessage());
+			System.out.println("\n");
+        }
+
+	}
+
+	// @Test public void testTrianingTitleSizeUnder() throws Exception {
+	// 	Training t = new Training();
+
+	// 	Admin admin = adminRepository.findByAdminId(1L);
+	// 	TrainingType  trainingType = trainingTypeRepository.findByTypeId(1L);
+	// 	TrainingProgram trainingProgram = trainingProgramRepository.findByProgramId(1L);
+
+	// 	SimpleDateFormat dateformat = new SimpleDateFormat("dd-MM-yyyy");
+	// 	String input = "10-10-2012";
+	// 	Date dateFrom = new Date();
+	// 	Date dateTo = new Date();
+	// 	dateFrom = dateformat.parse(input);
+	// 	dateTo = dateformat.parse(input);
+
+	// 	t.setAdmin(admin);
+	// 	t.setTitle("t");
+	// 	t.setDescription("description");
+	// 	t.setDateFrom(dateFrom);
+	// 	t.setDateTo(dateTo);
+	// 	t.setTrainingType(trainingType);
+	// 	t.setTrainingProgram(trainingProgram);
+	// 	t.setInstructor("Mr.John Smith");
+	// 	t.setLocation("location");
+	// 	t.setEnrollment(250);
+	// 	t.setCost(4500L);
+
+	// 	try {
+    //         entityManager.persist(t);
+    //         entityManager.flush();
+
+    //         fail("Should not pass to this line");
+    //     } catch(javax.validation.ConstraintViolationException er) {
+    //         Set<ConstraintViolation<?>> violations = er.getConstraintViolations();
+    //         assertEquals(violations.isEmpty(), false);
+	// 		assertEquals(violations.size(), 1);
+	// 		System.out.println("\n");
+	// 		System.out.println("------------------------------------------- Training _ title _ found size under min ---------------------------------------");
+	// 		System.out.println();
+	// 		System.out.println(er.getMessage());
+	// 		System.out.println("\n");
+    //     }
+
+	// }
+
+
+	// @Test public void testTrainingTitleNotPattern() throws Exception {
+	// 	Training t = new Training();
+
+	// 	Admin admin = adminRepository.findByAdminId(1L);
+	// 	TrainingType  trainingType = trainingTypeRepository.findByTypeId(1L);
+	// 	TrainingProgram trainingProgram = trainingProgramRepository.findByProgramId(1L);
+
+	// 	SimpleDateFormat dateformat = new SimpleDateFormat("dd-MM-yyyy");
+	// 	String input = "10-10-2012";
+	// 	Date dateFrom = new Date();
+	// 	Date dateTo = new Date();
+	// 	dateFrom = dateformat.parse(input);
+	// 	dateTo = dateformat.parse(input);
+
+	// 	t.setAdmin(admin);
+	// 	t.setTitle("Motivating Techniques_");
+	// 	t.setDescription("description");
+	// 	t.setDateFrom(dateFrom);
+	// 	t.setDateTo(dateTo);
+	// 	t.setTrainingType(trainingType);
+	// 	t.setTrainingProgram(trainingProgram);
+	// 	t.setInstructor("Mr.John Smith");
+	// 	t.setLocation("location");
+	// 	t.setEnrollment(250);
+	// 	t.setCost(4500L);
+
+	// 	try {
+    //         entityManager.persist(t);
+    //         entityManager.flush();
+
+    //         fail("Should not pass to this line");
+    //     } catch(javax.validation.ConstraintViolationException er) {
+    //         Set<ConstraintViolation<?>> violations = er.getConstraintViolations();
+    //         assertEquals(violations.isEmpty(), false);
+	// 		assertEquals(violations.size(), 1);
+	// 		System.out.println("\n");
+	// 		System.out.println("------------------------------------------- Training _ title _ found not pattern ---------------------------------------");
+	// 		System.out.println();
+	// 		System.out.println(er.getMessage());
+	// 		System.out.println("\n");
+    //     }
+	// }
+
+	//(expected=javax.persistence.PersistenceException.class) 
+	// @Test
+	// public void testTrainingTitleMustBeUnique() throws Exception {
+		
+
+	// 	Admin admin = adminRepository.findByAdminId(1L);
+	// 	TrainingType  trainingType = trainingTypeRepository.findByTypeId(1L);
+	// 	TrainingProgram trainingProgram = trainingProgramRepository.findByProgramId(1L);
+
+	// 	SimpleDateFormat dateformat = new SimpleDateFormat("dd-MM-yyyy");
+	// 	String input = "10-10-2012";
+	// 	Date dateFrom = new Date();
+	// 	Date dateTo = new Date();
+	// 	dateFrom = dateformat.parse(input);
+	// 	dateTo = dateformat.parse(input);
+
+	// 	Training t = new Training();
+	// 	// t.setTrainingId(1L);
+	// 	t.setAdmin(admin);
+	// 	t.setTitle("title");
+	// 	t.setDescription("description");
+	// 	t.setDateFrom(dateFrom);
+	// 	t.setDateTo(dateTo);
+	// 	t.setTrainingType(trainingType);
+	// 	t.setTrainingProgram(trainingProgram);
+	// 	t.setInstructor("Mr.John Smith");
+	// 	t.setLocation("location");
+	// 	t.setEnrollment(250);
+	// 	t.setCost(4500L);
+	// 	entityManager.persist(t);
+    //     entityManager.flush();
+
+	// 	Training t2 = new Training();
+	// 	// t2.setTrainingId(1L);
+	// 	t2.setAdmin(admin);
+	// 	t2.setTitle("title");
+	// 	t2.setDescription("description");
+	// 	t2.setDateFrom(dateFrom);
+	// 	t2.setDateTo(dateTo);
+	// 	t2.setTrainingType(trainingType);
+	// 	t2.setTrainingProgram(trainingProgram);
+	// 	t2.setInstructor("Mr.John Smith");
+	// 	t2.setLocation("location");
+	// 	t2.setEnrollment(250);
+	// 	t2.setCost(4500L);
+
+	// 	try {
+	// 		entityManager.persist(t2);
+    //         entityManager.flush();
+
+    //         fail("Should not pass to this line");
+    //     } catch(javax.persistence.PersistenceException er) {
+    //         // Set<ConstraintViolation<?>> violations = er.getMessage();
+    //         // assertEquals(violations.isEmpty(), false);
+	// 		// assertEquals(violations.size(), 1);
+	// 		System.out.println();
+	// 		System.out.println();
+	// 		System.out.println("-------------------------------------- found not unique -------------------------------------");
+	// 		System.out.println(er+" ");
+	// 		System.out.println();
+	// 		System.out.println();
+			
+	// 	}
+
+
+	// }
+
+
+
+
+	@Test public void testTrainingDescriptionNotBeNull() throws Exception {
+		Training t = new Training();
+
+		Admin admin = adminRepository.findByAdminId(1L);
+		TrainingType  trainingType = trainingTypeRepository.findByTypeId(1L);
+		TrainingProgram trainingProgram = trainingProgramRepository.findByProgramId(1L);
+
+		SimpleDateFormat dateformat = new SimpleDateFormat("dd-MM-yyyy");
+		String input = "10-10-2012";
+		Date dateFrom = new Date();
+		Date dateTo = new Date();
+		dateFrom = dateformat.parse(input);
+		dateTo = dateformat.parse(input);
+
+		t.setAdmin(admin);
+		t.setTitle("title");
+		t.setDescription(null);
+		t.setDateFrom(dateFrom);
+		t.setDateTo(dateTo);
+		t.setTrainingType(trainingType);
+		t.setTrainingProgram(trainingProgram);
+		t.setInstructor("Mr.John Smith");
+		t.setLocation("location");
+		t.setEnrollment(250);
+		t.setCost(4500L);
+
+		try {
+            entityManager.persist(t);
+            entityManager.flush();
+
+            fail("Should not pass to this line");
+        } catch(javax.validation.ConstraintViolationException er) {
+            Set<ConstraintViolation<?>> violations = er.getConstraintViolations();
+            assertEquals(violations.isEmpty(), false);
+			assertEquals(violations.size(), 1);
+			System.out.println("\n");
+			System.out.println("------------------------------------------- Training _ description _ found null ---------------------------------------");
+			System.out.println();
+			System.out.println(er.getMessage());
+			System.out.println("\n");
+        }
+	}
+
+	@Test public void testTrainingDateFromNotBeNull() throws Exception {
+		Training t = new Training();
+
+		Admin admin = adminRepository.findByAdminId(1L);
+		TrainingType  trainingType = trainingTypeRepository.findByTypeId(1L);
+		TrainingProgram trainingProgram = trainingProgramRepository.findByProgramId(1L);
+
+		SimpleDateFormat dateformat = new SimpleDateFormat("dd-MM-yyyy");
+		String input = "10-10-2012";
+		Date dateFrom = new Date();
+		Date dateTo = new Date();
+		dateFrom = dateformat.parse(input);
+		dateTo = dateformat.parse(input);
+
+		t.setAdmin(admin);
+		t.setTitle("title");
+		t.setDescription("description");
+		t.setDateFrom(null);
+		t.setDateTo(dateTo);
+		t.setTrainingType(trainingType);
+		t.setTrainingProgram(trainingProgram);
+		t.setInstructor("Mr.John Smith");
+		t.setLocation("location");
+		t.setEnrollment(250);
+		t.setCost(4500L);
+
+		try {
+            entityManager.persist(t);
+            entityManager.flush();
+
+            fail("Should not pass to this line");
+        } catch(javax.validation.ConstraintViolationException er) {
+            Set<ConstraintViolation<?>> violations = er.getConstraintViolations();
+            assertEquals(violations.isEmpty(), false);
+			assertEquals(violations.size(), 1);
+			System.out.println("\n");
+			System.out.println("------------------------------------------- Training _ dateFrom _ found null ---------------------------------------");
+			System.out.println();
+			System.out.println(er.getMessage());
+			System.out.println("\n");
+        }
+	}
+
+	@Test public void testTrainingDateToNotBeNull() throws Exception {
+		Training t = new Training();
+
+		Admin admin = adminRepository.findByAdminId(1L);
+		TrainingType  trainingType = trainingTypeRepository.findByTypeId(1L);
+		TrainingProgram trainingProgram = trainingProgramRepository.findByProgramId(1L);
+
+		SimpleDateFormat dateformat = new SimpleDateFormat("dd-MM-yyyy");
+		String input = "10-10-2012";
+		Date dateFrom = new Date();
+		Date dateTo = new Date();
+		dateFrom = dateformat.parse(input);
+		dateTo = dateformat.parse(input);
+
+		t.setAdmin(admin);
+		t.setTitle("title");
+		t.setDescription("description");
+		t.setDateFrom(dateFrom);
+		t.setDateTo(null);
+		t.setTrainingType(trainingType);
+		t.setTrainingProgram(trainingProgram);
+		t.setInstructor("Mr.John Smith");
+		t.setLocation("location");
+		t.setEnrollment(250);
+		t.setCost(4500L);
+
+		try {
+            entityManager.persist(t);
+            entityManager.flush();
+
+            fail("Should not pass to this line");
+        } catch(javax.validation.ConstraintViolationException er) {
+            Set<ConstraintViolation<?>> violations = er.getConstraintViolations();
+            assertEquals(violations.isEmpty(), false);
+			assertEquals(violations.size(), 1);
+			System.out.println("\n");
+			System.out.println("------------------------------------------- Training _ dateTo _ found null ---------------------------------------");
+			System.out.println();
+			System.out.println(er.getMessage());
+			System.out.println("\n");
+        }
+	}
+
+	@Test public void testTrainingInstructorNotBeNull() throws Exception {
+		Training t = new Training();
+
+		Admin admin = adminRepository.findByAdminId(1L);
+		TrainingType  trainingType = trainingTypeRepository.findByTypeId(1L);
+		TrainingProgram trainingProgram = trainingProgramRepository.findByProgramId(1L);
+
+		SimpleDateFormat dateformat = new SimpleDateFormat("dd-MM-yyyy");
+		String input = "10-10-2012";
+		Date dateFrom = new Date();
+		Date dateTo = new Date();
+		dateFrom = dateformat.parse(input);
+		dateTo = dateformat.parse(input);
+
+		t.setAdmin(admin);
+		t.setTitle("title");
+		t.setDescription("description");
+		t.setDateFrom(dateFrom);
+		t.setDateTo(dateTo);
+		t.setTrainingType(trainingType);
+		t.setTrainingProgram(trainingProgram);
+		t.setInstructor(null);
+		t.setLocation("location");
+		t.setEnrollment(250);
+		t.setCost(4500L);
+
+		try {
+            entityManager.persist(t);
+            entityManager.flush();
+
+            fail("Should not pass to this line");
+        } catch(javax.validation.ConstraintViolationException er) {
+            Set<ConstraintViolation<?>> violations = er.getConstraintViolations();
+            assertEquals(violations.isEmpty(), false);
+			assertEquals(violations.size(), 1);
+			System.out.println("\n");
+			System.out.println("------------------------------------------- Training _ instructor _ found null ---------------------------------------");
+			System.out.println();
+			System.out.println(er.getMessage());
+			System.out.println("\n");
+        }
+	}
+
+	@Test public void testTrainingInstructorSizeUnder() throws Exception {
+		Training t = new Training();
+
+		Admin admin = adminRepository.findByAdminId(1L);
+		TrainingType  trainingType = trainingTypeRepository.findByTypeId(1L);
+		TrainingProgram trainingProgram = trainingProgramRepository.findByProgramId(1L);
+
+		SimpleDateFormat dateformat = new SimpleDateFormat("dd-MM-yyyy");
+		String input = "10-10-2012";
+		Date dateFrom = new Date();
+		Date dateTo = new Date();
+		dateFrom = dateformat.parse(input);
+		dateTo = dateformat.parse(input);
+
+		t.setAdmin(admin);
+		t.setTitle("title");
+		t.setDescription("description");
+		t.setDateFrom(dateFrom);
+		t.setDateTo(dateTo);
+		t.setTrainingType(trainingType);
+		t.setTrainingProgram(trainingProgram);
+		t.setInstructor("s");
+		t.setLocation("location");
+		t.setEnrollment(250);
+		t.setCost(4500L);
+
+		try {
+            entityManager.persist(t);
+            entityManager.flush();
+
+            fail("Should not pass to this line");
+        } catch(javax.validation.ConstraintViolationException er) {
+            Set<ConstraintViolation<?>> violations = er.getConstraintViolations();
+            assertEquals(violations.isEmpty(), false);
+			assertEquals(violations.size(), 1);
+			System.out.println("\n");
+			System.out.println("------------------------------------------- Training _ instructor _ found size under min ---------------------------------------");
+			System.out.println();
+			System.out.println(er.getMessage());
+			System.out.println("\n");
+        }
+	}
+
+	@Test public void testTrainingInstructorSizeOver() throws Exception {
+		Training t = new Training();
+
+		Admin admin = adminRepository.findByAdminId(1L);
+		TrainingType  trainingType = trainingTypeRepository.findByTypeId(1L);
+		TrainingProgram trainingProgram = trainingProgramRepository.findByProgramId(1L);
+
+		SimpleDateFormat dateformat = new SimpleDateFormat("dd-MM-yyyy");
+		String input = "10-10-2012";
+		Date dateFrom = new Date();
+		Date dateTo = new Date();
+		dateFrom = dateformat.parse(input);
+		dateTo = dateformat.parse(input);
+
+		t.setAdmin(admin);
+		t.setTitle("title");
+		t.setDescription("description");
+		t.setDateFrom(dateFrom);
+		t.setDateTo(dateTo);
+		t.setTrainingType(trainingType);
+		t.setTrainingProgram(trainingProgram);
+		t.setInstructor("Abcdeabcdeabcdeabcdeabcdeabcdea");
+		t.setLocation("location");
+		t.setEnrollment(250);
+		t.setCost(4500L);
+
+		try {
+            entityManager.persist(t);
+            entityManager.flush();
+
+            fail("Should not pass to this line");
+        } catch(javax.validation.ConstraintViolationException er) {
+            Set<ConstraintViolation<?>> violations = er.getConstraintViolations();
+            assertEquals(violations.isEmpty(), false);
+			assertEquals(violations.size(), 1);
+			System.out.println("\n");
+			System.out.println("------------------------------------------- Training _ instructor _ found size over max ---------------------------------------");
+			System.out.println();
+			System.out.println(er.getMessage());
+			System.out.println("\n");
+        }
+	}
+
+	@Test public void testTrainingInstructorNotPattern() throws Exception {
+		Training t = new Training();
+
+		Admin admin = adminRepository.findByAdminId(1L);
+		TrainingType  trainingType = trainingTypeRepository.findByTypeId(1L);
+		TrainingProgram trainingProgram = trainingProgramRepository.findByProgramId(1L);
+
+		SimpleDateFormat dateformat = new SimpleDateFormat("dd-MM-yyyy");
+		String input = "10-10-2012";
+		Date dateFrom = new Date();
+		Date dateTo = new Date();
+		dateFrom = dateformat.parse(input);
+		dateTo = dateformat.parse(input);
+
+		t.setAdmin(admin);
+		t.setTitle("title");
+		t.setDescription("description");
+		t.setDateFrom(dateFrom);
+		t.setDateTo(dateTo);
+		t.setTrainingType(trainingType);
+		t.setTrainingProgram(trainingProgram);
+		t.setInstructor("Abcde_abcde");
+		t.setLocation("location");
+		t.setEnrollment(250);
+		t.setCost(4500L);
+
+		try {
+            entityManager.persist(t);
+            entityManager.flush();
+
+            fail("Should not pass to this line");
+        } catch(javax.validation.ConstraintViolationException er) {
+            Set<ConstraintViolation<?>> violations = er.getConstraintViolations();
+            assertEquals(violations.isEmpty(), false);
+			assertEquals(violations.size(), 1);
+			System.out.println("\n");
+			System.out.println("------------------------------------------- Training _ instructor _ found not pattern ---------------------------------------");
+			System.out.println();
+			System.out.println(er.getMessage());
+			System.out.println("\n");
+        }
+	}
+
+	@Test public void testTrainingLocationNotBeNull() throws Exception {
+		Training t = new Training();
+
+		Admin admin = adminRepository.findByAdminId(1L);
+		TrainingType  trainingType = trainingTypeRepository.findByTypeId(1L);
+		TrainingProgram trainingProgram = trainingProgramRepository.findByProgramId(1L);
+
+		SimpleDateFormat dateformat = new SimpleDateFormat("dd-MM-yyyy");
+		String input = "10-10-2012";
+		Date dateFrom = new Date();
+		Date dateTo = new Date();
+		dateFrom = dateformat.parse(input);
+		dateTo = dateformat.parse(input);
+
+		t.setAdmin(admin);
+		t.setTitle("title");
+		t.setDescription("description");
+		t.setDateFrom(dateFrom);
+		t.setDateTo(dateTo);
+		t.setTrainingType(trainingType);
+		t.setTrainingProgram(trainingProgram);
+		t.setInstructor("Mr.John Smith");
+		t.setLocation(null);
+		t.setEnrollment(250);
+		t.setCost(4500L);
+
+		try {
+            entityManager.persist(t);
+            entityManager.flush();
+
+            fail("Should not pass to this line");
+        } catch(javax.validation.ConstraintViolationException er) {
+            Set<ConstraintViolation<?>> violations = er.getConstraintViolations();
+            assertEquals(violations.isEmpty(), false);
+			assertEquals(violations.size(), 1);
+			System.out.println("\n");
+			System.out.println("------------------------------------------- Training _ location _ found null ---------------------------------------");
+			System.out.println();
+			System.out.println(er.getMessage());
+			System.out.println("\n");
+        }
+	}
+
+	@Test public void testTrainingLocationNotPattern() throws Exception {
+		Training t = new Training();
+
+		Admin admin = adminRepository.findByAdminId(1L);
+		TrainingType  trainingType = trainingTypeRepository.findByTypeId(1L);
+		TrainingProgram trainingProgram = trainingProgramRepository.findByProgramId(1L);
+
+		SimpleDateFormat dateformat = new SimpleDateFormat("dd-MM-yyyy");
+		String input = "10-10-2012";
+		Date dateFrom = new Date();
+		Date dateTo = new Date();
+		dateFrom = dateformat.parse(input);
+		dateTo = dateformat.parse(input);
+
+		t.setAdmin(admin);
+		t.setTitle("title");
+		t.setDescription("description");
+		t.setDateFrom(dateFrom);
+		t.setDateTo(dateTo);
+		t.setTrainingType(trainingType);
+		t.setTrainingProgram(trainingProgram);
+		t.setInstructor("Mr.John Smith");
+		t.setLocation("SUT ?");
+		t.setEnrollment(250);
+		t.setCost(4500L);
+
+		try {
+            entityManager.persist(t);
+            entityManager.flush();
+
+            fail("Should not pass to this line");
+        } catch(javax.validation.ConstraintViolationException er) {
+            Set<ConstraintViolation<?>> violations = er.getConstraintViolations();
+            assertEquals(violations.isEmpty(), false);
+			assertEquals(violations.size(), 1);
+			System.out.println("\n");
+			System.out.println("------------------------------------------- Training _ location _ found not pattern ---------------------------------------");
+			System.out.println();
+			System.out.println(er.getMessage());
+			System.out.println("\n");
+        }
+	}
+
+	@Test public void testTrainingEnrollmentNotBeNull() throws Exception {
+		Training t = new Training();
+
+		Admin admin = adminRepository.findByAdminId(1L);
+		TrainingType  trainingType = trainingTypeRepository.findByTypeId(1L);
+		TrainingProgram trainingProgram = trainingProgramRepository.findByProgramId(1L);
+
+		SimpleDateFormat dateformat = new SimpleDateFormat("dd-MM-yyyy");
+		String input = "10-10-2012";
+		Date dateFrom = new Date();
+		Date dateTo = new Date();
+		dateFrom = dateformat.parse(input);
+		dateTo = dateformat.parse(input);
+
+		t.setAdmin(admin);
+		t.setTitle("title");
+		t.setDescription("description");
+		t.setDateFrom(dateFrom);
+		t.setDateTo(dateTo);
+		t.setTrainingType(trainingType);
+		t.setTrainingProgram(trainingProgram);
+		t.setInstructor("Mr.John Smith");
+		t.setLocation("location");
+		t.setEnrollment(null);
+		t.setCost(4500L);
+
+		try {
+            entityManager.persist(t);
+            entityManager.flush();
+
+            fail("Should not pass to this line");
+        } catch(javax.validation.ConstraintViolationException er) {
+            Set<ConstraintViolation<?>> violations = er.getConstraintViolations();
+            assertEquals(violations.isEmpty(), false);
+			assertEquals(violations.size(), 1);
+			System.out.println("\n");
+			System.out.println("------------------------------------------- Training _ enrollment _ found null ---------------------------------------");
+			System.out.println();
+			System.out.println(er.getMessage());
+			System.out.println("\n");
+        }
+	}
+
+	@Test public void testTrainingCostNotBeNull() throws Exception {
+		Training t = new Training();
+
+		Admin admin = adminRepository.findByAdminId(1L);
+		TrainingType  trainingType = trainingTypeRepository.findByTypeId(1L);
+		TrainingProgram trainingProgram = trainingProgramRepository.findByProgramId(1L);
+
+		SimpleDateFormat dateformat = new SimpleDateFormat("dd-MM-yyyy");
+		String input = "10-10-2012";
+		Date dateFrom = new Date();
+		Date dateTo = new Date();
+		dateFrom = dateformat.parse(input);
+		dateTo = dateformat.parse(input);
+
+		t.setAdmin(admin);
+		t.setTitle("title");
+		t.setDescription("description");
+		t.setDateFrom(dateFrom);
+		t.setDateTo(dateTo);
+		t.setTrainingType(trainingType);
+		t.setTrainingProgram(trainingProgram);
+		t.setInstructor("Mr.John Smith");
+		t.setLocation("location");
+		t.setEnrollment(250);
+		t.setCost(null);
+
+		try {
+            entityManager.persist(t);
+            entityManager.flush();
+
+            fail("Should not pass to this line");
+        } catch(javax.validation.ConstraintViolationException er) {
+            Set<ConstraintViolation<?>> violations = er.getConstraintViolations();
+            assertEquals(violations.isEmpty(), false);
+			assertEquals(violations.size(), 1);
+			System.out.println("\n");
+			System.out.println("------------------------------------------- Training _ cost _ found null ---------------------------------------");
+			System.out.println();
+			System.out.println(er.getMessage());
+			System.out.println("\n");
+        }
+	}
+
+	
 
 
 
