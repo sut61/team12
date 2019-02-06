@@ -38,6 +38,7 @@ export class LeaseOrderComponent implements OnInit {
     accessorySelect: '',
     durationSelect: ''
   }
+  note: String
   data: any={}
 
   isHandset$: Observable<boolean> = this.breakpointObserver.observe(Breakpoints.Handset)
@@ -77,10 +78,10 @@ export class LeaseOrderComponent implements OnInit {
   }
 
   save() {
-    if (this.adminLogin.admin.adminId === '' || this.select.memberSelect === '' || this.select.accessorySelect === '' || this.select.durationSelect === '' ) {
+    if (this.adminLogin.admin.adminId === '' || this.select.memberSelect === '' || this.select.accessorySelect === '' || this.select.durationSelect === '' || this.note === '' ) {
       alert('กรุณากรอกข้อมูลให้ครบถ้วน');
     } else {
-      this.httpClient.post('http://localhost:8080/lease/' + this.adminLogin.admin.adminId + '/' + this.select.memberSelect + '/' + this.select.accessorySelect + '/' + this.select.durationSelect,this.select)
+      this.httpClient.post('http://localhost:8080/lease/' + this.adminLogin.admin.adminId + '/' + this.select.memberSelect + '/' + this.select.accessorySelect + '/' + this.select.durationSelect + '/' + this.note,this.select)
       .subscribe(
           data => {
               console.log('PUT Request is successful', data);

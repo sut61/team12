@@ -28,12 +28,13 @@ public class LeaseController {
     public Collection<Lease> Admin() {
         return leaseRepository.findAll().stream().collect(Collectors.toList());
     }
-    @PostMapping("/lease/{admin}/{member}/{accesory}/{duration}")
+    @PostMapping("/lease/{admin}/{member}/{accesory}/{duration}/{note}")
     public Lease lease(
         @PathVariable Long admin,
         @PathVariable Long member,
         @PathVariable Long accesory,
-        @PathVariable Long duration
+        @PathVariable Long duration,
+        @PathVariable String note
         
 
     ) throws ParseException{
@@ -47,7 +48,7 @@ public class LeaseController {
         newLease.setMember(_member);
         newLease.setAccessory(_accessory);
         newLease.setDuration(_duration);
-        
+        newLease.setNote(note);
     return leaseRepository.save(newLease);
 
     }

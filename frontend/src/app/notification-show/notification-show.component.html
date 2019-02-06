@@ -85,7 +85,6 @@
           <a mat-list-item routerLink="/leaseshow"><i class="material-icons">chevron_right</i>ข้อมูลการเช่าอุปกรณ์</a>
           <a mat-list-item routerLink="/notification" ><i class="material-icons">chevron_right</i>เแจ้งซ่อมอุปกรณ์</a>
           <a mat-list-item routerLink="/notification-show" ><i class="material-icons">chevron_right</i>ข้อมูลการแจ้งซ่อมอุปกรณ์</a>
-
         </mat-nav-list>
       </mat-expansion-panel>
     </mat-accordion>
@@ -106,8 +105,8 @@
           <mat-panel-title><i class="material-icons">local_offer</i>ล็อกเกอร์</mat-panel-title>
         </mat-expansion-panel-header>
         <mat-nav-list>
-          <a mat-list-item routerLink="/locker-order"><i class="material-icons">chevron_right</i>จองล็อกเกอร์</a>
-          <a mat-list-item routerLink="/locker-view"><i class="material-icons">chevron_right</i>ข้อมูลการจองล็อกเกอร์</a>
+          <a mat-list-item ><i class="material-icons">chevron_right</i>จองล็อกเกอร์</a>
+          <a mat-list-item ><i class="material-icons">chevron_right</i>ข้อมูลการจองล็อกเกอร์</a>
         </mat-nav-list>
       </mat-expansion-panel>
     </mat-accordion>
@@ -126,107 +125,29 @@
   </mat-toolbar>
 
 
-    <mat-card class="example-card" >
-        <h1>สมัครสมาชิก</h1>
-          <mat-card-content style="text-align:left">
-              <label>บัตรสิทธิพิเศษ: </label>
-              <br>
-                <div style="margin:2%">
-                  <mat-radio-group class="example-radio-group" [(ngModel)]="Members.privilegeSelect" name="privilege">
-                    <mat-radio-button class="example-radio-button" *ngFor="let privilege of privileges" [value]="privilege.privilegeId">
-                      {{privilege.privilegeName}} &emsp;&emsp;  ราคา : {{privilege.price}}   บาท
-                    </mat-radio-button>
-                  </mat-radio-group>
-                </div>
-                <br>
-                <label>คำนำหน้า: </label>
-                <br>
-                
-                <div style="margin:2%">
-                <mat-radio-group class="example-radio-group" [(ngModel)]="Members.titleSelect" name="title">
-                  <mat-radio-button class="example-radio-button" *ngFor="let title of titles" [value]="title.titleId">
-                    {{title.titleType}}
-                  </mat-radio-button>
-                </mat-radio-group>
-              </div>
-                <br>
-                <label>ชื่อ - นามสกุล: </label>
-                <br>
-                <mat-form-field appearance="outline" class="input-firstname">
-                  <input matInput placeholder="ชื่อ" [(ngModel)]="firstName" name="firstname">
-                </mat-form-field>
+  <mat-card>
+    <h1>ข้อมูลการแจ้งซ่อมอุปกรณ์</h1>
+    <table mat-table [dataSource]="notifications" class="mat-elevation-z8" style="text-align:center">
+      <ng-container matColumnDef="no">
+        <th mat-header-cell *matHeaderCellDef> No. </th>
+        <td mat-cell *matCellDef="let element ; let i = index">{{i+1}}</td>
+      </ng-container>
+      <ng-container matColumnDef="name" >
+        <th mat-header-cell *matHeaderCellDef > Name </th>
+        <td mat-cell *matCellDef="let element" style="text-align:left"> <pre>{{element.employee.firstName}}</pre> </td>
+      </ng-container>
+      <ng-container matColumnDef="fields">
+        <th mat-header-cell *matHeaderCellDef> Field </th>
+        <td mat-cell *matCellDef="let element"> {{element.field.fieldName}} </td>
+      </ng-container>
+      <ng-container matColumnDef="note">
+        <th mat-header-cell *matHeaderCellDef style="text-align: center"> note. </th>
+        <td mat-cell *matCellDef="let element"> {{element.note}} </td>
+      </ng-container>
 
-                &nbsp;&nbsp;&nbsp;
-                
-                <mat-form-field appearance="outline" class="input-lastname">
-                  <input matInput placeholder="นามสกุล" [(ngModel)]="lastName" name="lastname">
-                </mat-form-field>
-                <br>
-                <br>
-
-                <table stlye="width:100%">
-                        <th> อายุ: </th>
-                        <td > <mat-form-field appearance="outline" class="input-age">
-                            <input matInput [(ngModel)]="age" name="age">
-                          </mat-form-field>
-                         </td>
-                          <th> หมายเลขโทรศัพท์: </th>
-                          <td > <mat-form-field appearance="outline" class="input-phone">
-                              <input matInput [(ngModel)]="phoneNumber" name="phoneNumber">
-                            </mat-form-field>
-                           </td>
-                </table>
-
-                <br>
-                <label>วันเกิด: </label>
-                <br>
-                <mat-form-field appearance="outline">
-                  <input matInput [matDatepicker]="picker" placeholder="วันเกิด" [(ngModel)]="birthDate" name="date">
-                  <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-                  <mat-datepicker #picker></mat-datepicker>
-                </mat-form-field>
-                <br>
-                <label>E-mail: </label>
-                <br>
-                <mat-form-field appearance="outline">
-                  <input matInput [(ngModel)]="email" name="email">
-                </mat-form-field>
-                <br>
-                <label>ที่อยู่: </label>
-                <br>
-                <mat-form-field appearance="outline">
-                  <textarea matInput [(ngModel)]="address" name="address"></textarea>
-                </mat-form-field>
-                <br>
-                <label>ตำบล: </label>
-                <br>
-                <mat-form-field appearance="outline">
-                  <input matInput [(ngModel)]="subDistrict" name="subDistrict">
-                </mat-form-field>
-                <br>
-                <label>อำเภอ: </label>
-                <br>
-                <mat-form-field appearance="outline">
-                  <input matInput [(ngModel)]="district" name="district">
-                </mat-form-field>
-                <br>
-                <label>จังหวัด: </label>
-                <br>
-                
-                <div >
-                    <mat-form-field appearance="outline">
-                        <mat-select placeholder="จังหวัด" [(ngModel)]="Members.provinceSelect" name="province">
-                          <mat-option *ngFor="let province of provinces" [value]="province.provinceId">
-                            {{province.provinceName}}
-                          </mat-option>
-                        </mat-select>
-                      </mat-form-field>
-              </div>
-          </mat-card-content>
-           <mat-card-actions style="text-align:right">
-              <a mat-raised-button (click)="save()" color="primary" type="submit">บันทึก</a>
-              <a mat-raised-button  routerLink="/nav" color="primary" type="submit">ยกเลิก</a>
-          </mat-card-actions>
-        </mat-card>
-  </mat-sidenav-content>
+      <tr mat-header-row *matHeaderRowDef="dataColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: dataColumns;"></tr>
+    </table>
+</mat-card>
+</mat-sidenav-content>
 </mat-sidenav-container>

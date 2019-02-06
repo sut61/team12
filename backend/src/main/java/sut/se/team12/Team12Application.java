@@ -36,6 +36,9 @@ public class Team12Application {
 			FieldOrderRepository fieldOrderRepository,
 			RoomRepository roomRepository,
 			RoomDurationRepository roomDurationRepository,
+			RoomCancelOrderRepository roomCancelOrderRepository,
+			RoomStatusRepository roomStatusRepository,
+			RoomOrderRepository roomOrderRepository,
 			TrainingRepository trainingRepository,
 			TrainingTypeRepository trainingTypeRepository,
 			TrainingProgramRepository trainingProgramRepository,
@@ -43,7 +46,8 @@ public class Team12Application {
 			TicketTypeRepository ticketTypeRepository,
 			LockerRepository lockerRepository,
 			LockerDurationRepository lockerDurationRepository,
-			LockerOrderRepository lockerOrderRepository
+			LockerOrderRepository lockerOrderRepository,
+			NotificationRepository notificationRepository
 						   ){
 		return args -> {
 
@@ -670,69 +674,69 @@ public class Team12Application {
 			// ------------------------- LeaseAccessory ------------------------------------------
 
 			LeaseAccessory accessory1 = new LeaseAccessory();
-			accessory1.setAccessoryName("ลูกฟุตบอล");
+			accessory1.setAccessoryName("Football");
 			leaseAccessoryRepository.save(accessory1);
 
 			LeaseAccessory accessory2 = new LeaseAccessory();
-			accessory2.setAccessoryName("ลูกบาสสเก็ตบอล");
+			accessory2.setAccessoryName("Basketball");
 			leaseAccessoryRepository.save(accessory2);
 
 			LeaseAccessory accessory3 = new LeaseAccessory();
-			accessory3.setAccessoryName("ลูกวอลเลย์บอล");
+			accessory3.setAccessoryName("Volleyball");
 			leaseAccessoryRepository.save(accessory3);
 
 			LeaseAccessory accessory4 = new LeaseAccessory();
-			accessory4.setAccessoryName("ลูกปิงปอง");
+			accessory4.setAccessoryName("Pingpongball");
 			leaseAccessoryRepository.save(accessory4);
 
 			LeaseAccessory accessory5 = new LeaseAccessory();
-			accessory5.setAccessoryName("ลูกเทนนิส");
+			accessory5.setAccessoryName("Tennisball");
 			leaseAccessoryRepository.save(accessory5);
 
 			LeaseAccessory accessory6 = new LeaseAccessory();
-			accessory6.setAccessoryName("ลูกขนไก่");
+			accessory6.setAccessoryName("Shuttlecock");
 			leaseAccessoryRepository.save(accessory6);
 
 			LeaseAccessory accessory7 = new LeaseAccessory();
-			accessory7.setAccessoryName("ไม้แบตมินตัน");
+			accessory7.setAccessoryName("Badminton racket");
 			leaseAccessoryRepository.save(accessory7);
 
 			LeaseAccessory accessory8 = new LeaseAccessory();
-			accessory8.setAccessoryName("ไม้เทนนิส");
+			accessory8.setAccessoryName("Tennis racket");
 			leaseAccessoryRepository.save(accessory8);
 
 			LeaseAccessory accessory9 = new LeaseAccessory();
-			accessory9.setAccessoryName("ไม้ปิงปอง");
+			accessory9.setAccessoryName("Pingpong racket");
 			leaseAccessoryRepository.save(accessory9);
 
 			LeaseAccessory accessory10 = new LeaseAccessory();
-			accessory10.setAccessoryName("เครื่องยิงลูกปิงปองอัตโนมัติ");
+			accessory10.setAccessoryName("Automatic table tennis ball");
 			leaseAccessoryRepository.save(accessory10);
 
 			LeaseAccessory accessory11 = new LeaseAccessory();
-			accessory11.setAccessoryName("เครื่องยิงลูกเทนนิสอัตโนมัติ");
+			accessory11.setAccessoryName("Automatic tennis ball");
 			leaseAccessoryRepository.save(accessory11);
 
 			// ---------------------------- LeaseDuration ----------------------------------
 
 			LeaseDuration duration1 = new LeaseDuration();
-			duration1.setDurationName("1 ชั่วโมง");
+			duration1.setDurationName("1 Hour");
 			leaseDurationRepository.save(duration1);
 
 			LeaseDuration duration2 = new LeaseDuration();
-			duration2.setDurationName("2 ชั่วโมง");
+			duration2.setDurationName("2 Hour");
 			leaseDurationRepository.save(duration2);
 
 			LeaseDuration duration3 = new LeaseDuration();
-			duration3.setDurationName("3 ชั่วโมง");
+			duration3.setDurationName("3 Hour");
 			leaseDurationRepository.save(duration3);
 
 			LeaseDuration duration4 = new LeaseDuration();
-			duration4.setDurationName("4 ชั่วโมง");
+			duration4.setDurationName("4 Hour");
 			leaseDurationRepository.save(duration4);
 
 			LeaseDuration duration5 = new LeaseDuration();
-			duration5.setDurationName("5 ชั่วโมง");
+			duration5.setDurationName("5 Hour");
 			leaseDurationRepository.save(duration5);
 
 			// -------------------- Lease ------------------------------------
@@ -741,6 +745,7 @@ public class Team12Application {
 			lease1.setMember(member1);
 			lease1.setAccessory(accessory1);
 			lease1.setDuration(duration1);
+			lease1.setNote("Borrow a soccer ball to practice");
 			leaseRepository.save(lease1);
 
 // ----------------- FieldOrder ----------------------------------
@@ -803,6 +808,41 @@ public class Team12Application {
 			roomDuration04.setRoomDuration("03.00 PM - 04.30 PM");
 			roomDurationRepository.save(roomDuration04);
 			
+			//----------------------------------Status----------------------------------------------------
+
+			RoomStatus roomStatus01 = new RoomStatus();
+			roomStatus01.setRoomStatus("จองแล้ว");
+			roomStatusRepository.save(roomStatus01);
+
+			RoomStatus roomStatus02 = new RoomStatus();
+			roomStatus02.setRoomStatus("ยกเลิกแล้ว");
+			roomStatusRepository.save(roomStatus02);
+
+			//---------------------------------RoomOrder-------------------------------------------------
+			
+			RoomOrder roomOrder01 = new RoomOrder();
+			Date date5 = dateformat.parse("2019-10-01");
+			roomOrder01.setAdmin(admin1);
+			roomOrder01.setRoom(Room05);
+			roomOrder01.setRoomDuration(roomDuration03);
+			roomOrder01.setDate(date5);
+			roomOrder01.setMember(member1);
+			roomOrder01.setRoomStatus(roomStatus01);
+			roomOrderRepository.save(roomOrder01);
+
+			//-----------------------------------RoomCancel-----------------------------------------------
+
+			RoomCancelOrder roomCancel = new RoomCancelOrder();
+
+			roomCancel.setRoomOrder(roomOrder01);
+			roomCancel.setNote("note");
+			roomCancel.setAdmin(admin1);
+			roomCancel.setRoomStatus(roomStatus02);
+			roomCancel.setDate(new Date());
+			roomCancelOrderRepository.save(roomCancel);
+
+
+
 			// --------------------------------- TrainingType --------------------------------------------
 
 			TrainingType trainingType1 = new TrainingType();
@@ -879,6 +919,15 @@ public class Team12Application {
 				ticket2.setAdmin(admin3);
 				ticketRepository.save(ticket2);
 
+				//--------------------------Notification----------------------------//
+
+				Notification notification1 = new Notification();
+				notification1.setAdmin(admin1);
+				notification1.setEmployee(employee2);
+				notification1.setField(Field1);
+				notification1.setNote("Nets of damaged doors");
+				notificationRepository.save(notification1);
+
 			// --------------------------------- Print --------------------------------------------
 			
 			adminRepository.findAll().forEach(System.out::println);
@@ -893,6 +942,7 @@ public class Team12Application {
 			fieldRepository.findAll().forEach(System.out::println);
 			ticketTypeRepository.findAll().forEach(System.out::println);
 			ticketRepository.findAll().forEach(System.out::println);
+			notificationRepository.findAll().forEach(System.out::println);
 		};
 	}
 }

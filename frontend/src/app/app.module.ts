@@ -76,8 +76,13 @@ import { TrainingCreateComponent } from './training-create/training-create.compo
 import { TrainingViewComponent } from './training-view/training-view.component';
 import { TicketComponent } from './ticket/ticket.component';
 import { TicketShowComponent } from './ticket-show/ticket-show.component';
+<<<<<<< HEAD
 import { LockerOrderComponent } from './locker-order/locker-order.component';
 import { LockerViewComponent } from './locker-view/locker-view.component';
+=======
+import { NotificationComponent } from './notification/notification.component';
+import { NotificationShowComponent } from './notification-show/notification-show.component';
+>>>>>>> fc6597251952134c48376ec5eae5af8d988a836d
 
 
 
@@ -101,8 +106,13 @@ const routes: Routes = [
   {path: 'training-view',component: TrainingViewComponent},
   {path: 'ticket',component: TicketComponent},
   {path: 'ticket-show',component: TicketShowComponent},
+<<<<<<< HEAD
   {path: 'locker-order',component: LockerOrderComponent},
   {path: 'locker-view',component: LockerViewComponent},
+=======
+  {path: 'notification',component: NotificationComponent},
+  {path: 'notification-show',component: NotificationShowComponent},
+>>>>>>> fc6597251952134c48376ec5eae5af8d988a836d
 ]
 
 @NgModule({
@@ -126,8 +136,13 @@ const routes: Routes = [
     TrainingViewComponent,
     TicketComponent,
     TicketShowComponent,
+<<<<<<< HEAD
     LockerOrderComponent,
     LockerViewComponent
+=======
+    NotificationComponent,
+    NotificationShowComponent
+>>>>>>> fc6597251952134c48376ec5eae5af8d988a836d
   ],
   imports: [
     BrowserModule,

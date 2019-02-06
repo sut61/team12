@@ -8,7 +8,7 @@
     <mat-list-item>
       <diV><i class="material-icons">how_to_reg</i>&nbsp;&nbsp;ID:&nbsp;{{adminId}}&nbsp;NAME:&nbsp;{{adminName}}</diV>
     </mat-list-item>
-    <mat-accordion multi="true" displayMode="flat">
+        <mat-accordion multi="true" displayMode="flat">
       <mat-expansion-panel>
         <mat-expansion-panel-header expandedHeight="48px" collapsedHeight="48px">
           <mat-panel-title><i class="material-icons">grade</i>ตั๋ว</mat-panel-title>
@@ -16,7 +16,8 @@
         <mat-nav-list>
           <a mat-list-item routerLink="/ticket"><i class="material-icons">chevron_right</i>ขายตั๋ว</a>
         </mat-nav-list>
-      </mat-expansion-panel>  
+      </mat-expansion-panel>
+      
     </mat-accordion>
     <mat-accordion >
       <mat-expansion-panel>
@@ -39,16 +40,6 @@
           <a mat-list-item routerLink="/empinfo"><i class="material-icons">chevron_right</i>ข้อมูลพนักงาน</a>
           <a mat-list-item routerLink="/training-create"><i class="material-icons">chevron_right</i>สร้างหลักสูตรการอบรม</a>
           <a mat-list-item routerLink="/training-view"><i class="material-icons">chevron_right</i>ข้อมูลหลักสูตรการอบรม</a>
-          <!-- <mat-expansion-panel>
-            <mat-expansion-panel-header>
-              <mat-panel-title><i class="material-icons">event</i>จัดตารางงานพนักงาน</mat-panel-title>
-            </mat-expansion-panel-header>
-            <mat-nav-list>
-              <a mat-list-item routerLink="/emp-manage-clean"><i class="material-icons">chevron_right</i>พนักงานทำความสะอาด</a>
-              <a mat-list-item routerLink="/emp-manage-guard"><i class="material-icons">chevron_right</i>พนักงานรักษาความปลอดภัย</a>
-              <a mat-list-item routerLink="/emp-manage-train"><i class="material-icons">chevron_right</i>เทรนเนอร์</a>
-            </mat-nav-list>
-          </mat-expansion-panel> -->
         </mat-nav-list>
       </mat-expansion-panel>
     </mat-accordion>
@@ -72,9 +63,6 @@
         <mat-nav-list>
           <a mat-list-item routerLink="/roomcreate"><i class="material-icons">chevron_right</i>จองห้องพัก</a>
           <a mat-list-item routerLink="/roomview"><i class="material-icons">chevron_right</i>ยกเลิกการจองห้องพัก</a>
-          <a mat-list-item routerLink="/notification" ><i class="material-icons">chevron_right</i>เแจ้งซ่อมอุปกรณ์</a>
-          <a mat-list-item routerLink="/notification-show" ><i class="material-icons">chevron_right</i>ข้อมูลการแจ้งซ่อมอุปกรณ์</a>
-
         </mat-nav-list>
       </mat-expansion-panel>
     </mat-accordion>
@@ -86,6 +74,9 @@
         <mat-nav-list>
           <a mat-list-item routerLink="/lease" ><i class="material-icons">chevron_right</i>เช่าอุปกรณ์</a>
           <a mat-list-item routerLink="/leaseshow"><i class="material-icons">chevron_right</i>ข้อมูลการเช่าอุปกรณ์</a>
+          <a mat-list-item routerLink="/notification" ><i class="material-icons">chevron_right</i>เแจ้งซ่อมอุปกรณ์</a>
+          <a mat-list-item routerLink="/notification-show" ><i class="material-icons">chevron_right</i>ข้อมูลการแจ้งซ่อมอุปกรณ์</a>
+
         </mat-nav-list>
       </mat-expansion-panel>
     </mat-accordion>
@@ -106,72 +97,60 @@
           <mat-panel-title><i class="material-icons">local_offer</i>ล็อกเกอร์</mat-panel-title>
         </mat-expansion-panel-header>
         <mat-nav-list>
-          <a mat-list-item routerLink="/locker-order"><i class="material-icons">chevron_right</i>จองล็อกเกอร์</a>
-          <a mat-list-item routerLink="/locker-view"><i class="material-icons">chevron_right</i>ข้อมูลการจองล็อกเกอร์</a>
+          <a mat-list-item ><i class="material-icons">chevron_right</i>จองล็อกเกอร์</a>
+          <a mat-list-item ><i class="material-icons">chevron_right</i>ข้อมูลการจองล็อกเกอร์</a>
         </mat-nav-list>
       </mat-expansion-panel>
     </mat-accordion>
-  </mat-nav-list>
-</mat-sidenav>
-<mat-sidenav-content>
-  <mat-toolbar color="primary">
-    <mat-toolbar-row>
-      <button type="button" aria-label="Toggle sidenav" mat-icon-button (click)="drawer.toggle()">
-        <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
-      </button>
-      <span><button mat-button style="font-size:26px" routerLink="/nav">ระบบจัดการสนามกีฬา</button></span>
-      <span class="example-spacer"></span>
-      <a mat-stroked-button routerLink="/login" style="font-family:Arial, Helvetica, sans-serif">Logout</a>
-    </mat-toolbar-row>
-  </mat-toolbar>
+      </mat-nav-list>
 
+  </mat-sidenav>
+  <mat-sidenav-content>
+    <mat-toolbar color="primary">
+      <mat-toolbar-row>
+        <button type="button" aria-label="Toggle sidenav" mat-icon-button (click)="drawer.toggle()">
+          <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
+        </button>
+        <span>ระบบจัดการสนามกีฬา</span>
+        <span class="example-spacer"></span>
+        <a mat-stroked-button routerLink="/login" style="font-family:Arial, Helvetica, sans-serif">Logout</a>
+      </mat-toolbar-row>
+    </mat-toolbar>
 
-
-    <mat-card class="example-card" style="align-content: center">
-      <h1>จองห้องพักนักกีฬา</h1>
-
-          <h4>สมาชิก</h4>
-    <mat-form-field appearance="outline">
-      <mat-select placeholder="ชื่อ-นามสกุล"[(ngModel)]="select.memberSelect" name="member">
-        <mat-option *ngFor="let member of members" [value]="member.memberId">
-          {{member.firstName}} {{member.lastName}}
-        </mat-option>
-      </mat-select>
-    </mat-form-field>
-    <br/>
-    <h4>ห้องพักนักกีฬา</h4>
-    <mat-form-field appearance="outline">
-      <mat-select placeholder="กรุณาเลือกห้องที่ต้องการ" [(ngModel)]="select.roomSelect" name="room">
-        <mat-option *ngFor="let room of rooms" [value]="room.roomId">
-          {{room.roomNumber}}
-        </mat-option>
-      </mat-select>
-    </mat-form-field>
-    <br/>
-    <h4>ช่วงเวลาที่ต้องการจอง</h4>
-    <mat-form-field appearance="outline">
-      <mat-select placeholder="กรุณาเลือกช่วงเวลาที่ต้องการ"[(ngModel)]="select.roomDurationSelect" name="roomDuration">
-        <mat-option *ngFor="let roomDuration of roomDurations" [value]="roomDuration.roomDurationId">
-          {{roomDuration.roomDuration}}
-        </mat-option>
-      </mat-select>
-    </mat-form-field>
-    <br/>
-    <h4>วันที่</h4>
-
-    <mat-form-field appearance="outline">
-      <input matInput [matDatepicker]="picker" placeholder="กรุณาเลือกวันที่ที่ต้องการ" [(ngModel)]="roomDate" name="date">
-      <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-      <mat-datepicker #picker></mat-datepicker>
-    </mat-form-field>
     
-    <mat-card-actions style="text-align:right">
-      <a mat-raised-button (click)="save()" color="primary" type="submit">บันทึก</a>
-      <a mat-raised-button  routerLink="/nav" color="primary" type="submit">ยกเลิก</a>
-  </mat-card-actions>
+    <mat-card class="example-card" >
+      <h1>แจ้งซ่อมอุปกรณ์</h1>
+      <mat-card-content style="text-align:left">
+          <label>ผู้แจ้งซ่อม: </label>
+            <mat-form-field appearance="outline">
+              <mat-select placeholder="ชื่อ-นามสกุล" [(ngModel)]="select.employeeSelect" name="employee">
+                <mat-option *ngFor="let employee of employees" [value]="employee.employeeId">
+                  {{employee.firstName}}
+              </mat-option>
+              </mat-select>
+            </mat-form-field>
+      </mat-card-content>
+      <mat-card-content style="text-align:left">
+        <label>สนาม: </label>
+      <mat-form-field appearance="outline">
+        <mat-select placeholder="Field Name" [(ngModel)]="select.fieldSelect" name = "field">
+          <mat-option *ngFor="let field of fields" [value]="field.fieldId">
+            {{field.fieldName}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+      <br>
 
-    </mat-card>
-
+      <label>หมายเหตุ: </label>
+      <mat-form-field appearance="outline">
+        <textarea matInput placeholder="หมายเหตุ" [(ngModel)]="note" name="note"></textarea>
+      </mat-form-field>
+        </mat-card-content>
+         <mat-card-actions style="text-align:right">
+            <a mat-raised-button (click)="submit()" color="primary" type="submit">ตกลง</a>
+            <a mat-raised-button  routerLink="/nav" color="primary" type="submit">ยกเลิก</a>
+        </mat-card-actions>
+      </mat-card>
 
   </mat-sidenav-content>
 </mat-sidenav-container>

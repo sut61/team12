@@ -83,6 +83,9 @@
         <mat-nav-list>
           <a mat-list-item routerLink="/lease" ><i class="material-icons">chevron_right</i>เช่าอุปกรณ์</a>
           <a mat-list-item routerLink="/leaseshow"><i class="material-icons">chevron_right</i>ข้อมูลการเช่าอุปกรณ์</a>
+          <a mat-list-item routerLink="/notification" ><i class="material-icons">chevron_right</i>เแจ้งซ่อมอุปกรณ์</a>
+          <a mat-list-item routerLink="/notification-show" ><i class="material-icons">chevron_right</i>ข้อมูลการแจ้งซ่อมอุปกรณ์</a>
+
         </mat-nav-list>
       </mat-expansion-panel>
     </mat-accordion>
@@ -126,7 +129,6 @@
         <h1>เช่าอุปกรณ์</h1>
           <mat-card-content style="text-align:left">
               <label>ผู้ขอเช่าอุปกรณ์: </label>
-              <br>
                 <mat-form-field appearance="outline">
                   <mat-select placeholder="ชื่อ-นามสกุล" [(ngModel)]="select.memberSelect" name="member">
                     <mat-option *ngFor="let member of members" [value]="member.memberId">{{member.firstName}}</mat-option>
@@ -136,7 +138,6 @@
           
           <mat-card-content style="text-align:left">
               <label>อุปกรณ์: </label>
-              <br>
                 <mat-form-field appearance="outline">
                   <mat-select placeholder="อุปกรณ์" [(ngModel)]="select.accessorySelect" name="accessory">
                     <mat-option *ngFor="let accessory of accessorys" [value]="accessory.accessoryId">{{accessory.accessoryName}}</mat-option>
@@ -146,13 +147,17 @@
           
           <mat-card-content style="text-align:left">
               <label>ระยะเวลาในการเช่า </label>
-              <br>
                 <mat-form-field appearance="outline">
                   <mat-select placeholder="ระยะเวลา" [(ngModel)]="select.durationSelect" name="duration">
                     <mat-option *ngFor="let duration of durations" [value]="duration.durationId">{{duration.durationName}}</mat-option>
                   </mat-select>
                 </mat-form-field>
           </mat-card-content>
+
+          <label>หมายเหตุ </label>
+          <mat-form-field appearance="outline">
+            <textarea matInput placeholder="note" [(ngModel)]="note" name="note"></textarea>
+          </mat-form-field>
 
            <mat-card-actions style="text-align:right">
               <a mat-raised-button (click)="save()" color="primary" type="submit">บันทึก</a>
@@ -161,79 +166,5 @@
         </mat-card>
   </mat-sidenav-content>
 </mat-sidenav-container>
-
-
-
-
-<!-- <p>admin id: {{data.id}}</p>
-<p>admin name: {{data.name}}</p>
-<p>admin username: {{data.username}}</p>
-<p>admin password: {{data.password}}</p> -->
-
-<!-- <form class="example-form">
- <mat-form-field appearance="outline">
-  <mat-select placeholder="พนักงานดูแลระบบ" [(ngModel)]="select.adminSelect" name="admin">
-    <mat-option *ngFor="let admin of admins" [value]="admin.adminId">{{admin.username}}</mat-option>
-  </mat-select>
-</mat-form-field>
-<br>
-<mat-form-field appearance="outline">
-  <input matInput #input maxlength="13" placeholder="เลขประจำตัวประชาชน" [(ngModel)]="id" name="id">
-</mat-form-field>
-<br>
-<mat-form-field appearance="outline">
-  <mat-select placeholder="ตำนำหน้า" [(ngModel)]="select.titleSelect" name="title">
-    <mat-option *ngFor="let title of titles" [value]="title.titleId">{{title.titleType}}</mat-option>
-  </mat-select>
-</mat-form-field>
-&nbsp;&nbsp;&nbsp;
-<mat-form-field appearance="outline">
-  <input matInput placeholder="ชื่อ" [(ngModel)]="firstName" name="firstname">
-</mat-form-field>
-&nbsp;&nbsp;&nbsp;
-<mat-form-field appearance="outline">
-  <input matInput placeholder="นามสกุล" [(ngModel)]="lastName" name="lastname">
-</mat-form-field>
-<br>
-<mat-form-field appearance="outline">
-  <input matInput [matDatepicker]="picker" placeholder="วันเกิด" [(ngModel)]="birthDate" name="date">
-  <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-  <mat-datepicker #picker></mat-datepicker>
-</mat-form-field>
-<br>
-<mat-form-field appearance="outline">
-  <input matInput placeholder="หมายเลขโทรศัพท์" [(ngModel)]="phone" name="phone">
-</mat-form-field>
-&nbsp;&nbsp;&nbsp;
-<mat-form-field appearance="outline">
-  <input matInput placeholder="email" [(ngModel)]="email" name="email">
-</mat-form-field>
-<br>
-<mat-form-field appearance="outline">
-  <textarea matInput placeholder="ที่อยู่" [(ngModel)]="address" name="address"></textarea>
-</mat-form-field>
-<br>
-<mat-form-field appearance="outline">
-  <mat-select placeholder="วุฒิการศึกษา"[(ngModel)]="select.degreeSelect" name="degree">
-    <mat-option *ngFor="let degree of degrees" [value]="degree.degreeId">{{degree.degreeType}}</mat-option>
-  </mat-select>
-</mat-form-field>
-<br>
-<mat-form-field appearance="outline">
-  <mat-select placeholder="ตำแหน่ง" [(ngModel)]="select.positionSelect" name="position">
-    <mat-option *ngFor="let position of positions" [value]="position.positionId">{{position.positionType}}</mat-option>
-  </mat-select>
-</mat-form-field>
-<br>
-<a mat-raised-button (click)="save()" color="primary" type="submit">save</a>
-</form> -->
-
-
-
-
-
-
-
-
 
 
