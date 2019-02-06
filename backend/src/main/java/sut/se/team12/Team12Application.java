@@ -745,7 +745,7 @@ public class Team12Application {
 			lease1.setMember(member1);
 			lease1.setAccessory(accessory1);
 			lease1.setDuration(duration1);
-			lease1.setNote("Borrow a soccer ball to practice");
+			lease1.setNote("Borrow soccer");
 			leaseRepository.save(lease1);
 
 // ----------------- FieldOrder ----------------------------------
@@ -925,7 +925,7 @@ public class Team12Application {
 				notification1.setAdmin(admin1);
 				notification1.setEmployee(employee2);
 				notification1.setField(Field1);
-				notification1.setNote("Nets of damaged doors");
+				notification1.setNote("Netss");
 				notificationRepository.save(notification1);
 
 			// --------------------------------- Print --------------------------------------------
