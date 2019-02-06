@@ -1,6 +1,5 @@
 package sut.se.team12.entity;
 
-
 import lombok.*;
 import javax.persistence.*;
 

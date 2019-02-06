@@ -756,7 +756,7 @@ public class Team12Application {
 			fieldOrder1.setMember(member1);
 			fieldOrder1.setFieldDuration(FieldDuration2);
 			fieldOrder1.setDate(date1);
-			fieldOrder1.setNote("WelcomeThailand");
+			fieldOrder1.setNote("Welcome");
 			fieldOrderRepository.save(fieldOrder1);
 //--------------------------LockerOrder------------------------------------
 
