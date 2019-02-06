@@ -3,6 +3,10 @@ package sut.se.team12.entity;
 import lombok.*;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Pattern;
+import javax.validation.constraints.Size;
+
 import java.util.Date;
 
 @Data
@@ -17,23 +21,34 @@ public class LockerOrder {
     @SequenceGenerator(name="lockerOrder_seq",sequenceName = "lockerOrder_seq")
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "lockerOrder_seq")
     @Column(name = "LOCKERORDER_ID")
+    @NotNull
     private Long lockerOrderId;
+    @NotNull @Size(min=5,max=10) @Pattern(regexp = "[A-Za-z0-9]+") 
+    @Column(unique=true)
     private String note;
     @Temporal(TemporalType.DATE)private Date Date;
 
 
+    @NotNull
     @ManyToOne(fetch = FetchType.EAGER, targetEntity = Locker.class)
     @JoinColumn(name = "LOCKER_ID", insertable = true)
     private Locker locker;
 
+
+    @NotNull
     @ManyToOne(fetch = FetchType.EAGER, targetEntity = Member.class)
     @JoinColumn(name = "MEMBER_ID", insertable = true)
     private Member member;
 
+
+    @NotNull
     @ManyToOne(fetch = FetchType.EAGER, targetEntity = LockerDuration.class)
     @JoinColumn(name = "LOCKERDURATION_ID", insertable = true)
     private LockerDuration lockerDuration;
 
+
+
+    @NotNull
     @ManyToOne(fetch = FetchType.EAGER, targetEntity = Admin.class)
     @JoinColumn(name = "ADMIN_ID", insertable = true)
     private Admin admin;
