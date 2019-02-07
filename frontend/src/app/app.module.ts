@@ -82,6 +82,8 @@ import { LockerViewComponent } from './locker-view/locker-view.component';
 // =======
 import { NotificationComponent } from './notification/notification.component';
 import { NotificationShowComponent } from './notification-show/notification-show.component';
+import { RoomCancelComponent } from './room-cancel/room-cancel.component';
+import { RoomShowComponent } from './room-show/room-show.component';
 // >>>>>>> fc6597251952134c48376ec5eae5af8d988a836d
 
 const routes: Routes = [
@@ -111,6 +113,8 @@ const routes: Routes = [
   {path: 'notification',component: NotificationComponent},
   {path: 'notification-show',component: NotificationShowComponent},
 // >>>>>>> fc6597251952134c48376ec5eae5af8d988a836d
+{path: 'roomcancel',component: RoomCancelComponent},
+  {path: 'roomshow',component: RoomShowComponent}
 ]
 
 @NgModule({
@@ -139,7 +143,9 @@ const routes: Routes = [
     LockerViewComponent,
 // =======
     NotificationComponent,
-    NotificationShowComponent
+    NotificationShowComponent,
+    RoomCancelComponent,
+    RoomShowComponent
 // >>>>>>> fc6597251952134c48376ec5eae5af8d988a836d
   ],
   imports: [

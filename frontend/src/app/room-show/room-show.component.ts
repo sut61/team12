@@ -6,11 +6,11 @@ import { HttpClient } from '@angular/common/http';
 import { AdminService } from '../service/admin.service';
 
 @Component({
-  selector: 'app-room-view',
-  templateUrl: './room-view.component.html',
-  styleUrls: ['./room-view.component.css']
+  selector: 'app-room-show',
+  templateUrl: './room-show.component.html',
+  styleUrls: ['./room-show.component.css']
 })
-export class RoomViewComponent implements OnInit {
+export class RoomShowComponent implements OnInit {
 
   orders: Array<any>
 
@@ -25,13 +25,13 @@ export class RoomViewComponent implements OnInit {
         passowrd:''
       }
     }
-   dataColumns: string[] = ['no','member','room','duration','date','admin','status'];
+   dataColumns: string[] = ['no','roomOrder','date','admin','note','status'];
 
     constructor(private breakpointObserver: BreakpointObserver,private route:ActivatedRoute,private roomService: RoomService , private httpClient: HttpClient, private router:Router, private adminService: AdminService) { }
 
    ngOnInit() {
 
-    this.roomService.getRoomOrder().subscribe(data => {
+    this.roomService. getRoomCancel().subscribe(data => {
       this.orders = data;
       console.log(this.orders);
     });

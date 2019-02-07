@@ -25,6 +25,18 @@ export class RoomService {
   getMember(): Observable<any>{
     return this.http.get(this.API + '/members')
   }
+  getStatus(): Observable<any>{
+    return this.http.get(this.API + '/roomStatus')
+  }
+  getStatus1(): Observable<any>{
+    return this.http.get(this.API + '/roomOrders/status/1')
+  }
+  getRoomCancel(): Observable<any>{
+    return this.http.get(this.API + '/roomCancel')
+  }
+  getRoomShow(): Observable<any>{
+    return this.http.get(this.API + '/roomShow')
+  }
   getAdminDetail(username): Observable<any>{
     return this.http.get(this.API + '/admin/getByUsername/' + username)
   }
