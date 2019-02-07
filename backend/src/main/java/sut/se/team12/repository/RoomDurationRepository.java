@@ -6,5 +6,4 @@ import sut.se.team12.entity.RoomDuration;
 public interface RoomDurationRepository extends JpaRepository<RoomDuration,Long>{
     RoomDuration findByroomDurationId(Long roomDurationId);
     RoomDuration findByRoomDuration(Long roomDuration);
-
 }
