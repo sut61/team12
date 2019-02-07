@@ -107,8 +107,8 @@
           <mat-panel-title><i class="material-icons">local_offer</i>ล็อกเกอร์</mat-panel-title>
         </mat-expansion-panel-header>
         <mat-nav-list>
-          <a mat-list-item routerLink="/locker-order"><i class="material-icons">chevron_right</i>จองล็อกเกอร์</a>
-          <a mat-list-item routerLink="/locker-view"><i class="material-icons">chevron_right</i>ข้อมูลการจองล็อกเกอร์</a>
+          <a mat-list-item ><i class="material-icons">chevron_right</i>จองล็อกเกอร์</a>
+          <a mat-list-item ><i class="material-icons">chevron_right</i>ข้อมูลการจองล็อกเกอร์</a>
         </mat-nav-list>
       </mat-expansion-panel>
     </mat-accordion>
@@ -129,42 +129,24 @@
 
 
     <mat-card class="example-card" style="align-content: center">
-      <h1>จองห้องพักนักกีฬา</h1>
+      <h1>ยกเลิกจองห้องพักนักกีฬา</h1>
 
-          <h4>สมาชิก</h4>
+    <h4>เลือกรายการที่ต้องการยกเลิก</h4>
     <mat-form-field appearance="outline">
-      <mat-select placeholder="ชื่อ-นามสกุล"[(ngModel)]="select.memberSelect" name="member">
-        <mat-option *ngFor="let member of members" [value]="member.memberId">
-          {{member.firstName}} {{member.lastName}}
+      <mat-select placeholder="กรุณาเลือกรายการที่ต้องการยกเลิก" [(ngModel)]="select.roomOrderSelect" name="roomOrder">
+        <mat-option *ngFor="let roomOrder of roomStatus" [value]="roomOrder.roomOrderId">
+          {{roomOrder.roomOrderId}}
         </mat-option>
       </mat-select>
     </mat-form-field>
-    <br/>
-    <h4>ห้องพักนักกีฬา</h4>
+    <br />
+    <label>หมายเหตุ</label>
+    <br>
     <mat-form-field appearance="outline">
-      <mat-select placeholder="กรุณาเลือกห้องที่ต้องการ" [(ngModel)]="select.roomSelect" name="room">
-        <mat-option *ngFor="let room of rooms" [value]="room.roomId">
-          {{room.roomNumber}}
-        </mat-option>
-      </mat-select>
+      <input matInput placeholder="ความยาว 5 - 20 ตัวอักษร" [(ngModel)]="note" name="note">
     </mat-form-field>
-    <br/>
-    <h4>ช่วงเวลาที่ต้องการจอง</h4>
-    <mat-form-field appearance="outline">
-      <mat-select placeholder="กรุณาเลือกช่วงเวลาที่ต้องการ"[(ngModel)]="select.roomDurationSelect" name="roomDuration">
-        <mat-option *ngFor="let roomDuration of roomDurations" [value]="roomDuration.roomDurationId">
-          {{roomDuration.roomDuration}}
-        </mat-option>
-      </mat-select>
-    </mat-form-field>
-    <br/>
-    <h4>วันที่</h4>
+    <br>
 
-    <mat-form-field appearance="outline">
-      <input matInput [matDatepicker]="picker" placeholder="กรุณาเลือกวันที่ที่ต้องการ" [(ngModel)]="roomDate" name="date">
-      <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-      <mat-datepicker #picker></mat-datepicker>
-    </mat-form-field>
     
     <mat-card-actions style="text-align:right">
       <a mat-raised-button (click)="save()" color="primary" type="submit">บันทึก</a>

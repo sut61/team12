@@ -71,7 +71,9 @@
         </mat-expansion-panel-header>
         <mat-nav-list>
           <a mat-list-item routerLink="/roomcreate"><i class="material-icons">chevron_right</i>จองห้องพัก</a>
-          <a mat-list-item routerLink="/roomview"><i class="material-icons">chevron_right</i>ยกเลิกการจองห้องพัก</a>
+          <a mat-list-item routerLink="/roomview"><i class="material-icons">chevron_right</i>ข้อมูลการจองห้องพัก</a>
+          <a mat-list-item routerLink="/roomcancel"><i class="material-icons">chevron_right</i>ยกเลิกการจองห้องพัก</a>
+          <a mat-list-item routerLink="/roomshow"><i class="material-icons">chevron_right</i>ข้อมูลยกเลิกจองห้องพัก</a>
         </mat-nav-list>
       </mat-expansion-panel>
     </mat-accordion>
@@ -85,7 +87,6 @@
           <a mat-list-item routerLink="/leaseshow"><i class="material-icons">chevron_right</i>ข้อมูลการเช่าอุปกรณ์</a>
           <a mat-list-item routerLink="/notification" ><i class="material-icons">chevron_right</i>เแจ้งซ่อมอุปกรณ์</a>
           <a mat-list-item routerLink="/notification-show" ><i class="material-icons">chevron_right</i>ข้อมูลการแจ้งซ่อมอุปกรณ์</a>
-
         </mat-nav-list>
       </mat-expansion-panel>
     </mat-accordion>
@@ -106,8 +107,8 @@
           <mat-panel-title><i class="material-icons">local_offer</i>ล็อกเกอร์</mat-panel-title>
         </mat-expansion-panel-header>
         <mat-nav-list>
-          <a mat-list-item routerLink="/locker-order"><i class="material-icons">chevron_right</i>จองล็อกเกอร์</a>
-          <a mat-list-item routerLink="/locker-view"><i class="material-icons">chevron_right</i>ข้อมูลการจองล็อกเกอร์</a>
+          <a mat-list-item ><i class="material-icons">chevron_right</i>จองล็อกเกอร์</a>
+          <a mat-list-item ><i class="material-icons">chevron_right</i>ข้อมูลการจองล็อกเกอร์</a>
         </mat-nav-list>
       </mat-expansion-panel>
     </mat-accordion>
@@ -135,44 +136,42 @@
             <th mat-header-cell *matHeaderCellDef> No. </th>
             <td mat-cell *matCellDef="let element ; let i = index">{{i+1}}</td>
           </ng-container>
-        
-          <!-- <ng-container matColumnDef="admin">
-            <th mat-header-cell *matHeaderCellDef> AdminName </th>
-            <td mat-cell *matCellDef="let element"> {{element.admin.name}} </td>
-          </ng-container>
-        
-          
-          <ng-container matColumnDef="member" >
+
+          <ng-container matColumnDef="member">
             <th mat-header-cell *matHeaderCellDef> MemberName </th>
-            <td mat-cell *matCellDef="let element"> <pre>{{element.member.firstName}}{{element.member.lastName}}</pre> </td>
-          </ng-container> -->
-        
-          <!-- <ng-container matColumnDef="room">
-            <th mat-header-cell *matHeaderCellDef> Room </th>
-            <td mat-cell *matCellDef="let element"> {{element.room.roomName}} </td>
+            <td mat-cell *matCellDef="let element"> <pre>{{element.member.firstName}}&nbsp;{{element.member.lastName}}</pre> </td>
           </ng-container>
-        
-          <ng-container matColumnDef="roomDuration">
+
+           <ng-container matColumnDef="room">
+            <th mat-header-cell *matHeaderCellDef> Room </th>
+            <td mat-cell *matCellDef="let element"> {{element.room.roomNumber}} </td>
+          </ng-container>
+
+          <ng-container matColumnDef="duration">
             <th mat-header-cell *matHeaderCellDef> Duration </th>
             <td mat-cell *matCellDef="let element"> {{element.roomDuration.roomDuration}} </td>
           </ng-container>
-        
+
           <ng-container matColumnDef="date">
             <th mat-header-cell *matHeaderCellDef> Date </th>
             <td mat-cell *matCellDef="let element"> {{element.date}} </td>
-          </ng-container> -->
-        
-          
-          <!-- <ng-container matColumnDef="edit">
-            <th mat-header-cell *matHeaderCellDef style = "width:5%"> Edit.</th>
-            <td mat-cell *matCellDef="let element"> <button mat-raised-button  (click)="manageTeam(element)">Edit</button> </td>
           </ng-container>
-        
-          <ng-container matColumnDef="delete">
-            <th mat-header-cell *matHeaderCellDef style = "width:5px"> Delete.</th>
-            <td mat-cell *matCellDef="let element"> <button mat-raised-button color="warn" (click)="viewConvenienceOrder(element)">Delete</button> </td>
-          </ng-container> -->
-        
+
+          <ng-container matColumnDef="admin">
+            <th mat-header-cell *matHeaderCellDef> AdminName </th>
+            <td mat-cell *matCellDef="let element"> {{element.admin.name}} </td>
+          </ng-container>
+
+          <ng-container matColumnDef="note">
+            <th mat-header-cell *matHeaderCellDef> note </th>
+            <td mat-cell *matCellDef="let element"> {{element.note}} </td>
+          </ng-container>
+
+          <ng-container matColumnDef="status">
+            <th mat-header-cell *matHeaderCellDef> Status </th>
+            <td mat-cell *matCellDef="let element"> {{element.roomStatus.roomStatus}} </td>
+          </ng-container>
+
           <tr mat-header-row *matHeaderRowDef="dataColumns"></tr>
           <tr mat-row *matRowDef="let row; columns: dataColumns;"></tr>
         </table>

@@ -75,7 +75,7 @@
           <a mat-list-item routerLink="/roomcancel"><i class="material-icons">chevron_right</i>ยกเลิกการจองห้องพัก</a>
           <a mat-list-item routerLink="/roomshow"><i class="material-icons">chevron_right</i>ข้อมูลยกเลิกจองห้องพัก</a>
         </mat-nav-list>
-      </mat-expansion-panel>
+       </mat-expansion-panel>
     </mat-accordion>
     <mat-accordion>
       <mat-expansion-panel>
@@ -87,7 +87,7 @@
           <a mat-list-item routerLink="/leaseshow"><i class="material-icons">chevron_right</i>ข้อมูลการเช่าอุปกรณ์</a>
           <a mat-list-item routerLink="/notification" ><i class="material-icons">chevron_right</i>เแจ้งซ่อมอุปกรณ์</a>
           <a mat-list-item routerLink="/notification-show" ><i class="material-icons">chevron_right</i>ข้อมูลการแจ้งซ่อมอุปกรณ์</a>
-        </mat-nav-list>
+         </mat-nav-list>
       </mat-expansion-panel>
     </mat-accordion>
     <mat-accordion>
@@ -107,8 +107,8 @@
           <mat-panel-title><i class="material-icons">local_offer</i>ล็อกเกอร์</mat-panel-title>
         </mat-expansion-panel-header>
         <mat-nav-list>
-          <a mat-list-item routerLink="/locker-order"><i class="material-icons">chevron_right</i>จองล็อกเกอร์</a>
-          <a mat-list-item routerLink="/locker-view"><i class="material-icons">chevron_right</i>ข้อมูลการจองล็อกเกอร์</a>
+          <a mat-list-item ><i class="material-icons">chevron_right</i>จองล็อกเกอร์</a>
+          <a mat-list-item ><i class="material-icons">chevron_right</i>ข้อมูลการจองล็อกเกอร์</a>
         </mat-nav-list>
       </mat-expansion-panel>
     </mat-accordion>
@@ -125,54 +125,47 @@
       <a mat-stroked-button routerLink="/login" style="font-family:Arial, Helvetica, sans-serif">Logout</a>
     </mat-toolbar-row>
   </mat-toolbar>
-
-
-
-    <mat-card class="example-card" style="align-content: center">
-      <h1>จองห้องพักนักกีฬา</h1>
-
-          <h4>สมาชิก</h4>
-    <mat-form-field appearance="outline">
-      <mat-select placeholder="ชื่อ-นามสกุล"[(ngModel)]="select.memberSelect" name="member">
-        <mat-option *ngFor="let member of members" [value]="member.memberId">
-          {{member.firstName}} {{member.lastName}}
-        </mat-option>
-      </mat-select>
-    </mat-form-field>
-    <br/>
-    <h4>ห้องพักนักกีฬา</h4>
-    <mat-form-field appearance="outline">
-      <mat-select placeholder="กรุณาเลือกห้องที่ต้องการ" [(ngModel)]="select.roomSelect" name="room">
-        <mat-option *ngFor="let room of rooms" [value]="room.roomId">
-          {{room.roomNumber}}
-        </mat-option>
-      </mat-select>
-    </mat-form-field>
-    <br/>
-    <h4>ช่วงเวลาที่ต้องการจอง</h4>
-    <mat-form-field appearance="outline">
-      <mat-select placeholder="กรุณาเลือกช่วงเวลาที่ต้องการ"[(ngModel)]="select.roomDurationSelect" name="roomDuration">
-        <mat-option *ngFor="let roomDuration of roomDurations" [value]="roomDuration.roomDurationId">
-          {{roomDuration.roomDuration}}
-        </mat-option>
-      </mat-select>
-    </mat-form-field>
-    <br/>
-    <h4>วันที่</h4>
-
-    <mat-form-field appearance="outline">
-      <input matInput [matDatepicker]="picker" placeholder="กรุณาเลือกวันที่ที่ต้องการ" [(ngModel)]="roomDate" name="date">
-      <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-      <mat-datepicker #picker></mat-datepicker>
-    </mat-form-field>
     
-    <mat-card-actions style="text-align:right">
-      <a mat-raised-button (click)="save()" color="primary" type="submit">บันทึก</a>
-      <a mat-raised-button  routerLink="/nav" color="primary" type="submit">ยกเลิก</a>
-  </mat-card-actions>
 
-    </mat-card>
+      <mat-card style="align-content: center">
+        <h1>ข้อมูลการยกเลิกห้องพัก</h1>
 
+        <table mat-table [dataSource]="orders" class="mat-elevation-z8" style="align:center">
 
+          <ng-container matColumnDef="no">
+            <th mat-header-cell *matHeaderCellDef> No. </th>
+            <td mat-cell *matCellDef="let element ; let i = index">{{i+1}}</td>
+          </ng-container>
+
+           <ng-container matColumnDef="roomOrder">
+            <th mat-header-cell *matHeaderCellDef> RoomOrder </th>
+            <td mat-cell *matCellDef="let element"> {{element.roomOrder.roomOrderId}} </td>
+          </ng-container>
+
+          <ng-container matColumnDef="date">
+            <th mat-header-cell *matHeaderCellDef> Date </th>
+            <td mat-cell *matCellDef="let element"> {{element.date}} </td>
+          </ng-container>
+
+          <ng-container matColumnDef="admin">
+            <th mat-header-cell *matHeaderCellDef> AdminName </th>
+            <td mat-cell *matCellDef="let element"> {{element.admin.name}} </td>
+          </ng-container>
+
+          <ng-container matColumnDef="note">
+            <th mat-header-cell *matHeaderCellDef> note </th>
+            <td mat-cell *matCellDef="let element"> {{element.note}} </td>
+          </ng-container>
+
+          <ng-container matColumnDef="status">
+            <th mat-header-cell *matHeaderCellDef> status </th>
+            <td mat-cell *matCellDef="let element"> {{element.roomStatus.roomStatus}} </td>
+          </ng-container>
+
+          <tr mat-header-row *matHeaderRowDef="dataColumns"></tr>
+          <tr mat-row *matRowDef="let row; columns: dataColumns;"></tr>
+        </table>
+        
+      </mat-card>
   </mat-sidenav-content>
 </mat-sidenav-container>
