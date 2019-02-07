@@ -39,7 +39,7 @@ public class RoomCancelOrderController {
     // }
 
     @PostMapping("/roomCancel/{roomOrder}/{note}/{admin}")
-    public sut.se.team12.entity.RoomCancelOrder roomCancelOrder(
+    public RoomCancelOrder roomCancelOrder(
          @PathVariable Long roomOrder,
          @PathVariable String note,
          @PathVariable Long admin
@@ -55,6 +55,8 @@ public class RoomCancelOrderController {
             // newRoomOrder.setMember(_member);
             // newRoomOrder.setRoom(_room);
             // newRoomOrder.setRoomDuration(_roomDuration);
+
+            _roomOrder.setRoomStatus(_roomStatus);
 
             newRoomCancelOrder.setAdmin(_admin);
             newRoomCancelOrder.setRoomOrder(_roomOrder);

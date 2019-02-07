@@ -16,7 +16,7 @@ public class RoomController {
     }
 
     @GetMapping("/room")
-    public Collection<Room> Field() {
+    public Collection<Room> room() {
         return roomrepository.findAll().stream().collect(Collectors.toList());
     }
 }
