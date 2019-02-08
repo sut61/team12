@@ -853,7 +853,7 @@ public class Team12Application {
 			RoomCancelOrder roomCancel = new RoomCancelOrder();
 
 			roomCancel.setRoomOrder(roomOrder01);
-			roomCancel.setNote("note");
+			roomCancel.setNote("noted");
 			roomCancel.setAdmin(admin1);
 			roomCancel.setRoomStatus(roomStatus02);
 			roomCancel.setDate(new Date());
