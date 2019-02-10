@@ -118,6 +118,61 @@ public class TrainningTests {
 
 	}
 
+	@Test(expected=javax.persistence.PersistenceException.class)
+	public void testTrainingIdMustBeUnique(){
+		
+		Admin admin = adminRepository.findByAdminId(1L);
+		TrainingType  trainingType = trainingTypeRepository.findByTypeId(1L);
+		TrainingProgram trainingProgram = trainingProgramRepository.findByProgramId(1L);
+
+		Training t = new Training();
+		t.setTrainingId(1L);
+		t.setAdmin(admin);
+		t.setTitle("Motivating Techniques");
+		t.setDescription("description");
+		t.setDateFrom(new Date());
+		t.setDateTo(new Date());
+		t.setTrainingType(trainingType);
+		t.setTrainingProgram(trainingProgram);
+		t.setInstructor("Mr.John Smith");
+		t.setLocation("location");
+		t.setEnrollment(250);
+		t.setCost(4500L);
+		entityManager.persist(t);
+		entityManager.flush();
+
+		Training t2 = new Training();
+		t2.setTrainingId(1L);
+		t2.setAdmin(admin);
+		t2.setTitle("Motivating Techniques");
+		t2.setDescription("description");
+		t2.setDateFrom(new Date());
+		t2.setDateTo(new Date());
+		t2.setTrainingType(trainingType);
+		t2.setTrainingProgram(trainingProgram);
+		t2.setInstructor("Mr.John Smith");
+		t2.setLocation("location");
+		t2.setEnrollment(250);
+		t2.setCost(4500L);
+
+		try {
+            entityManager.persist(t2);
+			entityManager.flush();
+
+            fail("Should not pass to this line");
+        } catch(javax.validation.ConstraintViolationException er) {
+            Set<ConstraintViolation<?>> violations = er.getConstraintViolations();
+            assertEquals(violations.isEmpty(), false);
+			assertEquals(violations.size(), 1);
+			System.out.println("\n");
+			System.out.println("------------------------------------------- Training _ id _ found not unique ---------------------------------------");
+			System.out.println();
+			System.out.println(er.getMessage());
+			System.out.println("\n");
+			
+        }
+	}
+
 	@Test public void testTrainingTitleNotBeNull () throws Exception{
 		Training t = new Training();
 

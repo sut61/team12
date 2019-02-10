@@ -116,6 +116,61 @@ public class EmployeeTests {
 		
 	}
 
+	@Test public void testEmployeeIdMustBeUnique(){
+		
+
+		Admin admin = adminRepository.findByAdminId(1L);
+		Title title = titleRepository.findByTitleId(1L);
+		Degree degree = degreeRepositiry.findByDegreeId(1L);
+		Position position = positionRepository.findByPositionId(1L);
+
+		Employee e = new Employee();
+		e.setEmployeeId(1L);
+		e.setAdmin(admin);
+		e.setId("1234567890123");
+		e.setTitle(title);
+		e.setFirstName("Supanniga");
+		e.setLastName("Ogasawara");
+		e.setBirthDate(new Date());
+		e.setPhone("0812345678");
+		e.setEmail("supanniga@gmail.com");
+		e.setAddress("11 SUT");
+		e.setDegree(degree);
+		e.setPosition(position);
+		entityManager.persist(e);
+		entityManager.flush();
+
+		Employee e2 = new Employee();
+		e2.setEmployeeId(1L);
+		e2.setAdmin(admin);
+		e2.setId("1234567890123");
+		e2.setTitle(title);
+		e2.setFirstName("Supanniga");
+		e2.setLastName("Ogasawara");
+		e2.setBirthDate(new Date());
+		e2.setPhone("0812345678");
+		e2.setEmail("supanniga@gmail.com");
+		e2.setAddress("11 SUT");
+		e2.setDegree(degree);
+		e2.setPosition(position);
+
+		try {
+            entityManager.persist(e2);
+			entityManager.flush();
+
+            fail("Should not pass to this line");
+        } catch(javax.validation.ConstraintViolationException er) {
+            Set<ConstraintViolation<?>> violations = er.getConstraintViolations();
+            assertEquals(violations.isEmpty(), false);
+			assertEquals(violations.size(), 1);
+			System.out.println("\n");
+			System.out.println("------------------------------------------- Employee _ id _ found not unique ---------------------------------------");
+			System.out.println();
+			System.out.println(er.getMessage());
+			System.out.println("\n");
+        }
+	}
+
 	@Test public void testPersonalIdNotBeNull() throws Exception{
 		Employee e = new Employee();
 
@@ -285,20 +340,13 @@ public class EmployeeTests {
 	}
 
 	
-	@Test
-	//(expected=javax.persistence.PersistenceException.class)
+	@Test(expected=javax.persistence.PersistenceException.class)
     public void testIdMustBeUnique(){
         
-
 		Admin admin = adminRepository.findByAdminId(1L);
 		Title title = titleRepository.findByTitleId(1L);
 		Degree degree = degreeRepositiry.findByDegreeId(1L);
 		Position position = positionRepository.findByPositionId(1L);
-
-		// SimpleDateFormat dateformat = new SimpleDateFormat("dd-MM-yyyy");
-		// String input = "10-10-2012";
-		// Date date = new Date();
-		// date = dateformat.parse(input);
 
 		Employee e1 = new Employee();
 		e1.setAdmin(admin);
@@ -333,10 +381,10 @@ public class EmployeeTests {
             entityManager.flush();
 
             fail("Employee _ personal id _ found not unique");
-		}catch(javax.persistence.PersistenceException er){
-			// Set<ConstraintViolation<?>> violations = er.getConstraintViolations();
-            // assertEquals(violations.isEmpty(), false);
-			// assertEquals(violations.size(), 1);
+		}catch(javax.validation.ConstraintViolationException er){
+			Set<ConstraintViolation<?>> violations = er.getConstraintViolations();
+            assertEquals(violations.isEmpty(), false);
+			assertEquals(violations.size(), 1);
 			// javax.validation.ConstraintViolationException er
 			// javax.persistence.PersistenceException er
 			System.out.println("\n");

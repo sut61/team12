@@ -22,7 +22,7 @@ public class Training {
     @Id
     @SequenceGenerator(name="training_seq",sequenceName = "training_seq")
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "training_seq")
-    @Column(unique = true)
+    @Column(name = "TRAINING_ID",unique = true)
     private Long trainingId;
 
     
