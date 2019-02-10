@@ -385,8 +385,6 @@ public class EmployeeTests {
 			Set<ConstraintViolation<?>> violations = er.getConstraintViolations();
             assertEquals(violations.isEmpty(), false);
 			assertEquals(violations.size(), 1);
-			// javax.validation.ConstraintViolationException er
-			// javax.persistence.PersistenceException er
 			System.out.println("\n");
 			System.out.println("------------------------------------------- Employee _ personal id _ found not unique ---------------------------------------");
 			System.out.println();
