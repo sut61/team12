@@ -70,7 +70,25 @@ export class TrainingCreateComponent implements OnInit {
   }
 
   save() {
-    if (this.adminLogin.admin.adminId === '' || this.title === '' || this.description === '' ||  this.dateFrom === null || this.dateTo === null || this.select.typeSelect === '' || this.select.programSelect === '' || this.instructor === '' || this.location === '' || this.enrollment === null || this.cost === null) {
+    if (this.adminLogin.admin.adminId === '' || 
+    this.title === ''|| 
+    this.title === undefined || 
+    this.description === '' ||  
+    this.description === undefined ||  
+    this.dateFrom === null || 
+    this.dateTo === null ||  
+    this.dateFrom === undefined || 
+    this.dateTo === undefined || 
+    this.select.typeSelect === '' || 
+    this.select.programSelect === '' || 
+    this.instructor === '' || 
+    this.instructor === undefined || 
+    this.location === '' || 
+    this.location === undefined || 
+    this.enrollment === null || 
+    this.cost === null || 
+    this.enrollment === undefined || 
+    this.cost === undefined) {
       alert('กรุณากรอกข้อมูลให้ครบถ้วน');
     } else {
       this.httpClient.post('http://localhost:8080/training/create/' + this.adminLogin.admin.adminId + '/' + this.title + '/' + this.description + '/' + this.dateFrom + '/'+ this.dateTo + '/' + this.select.typeSelect + '/' + this.select.programSelect + '/' + this.instructor + '/' + this.location + '/' + this.enrollment + '/' + this.cost,this.select)

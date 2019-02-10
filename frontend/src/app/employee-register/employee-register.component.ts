@@ -87,7 +87,16 @@ export class EmployeeRegisterComponent implements OnInit {
   }
 
   save() {
-    if (this.adminLogin.admin.adminId === '' || this.select.titleSelect === '' || this.select.degreeSelect === '' || this.select.positionSelect === '' ||  this.firstName === '' || this.lastName === '' || this.phone === '' || this.email === '' || this.address === '') {
+    if (this.adminLogin.admin.adminId === '' || 
+    this.select.titleSelect === '' || 
+    this.select.degreeSelect === '' || 
+    this.select.positionSelect === '' ||  
+    this.firstName === '' || this.firstName === undefined || 
+    this.lastName === '' || this.lastName === undefined || 
+    this.phone === '' || this.phone === undefined || 
+    this.email === '' || this.email === undefined || 
+    this.address === '' || this.address === undefined || 
+    this.birthDate === undefined || this.birthDate === null) {
       alert('กรุณากรอกข้อมูลให้ครบถ้วน');
     } else {
       this.httpClient.post('http://localhost:8080/employee/register/' + this.adminLogin.admin.adminId + '/' + this.select.titleSelect + '/' + this.select.degreeSelect + '/' + this.select.positionSelect + '/'+ this.id + '/' + this.firstName + '/' + this.lastName + '/' + this.phone + '/' + this.email + '/' + this.address + '/' + this.birthDate,this.select)
