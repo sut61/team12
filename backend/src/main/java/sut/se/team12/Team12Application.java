@@ -848,18 +848,25 @@ public class Team12Application {
 			roomOrder01.setRoomStatus(roomStatus01);
 			roomOrderRepository.save(roomOrder01);
 
+			RoomOrder roomOrder02 = new RoomOrder();
+			Date date6 = dateformat.parse("2019-10-03");
+			roomOrder02.setAdmin(admin1);
+			roomOrder02.setRoom(Room01);
+			roomOrder02.setRoomDuration(roomDuration01);
+			roomOrder02.setDate(date6);
+			roomOrder02.setMember(member2);
+			roomOrder02.setRoomStatus(roomStatus01);
+			roomOrderRepository.save(roomOrder02);
+
 			//-----------------------------------RoomCancel-----------------------------------------------
 
 			RoomCancelOrder roomCancel = new RoomCancelOrder();
-
 			roomCancel.setRoomOrder(roomOrder01);
 			roomCancel.setNote("noted");
 			roomCancel.setAdmin(admin1);
 			roomCancel.setRoomStatus(roomStatus02);
 			roomCancel.setDate(new Date());
 			roomCancelOrderRepository.save(roomCancel);
-
-
 
 			// --------------------------------- TrainingType --------------------------------------------
 

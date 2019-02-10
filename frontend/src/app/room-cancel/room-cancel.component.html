@@ -133,14 +133,14 @@
 
     <h4>เลือกรายการที่ต้องการยกเลิก</h4>
     <mat-form-field appearance="outline">
-      <mat-select placeholder="กรุณาเลือกรายการที่ต้องการยกเลิก" [(ngModel)]="select.roomOrderSelect" name="roomOrder">
+      <mat-select placeholder="กรุณาเลือก Order ID ที่ต้องการยกเลิก" [(ngModel)]="select.roomOrderSelect" name="roomOrder">
         <mat-option *ngFor="let roomOrder of roomStatus" [value]="roomOrder.roomOrderId">
           {{roomOrder.roomOrderId}}
         </mat-option>
       </mat-select>
     </mat-form-field>
     <br />
-    <label>หมายเหตุ</label>
+    <label>กรุณากรอกเหตุผลที่ท่านต้องการยกเลิกในครั้งนี้</label>
     <br>
     <mat-form-field appearance="outline">
       <input matInput placeholder="ความยาว 5 - 20 ตัวอักษร" [(ngModel)]="note" name="note">
@@ -149,8 +149,8 @@
 
     
     <mat-card-actions style="text-align:right">
-      <a mat-raised-button (click)="save()" color="primary" type="submit">บันทึก</a>
-      <a mat-raised-button  routerLink="/nav" color="primary" type="submit">ยกเลิก</a>
+      <a mat-raised-button (click)="save()" color="primary" type="submit">ยืนยัน</a>
+      <a mat-raised-button  routerLink="/nav" color="primary" type="submit">กลับสู่หน้าหลัก</a>
   </mat-card-actions>
 
     </mat-card>
