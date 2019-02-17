@@ -116,7 +116,8 @@ public class EmployeeTests {
 		
 	}
 
-	@Test public void testEmployeeIdMustBeUnique(){
+	@Test(expected=javax.persistence.PersistenceException.class) 
+	public void testEmployeeIdMustBeUnique(){
 		
 
 		Admin admin = adminRepository.findByAdminId(1L);
