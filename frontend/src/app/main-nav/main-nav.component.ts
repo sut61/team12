@@ -47,11 +47,22 @@ export class MainNavComponent {
   }
 
   ngOnInit() {
-    this.adminService.getAdminLogin().subscribe(data => {
+    //  this.adminService.getAdminLogin().subscribe(data => {
+    //   this.adminLogin = data;
+    //   this.adminId = data.admin.adminId;
+    //   this.adminName = data.admin.name;
+    // });
+    this.admin();
+    
+  }
+
+  async admin(){
+    await this.adminService.getAdminLogin().subscribe(data => {
       this.adminLogin = data;
       this.adminId = data.admin.adminId;
       this.adminName = data.admin.name;
     });
+
   }
 
 }
