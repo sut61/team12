@@ -140,7 +140,7 @@
 
   <ng-container matColumnDef="name" >
     <th mat-header-cell *matHeaderCellDef > Name </th>
-    <td mat-cell *matCellDef="let element" style="text-align:left"> <pre>{{element.member.firstName}}</pre> </td>
+    <td mat-cell *matCellDef="let element" style="text-align:left">{{element.member.firstName}}&nbsp;{{element.member.lastName}}</td>
   </ng-container>
 
   <ng-container matColumnDef="accessory">
