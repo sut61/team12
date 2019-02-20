@@ -165,6 +165,24 @@
       <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
       <mat-datepicker #picker></mat-datepicker>
     </mat-form-field>
+
+    <br />
+    <label>หมายเหตู</label>
+    <br>
+    <mat-form-field appearance="outline">
+      <input matInput placeholder="ความยาว 5 - 20 ตัวอักษร" [(ngModel)]="notee" name="notee">
+      <!-- <div *ngIf="f.notee.errors.minlength">Password must be at least 5 characters</div> -->
+    </mat-form-field>
+    <!-- <div class="form-notee">
+      <label>หมายเหตุ</label>
+      <input type="notee" formControlName="notee" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.notee.errors }" />
+      <div *ngIf="submitted && f.notee.errors" class="invalid-feedback">
+          <div *ngIf="f.notee.errors.required">Password is required</div>    
+          <div *ngIf="f.notee.errors.minlength">Password must be at least 5 characters</div>
+      </div>
+  </div>
+  <div class="form-notee"> -->
+    <br>
     
     <mat-card-actions style="text-align:right">
       <a mat-raised-button (click)="save()" color="primary" type="submit">บันทึก</a>

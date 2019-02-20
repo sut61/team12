@@ -39,12 +39,7 @@ export class RoomCreateComponent implements OnInit {
   }
   roomDate: Date
   id: string
-  // myFilter = (d: Date): boolean => {
-  //   const day = d.getDay();
-  //   // Prevent Saturday and Sunday from being selected.
-  //   return day !== 0 && day !== 6;
-  // }
-  
+  notee: string
   data:any={}
 
  isHandset$: Observable<boolean> = this.breakpointObserver.observe(Breakpoints.Handset)
@@ -54,10 +49,6 @@ export class RoomCreateComponent implements OnInit {
   constructor(private breakpointObserver: BreakpointObserver,private route:ActivatedRoute,private roomService: RoomService , private httpClient: HttpClient, private router:Router, private adminService: AdminService) { }
 
   ngOnInit() {
-    // this.roomService.getAdmins().subscribe(data => {
-    //   this.admins = data;
-    //   console.log(this.admins);
-    // });
     this.roomService.getMember().subscribe(data => {
       this.members = data;
       console.log(this.members);
@@ -81,10 +72,10 @@ export class RoomCreateComponent implements OnInit {
     });
   }
   save() {
-    if (this.adminLogin.admin.adminId === '' || this.select.memberSelect === '' || this.select.roomSelect === '' || this.select.roomDurationSelect === '' ) {
+    if (this.adminLogin.admin.adminId == null || this.select.memberSelect == null || this.select.roomSelect == null || this.select.roomDurationSelect == null || this.notee == null) {
       alert('กรุณากรอกข้อมูลให้ครบถ้วน');
     } else {
-      this.httpClient.post('http://localhost:8080/roomOrders/' + this.adminLogin.admin.adminId + '/' + this.select.memberSelect + '/' + this.select.roomSelect + '/' + this.select.roomDurationSelect + '/' + this.roomDate,this.select)
+      this.httpClient.post('http://localhost:8080/roomOrders/' + this.adminLogin.admin.adminId + '/' + this.select.memberSelect + '/' + this.select.roomSelect + '/' + this.select.roomDurationSelect + '/' + this.roomDate + '/' + this.notee , this.select)
       .subscribe(
           data => {
               console.log('PUT Request is successful', data);

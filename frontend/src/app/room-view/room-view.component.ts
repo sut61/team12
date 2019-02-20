@@ -25,7 +25,7 @@ export class RoomViewComponent implements OnInit {
         passowrd:''
       }
     }
-   dataColumns: string[] = ['no','member','room','duration','date','admin','status'];
+   dataColumns: string[] = ['no','member','room','duration','date','admin','notee','status'];
 
     constructor(private breakpointObserver: BreakpointObserver,private route:ActivatedRoute,private roomService: RoomService , private httpClient: HttpClient, private router:Router, private adminService: AdminService) { }
 
