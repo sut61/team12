@@ -788,85 +788,91 @@ public class Team12Application {
 			lockerOrderRepository.save(lockerOrder1);
 //------------------------ Room ----------------------
 
-			Room Room01 = new Room();
-			Room01.setRoomNumber("R001");
-			roomRepository.save(Room01);
+Room Room01 = new Room();
+Room01.setRoomNumber("R001");
+roomRepository.save(Room01);
 
-			Room Room02 = new Room();
-			Room02.setRoomNumber("R002");
-			roomRepository.save(Room02);
+Room Room02 = new Room();
+Room02.setRoomNumber("R002");
+roomRepository.save(Room02);
 
-			Room Room03 = new Room();
-			Room03.setRoomNumber("R003");
-			roomRepository.save(Room03);
+Room Room03 = new Room();
+Room03.setRoomNumber("R003");
+roomRepository.save(Room03);
 
-			Room Room04 = new Room();
-			Room04.setRoomNumber("R004");
-			roomRepository.save(Room04);
+Room Room04 = new Room();
+Room04.setRoomNumber("R004");
+roomRepository.save(Room04);
 
-			Room Room05 = new Room();
-			Room05.setRoomNumber("R005");
-			roomRepository.save(Room05);
+Room Room05 = new Room();
+Room05.setRoomNumber("R005");
+roomRepository.save(Room05);
 
-			//---------------------- RoomDuration -------------------
+//---------------------- RoomDuration -------------------
 
-			RoomDuration roomDuration01 = new RoomDuration();
-			roomDuration01.setRoomDuration("09.00 AM - 10.30 AM");
-			roomDurationRepository.save(roomDuration01);
+RoomDuration roomDuration01 = new RoomDuration();
+roomDuration01.setRoomDuration("09.00 AM - 10.30 AM");
+roomDurationRepository.save(roomDuration01);
 
-			RoomDuration roomDuration02 = new RoomDuration();
-			roomDuration02.setRoomDuration("11.00 AM - 12.30 AM");
-			roomDurationRepository.save(roomDuration02);
+RoomDuration roomDuration02 = new RoomDuration();
+roomDuration02.setRoomDuration("11.00 AM - 12.30 AM");
+roomDurationRepository.save(roomDuration02);
 
-			RoomDuration roomDuration03 = new RoomDuration();
-			roomDuration03.setRoomDuration("01.00 PM - 02.30 PM");
-			roomDurationRepository.save(roomDuration03);
+RoomDuration roomDuration03 = new RoomDuration();
+roomDuration03.setRoomDuration("01.00 PM - 02.30 PM");
+roomDurationRepository.save(roomDuration03);
 
-			RoomDuration roomDuration04 = new RoomDuration();
-			roomDuration04.setRoomDuration("03.00 PM - 04.30 PM");
-			roomDurationRepository.save(roomDuration04);
-			
-			//----------------------------------Status----------------------------------------------------
+RoomDuration roomDuration04 = new RoomDuration();
+roomDuration04.setRoomDuration("03.00 PM - 04.30 PM");
+roomDurationRepository.save(roomDuration04);
 
-			RoomStatus roomStatus01 = new RoomStatus();
-			roomStatus01.setRoomStatus("จองแล้ว");
-			roomStatusRepository.save(roomStatus01);
+//----------------------------------Status----------------------------------------------------
 
-			RoomStatus roomStatus02 = new RoomStatus();
-			roomStatus02.setRoomStatus("ยกเลิกแล้ว");
-			roomStatusRepository.save(roomStatus02);
+RoomStatus roomStatus01 = new RoomStatus();
+roomStatus01.setRoomStatus("จองแล้ว");
+roomStatusRepository.save(roomStatus01);
 
-			//---------------------------------RoomOrder-------------------------------------------------
-			
-			RoomOrder roomOrder01 = new RoomOrder();
-			Date date5 = dateformat.parse("2019-10-01");
-			roomOrder01.setAdmin(admin1);
-			roomOrder01.setRoom(Room05);
-			roomOrder01.setRoomDuration(roomDuration03);
-			roomOrder01.setDate(date5);
-			roomOrder01.setMember(member1);
-			roomOrder01.setRoomStatus(roomStatus01);
-			roomOrderRepository.save(roomOrder01);
+RoomStatus roomStatus02 = new RoomStatus();
+roomStatus02.setRoomStatus("ยกเลิกแล้ว");
+roomStatusRepository.save(roomStatus02);
 
-			RoomOrder roomOrder02 = new RoomOrder();
-			Date date6 = dateformat.parse("2019-10-03");
-			roomOrder02.setAdmin(admin1);
-			roomOrder02.setRoom(Room01);
-			roomOrder02.setRoomDuration(roomDuration01);
-			roomOrder02.setDate(date6);
-			roomOrder02.setMember(member2);
-			roomOrder02.setRoomStatus(roomStatus01);
-			roomOrderRepository.save(roomOrder02);
+//---------------------------------RoomOrder-------------------------------------------------
 
-			//-----------------------------------RoomCancel-----------------------------------------------
+RoomOrder roomOrder01 = new RoomOrder();
+Date date5 = dateformat.parse("2019-10-01");
+roomOrder01.setAdmin(admin1);
+roomOrder01.setRoom(Room05);
+roomOrder01.setRoomDuration(roomDuration03);
+roomOrder01.setDate(date5);
+roomOrder01.setMember(member1);
+roomOrder01.setRoomStatus(roomStatus01);
+roomOrder01.setNotee("notee");
+roomOrderRepository.save(roomOrder01);
 
-			RoomCancelOrder roomCancel = new RoomCancelOrder();
-			roomCancel.setRoomOrder(roomOrder01);
-			roomCancel.setNote("noted");
-			roomCancel.setAdmin(admin1);
-			roomCancel.setRoomStatus(roomStatus02);
-			roomCancel.setDate(new Date());
-			roomCancelOrderRepository.save(roomCancel);
+
+
+RoomOrder roomOrder02 = new RoomOrder();
+Date date6 = dateformat.parse("2019-10-03");
+roomOrder02.setAdmin(admin1);
+roomOrder02.setRoom(Room01);
+roomOrder02.setRoomDuration(roomDuration01);
+roomOrder02.setDate(date6);
+roomOrder02.setMember(member2);
+roomOrder02.setRoomStatus(roomStatus01);
+roomOrder02.setNotee("noteee");
+roomOrderRepository.save(roomOrder02);
+
+
+
+//-----------------------------------RoomCancel-----------------------------------------------
+
+RoomCancelOrder roomCancel = new RoomCancelOrder();
+roomCancel.setRoomOrder(roomOrder01);
+roomCancel.setNote("noted");
+roomCancel.setAdmin(admin1);
+roomCancel.setRoomStatus(roomStatus02);
+roomCancel.setDate(new Date());
+roomCancelOrderRepository.save(roomCancel);
 
 			// --------------------------------- TrainingType --------------------------------------------
 

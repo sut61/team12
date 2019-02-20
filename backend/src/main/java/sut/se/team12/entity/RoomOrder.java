@@ -1,8 +1,11 @@
 package sut.se.team12.entity;
+
 import lombok.*;
 import java.util.Date;
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Pattern;
+import javax.validation.constraints.Size;
 
 @Data
 @Entity
@@ -16,12 +19,16 @@ public class RoomOrder {
     @SequenceGenerator(name="roomOrder_seq",sequenceName = "roomOrder_seq")
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "roomOrder_seq")
     @Column(name = "ROOMORDER_ID")
-    
-    
+
     private Long roomOrderId;
     @Temporal(TemporalType.DATE)
     @NotNull
     private Date date;
+    
+    @NotNull
+    @Size(min = 5, max = 30)
+    @Pattern(regexp = "[A-Za-z /t]+")
+    private String notee;
     
     
     @ManyToOne(fetch = FetchType.EAGER, targetEntity = Room.class)
