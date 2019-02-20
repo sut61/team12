@@ -42,8 +42,9 @@ public class RoomOrderController {
     //     return memberRepository.findAll().stream().collect(Collectors.toList());
     // }
 
-    @PostMapping("/roomOrders/{admin}/{member}/{room}/{duration}/{date}")
+    @PostMapping("/roomOrders/{admin}/{member}/{room}/{duration}/{date}/{notee}")
     public RoomOrder roomOrder(
+        @PathVariable String notee,
         @PathVariable Long admin, 
         @PathVariable Long member,
         @PathVariable Long room,
@@ -58,6 +59,7 @@ public class RoomOrderController {
             RoomDuration _roomDuration = roomDurationRepository.findByroomDurationId(duration);
             RoomStatus _roomStatus = roomStatusRepository.findByroomStatusId(1L);
 
+            newRoomOrder.setNotee(notee);
             newRoomOrder.setAdmin(_admin);
             newRoomOrder.setMember(_member);
             newRoomOrder.setRoom(_room);
