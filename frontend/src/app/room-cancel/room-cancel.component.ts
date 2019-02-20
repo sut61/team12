@@ -35,12 +35,6 @@ export class RoomCancelComponent implements OnInit {
   }
   roomDate: Date
   note: string
-  // myFilter = (d: Date): boolean => {
-  //   const day = d.getDay();
-  //   // Prevent Saturday and Sunday from being selected.
-  //   return day !== 0 && day !== 6;
-  // }
-  
   data:any={}
 
  isHandset$: Observable<boolean> = this.breakpointObserver.observe(Breakpoints.Handset)
@@ -73,9 +67,9 @@ export class RoomCancelComponent implements OnInit {
     });
   }
   save() {
-    if (this.adminLogin.admin.adminId === '' || this.select.roomOrderSelect === '' || this.note === '') {
+    if (this.adminLogin.admin.adminId == null || this.select.roomOrderSelect == null || this.note == null) {
       alert('กรุณากรอกข้อมูลให้ครบถ้วน');
-    } else {
+        } else {
       this.httpClient.post('http://localhost:8080/roomCancel/' + this.select.roomOrderSelect + '/' + this.note + '/' + this.adminLogin.admin.adminId , this.select)
       .subscribe(
           data => {

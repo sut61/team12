@@ -139,7 +139,7 @@
 
           <ng-container matColumnDef="member">
             <th mat-header-cell *matHeaderCellDef> MemberName </th>
-            <td mat-cell *matCellDef="let element">{{element.member.firstName}}&nbsp;{{element.member.lastName}}</td>
+            <td mat-cell *matCellDef="let element"> <pre>{{element.member.firstName}}&nbsp;{{element.member.lastName}}</pre> </td>
           </ng-container>
 
            <ng-container matColumnDef="room">
@@ -162,9 +162,9 @@
             <td mat-cell *matCellDef="let element"> {{element.admin.name}} </td>
           </ng-container>
 
-          <ng-container matColumnDef="note">
-            <th mat-header-cell *matHeaderCellDef> note </th>
-            <td mat-cell *matCellDef="let element"> {{element.note}} </td>
+          <ng-container matColumnDef="notee">
+            <th mat-header-cell *matHeaderCellDef> your note </th>
+            <td mat-cell *matCellDef="let element"> {{element.notee}} </td>
           </ng-container>
 
           <ng-container matColumnDef="status">
