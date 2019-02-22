@@ -151,12 +151,6 @@
             <div class="example-element-name"> อีเมล: {{element.email}} </div>
             <div class="example-element-name"> ที่อยู่ : {{element.address}} ตำบล {{element.subDistrict}} อำเภอ {{element.district}} จังหวัด {{element.province.provinceName}}</div>
             <div class="example-element-name"> พนักงาน: {{element.admin.name}}</div>
-            <div style="display: inline;">
-              <i class="far fa-edit" style="height: 15px; width: 15px; color: blue;"></i>
-          </div>&nbsp;&nbsp;
-            <div (click)="onClickDelete(element)" style="display: inline;">
-              <i class="far fa-trash-alt" style="height: 15px; width: 15px; color: red;"></i>
-            </div>
           </div>
         </div>
       </td>
@@ -172,84 +166,4 @@
           </mat-card>
     </mat-sidenav-content>
   </mat-sidenav-container>
-  
-          <!-- <table mat-table [dataSource]="members" multiTemplateDataRows class="mat-elevation-z8" >
-  
-            <ng-container matColumnDef="no">
-              <th mat-header-cell *matHeaderCellDef style="width: 5%; text-align: center;"> No. </th>
-              <td mat-cell *matCellDef="let element ; let i = index">{{i+1}}</td>
-            </ng-container>
-  
-            <ng-container matColumnDef="name" style="width: 10%;" >
-              <th mat-header-cell *matHeaderCellDef style = "width:10%; text-align: center;"> Name. </th>
-              <td mat-cell *matCellDef="let element" style="text-align:left"> <pre>{{element.title.titleType}}&nbsp;{{element.firstName}}&nbsp;&nbsp;{{element.lastName}}</pre> </td>
-            </ng-container>
-  
-          <ng-container matColumnDef="privilege" style="width: 7%; text-align: center;">
-              <th mat-header-cell *matHeaderCellDef style = "width:10%"> privilege. </th>
-              <td mat-cell *matCellDef="let element"> {{element.privilege.privilegeName}} </td>
-            </ng-container> -->
-            <!-- <ng-container matColumnDef="age">
-              <th mat-header-cell *matHeaderCellDef style = "width:10px"> Age. </th>
-              <td mat-cell *matCellDef="let element"> {{element.age}} </td>
-            </ng-container> -->
-  
-            <!-- <ng-container matColumnDef="birth">
-              <th mat-header-cell *matHeaderCellDef style = "width:10px"> Birth Date. </th>
-              <td mat-cell *matCellDef="let element"> {{element.birthDate}} </td>
-            </ng-container> -->
-          
-            <!-- <ng-container matColumnDef="phoneNumber">
-              <th mat-header-cell *matHeaderCellDef> Phone Number. </th>
-              <td mat-cell *matCellDef="let element"> {{element.phoneNumber}} </td>
-            </ng-container> -->
-          
-            <!-- <ng-container matColumnDef="email">
-              <th mat-header-cell *matHeaderCellDef> Email. </th>
-              <td mat-cell *matCellDef="let element"> {{element.email}} </td>
-            </ng-container> -->
-          
-            <!-- <ng-container matColumnDef="address">
-              <th mat-header-cell *matHeaderCellDef> Address. </th>
-              <td mat-cell *matCellDef="let element"> {{element.address}} </td>
-            </ng-container>
-            <ng-container matColumnDef="">
-              <th mat-header-cell *matHeaderCellDef> Sub Distric. </th>
-              <td mat-cell *matCellDef="let element"> {{element.subDistric}} </td>
-            </ng-container>
-           -->
-            <!-- <ng-container matColumnDef="position">
-              <th mat-header-cell *matHeaderCellDef> Distric. </th>
-              <td mat-cell *matCellDef="let element"> {{element.distric}} </td>
-            </ng-container>
-            <ng-container matColumnDef="">
-              <th mat-header-cell *matHeaderCellDef> Province. </th>
-              <td mat-cell *matCellDef="let element"> {{element.province.provinceName}} </td>
-            </ng-container>
-          
-            <ng-container matColumnDef="position">
-              <th mat-header-cell *matHeaderCellDef> Staff. </th>
-              <td mat-cell *matCellDef="let element"> {{element.admin.name}} </td>
-            </ng-container>
-           -->
-          
-             <!-- <ng-container matColumnDef="note">
-              <th mat-header-cell *matHeaderCellDef style = "width:10%"> Note.</th>
-              <td mat-cell *matCellDef="let element"> 
-                  <div style="display: inline;">
-                      <i class="far fa-edit" style="height: 15px; width: 15px; color: blue;"></i>
-                  </div>&nbsp;&nbsp;
-                    <div style="display: inline;">
-                      <i class="far fa-trash-alt" style="height: 15px; width: 15px; color: red;"></i>
-                    </div>
-                  </td>
-            </ng-container> -->
-  
-            <!-- <tr mat-header-row *matHeaderRowDef="dataColumns"></tr>
-            <tr mat-row *matRowDef="let row; columns: dataColumns;"
-            class="example-element-row"
-        [class.example-expanded-row]="expandedElement === element"
-        (click)="expandedElement = expandedElement === element ? null : element"></tr>
-        <tr mat-row *matRowDef="let row; columns: ['expandedDetail']" class="example-detail-row"></tr>
-          </table> -->
   
