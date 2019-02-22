@@ -51,10 +51,5 @@ export class MemberShowComponent implements OnInit {
     });
 
   }
-  onClickDelete(element){
-    // this.memberService.remove(element.memberId).subscribe(result => {
-    //   this.members.splice(this.members.indexOf(element),1)
-    //   console.log("Deleted!!")
-    // }, error => console.error(error));
-  }
+
 }

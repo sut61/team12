@@ -57,10 +57,6 @@ export class MemberRegisterComponent implements OnInit {
   constructor(private breakpointObserver: BreakpointObserver,private route:ActivatedRoute,private employeeService: EmployeeService ,private memberService: MemberService, private httpClient: HttpClient, private router:Router, private adminService: AdminService) { }
 
   ngOnInit() {
-    // this.route.params.subscribe(prams=>{
-    //   this.data = prams
-    //   console.log(prams)
-    // });
     this.memberService.getAdmins().subscribe(data => {
       this.admins = data;
       console.log(this.admins);
