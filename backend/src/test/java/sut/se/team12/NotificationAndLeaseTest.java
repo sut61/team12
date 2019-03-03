@@ -316,10 +316,62 @@ public class NotificationAndLeaseTest {
 			System.out.println();
         }
 	}
+	
+	@Test(expected=javax.persistence.PersistenceException.class)
+	
+    public void testLeaseIdMustBeUnique() {
+		
+        Lease lease1 = new Lease();
+		Member member1 = memberRepository.findByMemberId(1L);
+		LeaseAccessory accessory1 = leaseAccessoryRepository.findByAccessoryId(1L);
+		LeaseDuration duration1 = leaseDurationRepository.findByDurationId(1L);
 
-	//-----------------------------------------------------------------------------------------------------------------//
-	//-----------------------------------------------------> " Notification " <---------------------------------------------------//
-	//-----------------------------------------------------------------------------------------------------------------//
+		lease1.setLeaseId(1L);
+        lease1.setMember(member1);
+		lease1.setAccessory(accessory1);
+		lease1.setDuration(duration1);
+		lease1.setNote("------");
+
+		entityManager.persist(lease1);
+		entityManager.flush();
+
+		Lease lease2 = new Lease();
+		Member member2 = memberRepository.findByMemberId(1L);
+		LeaseAccessory accessory2 = leaseAccessoryRepository.findByAccessoryId(2L);
+		LeaseDuration duration2 = leaseDurationRepository.findByDurationId(2L);
+
+		lease2.setLeaseId(1L);
+     	lease2.setMember(member2);
+		lease2.setAccessory(accessory2);
+		lease2.setDuration(duration2);
+		lease2.setNote("------");
+
+		try{
+
+		entityManager.persist(lease2);
+			entityManager.flush();
+			
+            fail("Lease Not Unique");
+		} catch(javax.validation.ConstraintViolationException e) {
+            Set<ConstraintViolation<?>> violations = e.getConstraintViolations();
+            assertEquals(violations.isEmpty(), false);
+			assertEquals(violations.size(), 1);
+
+			System.out.println();
+			System.out.println();
+			System.out.println();
+			System.out.println("---------------------Lease Unique---------------------------");
+			System.out.println();
+			System.out.println();
+			System.out.println(e);
+			System.out.println();
+			System.out.println();
+		}
+	}
+
+	// //-----------------------------------------------------------------------------------------------------------------//
+	// //-----------------------------------------------------> " Notification " <---------------------------------------------------//
+	// //-----------------------------------------------------------------------------------------------------------------//
 	@Test 
 	public void testNotification(){
 		Notification notification1 = new Notification();
@@ -568,5 +620,59 @@ public class NotificationAndLeaseTest {
 			System.out.println();
         }
     }
-    
+	
+	@Test(expected=javax.persistence.PersistenceException.class)
+	
+    public void testNotificationIdMustBeUnique() {
+		
+        Notification notification1 = new Notification();
+
+		Admin admin1 = adminRepository.findByAdminId(1L);
+		Employee employee1 = employeeRepository.findByEmployeeId(2L);
+		Field Field1 = fieldRepository.findByFieldId(1L);
+
+		notification1.setNotificationId(1L);
+		notification1.setAdmin(admin1);
+		notification1.setEmployee(employee1);
+		notification1.setField(Field1);
+		notification1.setNote("------");
+
+		entityManager.persist(notification1);
+		entityManager.flush();
+
+		Notification notification2 = new Notification();
+
+		Admin admin2 = adminRepository.findByAdminId(1L);
+		Employee employee2 = employeeRepository.findByEmployeeId(2L);
+		Field Field2 = fieldRepository.findByFieldId(1L);
+
+		notification2.setNotificationId(1L);
+		notification2.setAdmin(admin2);
+		notification2.setEmployee(employee2);
+		notification2.setField(Field2);
+		notification2.setNote("------");
+
+		try{
+
+		entityManager.persist(notification2);
+			entityManager.flush();
+			
+            fail("Notification Not Unique");
+		} catch(javax.validation.ConstraintViolationException e) {
+            Set<ConstraintViolation<?>> violations = e.getConstraintViolations();
+            assertEquals(violations.isEmpty(), false);
+			assertEquals(violations.size(), 1);
+
+			System.out.println();
+			System.out.println();
+			System.out.println();
+			System.out.println("---------------------Lease Unique---------------------------");
+			System.out.println();
+			System.out.println();
+			System.out.println(e);
+			System.out.println();
+			System.out.println();
+		}
+	}
+
 }
