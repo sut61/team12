@@ -21,7 +21,7 @@ public class Lease {
     @Id
     @SequenceGenerator(name="lease_seq",sequenceName="lease_seq")
     @GeneratedValue(strategy=GenerationType.SEQUENCE, generator="lease_seq")
-    @Column(name="LEASE_ID")
+    @Column(name="LEASE_ID",unique=true)
     private Long leaseId;
 
     @NotNull
@@ -30,7 +30,7 @@ public class Lease {
     private String note;
 
     
-
+    @NotNull
     @ManyToOne(fetch = FetchType.EAGER, targetEntity = Admin.class)
     @JoinColumn(name = "ADMIN_ID", insertable = true)
     private  Admin admin;

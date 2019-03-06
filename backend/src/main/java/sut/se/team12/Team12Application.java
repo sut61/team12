@@ -761,6 +761,7 @@ public class Team12Application {
 			
 			Lease lease1 = new Lease();
 			lease1.setMember(member1);
+			lease1.setAdmin(admin1);
 			lease1.setAccessory(accessory1);
 			lease1.setDuration(duration1);
 			lease1.setNote("Borrow soccer");
