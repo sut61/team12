@@ -35,32 +35,11 @@ import org.springframework.boot.test.autoconfigure.orm.jpa.TestEntityManager;
 @DataJpaTest
 public class Team12Tests {
 
-	@Autowired private LockerOrderRepository lockerOrderRepository;
 	@Autowired private AdminRepository adminRepository;
 	@Autowired private MemberRepository memberRepository;
-	@Autowired private EmployeeRepository employeeRepository;
-	@Autowired private LockerRepository lockerRepository;
-	@Autowired private LockerDurationRepository lockerDurationRepository;
-	@Autowired private FieldRepository fieldRepository;
-	@Autowired private FieldDurationRepository fieldDurationRepository;
-	@Autowired private LeaseRepository leaseRepository;
-	@Autowired private LeaseDurationRepository leaseDurationRepository;
-	@Autowired private LeaseAccessoryRepository leaseAccessoryRepository;
-	@Autowired private TicketRepository ticketRepository;
-	@Autowired private TicketTypeRepository ticketTypeRepository;
 	@Autowired private PrivilegeRepository privilegeRepository;
 	@Autowired private ProvinceRepository provinceRepository;
-	@Autowired private RoomCancelOrderRepository roomCancelOrderRepository;
-	@Autowired private RoomStatusRepository roomStatusRepository;
-    @Autowired private RoomRepository roomRepository;
-	@Autowired private RoomDurationRepository roomDurationRepository;
-	
-	@Autowired TitleRepository titleRepository;
-	@Autowired DegreeRepository degreeRepositiry;
-	@Autowired PositionRepository positionRepository;
-	@Autowired TrainingRepository trainingRepository;
-	@Autowired TrainingTypeRepository trainingTypeRepository;
-	@Autowired TrainingProgramRepository trainingProgramRepository;
+	@Autowired private TitleRepository titleRepository;
 
     @Autowired private TestEntityManager entityManager;
 
@@ -115,7 +94,79 @@ public class Team12Tests {
 			
 		}
 	}
-	
+
+	@Test(expected=javax.persistence.PersistenceException.class)
+    public void testMemberIdMustBeUnique() {
+		
+        Member s = new Member();
+
+		Admin adminReg = adminRepository.findByAdminId(1L);
+        Privilege privilegeMember = privilegeRepository.findByPrivilegeId(1L);
+        Province provinceMember = provinceRepository.findByProvinceId(1L);
+		Title titleMember = titleRepository.findByTitleId(1L);
+
+		s.setMemberId(1L);
+		s.setPrivilege(privilegeMember);
+		s.setTitle(titleMember);
+        s.setFirstName("Kriss");
+		s.setLastName("Asava");
+		s.setAge(20);
+		s.setBirthday(new Date());
+		s.setEmail("taan@gma.com");
+		s.setPhoneNumber("0987654321");
+		s.setAddress("36 gre");
+		s.setSubDistrict("buayai");
+		s.setDistrict("bauyai");
+		s.setProvince(provinceMember);
+		s.setAdmin(adminReg);
+
+		entityManager.persist(s);
+		entityManager.flush();
+
+		Member s1 = new Member();
+
+		Admin adminReg1 = adminRepository.findByAdminId(1L);
+        Privilege privilegeMember1 = privilegeRepository.findByPrivilegeId(1L);
+        Province provinceMember1 = provinceRepository.findByProvinceId(1L);
+		Title titleMember1 = titleRepository.findByTitleId(1L);
+
+		s1.setMemberId(1L);
+		s1.setPrivilege(privilegeMember1);
+		s1.setTitle(titleMember1);
+        s1.setFirstName("Kriss");
+		s1.setLastName("Asava");
+		s1.setAge(20);
+		s1.setBirthday(new Date());
+		s1.setEmail("tan@gma.com");
+		s1.setPhoneNumber("0987654321");
+		s1.setAddress("36 greee");
+		s1.setSubDistrict("buayai");
+		s1.setDistrict("bauyai");
+		s1.setProvince(provinceMember1);
+		s1.setAdmin(adminReg1);
+
+        try {
+            entityManager.persist(s1);
+            entityManager.flush();
+
+            fail("Member Id not unique");
+        } catch(javax.validation.ConstraintViolationException e) {
+            Set<ConstraintViolation<?>> violations = e.getConstraintViolations();
+            assertEquals(violations.isEmpty(), false);
+			assertEquals(violations.size(), 1);
+			System.out.println();
+			System.out.println();
+			System.out.println();
+			System.out.println("---------------------Member Id Unique---------------------------");
+			System.out.println();
+			System.out.println();
+			System.out.println(e.getMessage());
+			System.out.println();
+			System.out.println();
+		}
+
+	}
+
 	@Test 
 	public void testMemberFirstNameCannotBeNull() {
 		Member s = new Member();
@@ -474,6 +525,92 @@ public class Team12Tests {
 	}
 	
 	@Test
+    public void testMemberAgeCannotBeNull() {
+		Member s = new Member();
+
+		Admin adminReg = adminRepository.findByAdminId(1L);
+        Privilege privilegeMember = privilegeRepository.findByPrivilegeId(1L);
+        Province provinceMember = provinceRepository.findByProvinceId(1L);
+		Title titleMember = titleRepository.findByTitleId(1L);
+
+		s.setPrivilege(privilegeMember);
+		s.setTitle(titleMember);
+        s.setFirstName("Kriss");
+		s.setLastName("Asava");
+		s.setAge(null);
+		s.setBirthday(new Date());
+		s.setEmail("tan@gma.com");
+		s.setPhoneNumber("0987654321");
+		s.setAddress("123 rd");
+		s.setSubDistrict("buayai");
+		s.setDistrict("buayai");
+		s.setProvince(provinceMember);
+		s.setAdmin(adminReg);
+
+        try {
+            entityManager.persist(s);
+            entityManager.flush();
+
+            fail("Member age must not be null to be valid");
+        } catch(javax.validation.ConstraintViolationException e) {
+            Set<ConstraintViolation<?>> violations = e.getConstraintViolations();
+            assertEquals(violations.isEmpty(), false);
+			assertEquals(violations.size(), 1);
+			System.out.println();
+			System.out.println();
+			System.out.println();
+			System.out.println("---------------------Member age not be null---------------------------");
+			System.out.println();
+			System.out.println();
+			System.out.println(e.getMessage());
+			System.out.println();
+			System.out.println();
+		}
+}
+@Test
+    public void testMemberBirthdayCannotBeNull() {
+		Member s = new Member();
+
+		Admin adminReg = adminRepository.findByAdminId(1L);
+        Privilege privilegeMember = privilegeRepository.findByPrivilegeId(1L);
+        Province provinceMember = provinceRepository.findByProvinceId(1L);
+		Title titleMember = titleRepository.findByTitleId(1L);
+
+		s.setPrivilege(privilegeMember);
+		s.setTitle(titleMember);
+        s.setFirstName("Kriss");
+		s.setLastName("Asava");
+		s.setAge(20);
+		s.setBirthday(null);
+		s.setEmail("tan@gma.com");
+		s.setPhoneNumber("0987654321");
+		s.setAddress("123 rd");
+		s.setSubDistrict("buayai");
+		s.setDistrict("buayai");
+		s.setProvince(provinceMember);
+		s.setAdmin(adminReg);
+
+        try {
+            entityManager.persist(s);
+            entityManager.flush();
+
+            fail("Member birthday must not be null to be valid");
+        } catch(javax.validation.ConstraintViolationException e) {
+            Set<ConstraintViolation<?>> violations = e.getConstraintViolations();
+            assertEquals(violations.isEmpty(), false);
+			assertEquals(violations.size(), 1);
+			System.out.println();
+			System.out.println();
+			System.out.println();
+			System.out.println("---------------------Member birthday not be null---------------------------");
+			System.out.println();
+			System.out.println();
+			System.out.println(e.getMessage());
+			System.out.println();
+			System.out.println();
+		}
+}
+	@Test
     public void testMemberEmailCannotBeNull() {
 		Member s = new Member();
 
@@ -650,6 +787,76 @@ public class Team12Tests {
 			System.out.println();
 			System.out.println();
         }
+	}
+
+	@Test(expected=javax.persistence.PersistenceException.class)
+    public void testMemberEmailMustBeUnique() {
+		
+        Member s = new Member();
+
+		Admin adminReg = adminRepository.findByAdminId(1L);
+        Privilege privilegeMember = privilegeRepository.findByPrivilegeId(1L);
+        Province provinceMember = provinceRepository.findByProvinceId(1L);
+		Title titleMember = titleRepository.findByTitleId(1L);
+
+		s.setPrivilege(privilegeMember);
+		s.setTitle(titleMember);
+        s.setFirstName("Kriss");
+		s.setLastName("Asava");
+		s.setAge(20);
+		s.setBirthday(new Date());
+		s.setEmail("tan@gma.com");
+		s.setPhoneNumber("0987654321");
+		s.setAddress("36 gre");
+		s.setSubDistrict("buayai");
+		s.setDistrict("bauyai");
+		s.setProvince(provinceMember);
+		s.setAdmin(adminReg);
+
+		entityManager.persist(s);
+		entityManager.flush();
+
+		Member s1 = new Member();
+
+		Admin adminReg1 = adminRepository.findByAdminId(1L);
+        Privilege privilegeMember1 = privilegeRepository.findByPrivilegeId(1L);
+        Province provinceMember1 = provinceRepository.findByProvinceId(1L);
+		Title titleMember1 = titleRepository.findByTitleId(1L);
+
+		s1.setPrivilege(privilegeMember1);
+		s1.setTitle(titleMember1);
+        s1.setFirstName("Kriss");
+		s1.setLastName("Asava");
+		s1.setAge(20);
+		s1.setBirthday(new Date());
+		s1.setEmail("tan@gma.com");
+		s1.setPhoneNumber("0987654321");
+		s1.setAddress("36 greee");
+		s1.setSubDistrict("buayai");
+		s1.setDistrict("bauyai");
+		s1.setProvince(provinceMember1);
+		s1.setAdmin(adminReg1);
+
+        try {
+            entityManager.persist(s1);
+            entityManager.flush();
+
+            fail("Member email not unique");
+        } catch(javax.validation.ConstraintViolationException e) {
+            Set<ConstraintViolation<?>> violations = e.getConstraintViolations();
+            assertEquals(violations.isEmpty(), false);
+			assertEquals(violations.size(), 1);
+			System.out.println();
+			System.out.println();
+			System.out.println();
+			System.out.println("---------------------Member Email Unique---------------------------");
+			System.out.println();
+			System.out.println();
+			System.out.println(e.getMessage());
+			System.out.println();
+			System.out.println();
+		}
+
 	}
 
 	@Test
@@ -1544,60 +1751,54 @@ public class Team12Tests {
 			System.out.println();
 		}
 }
+
+@Test(expected=javax.persistence.PersistenceException.class)
+public void testTitleIdMustBeUnique() {
 	
-	@Test(expected=javax.persistence.PersistenceException.class)
-    public void testMemberEmailMustBeUnique() {
-		
-        Member s = new Member();
+	Title t = new Title();
 
-		Admin adminReg = adminRepository.findByAdminId(1L);
-        Privilege privilegeMember = privilegeRepository.findByPrivilegeId(1L);
-        Province provinceMember = provinceRepository.findByProvinceId(1L);
-		Title titleMember = titleRepository.findByTitleId(1L);
+	t.setTitleId(1L);
+	t.setTitleType("mrs");
 
-		s.setPrivilege(privilegeMember);
-		s.setTitle(titleMember);
-        s.setFirstName("Kriss");
-		s.setLastName("Asava");
-		s.setAge(20);
-		s.setBirthday(new Date());
-		s.setEmail("tan@gma.com");
-		s.setPhoneNumber("0987654321");
-		s.setAddress("36 gre");
-		s.setSubDistrict("buayai");
-		s.setDistrict("bauyai");
-		s.setProvince(provinceMember);
-		s.setAdmin(adminReg);
+	entityManager.persist(t);
+	entityManager.flush();
 
-		entityManager.persist(s);
+	Title t1 = new Title();
+
+	t1.setTitleId(1L);
+	t1.setTitleType("miss");
+
+	try {
+		entityManager.persist(t1);
 		entityManager.flush();
 
-		Member s1 = new Member();
+		fail("Title Id not unique");
+	} catch(javax.validation.ConstraintViolationException e) {
+		Set<ConstraintViolation<?>> violations = e.getConstraintViolations();
+		assertEquals(violations.isEmpty(), false);
+		assertEquals(violations.size(), 1);
+		System.out.println();
+		System.out.println();
+		System.out.println();
+		System.out.println("---------------------Title Id Unique---------------------------");
+		System.out.println();
+		System.out.println();
+		System.out.println(e.getMessage());
+		System.out.println();
+		System.out.println();
+	}
 
-		Admin adminReg1 = adminRepository.findByAdminId(1L);
-        Privilege privilegeMember1 = privilegeRepository.findByPrivilegeId(1L);
-        Province provinceMember1 = provinceRepository.findByProvinceId(1L);
-		Title titleMember1 = titleRepository.findByTitleId(1L);
-
-		s1.setPrivilege(privilegeMember1);
-		s1.setTitle(titleMember1);
-        s1.setFirstName("Kriss");
-		s1.setLastName("Asava");
-		s1.setAge(20);
-		s1.setBirthday(new Date());
-		s1.setEmail("tan@gma.com");
-		s1.setPhoneNumber("0987654321");
-		s1.setAddress("36 greee");
-		s1.setSubDistrict("buayai");
-		s1.setDistrict("bauyai");
-		s1.setProvince(provinceMember1);
-		s1.setAdmin(adminReg1);
+}
+@Test
+    public void testTitleTypeCannotBeNull() {
+		Title t = new Title();
+		t.setTitleType(null);
 
         try {
-            entityManager.persist(s1);
+            entityManager.persist(t);
             entityManager.flush();
 
-            fail("Member email not unique");
+            fail("Title TitleType must not be null to be valid");
         } catch(javax.validation.ConstraintViolationException e) {
             Set<ConstraintViolation<?>> violations = e.getConstraintViolations();
             assertEquals(violations.isEmpty(), false);
@@ -1605,13 +1806,407 @@ public class Team12Tests {
 			System.out.println();
 			System.out.println();
 			System.out.println();
-			System.out.println("---------------------Member Email Unique---------------------------");
+			System.out.println("---------------------Title TitleType not be null---------------------------");
 			System.out.println();
 			System.out.println();
 			System.out.println(e.getMessage());
 			System.out.println();
 			System.out.println();
 		}
+}
+@Test(expected=javax.persistence.PersistenceException.class)
+public void testProvinceIdMustBeUnique() {
+	
+	Province p = new Province();
 
+	p.setProvinceId(1L);
+	p.setProvinceName("korat");
+
+	entityManager.persist(p);
+	entityManager.flush();
+
+	Province p1 = new Province();
+
+	p1.setProvinceId(1L);
+	p1.setProvinceName("koraat");
+
+	try {
+		entityManager.persist(p1);
+		entityManager.flush();
+
+		fail("Province Id not unique");
+	} catch(javax.validation.ConstraintViolationException e) {
+		Set<ConstraintViolation<?>> violations = e.getConstraintViolations();
+		assertEquals(violations.isEmpty(), false);
+		assertEquals(violations.size(), 1);
+		System.out.println();
+		System.out.println();
+		System.out.println();
+		System.out.println("---------------------Province Id Unique---------------------------");
+		System.out.println();
+		System.out.println();
+		System.out.println(e.getMessage());
+		System.out.println();
+		System.out.println();
 	}
+
+}
+@Test
+    public void testProvinceNameCannotBeNull() {
+		Province p = new Province();
+		p.setProvinceName(null);
+
+        try {
+            entityManager.persist(p);
+            entityManager.flush();
+
+            fail("Province ProvinceName must not be null to be valid");
+        } catch(javax.validation.ConstraintViolationException e) {
+            Set<ConstraintViolation<?>> violations = e.getConstraintViolations();
+            assertEquals(violations.isEmpty(), false);
+			assertEquals(violations.size(), 1);
+			System.out.println();
+			System.out.println();
+			System.out.println();
+			System.out.println("---------------------Province ProvinceName not be null---------------------------");
+			System.out.println();
+			System.out.println();
+			System.out.println(e.getMessage());
+			System.out.println();
+			System.out.println();
+		}
+}
+@Test(expected=javax.persistence.PersistenceException.class)
+public void testPrivilegeIdMustBeUnique() {
+	
+	Privilege p = new Privilege();
+
+	p.setPrivilegeId(1L);
+	p.setPrivilegeName("korat");
+	p.setPrice(20.00);
+
+	entityManager.persist(p);
+	entityManager.flush();
+
+	Province p1 = new Province();
+
+	p.setPrivilegeId(1L);
+	p.setPrivilegeName("koraat");
+	p.setPrice(21.00);
+
+	try {
+		entityManager.persist(p1);
+		entityManager.flush();
+
+		fail("Privilege Id not unique");
+	} catch(javax.validation.ConstraintViolationException e) {
+		Set<ConstraintViolation<?>> violations = e.getConstraintViolations();
+		assertEquals(violations.isEmpty(), false);
+		assertEquals(violations.size(), 1);
+		System.out.println();
+		System.out.println();
+		System.out.println();
+		System.out.println("---------------------Privilege Id Unique---------------------------");
+		System.out.println();
+		System.out.println();
+		System.out.println(e.getMessage());
+		System.out.println();
+		System.out.println();
+	}
+
+}
+@Test
+    public void testPrivilegeNameCannotBeNull() {
+		Privilege p = new Privilege();
+		p.setPrivilegeName(null);
+		p.setPrice(20.00);
+
+        try {
+            entityManager.persist(p);
+            entityManager.flush();
+
+            fail("Privilege PrivilegeName must not be null to be valid");
+        } catch(javax.validation.ConstraintViolationException e) {
+            Set<ConstraintViolation<?>> violations = e.getConstraintViolations();
+            assertEquals(violations.isEmpty(), false);
+			assertEquals(violations.size(), 1);
+			System.out.println();
+			System.out.println();
+			System.out.println();
+			System.out.println("---------------------Privilege PrivilegeName not be null---------------------------");
+			System.out.println();
+			System.out.println();
+			System.out.println(e.getMessage());
+			System.out.println();
+			System.out.println();
+		}
+}
+@Test
+    public void testPrivilegePriceCannotBeNull() {
+		Privilege p = new Privilege();
+		p.setPrivilegeName("VIP");
+		p.setPrice(null);
+
+        try {
+            entityManager.persist(p);
+            entityManager.flush();
+
+            fail("Privilege Price must not be null to be valid");
+        } catch(javax.validation.ConstraintViolationException e) {
+            Set<ConstraintViolation<?>> violations = e.getConstraintViolations();
+            assertEquals(violations.isEmpty(), false);
+			assertEquals(violations.size(), 1);
+			System.out.println();
+			System.out.println();
+			System.out.println();
+			System.out.println("---------------------Privilege Price not be null---------------------------");
+			System.out.println();
+			System.out.println();
+			System.out.println(e.getMessage());
+			System.out.println();
+			System.out.println();
+		}
+}
+
+@Test(expected=javax.persistence.PersistenceException.class)
+public void testAdminIdMustBeUnique() {
+	
+	Admin a = new Admin();
+
+	a.setAdminId(1L);
+	a.setName("tantan");
+	a.setUsername("tanneuy");
+	a.setPassword("1234");
+
+	entityManager.persist(a);
+	entityManager.flush();
+
+	Admin a1 = new Admin();
+
+	a1.setAdminId(1L);
+	a1.setName("tanan");
+	a1.setUsername("taeuy");
+	a1.setPassword("12314");
+
+
+	try {
+		entityManager.persist(a1);
+		entityManager.flush();
+
+		fail("Admin Id not unique");
+	} catch(javax.validation.ConstraintViolationException e) {
+		Set<ConstraintViolation<?>> violations = e.getConstraintViolations();
+		assertEquals(violations.isEmpty(), false);
+		assertEquals(violations.size(), 1);
+		System.out.println();
+		System.out.println();
+		System.out.println();
+		System.out.println("---------------------Admin Id Unique---------------------------");
+		System.out.println();
+		System.out.println();
+		System.out.println(e.getMessage());
+		System.out.println();
+		System.out.println();
+	}
+
+}
+@Test
+    public void testAdminNameCannotBeNull() {
+		Admin a = new Admin();
+		a.setName(null);
+		a.setUsername("tanneuy");
+		a.setPassword("1234");
+
+        try {
+            entityManager.persist(a);
+            entityManager.flush();
+
+            fail("Admin AdminName must not be null to be valid");
+        } catch(javax.validation.ConstraintViolationException e) {
+            Set<ConstraintViolation<?>> violations = e.getConstraintViolations();
+            assertEquals(violations.isEmpty(), false);
+			assertEquals(violations.size(), 1);
+			System.out.println();
+			System.out.println();
+			System.out.println();
+			System.out.println("---------------------Admin AdminName not be null---------------------------");
+			System.out.println();
+			System.out.println();
+			System.out.println(e.getMessage());
+			System.out.println();
+			System.out.println();
+		}
+}
+@Test
+    public void testAdminUserNameCannotBeNull() {
+		Admin a = new Admin();
+		a.setName("tamm");
+		a.setUsername(null);
+		a.setPassword("1234");
+
+        try {
+            entityManager.persist(a);
+            entityManager.flush();
+
+            fail("Admin UserName must not be null to be valid");
+        } catch(javax.validation.ConstraintViolationException e) {
+            Set<ConstraintViolation<?>> violations = e.getConstraintViolations();
+            assertEquals(violations.isEmpty(), false);
+			assertEquals(violations.size(), 1);
+			System.out.println();
+			System.out.println();
+			System.out.println();
+			System.out.println("---------------------Admin UserName not be null---------------------------");
+			System.out.println();
+			System.out.println();
+			System.out.println(e.getMessage());
+			System.out.println();
+			System.out.println();
+		}
+}
+@Test
+    public void testAdminPasswordCannotBeNull() {
+		Admin a = new Admin();
+		a.setName("ttaann");
+		a.setUsername("tanneuy");
+		a.setPassword(null);
+
+        try {
+            entityManager.persist(a);
+            entityManager.flush();
+
+            fail("Admin Password must not be null to be valid");
+        } catch(javax.validation.ConstraintViolationException e) {
+            Set<ConstraintViolation<?>> violations = e.getConstraintViolations();
+            assertEquals(violations.isEmpty(), false);
+			assertEquals(violations.size(), 1);
+			System.out.println();
+			System.out.println();
+			System.out.println();
+			System.out.println("---------------------Admin Password not be null---------------------------");
+			System.out.println();
+			System.out.println();
+			System.out.println(e.getMessage());
+			System.out.println();
+			System.out.println();
+		}
+}
+@Test
+public void testAdminNormal() {
+	Admin a = new Admin();
+
+	a.setName("pan");
+	a.setUsername("tatata");
+	a.setPassword("1223");
+
+	try{
+		entityManager.persist(a);
+		entityManager.flush();
+
+		System.out.println();
+		System.out.println();
+		System.out.println();
+		System.out.println("---------------------Admin Test Pass---------------------------");
+		System.out.println();
+		System.out.println();
+		System.out.println("All field true data");
+		System.out.println();
+		System.out.println();
+	}catch(javax.validation.ConstraintViolationException e) {
+		Set<ConstraintViolation<?>> violations = e.getConstraintViolations();
+		assertEquals(violations.isEmpty(), false);
+		assertEquals(violations.size(), 1);
+		
+		
+	}
+
+	
+}
+@Test
+public void testTitleNormal() {
+	Title t = new Title();
+
+	t.setTitleType("Mr.");
+
+	try{
+		entityManager.persist(t);
+		entityManager.flush();
+
+		System.out.println();
+		System.out.println();
+		System.out.println();
+		System.out.println("---------------------Title Test Pass---------------------------");
+		System.out.println();
+		System.out.println();
+		System.out.println("All field true data");
+		System.out.println();
+		System.out.println();
+	}catch(javax.validation.ConstraintViolationException e) {
+		Set<ConstraintViolation<?>> violations = e.getConstraintViolations();
+		assertEquals(violations.isEmpty(), false);
+		assertEquals(violations.size(), 1);
+		
+		
+	}
+
+	
+}
+@Test
+public void testProvinceNormal() {
+	Province p = new Province();
+
+	p.setProvinceName("Bangkok");
+
+	try{
+		entityManager.persist(p);
+		entityManager.flush();
+
+		System.out.println();
+		System.out.println();
+		System.out.println();
+		System.out.println("---------------------Province Test Pass---------------------------");
+		System.out.println();
+		System.out.println();
+		System.out.println("All field true data");
+		System.out.println();
+		System.out.println();
+	}catch(javax.validation.ConstraintViolationException e) {
+		Set<ConstraintViolation<?>> violations = e.getConstraintViolations();
+		assertEquals(violations.isEmpty(), false);
+		assertEquals(violations.size(), 1);
+		
+		
+	}
+
+	
+}
+@Test
+public void testPrivilegeNormal() {
+	Privilege p = new Privilege();
+
+	p.setPrivilegeName("VIP");
+	p.setPrice(20.00);
+	try{
+		entityManager.persist(p);
+		entityManager.flush();
+
+		System.out.println();
+		System.out.println();
+		System.out.println();
+		System.out.println("---------------------Privilege Test Pass---------------------------");
+		System.out.println();
+		System.out.println();
+		System.out.println("All field true data");
+		System.out.println();
+		System.out.println();
+	}catch(javax.validation.ConstraintViolationException e) {
+		Set<ConstraintViolation<?>> violations = e.getConstraintViolations();
+		assertEquals(violations.isEmpty(), false);
+		assertEquals(violations.size(), 1);
+		
+		
+	}
+
+	
+}
 }

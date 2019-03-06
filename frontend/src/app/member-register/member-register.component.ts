@@ -98,6 +98,7 @@ export class MemberRegisterComponent implements OnInit {
               this.router.navigate(['member-show'])
           },
           error => {
+            alert('กรุณากรอกข้อมูลให้ถูกต้องและครบถ้วน');
               console.log('Error', error);
           }
       );

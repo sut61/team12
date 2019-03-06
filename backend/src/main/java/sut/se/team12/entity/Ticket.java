@@ -23,8 +23,10 @@ public class Ticket {
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "ticket_seq")
     @Column(unique = true)
     private Long ticketId;
+    @NotNull
     @Temporal(TemporalType.DATE)
     private Date date;
+    @NotNull
     private LocalTime  time;
     @NotNull
     @Size(min=2, max=20)
