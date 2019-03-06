@@ -31,7 +31,8 @@ import org.springframework.boot.test.autoconfigure.orm.jpa.TestEntityManager;
 @RunWith(SpringRunner.class)
 @DataJpaTest
 public class RoomTests {
-	
+    
+    @Autowired private RoomOrderRepository roomOrderRepository;
     @Autowired private RoomCancelOrderRepository roomCancelOrderRepository;
     @Autowired private TestEntityManager entityManager;
 	@Autowired private AdminRepository adminRepository;
@@ -57,8 +58,9 @@ public class RoomTests {
          Room room01 = roomRepository.findByRoomId(1L);
          Member member1 = memberRepository.findByMemberId(1L);
          RoomDuration roomDuration01 = roomDurationRepository.findByroomDurationId(1L);
+         RoomStatus roomStatus = roomStatusRepository.findByroomStatusId(1L);
  
- 
+         r.setRoomStatus(roomStatus);
          r.setRoom(room01);
          r.setAdmin(admin1);
          r.setRoomDuration(roomDuration01);
@@ -71,7 +73,7 @@ public class RoomTests {
              entityManager.flush();
              System.out.println();
              System.out.println();
-             System.out.println("Sprint 1 is good");
+             System.out.println("-------------------------------------Sprint1-testEverythingIsOK----------------------------");
              System.out.println();
              System.out.println();
  
@@ -92,8 +94,9 @@ public class RoomTests {
         Room room01 = roomRepository.findByRoomId(1L);
         Member member1 = memberRepository.findByMemberId(1L);
         RoomDuration roomDuration01 = roomDurationRepository.findByroomDurationId(1L);
-
-
+        RoomStatus roomStatus = roomStatusRepository.findByroomStatusId(1L);
+ 
+        r.setRoomStatus(roomStatus);
         r.setRoom(room01);
         r.setAdmin(admin1);
         r.setRoomDuration(roomDuration01);
@@ -109,10 +112,10 @@ public class RoomTests {
         } catch(javax.validation.ConstraintViolationException e) {
             Set<ConstraintViolation<?>> violations = e.getConstraintViolations();
             assertEquals(violations.isEmpty(), false);
-            assertEquals(violations.size(), 2);
+            assertEquals(violations.size(), 1);
             System.out.println();
             System.out.println();
-            System.out.println("Note should not be null");
+            System.out.println("-------------------------------------Sprint1-testNoteCannotBeNull----------------------------");
             System.out.println(e.getMessage());
             System.out.println();
 		}
@@ -127,8 +130,9 @@ public class RoomTests {
         Room room01 = roomRepository.findByRoomId(1L);
         Member member1 = memberRepository.findByMemberId(1L);
         RoomDuration roomDuration01 = roomDurationRepository.findByroomDurationId(1L);
-
-
+        RoomStatus roomStatus = roomStatusRepository.findByroomStatusId(1L);
+ 
+        r.setRoomStatus(roomStatus);
         r.setRoom(room01);
         r.setAdmin(admin1);
         r.setRoomDuration(roomDuration01);
@@ -145,10 +149,10 @@ public class RoomTests {
          } catch(javax.validation.ConstraintViolationException e) {
              Set<ConstraintViolation<?>> violations = e.getConstraintViolations();
              assertEquals(violations.isEmpty(), false);
-             assertEquals(violations.size(), 2);
+             assertEquals(violations.size(), 1);
              System.out.println();
              System.out.println();
-             System.out.println("Note is too long");
+             System.out.println("--------------------------------------Sprint1-testNoteAerTooLong------------------------------------------");
              System.out.println(e.getMessage());
              System.out.println();
          }
@@ -163,8 +167,9 @@ public class RoomTests {
         Room room01 = roomRepository.findByRoomId(1L);
         Member member1 = memberRepository.findByMemberId(1L);
         RoomDuration roomDuration01 = roomDurationRepository.findByroomDurationId(1L);
-
-
+        RoomStatus roomStatus = roomStatusRepository.findByroomStatusId(1L);
+ 
+        r.setRoomStatus(roomStatus);
         r.setRoom(room01);
         r.setAdmin(admin1);
         r.setRoomDuration(roomDuration01);
@@ -181,10 +186,10 @@ public class RoomTests {
          } catch(javax.validation.ConstraintViolationException e) {
              Set<ConstraintViolation<?>> violations = e.getConstraintViolations();
              assertEquals(violations.isEmpty(), false);
-             assertEquals(violations.size(), 2);
+             assertEquals(violations.size(), 1);
              System.out.println();
              System.out.println();
-             System.out.println("Note is too short");
+             System.out.println("--------------------------------------Sprint1-testNoteAerTooShort------------------------------------------");
              System.out.println(e.getMessage());
              System.out.println();
          }
@@ -199,8 +204,9 @@ public class RoomTests {
         Room room01 = roomRepository.findByRoomId(1L);
         Member member1 = memberRepository.findByMemberId(1L);
         RoomDuration roomDuration01 = roomDurationRepository.findByroomDurationId(1L);
-
-
+        RoomStatus roomStatus = roomStatusRepository.findByroomStatusId(1L);
+ 
+        r.setRoomStatus(roomStatus);
         r.setRoom(room01);
         r.setAdmin(admin1);
         r.setRoomDuration(roomDuration01);
@@ -216,10 +222,10 @@ public class RoomTests {
           } catch(javax.validation.ConstraintViolationException e) {
               Set<ConstraintViolation<?>> violations = e.getConstraintViolations();
               assertEquals(violations.isEmpty(), false);
-              assertEquals(violations.size(), 2);
+              assertEquals(violations.size(),1);
               System.out.println();
               System.out.println();
-              System.out.println("Sprint1's pattern is Wrong");
+              System.out.println("-------------------------------Sprint1-testNotePatternIsWrong---------------------------------------");
               System.out.println(e.getMessage());
               System.out.println();
           }
@@ -234,8 +240,9 @@ public class RoomTests {
         Room room01 = roomRepository.findByRoomId(1L);
        // Member member1 = memberRepository.findByMemberId(1L);
         RoomDuration roomDuration01 = roomDurationRepository.findByroomDurationId(1L);
-
-
+        RoomStatus roomStatus = roomStatusRepository.findByroomStatusId(1L);
+ 
+        r.setRoomStatus(roomStatus);
 		r.setRoom(room01);
         r.setAdmin(admin1);
         r.setRoomDuration(roomDuration01);
@@ -251,10 +258,10 @@ public class RoomTests {
         } catch(javax.validation.ConstraintViolationException e) {
             Set<ConstraintViolation<?>> violations = e.getConstraintViolations();
             assertEquals(violations.isEmpty(), false);
-            assertEquals(violations.size(), 3);
+            assertEquals(violations.size(), 1);
             System.out.println();
             System.out.println();
-            System.out.println("Member is not null");
+            System.out.println("-------------------------------------Sprint1-testMemberCannotBeNull----------------------------");
             System.out.println(e.getMessage());
             System.out.println();
 		}
@@ -269,8 +276,9 @@ public class RoomTests {
        // Room room01 = roomRepository.findByRoomId(1L);
         Member member1 = memberRepository.findByMemberId(1L);
         RoomDuration roomDuration01 = roomDurationRepository.findByroomDurationId(1L);
-
-
+        RoomStatus roomStatus = roomStatusRepository.findByroomStatusId(1L);
+ 
+        r.setRoomStatus(roomStatus);
 		r.setRoom(null);
         r.setAdmin(admin1);
         r.setRoomDuration(roomDuration01);
@@ -285,14 +293,49 @@ public class RoomTests {
         } catch(javax.validation.ConstraintViolationException e) {
             Set<ConstraintViolation<?>> violations = e.getConstraintViolations();
             assertEquals(violations.isEmpty(), false);
-            assertEquals(violations.size(), 2);
+            assertEquals(violations.size(),1);
             System.out.println();
             System.out.println();
-            System.out.println("Room is not null");
+            System.out.println("-------------------------------------Sprint1-testRoomCannotBeNull----------------------------");
             System.out.println(e.getMessage());
             System.out.println();
 		}
     }
+     //-------------------------------------Sprint1-testStatusCannotBeNull----------------------------
+     @Test
+     public void testStatusCannotBeNull() {
+       RoomOrder r = new RoomOrder();
+       
+
+       Admin admin1 = adminRepository.findByAdminId(1L);
+       Room room01 = roomRepository.findByRoomId(1L);
+       Member member1 = memberRepository.findByMemberId(1L);
+       RoomDuration roomDuration01 = roomDurationRepository.findByroomDurationId(1L);
+       //RoomStatus roomStatus = roomStatusRepository.findByroomStatusId(1L);
+
+       r.setRoomStatus(null);
+       r.setRoom(room01);
+       r.setAdmin(admin1);
+       r.setRoomDuration(roomDuration01);
+       r.setMember(member1);
+       r.setNotee("notee");
+       r.setDate(new Date());
+
+       try {
+           entityManager.persist(r);
+           entityManager.flush();
+          fail("Should not pass to this line");
+       } catch(javax.validation.ConstraintViolationException e) {
+           Set<ConstraintViolation<?>> violations = e.getConstraintViolations();
+           assertEquals(violations.isEmpty(), false);
+           assertEquals(violations.size(),1);
+           System.out.println();
+           System.out.println();
+           System.out.println("-------------------------------------Sprint1-testStatusCannotBeNull----------------------------");
+           System.out.println(e.getMessage());
+           System.out.println();
+       }
+   }
     //-------------------------------------Sprint1-testRoomDurationCannotBeNull----------------------------
     @Test
     public void testRoomDurationCannotBeNull() {
@@ -303,8 +346,9 @@ public class RoomTests {
       Room room01 = roomRepository.findByRoomId(1L);
       Member member1 = memberRepository.findByMemberId(1L);
       //RoomDuration roomDuration01 = roomDurationRepository.findByroomDurationId(1L);
-
-
+      RoomStatus roomStatus = roomStatusRepository.findByroomStatusId(1L);
+ 
+      r.setRoomStatus(roomStatus);
       r.setRoom(room01);
       r.setAdmin(admin1);
       r.setRoomDuration(null);
@@ -320,10 +364,10 @@ public class RoomTests {
       } catch(javax.validation.ConstraintViolationException e) {
           Set<ConstraintViolation<?>> violations = e.getConstraintViolations();
           assertEquals(violations.isEmpty(), false);
-          assertEquals(violations.size(), 2);
+          assertEquals(violations.size(), 1);
           System.out.println();
           System.out.println();
-          System.out.println("RoomDuration is not null");
+          System.out.println("-------------------------------------Sprint1-testRoomDurationCannotBeNull----------------------------");
           System.out.println(e.getMessage());
           System.out.println();
       }
@@ -338,8 +382,9 @@ public class RoomTests {
      Room room01 = roomRepository.findByRoomId(1L);
      Member member1 = memberRepository.findByMemberId(1L);
      RoomDuration roomDuration01 = roomDurationRepository.findByroomDurationId(1L);
-
-
+     RoomStatus roomStatus = roomStatusRepository.findByroomStatusId(1L);
+ 
+     r.setRoomStatus(roomStatus);
      r.setRoom(room01);
      r.setAdmin(admin1);
      r.setRoomDuration(roomDuration01);
@@ -355,15 +400,113 @@ public class RoomTests {
      } catch(javax.validation.ConstraintViolationException e) {
          Set<ConstraintViolation<?>> violations = e.getConstraintViolations();
          assertEquals(violations.isEmpty(), false);
-         assertEquals(violations.size(), 2);
+         assertEquals(violations.size(), 1);
          System.out.println();
          System.out.println();
-         System.out.println("Date is not null");
+         System.out.println("-------------------------------------Sprint1-testDateCannotBeNull----------------------------");
          System.out.println(e.getMessage());
          System.out.println();
      }
  }
+    //-------------------------------------Sprint1-testRAdminCannotBeNull----------------------------
+    @Test
+    public void testRAdminCannotBeNull() {
+      RoomOrder r = new RoomOrder();
+      
+ 
+      Admin admin1 = adminRepository.findByAdminId(1L);
+      Room room01 = roomRepository.findByRoomId(1L);
+      Member member1 = memberRepository.findByMemberId(1L);
+      RoomDuration roomDuration01 = roomDurationRepository.findByroomDurationId(1L);
+      RoomStatus roomStatus = roomStatusRepository.findByroomStatusId(1L);
 
+      r.setRoomStatus(roomStatus);
+      r.setRoom(room01);
+      r.setAdmin(null);
+      r.setRoomDuration(roomDuration01);
+      r.setMember(member1);
+      r.setNotee("notee");
+      r.setDate(new Date());
+ 
+      try {
+          entityManager.persist(r);
+          entityManager.flush();
+ 
+          fail("Should not pass to this line");
+      } catch(javax.validation.ConstraintViolationException e) {
+          Set<ConstraintViolation<?>> violations = e.getConstraintViolations();
+          assertEquals(violations.isEmpty(), false);
+          assertEquals(violations.size(), 1);
+          System.out.println();
+          System.out.println();
+          System.out.println("-------------------------------------Sprint1-testRAdminCannotBeNull----------------------------");
+          System.out.println(e.getMessage());
+          System.out.println();
+      }
+  }
+ //----------------------------------------sprint1-testRoomOrderIDIsMustBeUnique--------------------------------------------------
+ @Test(expected=javax.persistence.PersistenceException.class)
+ public void testRoomIsMustBeUnique() {
+    RoomOrder r = new RoomOrder();
+     
+    //RoomOrder roomOrder = roomOrderRepository.findByRoomOrderId(1L);
+    Admin admin1 = adminRepository.findByAdminId(1L);
+    Room room01 = roomRepository.findByRoomId(1L);
+    Member member1 = memberRepository.findByMemberId(1L);
+    RoomDuration roomDuration01 = roomDurationRepository.findByroomDurationId(1L);
+    RoomStatus roomStatus = roomStatusRepository.findByroomStatusId(1L);
+ 
+    r.setRoomStatus(roomStatus);
+    r.setRoomOrderId(1L);
+    r.setRoom(room01);
+    r.setAdmin(admin1);
+    r.setRoomDuration(roomDuration01);
+    r.setMember(member1);
+    r.setNotee("notee");
+    r.setDate(new Date());
+
+
+     entityManager.persist(r);
+     entityManager.flush();
+
+     RoomOrder r1 = new RoomOrder();
+     
+    // RoomOrder roomOrder1 = roomOrderRepository.findByRoomOrderId(1L);
+     Admin admin = adminRepository.findByAdminId(1L);
+     Room room = roomRepository.findByRoomId(1L);
+     Member member = memberRepository.findByMemberId(1L);
+     RoomDuration roomDuration = roomDurationRepository.findByroomDurationId(1L);
+     RoomStatus roomStatus1 = roomStatusRepository.findByroomStatusId(1L);
+ 
+     r1.setRoomStatus(roomStatus1);
+     r1.setRoomOrderId(1L);
+     r1.setRoom(room);
+     r1.setAdmin(admin);
+     r1.setRoomDuration(roomDuration);
+     r1.setMember(member);
+     r1.setNotee("notee");
+     r1.setDate(new Date());
+
+
+     try {
+         entityManager.persist(r1);
+         entityManager.flush();
+
+         fail("ID is not unique");
+     } catch(javax.validation.ConstraintViolationException e) {
+         Set<ConstraintViolation<?>> violations = e.getConstraintViolations();
+         assertEquals(violations.isEmpty(), false);
+         assertEquals(violations.size(), 1);
+         System.out.println();
+         System.out.println();
+         System.out.println("----------------------------------------sprint1-testRoomOrderIDIsMustBeUnique--------------------------------------------------");
+         System.out.println();
+         System.out.println();
+         System.out.println(e.getMessage());
+         System.out.println();
+     }
+
+ }
     //--------------------------------------Sprint2-testEvethingIsOK----------------------------
 	@Test
 	public void testSecondSprintIsOK() {
@@ -372,8 +515,9 @@ public class RoomTests {
 
 		Admin admin1 = adminRepository.findByAdminId(1L);
 		RoomStatus roomStatus02 = roomStatusRepository.findByroomStatusId(1L);
-
-
+        RoomOrder roomOrder = roomOrderRepository.findByRoomOrderId(1L);
+ 
+        r.setRoomOrder(roomOrder);
 		r.setNote("notee");
 		r.setAdmin(admin1);
 		r.setRoomStatus(roomStatus02);
@@ -383,7 +527,7 @@ public class RoomTests {
             entityManager.persist(r);
             entityManager.flush();
             System.out.println();
-            System.out.println("Sprint 2 is good");
+            System.out.println(" //--------------------------------------Sprint2-testEvethingIsOK----------------------------");
             System.out.println();
             System.out.println();
             System.out.println();
@@ -404,8 +548,9 @@ public class RoomTests {
 
 		Admin admin1 = adminRepository.findByAdminId(1L);
 		RoomStatus roomStatus02 = roomStatusRepository.findByroomStatusId(1L);
-
-
+        RoomOrder roomOrder = roomOrderRepository.findByRoomOrderId(1L);
+ 
+        r.setRoomOrder(roomOrder);
 		r.setNote(null);
 		r.setAdmin(admin1);
 		r.setRoomStatus(roomStatus02);
@@ -419,10 +564,10 @@ public class RoomTests {
         } catch(javax.validation.ConstraintViolationException e) {
             Set<ConstraintViolation<?>> violations = e.getConstraintViolations();
             assertEquals(violations.isEmpty(), false);
-            assertEquals(violations.size(), 2);
+            assertEquals(violations.size(), 1);
             System.out.println();
             System.out.println();
-            System.out.println("Note should not be null");
+            System.out.println("	//-------------------------------------Sprint2-testNoteCannotBeNull----------------------------");
             System.out.println(e.getMessage());
             System.out.println();
 		}
@@ -432,11 +577,11 @@ public class RoomTests {
     public void testNoteAerTooLong() {
 		RoomCancelOrder r = new RoomCancelOrder();
 		
-
 		Admin admin1 = adminRepository.findByAdminId(1L);
-		RoomStatus roomStatus02 = roomStatusRepository.findByroomStatusId(1L);
-
-
+        RoomStatus roomStatus02 = roomStatusRepository.findByroomStatusId(1L);
+        RoomOrder roomOrder = roomOrderRepository.findByRoomOrderId(1L);
+ 
+        r.setRoomOrder(roomOrder);
 		r.setNote("nnnnnooooottttteeeeennnnnooooottttteeeee");
 		r.setAdmin(admin1);
 		r.setRoomStatus(roomStatus02);
@@ -450,10 +595,10 @@ public class RoomTests {
         } catch(javax.validation.ConstraintViolationException e) {
             Set<ConstraintViolation<?>> violations = e.getConstraintViolations();
             assertEquals(violations.isEmpty(), false);
-            assertEquals(violations.size(), 2);
+            assertEquals(violations.size(), 1);
             System.out.println();
             System.out.println();
-            System.out.println("Note is too long");
+            System.out.println(" //--------------------------------------Sprint2-testNoteAerTooLong------------------------------------------ ");
             System.out.println(e.getMessage());
             System.out.println();
 		}
@@ -465,9 +610,10 @@ public class RoomTests {
 		
 
 		Admin admin1 = adminRepository.findByAdminId(1L);
-		RoomStatus roomStatus02 = roomStatusRepository.findByroomStatusId(1L);
-
-
+        RoomStatus roomStatus02 = roomStatusRepository.findByroomStatusId(1L);
+        RoomOrder roomOrder = roomOrderRepository.findByRoomOrderId(1L);
+ 
+        r.setRoomOrder(roomOrder);
 		r.setNote("n");
 		r.setAdmin(admin1);
 		r.setRoomStatus(roomStatus02);
@@ -481,10 +627,10 @@ public class RoomTests {
         } catch(javax.validation.ConstraintViolationException e) {
             Set<ConstraintViolation<?>> violations = e.getConstraintViolations();
             assertEquals(violations.isEmpty(), false);
-            assertEquals(violations.size(), 2);
+            assertEquals(violations.size(), 1);
             System.out.println();
             System.out.println();
-            System.out.println("Note is too short");
+            System.out.println("    //-------------------------------Sprint2-testNoteAerTooShort---------------------------------------");
             System.out.println(e.getMessage());
             System.out.println();
 		}
@@ -497,8 +643,9 @@ public class RoomTests {
  
          Admin admin1 = adminRepository.findByAdminId(1L);
          RoomStatus roomStatus02 = roomStatusRepository.findByroomStatusId(1L);
+         RoomOrder roomOrder = roomOrderRepository.findByRoomOrderId(1L);
  
- 
+         r.setRoomOrder(roomOrder);
          r.setNote("-----");
          r.setAdmin(admin1);
          r.setRoomStatus(roomStatus02);
@@ -512,15 +659,164 @@ public class RoomTests {
          } catch(javax.validation.ConstraintViolationException e) {
              Set<ConstraintViolation<?>> violations = e.getConstraintViolations();
              assertEquals(violations.isEmpty(), false);
-             assertEquals(violations.size(), 2);
+             assertEquals(violations.size(), 1);
              System.out.println();
              System.out.println();
-             System.out.println("Sprint2's pattern is Wrong");
+             System.out.println("//-------------------------------Sprint2-testNotePatternIsWrong---------------------------------------");
              System.out.println(e.getMessage());
              System.out.println();
          }
      }
+      //-------------------------------Sprint2-testRoomOrderCanNotBeNull---------------------------------------
+      @Test
+      public void testRoomOrderCanNotBeNull() {
+          RoomCancelOrder r = new RoomCancelOrder();
+          
+  
+          Admin admin1 = adminRepository.findByAdminId(1L);
+          RoomStatus roomStatus02 = roomStatusRepository.findByroomStatusId(1L);
+          RoomOrder roomOrder = roomOrderRepository.findByRoomOrderId(1L);
+  
+          r.setRoomOrder(null);
+          r.setNote("notee");
+          r.setAdmin(admin1);
+          r.setRoomStatus(roomStatus02);
+          r.setDate(new Date());
+  
+          try {
+              entityManager.persist(r);
+              entityManager.flush();
+  
+              fail("Should not pass to this line");
+          } catch(javax.validation.ConstraintViolationException e) {
+              Set<ConstraintViolation<?>> violations = e.getConstraintViolations();
+              assertEquals(violations.isEmpty(), false);
+              assertEquals(violations.size(), 1);
+              System.out.println();
+              System.out.println();
+              System.out.println("//-------------------------------Sprint2-testRoomOrderCanNotBeNull---------------------------------------");
+              System.out.println(e.getMessage());
+              System.out.println();
+          }
+      }
+       //-------------------------------Sprint2-testAdminCanNotBeNull---------------------------------------
+       @Test
+       public void testAdminCanNotBeNull() {
+           RoomCancelOrder r = new RoomCancelOrder();
+           
+   
+           Admin admin1 = adminRepository.findByAdminId(1L);
+           RoomStatus roomStatus02 = roomStatusRepository.findByroomStatusId(1L);
+           RoomOrder roomOrder = roomOrderRepository.findByRoomOrderId(1L);
+   
+           r.setRoomOrder(roomOrder);
+           r.setNote("notee");
+           r.setAdmin(null);
+           r.setRoomStatus(roomStatus02);
+           r.setDate(new Date());
+   
+           try {
+               entityManager.persist(r);
+               entityManager.flush();
+   
+               fail("Should not pass to this line");
+           } catch(javax.validation.ConstraintViolationException e) {
+               Set<ConstraintViolation<?>> violations = e.getConstraintViolations();
+               assertEquals(violations.isEmpty(), false);
+               assertEquals(violations.size(), 1);
+               System.out.println();
+               System.out.println();
+               System.out.println("//-------------------------------Sprint2-testAdminCanNotBeNull---------------------------------------");
+               System.out.println(e.getMessage());
+               System.out.println();
+           }
+       }
+        //-------------------------------Sprint2-testRStaustatusCanNotBeNull---------------------------------------
+        @Test
+        public void testRStaustatusCanNotBeNull() {
+            RoomCancelOrder r = new RoomCancelOrder();
+            
+    
+            Admin admin1 = adminRepository.findByAdminId(1L);
+            RoomStatus roomStatus02 = roomStatusRepository.findByroomStatusId(1L);
+            RoomOrder roomOrder = roomOrderRepository.findByRoomOrderId(1L);
+    
+            r.setRoomOrder(roomOrder);
+            r.setNote("notee");
+            r.setAdmin(admin1);
+            r.setRoomStatus(null);
+            r.setDate(new Date());
+    
+            try {
+                entityManager.persist(r);
+                entityManager.flush();
+    
+                fail("Should not pass to this line");
+            } catch(javax.validation.ConstraintViolationException e) {
+                Set<ConstraintViolation<?>> violations = e.getConstraintViolations();
+                assertEquals(violations.isEmpty(), false);
+                assertEquals(violations.size(), 1);
+                System.out.println();
+                System.out.println();
+                System.out.println("//-------------------------------Sprint2-testRStaustatusCanNotBeNull---------------------------------------");
+                System.out.println(e.getMessage());
+                System.out.println();
+            }
+        }
+ //----------------------------------------sprint2-testRoomCancelIDIsMustBeUnique--------------------------------------------------
+ @Test(expected=javax.persistence.PersistenceException.class)
+ public void testRoomCancelIDIsMustBeUnique() {
+    RoomCancelOrder r = new RoomCancelOrder();
+		
+
+    Admin admin1 = adminRepository.findByAdminId(1L);
+    RoomStatus roomStatus02 = roomStatusRepository.findByroomStatusId(1L);
+
+
+    r.setRoomCancelOrderId(1L);
+    r.setNote("notee");
+    r.setAdmin(admin1);
+    r.setRoomStatus(roomStatus02);
+    r.setDate(new Date());
+
+
+     entityManager.persist(r);
+     entityManager.flush();
+
+     RoomCancelOrder r1 = new RoomCancelOrder();
+		
+
+		Admin admin = adminRepository.findByAdminId(1L);
+		RoomStatus roomStatus = roomStatusRepository.findByroomStatusId(1L);
+
+        r1.setRoomCancelOrderId(1L);
+		r1.setNote("notee");
+		r1.setAdmin(admin);
+		r1.setRoomStatus(roomStatus);
+		r1.setDate(new Date());
+
+
+
+     try {
+         entityManager.persist(r1);
+         entityManager.flush();
+
+         fail("ID is not unique");
+     } catch(javax.validation.ConstraintViolationException e) {
+         Set<ConstraintViolation<?>> violations = e.getConstraintViolations();
+         assertEquals(violations.isEmpty(), false);
+         assertEquals(violations.size(), 1);
+         System.out.println();
+         System.out.println();
+         System.out.println(" //---------------------------------------sprint2-testRoomCancelIDIsMustBeUnique--------------------------------------------------    ");
+         System.out.println();
+         System.out.println();
+         System.out.println(e.getMessage());
+         System.out.println();
+     }
+
+ }
     
 
-}
+ }
 

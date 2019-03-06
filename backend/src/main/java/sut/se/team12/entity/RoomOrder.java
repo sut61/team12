@@ -18,7 +18,7 @@ public class RoomOrder {
     @Id
     @SequenceGenerator(name="roomOrder_seq",sequenceName = "roomOrder_seq")
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "roomOrder_seq")
-    @Column(name = "ROOMORDER_ID")
+    @Column(name = "ROOMORDER_ID",unique=true)
 
     private Long roomOrderId;
     @Temporal(TemporalType.DATE)
@@ -53,6 +53,6 @@ public class RoomOrder {
 
     @ManyToOne(fetch = FetchType.EAGER, targetEntity = RoomStatus.class)
     @JoinColumn(name = "ROOMSTATUS_ID", insertable = true)
-   @NotNull
+    @NotNull
     private RoomStatus roomStatus;
 }
