@@ -4,7 +4,6 @@
   
   .sidenav {
     width: 300px;
-    /* background-color: plum; */
   }
   
   .sidenav .mat-toolbar {
@@ -36,7 +35,6 @@
     flex-basis: 100%;
   }
   .example-header-image {
-    /* background-image: url('src/image/route3.png'); */
     background-size: cover;
   }
   .example-card {
@@ -52,13 +50,10 @@
     margin: 2px;
   }
   mat-form-field {
-    /* max-width: 100%; */
     width: 100%;
-    /* background-color: brown; */
   }
   label{
     width:100px;
-    /* background-color: aqua; */
   }
   
   pre {
@@ -67,7 +62,6 @@
   }
   
   .example-radio-group {
-    /* display: inline-flex; */
     flex-direction: column;
   }
   
