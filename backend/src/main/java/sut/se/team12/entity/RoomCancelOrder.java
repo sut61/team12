@@ -18,7 +18,7 @@ public class RoomCancelOrder {
     @Id
     @SequenceGenerator(name="roomCancelOrder_seq",sequenceName = "roomCancelOrder_seq")
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "roomCancelOrder_seq")
-    @Column(name = "ROOMCANCELORDER_ID")
+    @Column(name = "ROOMCANCELORDER_ID",unique=true)
     @NotNull
     private Long roomCancelOrderId;
     @Temporal(TemporalType.DATE)
