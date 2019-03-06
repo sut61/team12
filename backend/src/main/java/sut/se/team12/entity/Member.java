@@ -20,7 +20,7 @@ public class Member {
     @Id
     @SequenceGenerator(name="member_seq",sequenceName = "member_seq")
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "member_seq")
-    @Column(name = "MEMBER_ID")
+    @Column(name = "MEMBER_ID",unique = true)
     private Long memberId;
     @NotNull
     @Size(min=2, max=20)
@@ -30,7 +30,9 @@ public class Member {
     @Size(min=2, max=20)
     @Pattern(regexp="[A-Za-z]+")
     private String lastName;
-    private int age;
+    @NotNull
+    private Integer age;
+    @NotNull
     @Temporal(TemporalType.DATE)
     private Date birthday;
     @NotNull

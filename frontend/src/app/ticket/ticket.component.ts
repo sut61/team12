@@ -83,6 +83,7 @@ export class TicketComponent implements OnInit {
               this.router.navigate(['ticket-show'])
           },
           error => {
+            alert('กรุณากรอกข้อมูลให้ถูกต้องและครบถ้วน');
               console.log('Error', error);
           }
       );
