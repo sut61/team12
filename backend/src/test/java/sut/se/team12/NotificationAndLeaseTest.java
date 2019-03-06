@@ -80,10 +80,12 @@ public class NotificationAndLeaseTest {
 	@Test 
 	public void testLease(){
 		Lease lease1 = new Lease();
+		Admin admin1 = adminRepository.findByAdminId(1L);
 		Member member1 = memberRepository.findByMemberId(1L);
 		LeaseAccessory accessory1 = leaseAccessoryRepository.findByAccessoryId(1L);
 		LeaseDuration duration1 = leaseDurationRepository.findByDurationId(1L);
 
+		lease1.setAdmin(admin1);
 		lease1.setMember(member1);
 		lease1.setAccessory(accessory1);
 		lease1.setDuration(duration1);
@@ -108,12 +110,46 @@ public class NotificationAndLeaseTest {
 	}
 
 	@Test 
-	public void testLeaseMemberCannotBeNull(){
+	public void testLeaseAdminCannotBeNull(){
 		Lease lease1 = new Lease();
+		Admin admin1 = adminRepository.findByAdminId(1L);
 		Member member1 = memberRepository.findByMemberId(1L);
 		LeaseAccessory accessory1 = leaseAccessoryRepository.findByAccessoryId(1L);
 		LeaseDuration duration1 = leaseDurationRepository.findByDurationId(1L);
 
+		lease1.setAdmin(null);
+		lease1.setMember(member1);
+		lease1.setAccessory(accessory1);
+		lease1.setDuration(duration1);
+		lease1.setNote("Borrow");
+
+        try {
+            entityManager.persist(lease1);
+            entityManager.flush();
+
+            fail("Should not pass to this line");
+        } catch(javax.validation.ConstraintViolationException e) {
+            Set<ConstraintViolation<?>> violations = e.getConstraintViolations();
+            assertEquals(violations.isEmpty(), false);
+			assertEquals(violations.size(), 1);
+			System.out.println();
+			System.out.println("----------------------------------->Admin NotNull<--------------------------------------");
+			System.out.println(e.getMessage());
+			System.out.println();
+			System.out.println();
+        }
+
+	}
+
+	@Test 
+	public void testLeaseMemberCannotBeNull(){
+		Lease lease1 = new Lease();
+		Admin admin1 = adminRepository.findByAdminId(1L);
+		Member member1 = memberRepository.findByMemberId(1L);
+		LeaseAccessory accessory1 = leaseAccessoryRepository.findByAccessoryId(1L);
+		LeaseDuration duration1 = leaseDurationRepository.findByDurationId(1L);
+
+		lease1.setAdmin(admin1);
 		lease1.setMember(null);
 		lease1.setAccessory(accessory1);
 		lease1.setDuration(duration1);
@@ -140,10 +176,12 @@ public class NotificationAndLeaseTest {
 	@Test 
 	public void testLeaseAccessoryCannotBeNull(){
 		Lease lease1 = new Lease();
+		Admin admin1 = adminRepository.findByAdminId(1L);
 		Member member1 = memberRepository.findByMemberId(1L);
 		LeaseAccessory accessory1 = leaseAccessoryRepository.findByAccessoryId(1L);
 		LeaseDuration duration1 = leaseDurationRepository.findByDurationId(1L);
 
+		lease1.setAdmin(admin1);
 		lease1.setMember(member1);
 		lease1.setAccessory(null);
 		lease1.setDuration(duration1);
@@ -170,10 +208,12 @@ public class NotificationAndLeaseTest {
 	@Test 
 	public void testLeaseDurationCannotBeNull(){
 		Lease lease1 = new Lease();
+		Admin admin1 = adminRepository.findByAdminId(1L);
 		Member member1 = memberRepository.findByMemberId(1L);
 		LeaseAccessory accessory1 = leaseAccessoryRepository.findByAccessoryId(1L);
 		LeaseDuration duration1 = leaseDurationRepository.findByDurationId(1L);
 
+		lease1.setAdmin(admin1);
 		lease1.setMember(member1);
 		lease1.setAccessory(accessory1);
 		lease1.setDuration(null);
@@ -201,10 +241,12 @@ public class NotificationAndLeaseTest {
 	@Test 
 	public void testLeaseNoteCannotBeNull(){
 		Lease lease1 = new Lease();
+		Admin admin1 = adminRepository.findByAdminId(1L);
 		Member member1 = memberRepository.findByMemberId(1L);
 		LeaseAccessory accessory1 = leaseAccessoryRepository.findByAccessoryId(1L);
 		LeaseDuration duration1 = leaseDurationRepository.findByDurationId(1L);
 
+		lease1.setAdmin(admin1);
 		lease1.setMember(member1);
 		lease1.setAccessory(accessory1);
 		lease1.setDuration(duration1);
@@ -231,10 +273,12 @@ public class NotificationAndLeaseTest {
 	@Test 
 	public void testLeaseNoteShort(){
 		Lease lease1 = new Lease();
+		Admin admin1 = adminRepository.findByAdminId(1L);
 		Member member1 = memberRepository.findByMemberId(1L);
 		LeaseAccessory accessory1 = leaseAccessoryRepository.findByAccessoryId(1L);
 		LeaseDuration duration1 = leaseDurationRepository.findByDurationId(1L);
 
+		lease1.setAdmin(admin1);
 		lease1.setMember(member1);
 		lease1.setAccessory(accessory1);
 		lease1.setDuration(duration1);
@@ -261,10 +305,12 @@ public class NotificationAndLeaseTest {
 	@Test 
 	public void testLeaseNoteLong(){
 		Lease lease1 = new Lease();
+		Admin admin1 = adminRepository.findByAdminId(1L);
 		Member member1 = memberRepository.findByMemberId(1L);
 		LeaseAccessory accessory1 = leaseAccessoryRepository.findByAccessoryId(1L);
 		LeaseDuration duration1 = leaseDurationRepository.findByDurationId(1L);
 
+		lease1.setAdmin(admin1);
 		lease1.setMember(member1);
 		lease1.setAccessory(accessory1);
 		lease1.setDuration(duration1);
@@ -291,10 +337,12 @@ public class NotificationAndLeaseTest {
 	@Test
 	public void testLeaseNotePat() {
 		Lease lease1 = new Lease();
+		Admin admin1 = adminRepository.findByAdminId(1L);
 		Member member1 = memberRepository.findByMemberId(1L);
 		LeaseAccessory accessory1 = leaseAccessoryRepository.findByAccessoryId(1L);
 		LeaseDuration duration1 = leaseDurationRepository.findByDurationId(1L);
 
+		lease1.setAdmin(admin1);
 		lease1.setMember(member1);
 		lease1.setAccessory(accessory1);
 		lease1.setDuration(duration1);
@@ -322,10 +370,12 @@ public class NotificationAndLeaseTest {
     public void testLeaseIdMustBeUnique() {
 		
         Lease lease1 = new Lease();
+		Admin admin1 = adminRepository.findByAdminId(1L);
 		Member member1 = memberRepository.findByMemberId(1L);
 		LeaseAccessory accessory1 = leaseAccessoryRepository.findByAccessoryId(1L);
 		LeaseDuration duration1 = leaseDurationRepository.findByDurationId(1L);
 
+		lease1.setAdmin(admin1);
 		lease1.setLeaseId(1L);
         lease1.setMember(member1);
 		lease1.setAccessory(accessory1);
@@ -336,11 +386,13 @@ public class NotificationAndLeaseTest {
 		entityManager.flush();
 
 		Lease lease2 = new Lease();
+		Admin admin2 = adminRepository.findByAdminId(1L);
 		Member member2 = memberRepository.findByMemberId(1L);
-		LeaseAccessory accessory2 = leaseAccessoryRepository.findByAccessoryId(2L);
-		LeaseDuration duration2 = leaseDurationRepository.findByDurationId(2L);
+		LeaseAccessory accessory2 = leaseAccessoryRepository.findByAccessoryId(1L);
+		LeaseDuration duration2 = leaseDurationRepository.findByDurationId(1L);
 
 		lease2.setLeaseId(1L);
+		lease1.setAdmin(admin2);
      	lease2.setMember(member2);
 		lease2.setAccessory(accessory2);
 		lease2.setDuration(duration2);

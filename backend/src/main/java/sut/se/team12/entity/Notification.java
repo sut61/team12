@@ -18,7 +18,7 @@ public class Notification {
     @Id
     @SequenceGenerator(name="notification_seq",sequenceName="notification_seq")
     @GeneratedValue(strategy=GenerationType.SEQUENCE, generator="notification_seq")
-    @Column(name="NOTIFICATION_ID")
+    @Column(name="NOTIFICATION_ID",unique=true)
     private Long notificationId;
 
     @NotNull
