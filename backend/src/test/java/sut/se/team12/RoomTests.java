@@ -444,9 +444,9 @@ public class RoomTests {
           System.out.println();
       }
   }
- //----------------------------------------sprint1-testRoomOrderIDIsMustBeUnique--------------------------------------------------
+ //----------------------------------------sprint1-testRoomOrderIDMustBeUnique--------------------------------------------------
  @Test(expected=javax.persistence.PersistenceException.class)
- public void testRoomIsMustBeUnique() {
+ public void testRoomMustBeUnique() {
     RoomOrder r = new RoomOrder();
      
     //RoomOrder roomOrder = roomOrderRepository.findByRoomOrderId(1L);
@@ -499,7 +499,70 @@ public class RoomTests {
          assertEquals(violations.size(), 1);
          System.out.println();
          System.out.println();
-         System.out.println("----------------------------------------sprint1-testRoomOrderIDIsMustBeUnique--------------------------------------------------");
+         System.out.println("----------------------------------------sprint1-testRoomOrderIDMustBeUnique--------------------------------------------------");
+         System.out.println();
+         System.out.println();
+         System.out.println(e.getMessage());
+         System.out.println();
+     }
+
+ }
+ //----------------------------------------sprint1-testNoteeIDMustBeUnique--------------------------------------------------
+ @Test(expected=javax.persistence.PersistenceException.class)
+ public void testNoteeIDMustBeUnique() {
+    RoomOrder r = new RoomOrder();
+     
+    //RoomOrder roomOrder = roomOrderRepository.findByRoomOrderId(1L);
+    Admin admin1 = adminRepository.findByAdminId(1L);
+    Room room01 = roomRepository.findByRoomId(1L);
+    Member member1 = memberRepository.findByMemberId(1L);
+    RoomDuration roomDuration01 = roomDurationRepository.findByroomDurationId(1L);
+    RoomStatus roomStatus = roomStatusRepository.findByroomStatusId(1L);
+ 
+    r.setRoomStatus(roomStatus);
+    r.setRoomOrderId(1L);
+    r.setRoom(room01);
+    r.setAdmin(admin1);
+    r.setRoomDuration(roomDuration01);
+    r.setMember(member1);
+    r.setNotee("notee");
+    r.setDate(new Date());
+
+
+     entityManager.persist(r);
+     entityManager.flush();
+
+     RoomOrder r1 = new RoomOrder();
+     
+    // RoomOrder roomOrder1 = roomOrderRepository.findByRoomOrderId(1L);
+     Admin admin = adminRepository.findByAdminId(1L);
+     Room room = roomRepository.findByRoomId(1L);
+     Member member = memberRepository.findByMemberId(1L);
+     RoomDuration roomDuration = roomDurationRepository.findByroomDurationId(1L);
+     RoomStatus roomStatus1 = roomStatusRepository.findByroomStatusId(1L);
+ 
+     r1.setRoomStatus(roomStatus1);
+     r1.setRoomOrderId(1L);
+     r1.setRoom(room);
+     r1.setAdmin(admin);
+     r1.setRoomDuration(roomDuration);
+     r1.setMember(member);
+     r1.setNotee("notee");
+     r1.setDate(new Date());
+
+
+     try {
+         entityManager.persist(r1);
+         entityManager.flush();
+
+         fail("ID is not unique");
+     } catch(javax.validation.ConstraintViolationException e) {
+         Set<ConstraintViolation<?>> violations = e.getConstraintViolations();
+         assertEquals(violations.isEmpty(), false);
+         assertEquals(violations.size(), 1);
+         System.out.println();
+         System.out.println();
+         System.out.println("----------------------------------------sprint1-testNoteeIDMustBeUnique--------------------------------------------------");
          System.out.println();
          System.out.println();
          System.out.println(e.getMessage());
@@ -763,9 +826,9 @@ public class RoomTests {
                 System.out.println();
             }
         }
- //----------------------------------------sprint2-testRoomCancelIDIsMustBeUnique--------------------------------------------------
+ //----------------------------------------sprint2-testRoomCancelIDMustBeUnique--------------------------------------------------
  @Test(expected=javax.persistence.PersistenceException.class)
- public void testRoomCancelIDIsMustBeUnique() {
+ public void testRoomCancelIDMustBeUnique() {
     RoomCancelOrder r = new RoomCancelOrder();
 		
 
@@ -808,7 +871,61 @@ public class RoomTests {
          assertEquals(violations.size(), 1);
          System.out.println();
          System.out.println();
-         System.out.println(" //---------------------------------------sprint2-testRoomCancelIDIsMustBeUnique--------------------------------------------------    ");
+         System.out.println(" //---------------------------------------sprint2-testRoomCancelIDMustBeUnique--------------------------------------------------    ");
+         System.out.println();
+         System.out.println();
+         System.out.println(e.getMessage());
+         System.out.println();
+     }
+
+ }
+
+ //----------------------------------------sprint2-testNoteMustBeUnique--------------------------------------------------
+ @Test(expected=javax.persistence.PersistenceException.class)
+ public void testNoteMustBeUnique() {
+    RoomCancelOrder r = new RoomCancelOrder();
+		
+
+    Admin admin1 = adminRepository.findByAdminId(1L);
+    RoomStatus roomStatus02 = roomStatusRepository.findByroomStatusId(1L);
+
+
+    r.setRoomCancelOrderId(1L);
+    r.setNote("notee");
+    r.setAdmin(admin1);
+    r.setRoomStatus(roomStatus02);
+    r.setDate(new Date());
+
+
+     entityManager.persist(r);
+     entityManager.flush();
+
+     RoomCancelOrder r1 = new RoomCancelOrder();
+		
+
+		Admin admin = adminRepository.findByAdminId(1L);
+		RoomStatus roomStatus = roomStatusRepository.findByroomStatusId(1L);
+
+        r1.setRoomCancelOrderId(1L);
+		r1.setNote("notee");
+		r1.setAdmin(admin);
+		r1.setRoomStatus(roomStatus);
+		r1.setDate(new Date());
+
+
+
+     try {
+         entityManager.persist(r1);
+         entityManager.flush();
+
+         fail("Note is not unique");
+     } catch(javax.validation.ConstraintViolationException e) {
+         Set<ConstraintViolation<?>> violations = e.getConstraintViolations();
+         assertEquals(violations.isEmpty(), false);
+         assertEquals(violations.size(), 1);
+         System.out.println();
+         System.out.println();
+         System.out.println(" //---------------------------------------sprint2-testNoteMustBeUnique--------------------------------------------------    ");
          System.out.println();
          System.out.println();
          System.out.println(e.getMessage());
