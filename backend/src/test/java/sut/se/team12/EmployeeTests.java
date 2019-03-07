@@ -2,17 +2,15 @@ package sut.se.team12;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
-import org.springframework.boot.test.context.SpringBootTest;
+// import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
 import static org.junit.Assert.assertEquals;
+// import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.fail;
 
 import java.text.SimpleDateFormat;
-import java.time.LocalTime;
-import java.util.Collections;
 import java.util.Date;
-import java.util.OptionalInt;
 import java.util.Set;
 
 import javax.validation.ConstraintViolation;
@@ -21,7 +19,7 @@ import javax.validation.Validator;
 import javax.validation.ValidatorFactory;
 
 import org.junit.Before;
-import org.junit.Test;
+// import org.junit.Test;
 
 import sut.se.team12.entity.*;
 import sut.se.team12.repository.*;
@@ -35,25 +33,7 @@ import org.springframework.boot.test.autoconfigure.orm.jpa.TestEntityManager;
 @DataJpaTest
 public class EmployeeTests {
 
-	@Autowired private LockerOrderRepository lockerOrderRepository;
 	@Autowired private AdminRepository adminRepository;
-	@Autowired private MemberRepository memberRepository;
-	@Autowired private EmployeeRepository employeeRepository;
-	@Autowired private LockerRepository lockerRepository;
-	@Autowired private LockerDurationRepository lockerDurationRepository;
-	@Autowired private FieldRepository fieldRepository;
-	@Autowired private FieldDurationRepository fieldDurationRepository;
-	@Autowired private LeaseRepository leaseRepository;
-	@Autowired private LeaseDurationRepository leaseDurationRepository;
-	@Autowired private LeaseAccessoryRepository leaseAccessoryRepository;
-	@Autowired private TicketRepository ticketRepository;
-	@Autowired private TicketTypeRepository ticketTypeRepository;
-	@Autowired private PrivilegeRepository privilegeRepository;
-	@Autowired private ProvinceRepository provinceRepository;
-	@Autowired private RoomCancelOrderRepository roomCancelOrderRepository;
-	@Autowired private RoomStatusRepository roomStatusRepository;
-    @Autowired private RoomRepository roomRepository;
-	@Autowired private RoomDurationRepository roomDurationRepository;
 	
 	@Autowired TitleRepository titleRepository;
 	@Autowired DegreeRepository degreeRepositiry;
@@ -341,7 +321,8 @@ public class EmployeeTests {
 	}
 
 	
-	@Test(expected=javax.persistence.PersistenceException.class)
+	@Test
+	// (expected=javax.persistence.PersistenceException.class)
     public void testIdMustBeUnique(){
         
 		Admin admin = adminRepository.findByAdminId(1L);
@@ -382,10 +363,10 @@ public class EmployeeTests {
             entityManager.flush();
 
             fail("Employee _ personal id _ found not unique");
-		}catch(javax.validation.ConstraintViolationException er){
-			Set<ConstraintViolation<?>> violations = er.getConstraintViolations();
-            assertEquals(violations.isEmpty(), false);
-			assertEquals(violations.size(), 1);
+		}catch(javax.persistence.PersistenceException er){
+			// Set<ConstraintViolation<?>> violations = er.getConstraintViolations();
+            // assertEquals(violations.isEmpty(), false);
+			// assertEquals(violations.size(), 1);
 			System.out.println("\n");
 			System.out.println("------------------------------------------- Employee _ personal id _ found not unique ---------------------------------------");
 			System.out.println();

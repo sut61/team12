@@ -7,8 +7,6 @@ import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
 
-import org.hibernate.validator.constraints.UniqueElements;
-
 
 @Data
 @Entity
@@ -27,6 +25,7 @@ public class Training {
 
     
     @NotNull
+    @Column(unique = true)
     private String title;
 
     @NotNull

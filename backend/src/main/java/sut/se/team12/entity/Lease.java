@@ -2,8 +2,6 @@ package sut.se.team12.entity;
 
 import lombok.*;
 
-import java.util.Date;
-
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Pattern;
