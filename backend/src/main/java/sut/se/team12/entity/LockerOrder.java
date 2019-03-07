@@ -17,15 +17,21 @@ import java.util.Date;
 @EqualsAndHashCode
 @Table(name = "tb_lockerOrder")
 public class LockerOrder {
+
+    @NotNull
     @Id
     @SequenceGenerator(name="lockerOrder_seq",sequenceName = "lockerOrder_seq")
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "lockerOrder_seq")
-    @Column(name = "LOCKERORDER_ID")
-    @NotNull
+    @Column(name = "LOCKERORDER_ID",unique=true)
     private Long lockerOrderId;
-    @NotNull @Size(min=5,max=10) @Pattern(regexp = "[A-Za-z0-9]+") 
-    @Column(unique=true)
+
+
+    @NotNull 
+    @Size(min=2,max=20) 
+    @Pattern(regexp = "[A-Za-z0-9]+") 
     private String note;
+
+    @NotNull 
     @Temporal(TemporalType.DATE)private Date Date;
 
 
