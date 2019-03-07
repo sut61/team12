@@ -718,4 +718,136 @@ public class TrainningTests {
 			System.out.println("\n");
 		}
 	}
+
+	@Test public void testTrainingAdminNotNull() throws Exception{
+		
+		Training t = new Training();
+
+		Admin admin = adminRepository.findByAdminId(1L);
+		TrainingType  trainingType = trainingTypeRepository.findByTypeId(1L);
+		TrainingProgram trainingProgram = trainingProgramRepository.findByProgramId(1L);
+
+		SimpleDateFormat dateformat = new SimpleDateFormat("dd-MM-yyyy");
+		String input = "10-10-2012";
+		Date dateFrom = new Date();
+		Date dateTo = new Date();
+		dateFrom = dateformat.parse(input);
+		dateTo = dateformat.parse(input);
+
+		t.setAdmin(null);
+		t.setTitle("Motivating Techniques");
+		t.setDescription("description");
+		t.setDateFrom(dateFrom);
+		t.setDateTo(dateTo);
+		t.setTrainingType(trainingType);
+		t.setTrainingProgram(trainingProgram);
+		t.setInstructor("Mr.John Smith");
+		t.setLocation("location");
+		t.setEnrollment(250);
+		t.setCost(4500L);
+
+		try {
+            entityManager.persist(t);
+			entityManager.flush();
+			System.out.println("\n");
+			System.out.println("------------------------------------------- Training - Admin - found null ---------------------------------------");
+			System.out.println("\n");
+
+            // fail("Should not pass to this line");
+        } catch(javax.validation.ConstraintViolationException er) {
+            Set<ConstraintViolation<?>> violations = er.getConstraintViolations();
+            assertEquals(violations.isEmpty(), false);
+			assertEquals(violations.size(), 1);
+			
+        }
+
+	}
+
+	@Test public void testTrainingTypeNotNull() throws Exception{
+		
+		Training t = new Training();
+
+		Admin admin = adminRepository.findByAdminId(1L);
+		TrainingType  trainingType = trainingTypeRepository.findByTypeId(1L);
+		TrainingProgram trainingProgram = trainingProgramRepository.findByProgramId(1L);
+
+		SimpleDateFormat dateformat = new SimpleDateFormat("dd-MM-yyyy");
+		String input = "10-10-2012";
+		Date dateFrom = new Date();
+		Date dateTo = new Date();
+		dateFrom = dateformat.parse(input);
+		dateTo = dateformat.parse(input);
+
+		t.setAdmin(admin);
+		t.setTitle("Motivating Techniques");
+		t.setDescription("description");
+		t.setDateFrom(dateFrom);
+		t.setDateTo(dateTo);
+		t.setTrainingType(null);
+		t.setTrainingProgram(trainingProgram);
+		t.setInstructor("Mr.John Smith");
+		t.setLocation("location");
+		t.setEnrollment(250);
+		t.setCost(4500L);
+
+		try {
+            entityManager.persist(t);
+			entityManager.flush();
+			System.out.println("\n");
+			System.out.println("------------------------------------------- Training - Type - found null ---------------------------------------");
+			System.out.println("\n");
+
+            // fail("Should not pass to this line");
+        } catch(javax.validation.ConstraintViolationException er) {
+            Set<ConstraintViolation<?>> violations = er.getConstraintViolations();
+            assertEquals(violations.isEmpty(), false);
+			assertEquals(violations.size(), 1);
+			
+        }
+
+	}
+
+	@Test public void testTrainingProgramNotNull() throws Exception{
+		
+		Training t = new Training();
+
+		Admin admin = adminRepository.findByAdminId(1L);
+		TrainingType  trainingType = trainingTypeRepository.findByTypeId(1L);
+		TrainingProgram trainingProgram = trainingProgramRepository.findByProgramId(1L);
+
+		SimpleDateFormat dateformat = new SimpleDateFormat("dd-MM-yyyy");
+		String input = "10-10-2012";
+		Date dateFrom = new Date();
+		Date dateTo = new Date();
+		dateFrom = dateformat.parse(input);
+		dateTo = dateformat.parse(input);
+
+		t.setAdmin(admin);
+		t.setTitle("Motivating Techniques");
+		t.setDescription("description");
+		t.setDateFrom(dateFrom);
+		t.setDateTo(dateTo);
+		t.setTrainingType(trainingType);
+		t.setTrainingProgram(null);
+		t.setInstructor("Mr.John Smith");
+		t.setLocation("location");
+		t.setEnrollment(250);
+		t.setCost(4500L);
+
+		try {
+            entityManager.persist(t);
+			entityManager.flush();
+			System.out.println("\n");
+			System.out.println("------------------------------------------- Training - Program - found null ---------------------------------------");
+			System.out.println("\n");
+
+            // fail("Should not pass to this line");
+        } catch(javax.validation.ConstraintViolationException er) {
+            Set<ConstraintViolation<?>> violations = er.getConstraintViolations();
+            assertEquals(violations.isEmpty(), false);
+			assertEquals(violations.size(), 1);
+			
+        }
+
+	}
 }
