@@ -684,7 +684,7 @@ public class TrainningTests {
 			assertEquals(violations.size(), 1);
 			System.out.println("\n");
 			System.out.println("------------------------------------------- Training _ cost _ found null ---------------------------------------");
-			System.out.println();
+            System.out.println();
 			System.out.println(er.getMessage());
 			System.out.println("\n");
 		}

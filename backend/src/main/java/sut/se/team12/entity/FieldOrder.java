@@ -17,18 +17,25 @@ import java.util.Date;
 @EqualsAndHashCode
 @Table(name = "tb_fieldOrder")
 public class FieldOrder {
+
+   
+    
     @Id
     @SequenceGenerator(name="fieldOrder_seq",sequenceName = "fieldOrder_seq")
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "fieldOrder_seq")
-    @Column(name = "FIELDORDER_ID")
-    @NotNull
+    @Column(name = "FIELDORDER_ID",unique=true)
+    @NotNull 
     private Long fieldOrderId;
     
+
     @NotNull 
-    @Size(min=5,max=10) 
+    @Size(min=2,max=20) 
     @Pattern(regexp = "[A-Za-z0-9]+") 
     private String note;
-    @Temporal(TemporalType.DATE)private Date Date;
+
+    @NotNull
+    @Temporal(TemporalType.DATE)
+    private Date Date;
 
 
     @NotNull
