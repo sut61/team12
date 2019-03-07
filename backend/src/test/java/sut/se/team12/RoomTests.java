@@ -33,7 +33,6 @@ import org.springframework.boot.test.autoconfigure.orm.jpa.TestEntityManager;
 public class RoomTests {
     
     @Autowired private RoomOrderRepository roomOrderRepository;
-    @Autowired private RoomCancelOrderRepository roomCancelOrderRepository;
     @Autowired private TestEntityManager entityManager;
 	@Autowired private AdminRepository adminRepository;
 	@Autowired private RoomStatusRepository roomStatusRepository;

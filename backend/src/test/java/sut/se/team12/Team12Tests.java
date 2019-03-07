@@ -36,7 +36,6 @@ import org.springframework.boot.test.autoconfigure.orm.jpa.TestEntityManager;
 public class Team12Tests {
 
 	@Autowired private AdminRepository adminRepository;
-	@Autowired private MemberRepository memberRepository;
 	@Autowired private PrivilegeRepository privilegeRepository;
 	@Autowired private ProvinceRepository provinceRepository;
 	@Autowired private TitleRepository titleRepository;

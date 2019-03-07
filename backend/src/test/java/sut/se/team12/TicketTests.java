@@ -37,7 +37,6 @@ public class TicketTests {
 
 	@Autowired private AdminRepository adminRepository;
 	@Autowired private FieldRepository fieldRepository;
-	@Autowired private TicketRepository ticketRepository;
 	@Autowired private TicketTypeRepository ticketTypeRepository;
     @Autowired private TestEntityManager entityManager;
 

@@ -35,26 +35,13 @@ import org.springframework.boot.test.autoconfigure.orm.jpa.TestEntityManager;
 @DataJpaTest
 public class NotificationAndLeaseTest {
 
-	@Autowired private LockerOrderRepository lockerOrderRepository;
 	@Autowired private AdminRepository adminRepository;
 	@Autowired private MemberRepository memberRepository;
 	@Autowired private EmployeeRepository employeeRepository;
-	@Autowired private LockerRepository lockerRepository;
-	@Autowired private LockerDurationRepository lockerDurationRepository;
 	@Autowired private FieldRepository fieldRepository;
-	@Autowired private FieldDurationRepository fieldDurationRepository;
-	@Autowired private LeaseRepository leaseRepository;
 	@Autowired private LeaseDurationRepository leaseDurationRepository;
 	@Autowired private LeaseAccessoryRepository leaseAccessoryRepository;
-	@Autowired private TicketRepository ticketRepository;
-	@Autowired private TicketTypeRepository ticketTypeRepository;
-	@Autowired private PrivilegeRepository privilegeRepository;
-	@Autowired private ProvinceRepository provinceRepository;
-	@Autowired private RoomCancelOrderRepository roomCancelOrderRepository;
-	@Autowired private RoomStatusRepository roomStatusRepository;
-    @Autowired private RoomRepository roomRepository;
-	@Autowired private RoomDurationRepository roomDurationRepository;
-	
+
 	@Autowired TitleRepository titleRepository;
 	@Autowired DegreeRepository degreeRepositiry;
 	@Autowired PositionRepository positionRepository;
